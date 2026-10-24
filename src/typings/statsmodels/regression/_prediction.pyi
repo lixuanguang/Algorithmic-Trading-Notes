@@ -1,4 +1,3 @@
-# third party library imports
 from pandas import DataFrame
 
 class PredictionResults:

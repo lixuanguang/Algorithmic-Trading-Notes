@@ -40,85 +40,67 @@ from trading_notes.numerical import (
     afml,
     amm_pool,
     asset_pricing_factor_models,
-    backtest_design,
     bitemporal,
-    bond_valuation_risk,
     capital_market_expectations,
     cartea_jaimungal,
-    cme_allocation,
-    commodity_latency,
     commodity_returns,
     concentrated_position,
-    contract_statistics,
-    correlation_independence,
-    counterparty_capital,
-    counterparty_xva,
     covariance_shrinkage,
     covariance_volatility,
-    credit_cds_securitisation,
-    credit_portfolios,
     currency_management,
-    dealer_queue_information,
-    default_correlation,
     digital_assets,
-    drawdown_resampling,
     economic_growth,
     etf_mechanics,
-    extreme_value,
     filing_deadlines,
     filing_timestamps,
     financial_labels,
     financial_ml_methods,
-    fixed_income_portfolio,
     forecast_scaling,
-    fra_settlement,
-    funding_repo,
     fx_mechanics,
     fx_panel_inference,
     garch_ewma,
     index_construction,
-    inference_simulation,
     institutional_portfolios,
     intercorporate_fx_institutions,
     linear_projection,
-    linear_regression,
-    liquidity_market_design,
-    lob_model_derivations,
-    lob_models,
     macro_policy_trade,
     macro_pricing_risk,
     macro_valuation,
-    margin_purchase,
     margin_spiral,
-    market_estimators_rules,
     monte_carlo_greeks,
-    multicurve,
-    multiple_testing,
     negative_hedge_ratio,
     numerical_pricing,
-    order_flow,
     order_reconciliation,
     order_routing_fragmentation,
     perpetual_funding,
     private_capital,
     private_wealth,
     purged_cv,
-    rate_tree_embedded_options,
     real_assets,
-    sharpe_conditions,
-    sharpe_statistics,
-    sharpe_zero,
-    statistics_probability,
-    stochastic_calculus,
     synthetic_short,
     time_value_returns,
-    trade_execution,
-    yield_shift,
+    us_calendar,
 )
 from trading_notes.numerical.active_management import active_management_checks as active_management
 from trading_notes.numerical.alternatives_allocation import (
     alternatives_allocation_checks as alternatives_allocation,
 )
+from trading_notes.numerical.arbitrage_free_valuation import (
+    short_rate_model_checks as short_rate_model,
+)
+from trading_notes.numerical.backtest_evaluation import backtest_design_checks as backtest_design
+from trading_notes.numerical.backtest_evaluation import (
+    drawdown_resampling_checks as drawdown_resampling,
+)
+from trading_notes.numerical.backtest_evaluation import multiple_testing_checks as multiple_testing
+from trading_notes.numerical.backtest_evaluation import (
+    sharpe_conditions_checks as sharpe_conditions,
+)
+from trading_notes.numerical.backtest_evaluation import (
+    sharpe_statistics_checks as sharpe_statistics,
+)
+from trading_notes.numerical.backtest_evaluation import sharpe_zero_checks as sharpe_zero
+from trading_notes.numerical.bond_pricing_yields import bond_valuation_checks as bond_valuation_risk
 from trading_notes.numerical.capital_structure_cost_of_capital import (
     country_risk_premium_checks as country_risk_premium,
 )
@@ -126,19 +108,42 @@ from trading_notes.numerical.capital_structure_cost_of_capital.country_risk impo
 from trading_notes.numerical.cash_flow_analysis import cash_flow_linkage_checks as cash_flow_linkage
 from trading_notes.numerical.company_case import statement_analysis_checks as statement_analysis
 from trading_notes.numerical.corporate_finance import corporate_finance_checks as corporate_finance
+from trading_notes.numerical.counterparty_xva import (
+    counterparty_capital_checks as counterparty_capital,
+)
+from trading_notes.numerical.counterparty_xva import counterparty_xva_checks as counterparty_xva
+from trading_notes.numerical.credit_portfolio_management import (
+    credit_portfolios_checks as credit_portfolios,
+)
+from trading_notes.numerical.credit_risk_analysis import (
+    credit_cds_securitisation_checks as credit_cds_securitisation,
+)
+from trading_notes.numerical.default_correlation import (
+    default_correlation_checks as default_correlation,
+)
 from trading_notes.numerical.derivative_overlays import (
     derivative_overlays_checks as derivative_overlays,
 )
 from trading_notes.numerical.derivative_overlays import (
     seasoned_variance_swap_checks as seasoned_variance_swap,
 )
+from trading_notes.numerical.descriptive_statistics import (
+    statistics_probability_checks as statistics_probability,
+)
+from trading_notes.numerical.embedded_option_bonds import (
+    rate_tree_checks as rate_tree_embedded_options,
+)
 from trading_notes.numerical.equity_portfolio_management import (
     equity_portfolio_management_checks as equity_portfolio_management,
 )
 from trading_notes.numerical.exotic_options import exotic_options_checks as exotic_options
 from trading_notes.numerical.exotic_options import lookback_options_checks as lookback_options
+from trading_notes.numerical.extreme_values import extreme_value_checks as extreme_value
 from trading_notes.numerical.firms_market_structure import (
     market_structure_checks as market_structure,
+)
+from trading_notes.numerical.fixed_income_portfolio_management import (
+    fixed_income_portfolio_checks as fixed_income_portfolio,
 )
 from trading_notes.numerical.forward_commitment_valuation import (
     cross_currency_basis_checks as cross_currency_basis,
@@ -146,13 +151,31 @@ from trading_notes.numerical.forward_commitment_valuation import (
 from trading_notes.numerical.forward_commitment_valuation import (
     forward_swap_valuation_checks as forward_swap_valuation,
 )
+from trading_notes.numerical.futures_execution import (
+    contract_statistics_checks as contract_statistics,
+)
 from trading_notes.numerical.hedge_fund_strategies import hedge_funds_checks as hedge_funds
+from trading_notes.numerical.high_frequency_trading import (
+    dealer_queue_information_checks as dealer_queue_information,
+)
+from trading_notes.numerical.interest_rates import yield_shift_checks as yield_shift
 from trading_notes.numerical.investment_process_planning import (
     investment_planning_checks as investment_planning,
 )
 from trading_notes.numerical.manager_selection import manager_selection_checks as manager_selection
+from trading_notes.numerical.market_making_models import (
+    lob_model_derivations_checks as lob_model_derivations,
+)
+from trading_notes.numerical.market_making_models import lob_models_checks as lob_models
+from trading_notes.numerical.market_organisation import (
+    liquidity_market_design_checks as liquidity_market_design,
+)
 from trading_notes.numerical.market_risk_measurement import (
     market_risk_measurement_checks as market_risk_measurement,
+)
+from trading_notes.numerical.money_markets import funding_repo_checks as funding_repo
+from trading_notes.numerical.multiple_regression import (
+    multiple_regression_checks as multiple_regression,
 )
 from trading_notes.numerical.option_hedging import (
     transaction_cost_hedging_checks as transaction_cost_hedging,
@@ -167,6 +190,13 @@ from trading_notes.numerical.option_valuation import (
     dividend_tree_swaption_checks as dividend_tree_swaption,
 )
 from trading_notes.numerical.option_valuation import option_valuation_checks as option_valuation
+from trading_notes.numerical.order_books import cme_allocation_checks as cme_allocation
+from trading_notes.numerical.order_books import commodity_latency_checks as commodity_latency
+from trading_notes.numerical.order_books import matching_allocation
+from trading_notes.numerical.order_flow_statistics import (
+    market_estimators_rules_checks as market_estimators_rules,
+)
+from trading_notes.numerical.order_flow_statistics import order_flow_checks as order_flow
 from trading_notes.numerical.performance_attribution_appraisal import (
     performance_evaluation_checks as performance_evaluation,
 )
@@ -186,8 +216,24 @@ from trading_notes.numerical.portfolio_construction_models import (
 from trading_notes.numerical.portfolio_construction_models import mean_cvar_checks as mean_cvar
 from trading_notes.numerical.portfolio_construction_models import risk_parity_checks as risk_parity
 from trading_notes.numerical.portfolio_moments import portfolio_moments_checks as portfolio_moments
+from trading_notes.numerical.rate_swaps_clearing import fra_settlement_checks as fra_settlement
+from trading_notes.numerical.rate_swaps_clearing import multicurve_checks as multicurve
 from trading_notes.numerical.records import Record
-from trading_notes.numerical.report import CheckReport
+from trading_notes.numerical.regression import linear_regression_checks as linear_regression
+from trading_notes.numerical.report import CheckReport, require, section
+from trading_notes.numerical.scenario_simulation import (
+    scenario_simulation_checks as scenario_simulation,
+)
+from trading_notes.numerical.securities_lending import margin_purchase_checks as margin_purchase
+from trading_notes.numerical.statistical_inference import (
+    correlation_independence_checks as correlation_independence,
+)
+from trading_notes.numerical.statistical_inference import (
+    inference_simulation_checks as inference_simulation,
+)
+from trading_notes.numerical.stochastic_calculus import (
+    stochastic_calculus_checks as stochastic_calculus,
+)
 from trading_notes.numerical.strategic_asset_allocation import (
     strategic_asset_allocation_checks as strategic_asset_allocation,
 )
@@ -196,6 +242,11 @@ from trading_notes.numerical.systematic_equities import (
     equity_fcf_ri_private_checks as equity_fcf_ri_private,
 )
 from trading_notes.numerical.systematic_equities import equity_valuation_checks as equity_valuation
+from trading_notes.numerical.term_structure_returns import term_structure_checks as term_structure
+from trading_notes.numerical.time_series_models import time_series_checks as time_series
+from trading_notes.numerical.trade_strategy_governance import (
+    trade_execution_checks as trade_execution,
+)
 from trading_notes.numerical.var_es_estimation import (
     expected_shortfall_checks as expected_shortfall,
 )
@@ -228,11 +279,6 @@ PASS_FAIL_LINE = re.compile(r"^(PASS|FAIL)  ", re.M)
 BAD_ONLY_LINE = re.compile(r"^(BAD) ", re.M)
 # At most this many example processes run at once: one per CPU.
 MAX_PROCESSES: Final = os.cpu_count() or 4
-
-
-def prepared_drawdown(*_: object) -> drawdown_resampling.DrawdownComparison:
-    """Stand in for drawdown_resampling.simulate with percentiles that pass both conditions."""
-    return drawdown_resampling.DrawdownComparison(reference=1.0, shuffle=0.5, stationary=0.9)
 
 
 class NumericalCheck(Record):
@@ -310,24 +356,27 @@ STATSMODELS = ("numpy", "pandas", "scipy", "statsmodels")
 CHECKS = [
     NumericalCheck(
         module=funding_repo,
-        script=ARTEFACTS / "short-term-funding" / "funding-repo-checks.py",
+        script=None,
         replaced="check_margin_call",
         summary="\n1 check(s) failed: ['forced failure']\n",
         checks=11,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=fra_settlement,
-        script=ARTEFACTS / "rates-credit-mortgages" / "fra-settlement-check.py",
+        script=None,
         replaced="check_convexity",
         summary=LIST_SUMMARY,
         checks=11,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=multicurve,
-        script=ARTEFACTS / "rates-credit-mortgages" / "multicurve-check.py",
+        script=None,
         replaced="check_two_curves",
         summary=LIST_SUMMARY,
         checks=6,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=amm_pool,
@@ -397,10 +446,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=cme_allocation,
-        script=ARTEFACTS / "execution-market-making" / "cme-allocation-checks.py",
+        script=None,
         replaced="check_fifo",
         summary=LIST_SUMMARY,
         checks=12,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=perpetual_funding,
@@ -413,16 +463,15 @@ CHECKS = [
     ),
     NumericalCheck(
         module=commodity_latency,
-        script=ARTEFACTS / "execution-market-making" / "commodity-production-latency-checks.py",
+        script=None,
         replaced="check_latency_calibration",
         summary=LIST_SUMMARY,
         checks=7,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=contract_statistics,
-        script=ARTEFACTS
-        / "execution-market-making"
-        / "contract-specifications-statistics-checks.py",
+        script=None,
         replaced="check_ism_calendar",
         summary=LIST_SUMMARY,
         checks=38,
@@ -506,23 +555,28 @@ CHECKS = [
     ),
     NumericalCheck(
         module=sharpe_zero,
-        script=ARTEFACTS / "backtest-inference" / "sharpe-zero-check.py",
+        script=None,
         replaced="check_three_point",
         summary=LIST_SUMMARY,
         checks=4,
-        imports=NUMPY,
+        imports=("numpy", "scipy.stats", "pydantic"),
         stand_ins={"check_student_t": skipped, "check_three_point": skipped},
     ),
     NumericalCheck(
         module=drawdown_resampling,
-        script=ARTEFACTS / "backtest-inference" / "drawdown-resampling-checks.py",
+        script=None,
         replaced="failed_conditions",
         summary="\nBAD forced failure\n",
         checks=0,
+        imports=("numpy", "pydantic"),
         line=BAD_ONLY_LINE,
         forced=forced_condition_failure,
-        imports=NUMPY,
-        stand_ins={"simulate": prepared_drawdown},
+        stand_ins={
+            "EXPERIMENT": drawdown_resampling.EXPERIMENT.model_copy(
+                update={"reference_paths": 50, "sample_paths": 2, "replications": 5}
+            ),
+            "failed_conditions": no_conditions,
+        },
     ),
     NumericalCheck(
         module=linear_projection,
@@ -543,21 +597,21 @@ CHECKS = [
     ),
     NumericalCheck(
         module=multiple_testing,
-        script=ARTEFACTS / "backtest-inference" / "multiple-testing-checks.py",
+        script=None,
         replaced="failed_conditions",
         summary="\nBAD forced failure\n",
         checks=0,
+        imports=("numpy", "scipy.stats", "pydantic"),
         line=BAD_ONLY_LINE,
         forced=forced_condition_failure,
-        imports=SCIPY_STATS,
     ),
     NumericalCheck(
         module=sharpe_statistics,
-        script=ARTEFACTS / "backtest-inference" / "sharpe-checks.py",
+        script=None,
         replaced="check_deflated_sharpe",
         summary=LIST_SUMMARY,
         checks=23,
-        imports=SCIPY_STATS,
+        imports=("numpy", "scipy.stats", "pydantic"),
     ),
     NumericalCheck(
         module=forecast_scaling,
@@ -585,22 +639,22 @@ CHECKS = [
     ),
     NumericalCheck(
         module=lob_model_derivations,
-        script=ARTEFACTS / "market-making-lob" / "model-derivations-checks.py",
+        script=None,
         replaced="check_roll",
         summary="FAIL forced failure: forced\n",
         checks=11,
+        imports=("numpy", "scipy.optimize", "pydantic"),
         line=OK_FAIL_LINE,
         forced=forced_list_failure,
-        imports=("numpy", "scipy.optimize"),
         passed="",
     ),
     NumericalCheck(
         module=sharpe_conditions,
-        script=ARTEFACTS / "backtest-inference" / "sharpe-conditions-checks.py",
+        script=None,
         replaced="check_compounding",
         summary=LIST_SUMMARY,
         checks=8,
-        imports=NUMPY,
+        imports=("numpy", "scipy.stats", "pydantic"),
         stand_ins={"check_infinite_kurtosis": skipped, "check_general_variance": skipped},
     ),
     NumericalCheck(
@@ -613,19 +667,19 @@ CHECKS = [
     ),
     NumericalCheck(
         module=lob_models,
-        script=ARTEFACTS / "market-making-lob" / "model-checks.py",
+        script=None,
         replaced="check_free_entry",
         summary=LIST_SUMMARY,
         checks=37,
-        imports=("numpy", "scipy.integrate", "scipy.optimize"),
+        imports=("numpy", "scipy.integrate", "scipy.optimize", "pydantic"),
     ),
     NumericalCheck(
         module=margin_purchase,
-        script=ARTEFACTS / "short-term-funding" / "margin-purchase-check.py",
+        script=None,
         replaced="check_levered_return",
         summary=JOINED_SUMMARY,
         checks=7,
-        imports=("numpy", "scipy", "scipy.optimize"),
+        imports=("numpy", "scipy", "scipy.optimize", "pydantic"),
     ),
     NumericalCheck(
         module=cross_currency_basis,
@@ -662,11 +716,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=trade_execution,
-        script=ARTEFACTS / "trade-execution" / "trade-execution-checks.py",
+        script=None,
         replaced="check_evaluation",
         summary=COUNTED_SUMMARY,
         checks=14,
-        imports=("numpy", "scipy", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.stats", "pydantic"),
     ),
     NumericalCheck(
         module=macro_valuation,
@@ -687,20 +741,20 @@ CHECKS = [
     ),
     NumericalCheck(
         module=correlation_independence,
-        script=ARTEFACTS / "inference-simulation" / "correlation-independence-checks.py",
+        script=None,
         replaced="check_size",
         summary=JOINED_SUMMARY,
         checks=13,
-        imports=("numpy", "scipy", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.stats", "pydantic"),
         stand_ins={"check_size": skipped, "report_overlap": skipped},
     ),
     NumericalCheck(
         module=counterparty_capital,
-        script=ARTEFACTS / "counterparty-xva" / "counterparty-capital-check.py",
+        script=None,
         replaced="check_worked_example",
         summary=JOINED_SUMMARY,
         checks=13,
-        imports=("numpy", "scipy", "scipy.integrate"),
+        imports=("numpy", "scipy", "scipy.integrate", "pydantic"),
     ),
     NumericalCheck(
         module=volatility_mismatch_hedging,
@@ -751,11 +805,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=stochastic_calculus,
-        script=ARTEFACTS / "stochastic-calculus" / "stochastic-calculus-checks.py",
+        script=None,
         replaced="check_feynman_kac",
         summary=JOINED_SUMMARY,
         checks=23,
-        imports=("numpy", "scipy", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.stats", "pydantic"),
     ),
     NumericalCheck(
         module=index_construction,
@@ -816,11 +870,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=credit_portfolios,
-        script=ARTEFACTS / "credit-portfolios" / "credit-portfolio-checks.py",
+        script=None,
         replaced="check_structured",
         summary=LIST_SUMMARY,
         checks=25,
-        imports=("numpy", "scipy", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.stats", "pydantic"),
         passed="\n25 checks executed\nall checks passed\n",
     ),
     NumericalCheck(
@@ -900,54 +954,73 @@ CHECKS = [
     ),
     NumericalCheck(
         module=backtest_design,
-        script=ARTEFACTS / "backtest-inference" / "backtest-design-checks.py",
+        script=None,
         replaced="check_survivorship",
         summary=LIST_SUMMARY,
         checks=19,
-        imports=NUMPY,
+        imports=("numpy", "pydantic"),
         passed="\n19 checks executed\nall checks passed\n",
     ),
     NumericalCheck(
         module=bond_valuation_risk,
-        script=ARTEFACTS / "bond-valuation-risk" / "bond-valuation-checks.py",
+        script=None,
         replaced="check_treasury_formulas",
         summary=COUNTED_SUMMARY,
         checks=94,
-        imports=("numpy", "scipy", "scipy.optimize"),
+        imports=("numpy", "scipy", "scipy.optimize", "pydantic"),
     ),
     NumericalCheck(
         module=credit_cds_securitisation,
-        script=ARTEFACTS / "corporate-credit-capital" / "credit-cds-securitisation-checks.py",
+        script=None,
         replaced="check_migration",
         summary="\n53 checks executed\nFAILED: ['forced failure']\n",
         checks=52,
-        imports=("numpy", "scipy.optimize", "scipy.stats"),
+        imports=("numpy", "scipy.optimize", "scipy.stats", "pydantic"),
         passed="\n52 checks executed\nall checks passed\n",
     ),
     NumericalCheck(
         module=counterparty_xva,
-        script=ARTEFACTS / "counterparty-xva" / "counterparty-xva-checks.py",
+        script=None,
         replaced="check_collateral",
         summary=JOINED_SUMMARY,
         checks=32,
-        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats", "pydantic"),
     ),
     NumericalCheck(
         module=default_correlation,
-        script=ARTEFACTS / "default-correlation" / "default-correlation-checks.py",
+        script=None,
         replaced="check_base_correlation",
         summary=JOINED_SUMMARY,
         checks=18,
-        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats", "pydantic"),
         stand_ins={"check_base_correlation": skipped, "check_tranches": skipped},
     ),
     NumericalCheck(
+        module=short_rate_model,
+        script=None,
+        replaced="check_forward_market",
+        summary=JOINED_SUMMARY,
+        checks=22,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats", "pydantic"),
+        args=("--root", str(ROOT)),
+        stand_ins={"check_cir_exact": skipped, "check_hull_white_paths": skipped},
+    ),
+    NumericalCheck(
+        module=term_structure,
+        script=None,
+        replaced="check_curves",
+        summary=COUNTED_SUMMARY,
+        checks=36,
+        imports=("numpy", "pydantic"),
+        args=("--root", str(ROOT)),
+    ),
+    NumericalCheck(
         module=statistics_probability,
-        script=ARTEFACTS / "descriptive-probability" / "statistics-probability-checks.py",
+        script=None,
         replaced="check_bayesian",
         summary=JOINED_SUMMARY,
         checks=64,
-        imports=("numpy", "scipy.integrate", "scipy.stats"),
+        imports=("numpy", "scipy.integrate", "scipy.stats", "pydantic"),
     ),
     NumericalCheck(
         module=equity_portfolio_management,
@@ -960,33 +1033,33 @@ CHECKS = [
     ),
     NumericalCheck(
         module=dealer_queue_information,
-        script=ARTEFACTS / "execution-market-making" / "dealer-queue-information-checks.py",
+        script=None,
         replaced="check_power_and_inference",
         summary="\nBAD forced failure\n",
         checks=0,
+        imports=("numpy", "scipy", "scipy.stats", "scipy.optimize", "pydantic"),
         line=BAD_ONLY_LINE,
         forced=forced_condition_failure,
-        imports=("numpy", "scipy", "scipy.optimize", "scipy.stats"),
         stand_ins={"check_power_and_inference": no_conditions},
     ),
     NumericalCheck(
         module=liquidity_market_design,
-        script=ARTEFACTS / "execution-market-making" / "liquidity-market-design-checks.py",
+        script=None,
         replaced="check_capacity",
         summary="\nBAD forced failure\n",
         checks=0,
+        imports=("numpy", "pydantic"),
         line=BAD_ONLY_LINE,
         forced=forced_condition_failure,
-        imports=NUMPY,
         stand_ins={"check_capacity": no_conditions, "check_search": no_conditions},
     ),
     NumericalCheck(
         module=market_estimators_rules,
-        script=ARTEFACTS / "execution-market-making" / "market-estimators-rules-checks.py",
+        script=None,
         replaced="check_model_i",
         summary="\nFAILURES: ['forced failure']\n",
         checks=45,
-        imports=NUMPY,
+        imports=("numpy", "pydantic"),
         passed="\nFAILURES: none\n",
         stand_ins={"check_model_i": skipped},
     ),
@@ -1010,11 +1083,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=extreme_value,
-        script=ARTEFACTS / "extreme-value" / "extreme-value-checks.py",
+        script=None,
         replaced="check_rmfi",
         summary=JOINED_SUMMARY,
         checks=8,
-        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats", "pydantic"),
         stand_ins={"report_diagnostics": skipped},
     ),
     NumericalCheck(
@@ -1048,11 +1121,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=fixed_income_portfolio,
-        script=ARTEFACTS / "fixed-income-portfolio" / "fixed-income-portfolio-checks.py",
+        script=None,
         replaced="check_indexes",
         summary=COUNTED_SUMMARY,
         checks=40,
-        imports=("numpy", "scipy", "scipy.optimize"),
+        imports=("numpy", "scipy", "scipy.optimize", "pydantic"),
     ),
     NumericalCheck(
         module=forward_swap_valuation,
@@ -1064,11 +1137,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=inference_simulation,
-        script=ARTEFACTS / "inference-simulation" / "inference-simulation-checks.py",
+        script=None,
         replaced="check_discretisation",
         summary=JOINED_SUMMARY,
         checks=52,
-        imports=("numpy", "scipy", "scipy.stats"),
+        imports=("numpy", "scipy", "scipy.stats", "pydantic"),
     ),
     NumericalCheck(
         module=institutional_portfolios,
@@ -1105,13 +1178,13 @@ CHECKS = [
     ),
     NumericalCheck(
         module=order_flow,
-        script=ARTEFACTS / "market-simulation" / "order-flow-checks.py",
+        script=None,
         replaced="check_trade_signing",
         summary="\nBAD forced failure\n",
         checks=0,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats", "pydantic"),
         line=BAD_ONLY_LINE,
         forced=forced_condition_failure,
-        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats"),
         passed="",
         stand_ins={"check_latent_spread": no_conditions},
     ),
@@ -1213,11 +1286,11 @@ CHECKS = [
     ),
     NumericalCheck(
         module=rate_tree_embedded_options,
-        script=ARTEFACTS / "rate-tree-embedded-options" / "rate-tree-checks.py",
+        script=None,
         replaced="check_paths",
         summary=COUNTED_SUMMARY,
         checks=46,
-        imports=("numpy", "scipy", "scipy.optimize"),
+        imports=("numpy", "scipy", "scipy.optimize", "pydantic"),
     ),
     NumericalCheck(
         module=real_assets,
@@ -1250,7 +1323,7 @@ CHECKS = [
     ),
     NumericalCheck(
         module=linear_regression,
-        script=ARTEFACTS / "linear-regression" / "regression-checks.py",
+        script=None,
         replaced="check_functional_forms",
         summary=JOINED_SUMMARY,
         checks=44,
@@ -1262,7 +1335,57 @@ CHECKS = [
             "scipy.stats",
             "statsmodels.regression.linear_model",
             "statsmodels.stats.anova",
+            "pydantic",
         ),
+    ),
+    NumericalCheck(
+        module=scenario_simulation,
+        script=None,
+        replaced="check_sensitivities",
+        summary=LIST_SUMMARY,
+        checks=10,
+        passed="\n10 checks executed\nall checks passed\n",
+        imports=("numpy", "pydantic"),
+        args=("--root", str(ROOT)),
+    ),
+    NumericalCheck(
+        module=multiple_regression,
+        script=None,
+        replaced="check_extensions",
+        summary=LIST_SUMMARY,
+        checks=24,
+        passed="\n24 checks executed\nall checks passed\n",
+        imports=(
+            *STATSMODELS,
+            "statsmodels.api",
+            "statsmodels.regression.linear_model",
+            "statsmodels.stats.diagnostic",
+            "statsmodels.stats.outliers_influence",
+            "statsmodels.stats.stattools",
+            "pydantic",
+        ),
+        args=("--root", str(ROOT)),
+    ),
+    NumericalCheck(
+        module=time_series,
+        script=None,
+        replaced="check_model_selection",
+        summary=LIST_SUMMARY,
+        checks=36,
+        passed="\n36 checks executed\nall checks passed\n",
+        imports=(
+            *STATSMODELS,
+            "statsmodels.api",
+            "scipy.stats",
+            "statsmodels.regression.linear_model",
+            "statsmodels.stats.diagnostic",
+            "statsmodels.stats.stattools",
+            "statsmodels.tools.sm_exceptions",
+            "statsmodels.tsa.adfvalues",
+            "statsmodels.tsa.stattools",
+            "pydantic",
+        ),
+        args=("--root", str(ROOT)),
     ),
     # It reads its data file and a compendium figure below the repository root.
     NumericalCheck(
@@ -1316,9 +1439,9 @@ DEMONSTRATIONS = [
     ),
     Demonstration(
         module=yield_shift,
-        script=ARTEFACTS / "rates-credit-mortgages" / "yield-shift-check.py",
+        script=None,
         lines=9,
-        imports=("numpy", "scipy.optimize"),
+        imports=("numpy", "scipy.optimize", "pydantic"),
     ),
     Demonstration(
         module=financial_labels,
@@ -1344,6 +1467,24 @@ SUPPORT: dict[str, tuple[str, ...]] = {
     "trading_notes.numerical.active_management.fundamental_law": ("pydantic",),
     "trading_notes.numerical.alternatives_allocation": (),
     "trading_notes.numerical.alternatives_allocation.commitment_pacing": ("numpy", "pydantic"),
+    "trading_notes.numerical.arbitrage_free_valuation": (),
+    "trading_notes.numerical.arbitrage_free_valuation.short_rate_models": ("numpy", "pydantic"),
+    "trading_notes.numerical.backtest_evaluation": (),
+    "trading_notes.numerical.backtest_evaluation.backtest_book": ("numpy", "pydantic"),
+    "trading_notes.numerical.backtest_evaluation.drawdown_bootstrap": ("numpy", "pydantic"),
+    "trading_notes.numerical.backtest_evaluation.familywise_tests": ("numpy", "pydantic"),
+    "trading_notes.numerical.backtest_evaluation.sharpe_inference": (
+        "numpy",
+        "scipy.stats",
+        "pydantic",
+    ),
+    "trading_notes.numerical.bond_pricing_yields": (),
+    "trading_notes.numerical.bond_pricing_yields.fixed_rate_bonds": (
+        "numpy",
+        "scipy.optimize",
+        "pydantic",
+    ),
+    "trading_notes.numerical.bond_pricing_yields.sofr_notes": ("pydantic",),
     "trading_notes.numerical.capital_structure_cost_of_capital": (),
     "trading_notes.numerical.capital_structure_cost_of_capital.cost_of_capital": ("pydantic",),
     "trading_notes.numerical.capital_structure_cost_of_capital.country_risk": ("pydantic",),
@@ -1352,20 +1493,73 @@ SUPPORT: dict[str, tuple[str, ...]] = {
     "trading_notes.numerical.company_case": (),
     "trading_notes.numerical.company_case.harbour": ("numpy", "scipy.stats", "pydantic"),
     "trading_notes.numerical.corporate_finance": (),
+    "trading_notes.numerical.counterparty_xva": (),
+    "trading_notes.numerical.counterparty_xva.regulatory_capital": ("pydantic",),
+    "trading_notes.numerical.counterparty_xva.swap_exposure": ("numpy", "pydantic"),
+    "trading_notes.numerical.counterparty_xva.tree_cva": ("numpy", "scipy.optimize", "pydantic"),
+    "trading_notes.numerical.credit_portfolio_management": (),
+    "trading_notes.numerical.credit_portfolio_management.structured_claims": ("pydantic",),
+    "trading_notes.numerical.credit_risk_analysis": (),
+    "trading_notes.numerical.credit_risk_analysis.credit_instruments": ("numpy", "pydantic"),
+    "trading_notes.numerical.default_correlation": (),
+    "trading_notes.numerical.default_correlation.factor_model": (
+        "numpy",
+        "scipy.stats",
+        "pydantic",
+    ),
+    "trading_notes.numerical.default_correlation.tranche_pricing": (
+        "numpy",
+        "scipy.integrate",
+        "scipy.stats",
+        "pydantic",
+    ),
     "trading_notes.numerical.derivative_overlays": (),
     "trading_notes.numerical.derivative_overlays.variance_swap": ("numpy", "pydantic"),
+    "trading_notes.numerical.descriptive_statistics": (),
+    "trading_notes.numerical.descriptive_statistics.return_statistics": ("pydantic",),
+    "trading_notes.numerical.embedded_option_bonds": (),
+    "trading_notes.numerical.embedded_option_bonds.binomial_tree": (
+        "numpy",
+        "scipy.optimize",
+        "pydantic",
+    ),
     "trading_notes.numerical.equity_portfolio_management": (),
     "trading_notes.numerical.equity_portfolio_management.equity_universe": ("numpy", "pydantic"),
     "trading_notes.numerical.exotic_options": (),
     "trading_notes.numerical.exotic_options.exotic_pricing": ("numpy", "scipy.stats", "pydantic"),
     "trading_notes.numerical.exotic_options.lookback": ("numpy", "scipy.stats", "pydantic"),
+    "trading_notes.numerical.extreme_values": (),
+    "trading_notes.numerical.extreme_values.tail_estimation": (
+        "numpy",
+        "scipy.optimize",
+        "scipy.stats",
+        "pydantic",
+    ),
     "trading_notes.numerical.firms_market_structure": (),
     "trading_notes.numerical.firms_market_structure.firm_costs": ("numpy", "pydantic"),
+    "trading_notes.numerical.fixed_income_portfolio_management": (),
+    "trading_notes.numerical.fixed_income_portfolio_management.curve_exposures": (
+        "numpy",
+        "pydantic",
+    ),
     "trading_notes.numerical.forward_commitment_valuation": (),
     "trading_notes.numerical.forward_commitment_valuation.cross_currency": ("pydantic",),
     "trading_notes.numerical.forward_commitment_valuation.swap_valuation": ("numpy", "pydantic"),
+    "trading_notes.numerical.futures_execution": (),
     "trading_notes.numerical.hedge_fund_strategies": (),
     "trading_notes.numerical.hedge_fund_strategies.return_smoothing": ("numpy", "pydantic"),
+    "trading_notes.numerical.high_frequency_trading": (),
+    "trading_notes.numerical.high_frequency_trading.speed_race": (
+        "numpy",
+        "scipy.optimize",
+        "pydantic",
+    ),
+    "trading_notes.numerical.interest_rates": (),
+    "trading_notes.numerical.interest_rates.continuous_cash_flows": (
+        "numpy",
+        "scipy.optimize",
+        "pydantic",
+    ),
     "trading_notes.numerical.investment_process_planning": (),
     "trading_notes.numerical.investment_process_planning.retirement_plan": (
         "numpy",
@@ -1379,12 +1573,21 @@ SUPPORT: dict[str, tuple[str, ...]] = {
         "scipy.optimize",
         "pydantic",
     ),
+    "trading_notes.numerical.market_making_models": (),
+    "trading_notes.numerical.market_making_models.inventory_models": ("pydantic",),
+    "trading_notes.numerical.market_making_models.microstructure_models": ("pydantic",),
+    "trading_notes.numerical.market_organisation": (),
+    "trading_notes.numerical.market_organisation.liquidity_models": ("numpy", "pydantic"),
     "trading_notes.numerical.market_risk_measurement": (),
     "trading_notes.numerical.market_risk_measurement.market_risk": (
         "numpy",
         "scipy.stats",
         "pydantic",
     ),
+    "trading_notes.numerical.money_markets": (),
+    "trading_notes.numerical.money_markets.money_market_instruments": ("pydantic",),
+    "trading_notes.numerical.multiple_regression": (),
+    "trading_notes.numerical.multiple_regression.least_squares": ("numpy", "pydantic"),
     "trading_notes.numerical.newey_west": ("numpy",),
     "trading_notes.numerical.option_hedging": (),
     "trading_notes.numerical.option_hedging.leland_hedging": (
@@ -1407,6 +1610,18 @@ SUPPORT: dict[str, tuple[str, ...]] = {
     "trading_notes.numerical.option_valuation": (),
     "trading_notes.numerical.option_valuation.delta_hedging": ("numpy", "scipy.stats", "pydantic"),
     "trading_notes.numerical.option_valuation.dividend_tree": ("numpy", "pydantic"),
+    "trading_notes.numerical.order_books": (),
+    "trading_notes.numerical.order_books.latency_calibration": ("pydantic",),
+    "trading_notes.numerical.order_books.matching_allocation": ("pydantic",),
+    "trading_notes.numerical.order_flow_statistics": (),
+    "trading_notes.numerical.order_flow_statistics.covariance_estimators": ("numpy", "pydantic"),
+    "trading_notes.numerical.order_flow_statistics.point_processes": (
+        "numpy",
+        "scipy.integrate",
+        "scipy.stats",
+        "pydantic",
+    ),
+    "trading_notes.numerical.order_flow_statistics.trade_classification": ("pydantic",),
     "trading_notes.numerical.performance_attribution_appraisal": (),
     "trading_notes.numerical.performance_attribution_appraisal.performance_measures": (
         "numpy",
@@ -1435,9 +1650,34 @@ SUPPORT: dict[str, tuple[str, ...]] = {
     ),
     "trading_notes.numerical.portfolio_moments": (),
     "trading_notes.numerical.portfolio_moments.scenario_moments": ("numpy", "pydantic"),
+    "trading_notes.numerical.rate_swaps_clearing": (),
+    "trading_notes.numerical.rate_swaps_clearing.fra_valuation": ("pydantic",),
     "trading_notes.numerical.records": ("pydantic",),
+    "trading_notes.numerical.regression": (),
+    "trading_notes.numerical.regression.simple_regression": ("numpy", "scipy.stats", "pydantic"),
     "trading_notes.numerical.report": (),
     "trading_notes.numerical.repository": (),
+    "trading_notes.numerical.scenario_simulation": (),
+    "trading_notes.numerical.scenario_simulation.return_simulation": ("numpy", "pydantic"),
+    "trading_notes.numerical.securities_lending": (),
+    "trading_notes.numerical.securities_lending.margin_accounts": ("pydantic",),
+    "trading_notes.numerical.statistical_inference": (),
+    "trading_notes.numerical.statistical_inference.correlation_tests": (
+        "numpy",
+        "scipy.stats",
+        "pydantic",
+    ),
+    "trading_notes.numerical.statistical_inference.sample_inference": (
+        "numpy",
+        "scipy.stats",
+        "pydantic",
+    ),
+    "trading_notes.numerical.stochastic_calculus": (),
+    "trading_notes.numerical.stochastic_calculus.geometric_brownian_motion": (
+        "numpy",
+        "scipy.stats",
+        "pydantic",
+    ),
     "trading_notes.numerical.strategic_asset_allocation": (),
     "trading_notes.numerical.strategic_asset_allocation.allocation": (
         "numpy",
@@ -1446,7 +1686,22 @@ SUPPORT: dict[str, tuple[str, ...]] = {
         "pydantic",
     ),
     "trading_notes.numerical.systematic_equities": (),
+    "trading_notes.numerical.term_structure_returns": (),
+    "trading_notes.numerical.term_structure_returns.curve_bootstrap": ("numpy", "pydantic"),
+    "trading_notes.numerical.time_series_models": (),
+    "trading_notes.numerical.time_series_models.forecasting_models": (
+        "numpy",
+        "pandas",
+        "scipy",
+        "statsmodels",
+        "statsmodels.api",
+        "scipy.optimize",
+        "pydantic",
+    ),
     "trading_notes.numerical.tolerance": (),
+    "trading_notes.numerical.trade_strategy_governance": (),
+    "trading_notes.numerical.trade_strategy_governance.almgren_chriss": ("numpy", "pydantic"),
+    "trading_notes.numerical.us_calendar": (),
     "trading_notes.numerical.var_es_estimation": (),
     "trading_notes.numerical.var_es_estimation.expected_shortfall": ("pydantic",),
     "trading_notes.numerical.var_es_estimation.var_backtest": ("numpy", "pydantic"),
@@ -1549,6 +1804,27 @@ class Reporting(unittest.TestCase):
     def test_summarise_without_checks_returns_0(self) -> None:
         """A run with no checks has no failures, so it passes."""
         self.assertEqual(captured(CheckReport().summarise), (0, "all checks passed\n"))
+
+
+class FailureOnlyReporting(unittest.TestCase):
+    """The helpers of checks that print only their failures, and the shared section heading."""
+
+    def test_require_records_only_failures_and_prints_nothing(self) -> None:
+        """A false condition appends its name in order; a true one leaves the list alone."""
+        failed: list[str] = ["earlier"]
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            require(failed, "holds", True)
+            require(failed, "fails", False)
+            require(failed, "fails again", False)
+        self.assertEqual((out.getvalue(), failed), ("", ["earlier", "fails", "fails again"]))
+
+    def test_section_prints_a_heading_after_a_blank_line(self) -> None:
+        """A heading is `== <title>` preceded by an empty line."""
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            section("1. Part")
+        self.assertEqual(out.getvalue(), "\n== 1. Part\n")
 
 
 class SharedStateHelpers(unittest.TestCase):
@@ -2231,24 +2507,27 @@ class CmeAllocation(unittest.TestCase):
 
     def test_pro_rata_floors_then_applies_the_minimum(self) -> None:
         """Shares are floored before the minimum; a share equal to PR Min is allocated."""
-        self.assertEqual(cme_allocation.pro_rata([1, 1, 1], 2), [0, 0, 0])
-        self.assertEqual(cme_allocation.pro_rata([2, 1, 1], 8), [4, 2, 2])
-        self.assertEqual(cme_allocation.apply_minimum([1, 2, 3], 2), [0, 2, 3])
+        book = matching_allocation.RestingOrders
+        self.assertEqual(book(quantities=(1, 1, 1)).pro_rata_shares(2), [0, 0, 0])
+        self.assertEqual(book(quantities=(2, 1, 1)).pro_rata_shares(8), [4, 2, 2])
+        self.assertEqual(book(quantities=(1, 2, 3)).pro_rata_shares(6), [1, 2, 3])
+        self.assertEqual(book(quantities=(1, 2, 3)).pro_rata(6, 2), [0, 2, 3])
 
     def test_leveling_by_quantity_then_time(self) -> None:
         """Only unallocated orders qualify, larger first, then earlier; one lot each."""
-        self.assertEqual(cme_allocation.leveling_order([5, 5, 9, 7], [0, 0, 0, 2]), [2, 0, 1])
-        self.assertEqual(cme_allocation.leveling([5, 5, 9, 7], [0, 0, 0, 2], 2), [1, 0, 1, 0])
-        self.assertEqual(cme_allocation.leveling([5, 5, 9, 7], [0, 0, 0, 2], 9), [1, 1, 1, 0])
+        book = matching_allocation.RestingOrders(quantities=(5, 5, 9, 7))
+        self.assertEqual(book.leveling_order([0, 0, 0, 2]), [2, 0, 1])
+        self.assertEqual(book.leveling([0, 0, 0, 2], 2), [1, 0, 1, 0])
+        self.assertEqual(book.leveling([0, 0, 0, 2], 9), [1, 1, 1, 0])
 
     def test_split_rounds_fifo_up_and_fifo_fills_in_time_order(self) -> None:
         """The FIFO part of a Split is rounded up; FIFO stops when the lots run out."""
-        self.assertEqual(cme_allocation.split_fifo(49, 20), 10)
-        self.assertEqual(cme_allocation.split_fifo(49, 1), 1)
-        quantities = [5, 9, 57]
-        self.assertEqual(cme_allocation.fifo(quantities, 10), [0, 4, 57])
-        self.assertEqual(cme_allocation.fifo(quantities, 100), [0, 0, 0])
-        self.assertEqual(quantities, [5, 9, 57])
+        self.assertEqual(matching_allocation.split_fifo(49, 20), 10)
+        self.assertEqual(matching_allocation.split_fifo(49, 1), 1)
+        book = matching_allocation.RestingOrders(quantities=(5, 9, 57))
+        self.assertEqual(book.fifo(10), [0, 4, 57])
+        self.assertEqual(book.fifo(100), [0, 0, 0])
+        self.assertEqual(book.quantities, (5, 9, 57))
 
     def test_expected_allocations_are_not_derived_from_the_rules(self) -> None:
         """A higher PR Min changes the allocations, so the page's printed values fail."""
@@ -2367,10 +2646,10 @@ class IsmCalendar(unittest.TestCase):
 
     def test_business_days_skip_weekends_and_listed_days(self) -> None:
         """Thursday 1 January 2026 is skipped as a holiday, so the first business day is the 2nd."""
-        holidays = contract_statistics.federal_holidays(2026)
-        self.assertEqual(contract_statistics.business_day(2026, 1, 1, holidays), 2)
-        self.assertEqual(contract_statistics.business_day(2026, 1, 1, set()), 1)
-        self.assertEqual(contract_statistics.business_day(2026, 2, 1, holidays), 2)
+        holidays = us_calendar.federal_holidays(2026)
+        self.assertEqual(us_calendar.business_day(2026, 1, 1, holidays), 2)
+        self.assertEqual(us_calendar.business_day(2026, 1, 1, set()), 1)
+        self.assertEqual(us_calendar.business_day(2026, 2, 1, holidays), 2)
 
 
 if __name__ == "__main__":

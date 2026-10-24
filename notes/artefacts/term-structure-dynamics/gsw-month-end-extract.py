@@ -1,4 +1,6 @@
-"""Extract month-end Gurkaynak-Sack-Wright zero-coupon yields for term-structure-checks.py (2026-10-18).
+"""Extract month-end Gurkaynak-Sack-Wright zero-coupon yields for the term-structure checks (2026-10-18).
+
+The checks are trading_notes.numerical.term_structure_returns.term_structure_checks.
 
 Input: the Federal Reserve Board's feds200628.csv (fitted off-the-run Treasury curve, daily, continuously compounded
 zero yields SVENYxx in percent), kept outside Git at reading_materials/derivatives-validation/empirical/. The file

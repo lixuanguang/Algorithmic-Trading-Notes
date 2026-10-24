@@ -17,11 +17,12 @@ import numpy as np
 from numpy.typing import NDArray
 from scipy.stats import norm
 
-from trading_notes.numerical import multiple_testing as mt
+from trading_notes.numerical.backtest_evaluation import multiple_testing_checks as mt
+from trading_notes.numerical.backtest_evaluation.familywise_tests import MaxCutoffs, Tally
 
 K = mt.K
 # Synthetic cutoffs, falling by 0.1 with each statistic left: 3.0 for all K, 2.9 for K - 1.
-CUTOFFS = {n: 1.0 + 0.1 * n for n in range(1, K + 1)}
+CUTOFFS = MaxCutoffs(by_count={n: 1.0 + 0.1 * n for n in range(1, K + 1)})
 
 
 def rejected(*indices: int) -> NDArray[np.bool_]:
@@ -38,20 +39,20 @@ class PValueProcedures(unittest.TestCase):
         """A p-value of exactly ALPHA / K is not rejected; anything smaller is."""
         p = np.full(K, 0.5)
         p[[0, 1]] = mt.ALPHA / K, np.nextafter(mt.ALPHA / K, 0)
-        np.testing.assert_array_equal(mt.bonferroni(p), rejected(1))
+        np.testing.assert_array_equal(mt.TESTS.bonferroni(p), rejected(1))
 
     def test_holm_steps_down_from_the_smallest(self) -> None:
         """The j-th smallest p-value needs p < ALPHA / (K - j), whatever its position."""
         p = np.full(K, 0.5)
         p[[7, 3]] = 0.0024, 0.0026  # under 0.05/20 = 0.0025, then under 0.05/19 = 0.00263
-        np.testing.assert_array_equal(mt.holm(p), rejected(7, 3))
-        np.testing.assert_array_equal(mt.bonferroni(p), rejected(7))
+        np.testing.assert_array_equal(mt.TESTS.holm(p), rejected(7, 3))
+        np.testing.assert_array_equal(mt.TESTS.bonferroni(p), rejected(7))
 
     def test_holm_stops_at_the_first_acceptance(self) -> None:
         """A smallest p-value at 0.0025 is accepted, so 0.0026 is not tried at 0.05/19."""
         p = np.full(K, 0.5)
         p[[7, 3]] = mt.ALPHA / K, 0.0026
-        np.testing.assert_array_equal(mt.holm(p), rejected())
+        np.testing.assert_array_equal(mt.TESTS.holm(p), rejected())
 
 
 class MaxProcedures(unittest.TestCase):
@@ -61,18 +62,18 @@ class MaxProcedures(unittest.TestCase):
         """A statistic equal to the cutoff for K is not rejected."""
         w = np.zeros(K)
         w[[0, 1, 2]] = 3.0, 3.5, 2.95
-        np.testing.assert_array_equal(mt.single_step_max(w, CUTOFFS), rejected(1))
+        np.testing.assert_array_equal(CUTOFFS.single_step(w), rejected(1))
 
     def test_stepm_steps_until_nothing_is_rejected(self) -> None:
         """3.5 > 3.0, then 2.95 > 2.9, then 2.85 > 2.8; 2.7 is not above 2.7, so it stops."""
         w = np.zeros(K)
         w[[4, 9, 2, 5]] = 3.5, 2.95, 2.85, 2.7
-        np.testing.assert_array_equal(mt.stepm(w, CUTOFFS), rejected(4, 9, 2))
+        np.testing.assert_array_equal(CUTOFFS.stepm(w), rejected(4, 9, 2))
 
     def test_stepm_rejects_a_step_at_once(self) -> None:
         """Every statistic above a step's cutoff is rejected in that step, then none are left."""
         w = np.full(K, 10.0)
-        np.testing.assert_array_equal(mt.stepm(w, CUTOFFS), np.ones(K, bool))
+        np.testing.assert_array_equal(CUTOFFS.stepm(w), np.ones(K, bool))
 
 
 class Counting(unittest.TestCase):
@@ -80,7 +81,7 @@ class Counting(unittest.TestCase):
 
     def test_tally(self) -> None:
         """Two true nulls rejected make one error; two false nulls rejected count two."""
-        tally = mt.Tally()
+        tally = Tally(false_nulls=mt.FALSE_NULLS)
         tally.add(rejected(0, 4, 5, 19))
         tally.add(rejected(1))
         self.assertEqual((tally.familywise, tally.true_rejections), (1, 3))
@@ -94,7 +95,7 @@ class Cutoffs(unittest.TestCase):
         """Columns hold 0, 1, ..., K - 1 plus a small spread: cutoff n is the n-th column's."""
         spread = np.linspace(0.0, 0.1, 101)[:, None]
         draws = spread + np.arange(K, dtype=float)
-        got = mt.max_cutoffs(draws)
+        got = mt.TESTS.max_cutoffs(draws).by_count
         self.assertEqual(list(got), list(range(1, K + 1)))
         for n in (1, 2, K):
             self.assertAlmostEqual(got[n], n - 1 + 0.095, places=12)
@@ -110,23 +111,26 @@ class Stream(unittest.TestCase):
             got = mt.simulate(rng)
         replay = np.random.default_rng(mt.SEED)
         m = mt.model()
-        cutoffs = mt.max_cutoffs(replay.standard_normal((50, K)) @ m.chol.T)
-        want = {method: mt.Tally() for method in mt.METHODS}
+        cutoffs = mt.TESTS.max_cutoffs(replay.standard_normal((50, K)) @ m.chol.T)
+        want = {method: Tally(false_nulls=mt.FALSE_NULLS) for method in mt.METHODS}
         for _ in range(3):
-            w = m.theta + m.chol @ replay.standard_normal(K)
+            w = m.means + m.chol @ replay.standard_normal(K)
             p = 1 - norm.cdf(w)
-            want["Bonferroni"].add(mt.bonferroni(p))
-            want["Holm"].add(mt.holm(p))
-            want["single-step max"].add(mt.single_step_max(w, cutoffs))
-            want["StepM"].add(mt.stepm(w, cutoffs))
+            want["Bonferroni"].add(mt.TESTS.bonferroni(p))
+            want["Holm"].add(mt.TESTS.holm(p))
+            want["single-step max"].add(cutoffs.single_step(w))
+            want["StepM"].add(cutoffs.stepm(w))
         self.assertEqual(got, want)
         self.assertEqual(list(got), list(mt.METHODS))
         self.assertEqual(rng.bit_generator.state, replay.bit_generator.state)
 
 
-def tallies(*counts: tuple[int, int]) -> dict[str, mt.Tally]:
+def tallies(*counts: tuple[int, int]) -> dict[str, Tally]:
     """Return prepared tallies, (familywise, true_rejections) for each method in order."""
-    return {method: mt.Tally(*count) for method, count in zip(mt.METHODS, counts, strict=True)}
+    return {
+        method: Tally(false_nulls=mt.FALSE_NULLS, familywise=familywise, true_rejections=hits)
+        for method, (familywise, hits) in zip(mt.METHODS, counts, strict=True)
+    }
 
 
 class Conditions(unittest.TestCase):
@@ -159,7 +163,7 @@ class Conditions(unittest.TestCase):
 class Report(unittest.TestCase):
     """Prepared tallies: the method summaries, then BAD lines only for failures."""
 
-    def run_with(self, prepared: dict[str, mt.Tally]) -> tuple[int, str]:
+    def run_with(self, prepared: dict[str, Tally]) -> tuple[int, str]:
         """Return main's status and output with the simulation answered by prepared."""
         out = io.StringIO()
         with (

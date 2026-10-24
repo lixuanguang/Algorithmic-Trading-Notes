@@ -1,4 +1,3 @@
-# third party library imports
 from pandas import DataFrame
 
 # A model built from a formula is an OLS whose results hold pandas objects; it is typed here

@@ -52,7 +52,7 @@ Hull's account of 2000--2007 shows the cost: originators that do not hold the lo
 
 \emph{CDOs.} A CDO tranches a pool of bonds, loans or ABS tranches. Over-collateralisation and interest-coverage tests, on par or market values, divert cash to the senior notes when the assets deteriorate. With fewer, larger obligors its loss distribution has a longer tail, so it is analysed bottom-up (pp.~217--218). An ABS CDO of mezzanine tranches turns BBB paper into AAA paper, and its senior tranche is far riskier than the ABS senior tranche of the same rating \citep[pp.~204--205]{s7-hulloptions}.
 
-\qffield{Practice} \emph{Fabozzi and Kothari's sizing reproduced} (\texttt{credit-cds-securitisation-checks.py}). A base-case loss of 1.68 percent times multiples of 5, 4, 3, 2 and 1.75 gives support of 8.40, 6.72, 5.04, 3.36 and 2.94 percent:
+\qffield{Practice} \emph{Fabozzi and Kothari's sizing reproduced} (\texttt{trading\_notes.numerical.credit\_risk\_analysis.credit\_cds\_securitisation\_checks}). A base-case loss of 1.68 percent times multiples of 5, 4, 3, 2 and 1.75 gives support of 8.40, 6.72, 5.04, 3.36 and 2.94 percent:
 \begin{center}\small
 \begin{tabular}{@{}lrr@{}}
 \toprule
@@ -130,7 +130,7 @@ Average life is the principal-weighted average time to principal payments.
 
 \emph{CMBS.} Commercial mortgages are larger, more complex and more heterogeneous \citep[p.~2]{wide-fuster-mbs-review}. Their loans carry call protection: lockouts, yield maintenance, point penalties and defeasance. Prepayments can still be hard to predict, for example when floating-rate borrowers refinance or penalties decline with age \citep[pp.~1--2]{fhfa-ab-2021-02}. The junior CMBS tranche is usually held by the special servicer, the ``B-piece buyer'', who negotiates workouts \citep[p.~8]{wide-fuster-mbs-review}. Many commercial loans amortise only partly and need refinancing at maturity, so balloon risk is credit risk (Interpretation).
 
-\qffield{Practice} \emph{Fabozzi and Kothari's pool reproduced} (\texttt{credit-cds-securitisation-checks.py}): 660 million of 6 percent mortgages, a 5.5 percent pass-through, 358 months remaining, 165\% PSA.
+\qffield{Practice} \emph{Fabozzi and Kothari's pool reproduced} (\texttt{trading\_notes.numerical.credit\_risk\_analysis.credit\_cds\_securitisation\_checks}): 660 million of 6 percent mortgages, a 5.5 percent pass-through, 358 months remaining, 165\% PSA.
 \begin{itemize}
 \item \emph{Month 1}: SMM 0.00083 (the pool is seasoned two months), payment 3,964,947, net interest 3,025,000, scheduled principal 664,947, prepayment 546,435, total principal 1,211,383.
 \item \emph{Average life} at 165\% PSA is 8.54 years; the book prints 8.6. It is 11.2 years at 100\% PSA and 3.7 at 500\%.

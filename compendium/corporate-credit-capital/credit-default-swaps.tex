@@ -47,7 +47,7 @@ The adoption protocol itself, published by ISDA on 21 August 2014, amends adheri
 
 \emph{Fixed coupons.} Standard contracts and indices trade like bonds. A fixed coupon and recovery rate are specified, the market quotes a spread, and the present value of the difference between them changes hands at the trade date: the buyer pays if the spread exceeds the coupon, the seller if not (p.~377). Hull gives the price as $P=100-100\,D\,(s-c)$, with $D$ the risky duration \citep[p.~596]{s7-hulloptions}. The 2009 protocols and the 2014 Definitions that standardised these terms are covered with their sources in \hyperref[mech:cds-contract-credit-events]{the CDS mechanism entry}.
 
-\qffield{Practice} \emph{Hull's index example reproduced} (\texttt{credit-cds-securitisation-checks.py}). Protection of 800,000 on each of 125 names at 166 basis points costs 1,660,000 a year. Each default cuts the payment by 13,280 and triggers the usual payout on that name.
+\qffield{Practice} \emph{Hull's index example reproduced} (\texttt{trading\_notes.numerical.credit\_risk\_analysis.credit\_cds\_securitisation\_checks}). Protection of 800,000 on each of 125 names at 166 basis points costs 1,660,000 a year. Each default cuts the payment by 13,280 and triggers the usual payout on that name.
 
 \emph{Upfront on a standard index trade} \citep[Example~25.1]{s7-hulloptions}. iTraxx is quoted at 0.345 percent against a coupon of 0.406 percent, with quarterly payments, 4 percent rates and 40 percent recovery. The risky duration is 4.447 and the price 100.27. Since the spread is below the coupon, the seller of protection pays the buyer 0.27 per 100 at the start, and the buyer then pays the 0.406 percent coupon.
 

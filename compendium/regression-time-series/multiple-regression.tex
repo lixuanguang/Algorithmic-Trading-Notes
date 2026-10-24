@@ -19,7 +19,7 @@
 
 \emph{Omitted variables.} If the true model contains $x_2$ but $y$ is regressed on $x_1$ alone, the short-regression slope is $b_1+b_2\delta$, where $\delta$ is the slope of $x_2$ on $x_1$ (Derivation; the identity holds exactly in sample). The bias vanishes only if $x_2$ does not matter or is uncorrelated with $x_1$.
 
-\qffield{Practice} \emph{What drives corporate bond returns?} (\texttt{notes/artefacts/linear-regression/multiple-regression-checks.py}; annual US data 1928--2025 \citep[sheet ``Returns by year'']{us-asset-returns-1928-2025}.) The Baa corporate bond return in excess of bills is regressed on the 10-year Treasury excess return (duration) and the S\&P~500 excess return (credit risk that behaves like equity):
+\qffield{Practice} \emph{What drives corporate bond returns?} (\texttt{trading\_notes.numerical.multiple\_regression.multiple\_regression\_checks}; annual US data 1928--2025 \citep[sheet ``Returns by year'']{us-asset-returns-1928-2025}.) The Baa corporate bond return in excess of bills is regressed on the 10-year Treasury excess return (duration) and the S\&P~500 excess return (credit risk that behaves like equity):
 \[ \widehat{y}=0.0118+0.660\,x_{\text{bond}}+0.163\,x_{\text{stock}}. \]
 \begin{itemize}
 \item Holding the stock return fixed, a 1-point Treasury excess return comes with 0.66 points on Baa bonds, less than one-for-one because Baa bonds are shorter or callable (Interpretation).

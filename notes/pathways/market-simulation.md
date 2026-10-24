@@ -28,9 +28,9 @@ Not attempted.
 - `def:market-clocks-durations`: durations; event, trade, quote, volume and business time; Hasbrouck's rule for choosing an index.
 - `def:order-event-point-processes`: counting processes, intensities, the Poisson baseline and the time-change theorem (with Lehalle and Laruelle's misprinted condition corrected).
 
-All five: partly checked 2026-10-16, draft; human review outstanding. Checks: `order-flow-checks.py`. The simulator's building blocks, Hawkes processes and queue-reactive intensities, are owned by `market-making-lob` and cross-referenced, not listed here.
+All five: partly checked 2026-10-16, draft; human review outstanding. Checks: `trading_notes.numerical.order_flow_statistics.order_flow_checks`. The simulator's building blocks, Hawkes processes and queue-reactive intensities, are owned by `market-making-lob` and cross-referenced, not listed here.
 
-Changed in the order books and order flow review follow-up, 2026-10-16: `meth:realised-variance-signature-plot` (limits restricted to continuous Itô processes; quadratic-variation limits with jumps and co-jumps; the noise expectation's assumptions stated as exact for the simulated driftless Brownian model; a unit-jump Poisson counterexample in `order-flow-checks.py`).
+Changed in the order books and order flow review follow-up, 2026-10-16: `meth:realised-variance-signature-plot` (limits restricted to continuous Itô processes; quadratic-variation limits with jumps and co-jumps; the noise expectation's assumptions stated as exact for the simulated driftless Brownian model; a unit-jump Poisson counterexample in `trading_notes.numerical.order_flow_statistics.order_flow_checks`).
 
 Changed in dealer models and information / source review / optimal execution / execution control reviews: `meth:intraday-deseasonalisation` (Lehalle and Laruelle's mean-against-path warning, app. A.14.1, and a simulated example). Partly checked, draft.
 

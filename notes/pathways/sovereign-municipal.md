@@ -28,7 +28,7 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
-Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py` (part 9):
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks` (part 9):
 
 - `meth:sovereign-credit-analysis`: indicators, debt dynamics and the debt-stabilising primary balance (Fabozzi handbook eqs. 17-1 to 17-3, verified against a nominal roll-forward), debt structure, gross financing needs, local- against foreign-currency debt, and US general obligation against revenue bonds.
 

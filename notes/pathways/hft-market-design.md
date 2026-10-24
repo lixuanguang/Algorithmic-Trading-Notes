@@ -45,7 +45,7 @@ Written in dealer models and information / source review / optimal execution / e
 - `mod:depth-overflow-flash-crash`: Lehalle and Laruelle's toy model (app. A.5); the time term resolved: the hot-potato $t$ counts rounds, the overflow approximation bounded, and (A.14) follows only if the overflow $R$, not the rate $r$, drives impact (derived and simulated); the remedies and a control list.
 - `ev:may-2010-flash-crash`: the CFTC and SEC staff findings of 30 September 2010 (executive summary), compared with Lehalle and Laruelle's account; the case study and propagation channels checked against them.
 
-Changed in dealer models and information review: `def:hft-strategies` (trade counts as an HFT proxy, Lehalle and Laruelle pp. 20--21 and 170--171, against the report's volume warning). Fast liquidity provision is part of `mod:make-take-fee-speed-race`. All partly checked 2026-10-16, draft; human review outstanding. Checks: `notes/artefacts/execution-market-making/dealer-queue-information-checks.py`.
+Changed in dealer models and information review: `def:hft-strategies` (trade counts as an HFT proxy, Lehalle and Laruelle pp. 20--21 and 170--171, against the report's volume warning). Fast liquidity provision is part of `mod:make-take-fee-speed-race`. All partly checked 2026-10-16, draft; human review outstanding. Checks: `trading_notes.numerical.high_frequency_trading.dealer_queue_information_checks`.
 
 ## Source verification after macro markets and pricing review
 

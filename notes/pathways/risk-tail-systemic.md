@@ -32,7 +32,7 @@ Written in library gap-filling Batch L2 (2026-10-21), in `portfolio-construction
 
 - `meth:extreme-value-tail-estimation`: block maxima and the GEV family, peaks over threshold and the GPD, POT VaR and ES, the Hill estimator, threshold bias against sampling error, and the two-step GARCH-GPD method. `meth:var-es-estimation-methods` now links to it from its Pitfalls.
 
-Partly checked 2026-10-21, draft. Checks in `notes/artefacts/extreme-value/extreme-value-checks.py` (synthetic; no empirical EVT claim, backlog B9). Sources: Hull, *RMFI* 6th ed., secs. 8.4 and 12.5-12.6; McNeil, Frey and Embrechts, *QRM*, 1st ed. (2005), chap. 7; Wilmott, sec. 19.8. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+Partly checked 2026-10-21, draft. Checks in `trading_notes.numerical.extreme_values.extreme_value_checks` (synthetic; no empirical EVT claim, backlog B9). Sources: Hull, *RMFI* 6th ed., secs. 8.4 and 12.5-12.6; McNeil, Frey and Embrechts, *QRM*, 1st ed. (2005), chap. 7; Wilmott, sec. 19.8. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
 
 ## Source verification after macro markets and pricing review
 

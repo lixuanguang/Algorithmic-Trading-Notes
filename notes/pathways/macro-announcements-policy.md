@@ -37,7 +37,7 @@ Second macro markets and pricing review follow-up, 2026-10-16 (source verificati
 
 Source follow-up of order books and order flow / dealer models and information reviews and the macro markets and pricing review audit, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` blocked (the ISM calendar and report pages redirect to a member login, rechecked 2026-10-16). The record is in `notes/source-review-records.md`, *Source follow-up of order books and order flow / dealer models and information reviews and macro markets and pricing review audit corrections*.
 
-Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:us-release-schedules-2026` resolved (ISM 2026 calendar read from a browser export: first and third business days at 10:00 a.m.; the rule reproduces every date except January, an ISM holiday, and April's Services date, which skips Good Friday; computed in contract-specifications-statistics-checks.py, section 5). The record is in `notes/source-review-records.md`, *Second source follow-up of the order books and order flow / macro markets and pricing reviews queue*.
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:us-release-schedules-2026` resolved (ISM 2026 calendar read from a browser export: first and third business days at 10:00 a.m.; the rule reproduces every date except January, an ISM holiday, and April's Services date, which skips Good Friday; computed in trading_notes.numerical.futures_execution.contract_statistics_checks, section 5). The record is in `notes/source-review-records.md`, *Second source follow-up of the order books and order flow / macro markets and pricing reviews queue*.
 
 ## Related entries owned elsewhere
 

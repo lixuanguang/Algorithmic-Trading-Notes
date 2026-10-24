@@ -28,7 +28,7 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
-Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py`, which reproduces Hull's (2023) Examples 17.1-17.4, Tables 17.1-17.5 and 19.1-19.2 and Appendix K, and Hull's (2021) Example 25.1:
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks`, which reproduces Hull's (2023) Examples 17.1-17.4, Tables 17.1-17.5 and 19.1-19.2 and Appendix K, and Hull's (2021) Example 25.1:
 
 - Credit risk and credit analysis: `def:credit-risk-components`, `meth:corporate-credit-analysis`, `meth:risky-bond-cva`, `meth:rating-migration-returns`, `mod:structural-reduced-form-credit`, `meth:credit-spread-term-structure`.
 - Credit default swaps: `def:cds-contract-features`, `meth:cds-pricing`, `meth:cds-strategies` (with Berd, Mashal and Wang 2004 on curve steepeners).
@@ -42,7 +42,7 @@ Alternatives batch (2026-10-20), in `credit-portfolio-management.tex`:
 - `meth:credit-liquidity-tail-risk`: liquidity cost scores, liquidity management, credit VaR (Vasicek), stress tests and issuer limits by downgrade risk or DTS.
 - `meth:credit-cds-international-structured`: CDS overlays and replication, international credit, structured instruments against corporates (tranching, CLO tests) and analytical tools.
 
-Sources: Ben Dor et al. (2012, 2021), Hull (2023) chap. 19, Larreur (2021). Examples in `notes/artefacts/credit-portfolios/credit-portfolio-checks.py`. Partly checked 2026-10-20, draft; human review outstanding; none of the pathway's required readings was read for them.
+Sources: Ben Dor et al. (2012, 2021), Hull (2023) chap. 19, Larreur (2021). Examples in `trading_notes.numerical.credit_portfolio_management.credit_portfolios_checks`. Partly checked 2026-10-20, draft; human review outstanding; none of the pathway's required readings was read for them.
 
 Written in library gap-filling Batch L2 (2026-10-21), new topic file `compendium/corporate-credit-capital/counterparty-xva.tex`:
 
@@ -52,7 +52,7 @@ Written in library gap-filling Batch L2 (2026-10-21), new topic file `compendium
 - `rule:counterparty-credit-cva-capital`: regulatory capital for derivatives counterparty risk, separating SA-CCR exposure at default, default-risk capital and CVA-risk capital (reduced BA-CVA), with the Basel dates and EU, UK and US implementation as of 21 October 2026; checked example (library gap-filling Batch L3).
 - `meth:risky-bond-cva` extended: CVA by state prices on the calibrated tree (an original derivation), why a bond's tree CVA does not depend on volatility while a swap's does, and a risky floater's discount margin.
 
-Partly checked 2026-10-21, draft. Checks in `notes/artefacts/counterparty-xva/counterparty-xva-checks.py`. Sources: Hull, *RMFI* 6th ed., chap. 18; Hull, *OFOD* 11th Global ed., chap. 9 and sec. 24.7; Gregory, *The xVA Challenge*, 3rd ed., chaps. 7, 11, 14, 15 and 17; the Handbook, chap. 36 (the tree). Smith (2017), the curriculum's source for tree-based CVA, was not read. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+Partly checked 2026-10-21, draft. Checks in `trading_notes.numerical.counterparty_xva.counterparty_xva_checks`. Sources: Hull, *RMFI* 6th ed., chap. 18; Hull, *OFOD* 11th Global ed., chap. 9 and sec. 24.7; Gregory, *The xVA Challenge*, 3rd ed., chaps. 7, 11, 14, 15 and 17; the Handbook, chap. 36 (the tree). Smith (2017), the curriculum's source for tree-based CVA, was not read. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
 
 ## Source verification after macro markets and pricing review
 

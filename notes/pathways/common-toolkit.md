@@ -60,7 +60,7 @@ Written in the statistics slice (2026-10-18):
 - `def:financial-distributions`: normal, lognormal, Student $t$ and binomial moments and when they exist; the lognormal price model.
 - `meth:bayesian-updating`: a discrete prior updated by binomial likelihoods, with normalisation and the predictive probability.
 
-All seven partly checked 2026-10-18, draft; examples in `notes/artefacts/descriptive-probability/statistics-probability-checks.py`; human review outstanding.
+All seven partly checked 2026-10-18, draft; examples in `trading_notes.numerical.descriptive_statistics.statistics_probability_checks`; human review outstanding.
 
 Corrections of 2026-10-18: sampling assumptions for the unbiased sample variance; kurtosis read as tail and outlier sensitivity, not central mass; finite sample moments distinguished from nonexistent population moments, with the Student-t thresholds for real degrees of freedom; GBM drift against mean log return; conditional independence in the Bayesian example; the check-script path removed from the printed text.
 
@@ -73,7 +73,7 @@ Written in the inference and simulation slice (2026-10-18):
 - `meth:bootstrap-resampling`: the bootstrap's sampling unit, its ideal value, and the failure of i.i.d. resampling for dependent data against moving blocks.
 - `meth:monte-carlo-simulation`: target, seed, standard error and the square-root rule against a closed-form benchmark.
 
-All six partly checked 2026-10-18, draft; examples in `notes/artefacts/inference-simulation/inference-simulation-checks.py`; human review outstanding.
+All six partly checked 2026-10-18, draft; examples in `trading_notes.numerical.statistical_inference.inference_simulation_checks`; human review outstanding.
 
 Corrections of 2026-10-18: `meth:historical-simulation` now uses the lower loss quantile and exact-tail-mass ES of `meth:var-es-estimation-methods` for both weightings (VaR 8,400 in both; ES 15,700 equal-weighted and about 14,000 age-weighted), with Hull's equal-weight rank attributed as an alternative; `meth:hypothesis-testing` states the independent-samples condition of the variance-ratio F test and uses an independently drawn second sample, with a correlated-sample counterexample.
 
@@ -83,14 +83,14 @@ Written in the regression slice (2026-10-18):
 - `meth:regression-diagnostics-anova`: the LINE conditions and how sensitive inference is to each, residual plots and standardised residuals, the standard error of estimate, $R^2$ and its cautions, coefficient $t$ tests, the ANOVA table and $F=t^2$.
 - `meth:regression-prediction-functional-form`: predictions, the interval for the mean against the prediction interval, extrapolation, log functional forms and retransformation to medians and means (normal theory and smearing).
 
-All three partly checked 2026-10-18, draft; examples in `notes/artefacts/linear-regression/regression-checks.py`; human review outstanding. Multiple regression, misspecification, time-series regression and the CAPM regression are not written; `topic:linear-regression` is therefore only partly covered.
+All three partly checked 2026-10-18, draft; examples in `trading_notes.numerical.regression.linear_regression_checks`; human review outstanding. Multiple regression, misspecification, time-series regression and the CAPM regression are not written; `topic:linear-regression` is therefore only partly covered.
 
 Correction pass of 2026-10-18: `meth:simple-regression-estimation` states when the estimates exist (finite data, $S_{xx}>0$); `meth:regression-diagnostics-anova` separates the assumptions for computing, unbiasedness, conventional variances and exact $t$/$F$ inference, requires $n>2$, and restricts $F=t^2$ to the zero-slope null; `meth:regression-prediction-functional-form` treats the back-transformed log prediction as a geometric mean (a median only under a median-zero log error), qualifies Duan's consistency statement and corrects the log--log percentage rule; the ES pitfall of `meth:historical-simulation` now matches the canonical VaR of 8,400.
 
 Credit, time-series and valuation batch (2026-10-20), on annual US data for 1928-2025 and seeded simulations:
 
-- Multiple regression (`notes/artefacts/linear-regression/multiple-regression-checks.py`): `meth:multiple-regression-formulation`, `meth:multiple-regression-fit-tests`, `meth:regression-misspecification`, `meth:regression-extensions`, built on a regression of Baa corporate bond excess returns on Treasury and equity excess returns.
-- Time-series models (`notes/artefacts/time-series-models/time-series-checks.py`): `meth:trend-models`, `def:stationarity-unit-roots`, `meth:autoregressive-forecasting`, `meth:forecast-accuracy-evaluation`, `mod:arch-conditional-variance`, `meth:cointegration-testing`, `meth:time-series-model-selection`, built mainly on US inflation.
+- Multiple regression (`trading_notes.numerical.multiple_regression.multiple_regression_checks`): `meth:multiple-regression-formulation`, `meth:multiple-regression-fit-tests`, `meth:regression-misspecification`, `meth:regression-extensions`, built on a regression of Baa corporate bond excess returns on Treasury and equity excess returns.
+- Time-series models (`trading_notes.numerical.time_series_models.time_series_checks`): `meth:trend-models`, `def:stationarity-unit-roots`, `meth:autoregressive-forecasting`, `meth:forecast-accuracy-evaluation`, `mod:arch-conditional-variance`, `meth:cointegration-testing`, `meth:time-series-model-selection`, built mainly on US inflation.
 
 Sources: STAT 501 lessons 5-8 and 10-14 (Internet Archive copies), Tsay (2010, 3rd ed.) chaps. 2, 3 and 8, Hyndman and Athanasopoulos (FPP3) secs. 5.8, 5.10, 7.4, 7.5 and 9.1. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
 
@@ -100,15 +100,15 @@ Written in library gap-filling Batch L1 (2026-10-21), new topic file `compendium
 - `res:ito-lemma-geometric-brownian-motion`: Itô's lemma in one dimension; the GBM solution; mean against median of the terminal price; $E[S_T^2]$ by Itô; Euler discretisation error kept separate from sampling error.
 - `res:risk-neutral-pricing-feynman-kac`: market price of risk and Girsanov's change of drift (with the density $Z_T$ as a checked calculation); money-market numeraire; Wilmott's backward-Kolmogorov route from an expectation to the pricing equation.
 
-Sources: Hull, *Options, Futures, and Other Derivatives*, 11th Global ed., chaps. 14, 15 and 28; Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed., chaps. 4 and 10. Synthetic examples in `notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
+Sources: Hull, *Options, Futures, and Other Derivatives*, 11th Global ed., chaps. 14, 15 and 28; Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed., chaps. 4 and 10. Synthetic examples in `trading_notes.numerical.stochastic_calculus.stochastic_calculus_checks`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
 
-The same batch extended `meth:monte-carlo-simulation` with control variates and the separation of discretisation bias from sampling error (`notes/artefacts/inference-simulation/inference-simulation-checks.py`).
+The same batch extended `meth:monte-carlo-simulation` with control variates and the separation of discretisation bias from sampling error (`trading_notes.numerical.statistical_inference.inference_simulation_checks`).
 
 Written in library gap-filling Batch L2 (2026-10-21), in `statistical-inference.tex`:
 
 - `meth:correlation-independence-tests`: the t test of zero correlation, Spearman's rank correlation with midranks and its transform properties, the chi-square test of independence, and the information coefficient with overlapping returns.
 
-Partly checked 2026-10-21, draft. Checks in `notes/artefacts/inference-simulation/correlation-independence-checks.py`. Sources: OpenStax, *Introductory Statistics* 2e, secs. 11.3 and 12.4; NIST Dataplot, "Rank Correlation Independence Test". Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+Partly checked 2026-10-21, draft. Checks in `trading_notes.numerical.statistical_inference.correlation_independence_checks`. Sources: OpenStax, *Introductory Statistics* 2e, secs. 11.3 and 12.4; NIST Dataplot, "Rank Correlation Independence Test". Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
 
 ## Entry backlog
 

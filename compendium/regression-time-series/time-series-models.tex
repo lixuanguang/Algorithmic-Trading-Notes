@@ -8,7 +8,7 @@ Both are regressions with time as the predictor and can use trend and seasonal d
 
 A trend model is adequate only if its residuals are uncorrelated. Persistent residuals, shown by a Durbin--Watson statistic well below 2, mean that the series wanders around the line. The standard errors are then wrong, and the forecast starts from the line rather than from where the series is. A series with a stochastic trend is better modelled in differences (\hyperref[def:stationarity-unit-roots]{unit roots}).
 
-\qffield{Practice} \emph{The US price level 1928--2025} (\texttt{notes/artefacts/time-series-models/time-series-checks.py}; cumulative CPI-U from \citep[sheet ``Returns by year'']{us-asset-returns-1928-2025}, 1927 $=1$). The index rises from 0.99 to 18.7.
+\qffield{Practice} \emph{The US price level 1928--2025} (\texttt{trading\_notes.numerical.time\_series\_models.time\_series\_checks}; cumulative CPI-U from \citep[sheet ``Returns by year'']{us-asset-returns-1928-2025}, 1927 $=1$). The index rises from 0.99 to 18.7.
 \begin{itemize}
 \item \emph{Linear}: $+0.177$ a year, $R^2=0.896$.
 \item \emph{Log-linear}: $0.0367$ log points a year, 3.73 percent compound growth, $R^2=0.975$. Compounding suits a price level, and the fit is better.

@@ -16,14 +16,13 @@ from trading_notes.numerical.portfolio_choice.frontier import (
     MeanVarianceFrontier,
     mean_variance_utility,
 )
-from trading_notes.numerical.portfolio_choice.history import AssetClassHistory
+from trading_notes.numerical.portfolio_choice.history import DATA, AssetClassHistory
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.tolerance import close
 
 type Floats = NDArray[np.float64]
 
-DATA: Final = Path("notes/artefacts/portfolio-risk-return/us-asset-class-returns-1928-2025.csv")
 FIGURE: Final = Path("compendium/portfolio-construction-risk/figures/mean-sd-frontier.tikz")
 A: Final = 3.0  # risk aversion of parts 2 and 4
 RF: Final = 0.03

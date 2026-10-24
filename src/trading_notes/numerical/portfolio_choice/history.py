@@ -2,7 +2,7 @@
 
 import csv
 from pathlib import Path
-from typing import Self
+from typing import Final, Self
 
 import numpy as np
 from numpy.typing import NDArray
@@ -10,6 +10,9 @@ from numpy.typing import NDArray
 from trading_notes.numerical.records import Record
 
 type Floats = NDArray[np.float64]
+
+# The transcribed history, relative to the repository root.
+DATA: Final = Path("notes/artefacts/portfolio-risk-return/us-asset-class-returns-1928-2025.csv")
 
 
 class AssetClassHistory(Record):

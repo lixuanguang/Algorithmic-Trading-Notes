@@ -16,7 +16,12 @@ import statsmodels
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from statsmodels.stats.anova import anova_lm
-from statsmodels.tsa.stattools import adfuller
+from statsmodels.stats.diagnostic import acorr_ljungbox, het_arch, het_breuschpagan, het_white
+from statsmodels.stats.outliers_influence import OLSInfluence, variance_inflation_factor
+from statsmodels.stats.stattools import durbin_watson
+from statsmodels.tools.sm_exceptions import InterpolationWarning
+from statsmodels.tsa.adfvalues import mackinnoncrit
+from statsmodels.tsa.stattools import acf, adfuller, coint, kpss
 
 
 class StubbedTypes(unittest.TestCase):
@@ -55,11 +60,68 @@ class StubbedTypes(unittest.TestCase):
         self.assertIs(type(table["sum_sq"].iloc[0]), np.float64)
 
     def test_adfuller_tuple(self) -> None:
-        """Without autolag or a result object, adfuller returns the declared five-tuple."""
+        """Without a result object, adfuller returns the declared five- or six-tuple."""
         walk = np.cumsum(np.random.default_rng(3).normal(size=200))
         result = adfuller(walk, maxlag=1, regression="c", autolag=None, result_object=False)
         self.assertEqual([type(value) for value in result], [float, float, int, int, dict])
         self.assertTrue(all(type(v) is np.float64 for v in result[4].values()))
+        chosen = adfuller(walk, regression="c", autolag="AIC", result_object=False)
+        self.assertEqual(
+            [type(value) for value in chosen], [float, float, int, int, dict, np.float64]
+        )
+
+    def test_regression_extras_and_diagnostics(self) -> None:
+        """The further OLS results, robust and HAC fits, diagnostics and Logit, as stubbed."""
+        rng = np.random.default_rng(4)
+        X = sm.add_constant(rng.normal(size=(60, 2)))
+        y = X @ np.array([1.0, 2.0, 3.0]) + rng.normal(size=60)
+        fit = sm.OLS(y, X).fit()
+        restricted = sm.OLS(y, X[:, :2]).fit()
+        for scalar in (fit.rsquared_adj, fit.f_pvalue, fit.ssr, fit.aic, fit.bic):
+            self.assertIs(type(scalar), np.float64)
+        self.assertIs(type(fit.fittedvalues), np.ndarray)
+        self.assertEqual([type(v) for v in fit.compare_f_test(restricted)], [np.float64] * 3)
+        for robust in (
+            fit.get_robustcov_results("HC1"),
+            fit.get_robustcov_results("HAC", maxlags=2),
+            sm.OLS(y, X).fit(cov_type="HAC", cov_kwds={"maxlags": 4}),
+        ):
+            self.assertIs(type(robust.bse), np.ndarray)
+            self.assertIs(type(robust.tvalues), np.ndarray)
+        for test in (het_breuschpagan(fit.resid, X), het_white(fit.resid, X)):
+            self.assertEqual([type(v) for v in test], [np.float64] * 4)
+        arch = het_arch(fit.resid, nlags=1, result_object=False)
+        self.assertEqual([type(v) for v in arch], [np.float64, np.float64, float, float])
+        influence = OLSInfluence(fit)
+        for array in (
+            influence.hat_matrix_diag,
+            influence.resid_studentized_external,
+            *influence.cooks_distance,
+        ):
+            self.assertIs(type(array), np.ndarray)
+        self.assertIs(type(variance_inflation_factor(X, 1)), np.float64)
+        self.assertIs(type(durbin_watson(fit.resid)), np.float64)
+        logit = sm.Logit((y > 3).astype(float), X).fit(disp=0)
+        self.assertIs(type(logit.params), np.ndarray)
+        ljung_box = acorr_ljungbox(fit.resid, lags=[1, 2])
+        self.assertIs(type(ljung_box), pd.DataFrame)
+        self.assertIs(type(ljung_box["lb_pvalue"].iloc[0]), np.float64)
+        frame = fit.get_prediction(np.array([[1.0, 0.1, 0.2]])).summary_frame(alpha=0.05)
+        self.assertIs(type(frame["mean_se"].iloc[0]), np.float64)
+
+    def test_time_series_tests(self) -> None:
+        """KPSS, the ACF, the Engle-Granger test and MacKinnon's critical values, as stubbed."""
+        rng = np.random.default_rng(5)
+        walk = np.cumsum(rng.normal(size=200))
+        with self.assertWarns(InterpolationWarning):
+            result = kpss(walk, regression="c", nlags="auto", result_object=False)
+        self.assertEqual([type(v) for v in result], [np.float64, np.float64, int, dict])
+        correlations = acf(walk, nlags=4)
+        self.assertEqual((type(correlations), correlations.dtype), (np.ndarray, np.float64))
+        test = coint(walk, walk + rng.normal(size=200))
+        self.assertEqual([type(v) for v in test], [float, float, np.ndarray])
+        critical = mackinnoncrit(N=2, regression="c", nobs=199)
+        self.assertEqual((type(critical), critical.dtype), (np.ndarray, np.float64))
 
 
 if __name__ == "__main__":

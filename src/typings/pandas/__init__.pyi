@@ -1,8 +1,6 @@
-# standard library imports
 from collections.abc import Mapping
 from typing import overload
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 

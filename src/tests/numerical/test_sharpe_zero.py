@@ -16,7 +16,7 @@ from unittest import mock
 import numpy as np
 from numpy.typing import NDArray
 
-from trading_notes.numerical import sharpe_zero as sz
+from trading_notes.numerical.backtest_evaluation import sharpe_zero_checks as sz
 
 
 class RootTSharpe(unittest.TestCase):

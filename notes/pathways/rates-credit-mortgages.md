@@ -26,7 +26,7 @@ Written in derivatives and hedging / source review / optimal execution / high-fr
 
 - `def:interest-rate-measures`: credit spread; Treasury, overnight and repo rates; EFFR and SOFR methodology (Hull's brokered-average EFFR superseded in 2016 by a volume-weighted median); compounding conversions and EAR (an "expected annual rate" reading corrected); zero rates, bond yields and par yields; annuity and perpetuity values derived, with their timing and limits.
 - `mod:forward-rates-fra`: forward and instantaneous forward rates; FRA payoff against present value (discounting restored), settlement timing and the single-curve caveat; term-structure theories as conjectures.
-- `mod:duration-convexity`: Macaulay and modified duration and convexity as approximations, checked at plus or minus 200 bp; yield change against parallel curve shift. derivatives and hedging review follow-up, 2026-10-16: the yield moves one for one with a parallel zero-curve shift if and only if the zero rates at all the bond's payment dates equal its yield; a flat curve is sufficient, not necessary (a zero-coupon bond on any curve); counterexamples computed in `notes/artefacts/rates-credit-mortgages/yield-shift-check.py`.
+- `mod:duration-convexity`: Macaulay and modified duration and convexity as approximations, checked at plus or minus 200 bp; yield change against parallel curve shift. derivatives and hedging review follow-up, 2026-10-16: the yield moves one for one with a parallel zero-curve shift if and only if the zero rates at all the bond's payment dates equal its yield; a flat curve is sufficient, not necessary (a zero-coupon bond on any curve); counterexamples computed in `trading_notes.numerical.interest_rates.yield_shift_checks`.
 - `conv:us-rate-quotation`: U.S. day counts, Treasury bill discount quotes, bond prices in thirty-seconds, clean and dirty prices.
 - `mech:otc-clearing-collateral`: CCP and bilateral ISDA/CSA clearing, variation and initial margin, interest on margin, haircuts, and the post-crisis reforms as Hull reports them; CCPs mitigate rather than eliminate counterparty risk.
 
@@ -40,7 +40,7 @@ Changed in macro markets and pricing review (merges): `mod:forward-rates-fra` (F
 
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
 
-- `mod:multi-curve-fra-swap-valuation`: FRA and swap valuation with separate projection and discount curves, with own checks (`multicurve-check.py`). Partly checked 2026-10-17, draft; human review outstanding.
+- `mod:multi-curve-fra-swap-valuation`: FRA and swap valuation with separate projection and discount curves, with own checks (`trading_notes.numerical.rate_swaps_clearing.multicurve_checks`). Partly checked 2026-10-17, draft; human review outstanding.
 
 Written in the fixed-income and derivatives batch (2026-10-18):
 
@@ -75,7 +75,7 @@ In `interest-rate-risk.tex` (topic `interest-rate-risk`):
 - `meth:convexity-portfolio-duration`: convexity and its scaling, the duration-convexity approximation, portfolio measures and their limits.
 - `meth:curve-based-empirical-duration`: effective duration and convexity, key-rate durations, a callable bond and empirical duration. Corrected 2026-10-18 (PR #24 pass): curve and yield measures of an option-free bond are equal only on a flat curve (or for one cash flow); a sloped-curve counterexample gives 10.2186 against 11.2131.
 
-All partly checked 2026-10-18, draft. Examples in `notes/artefacts/bond-valuation-risk/bond-valuation-checks.py` and `notes/artefacts/term-structure-dynamics/term-structure-checks.py`; human review is outstanding. Coverage records are editorial, not study. The existing `def:interest-rate-measures`, `conv:us-rate-quotation`, `mod:forward-rates-fra`, `mod:duration-convexity`, `meth:curve-trades-carry-rolldown`, `def:interest-rate-swaps` and `mod:multi-curve-fra-swap-valuation` are linked, not repeated; the single-curve examples are labelled and the multi-curve entry keeps the projection and discounting distinction.
+All partly checked 2026-10-18, draft. Examples in `trading_notes.numerical.bond_pricing_yields.bond_valuation_checks` and `trading_notes.numerical.term_structure_returns.term_structure_checks`; human review is outstanding. Coverage records are editorial, not study. The existing `def:interest-rate-measures`, `conv:us-rate-quotation`, `mod:forward-rates-fra`, `mod:duration-convexity`, `meth:curve-trades-carry-rolldown`, `def:interest-rate-swaps` and `mod:multi-curve-fra-swap-valuation` are linked, not repeated; the single-curve examples are labelled and the multi-curve entry keeps the projection and discounting distinction.
 
 Written in the derivatives, portfolio and execution batch (2026-10-19):
 
@@ -103,7 +103,7 @@ In `fixed-income-portfolio-management.tex` (topic `fixed-income-portfolio-manage
 - `meth:yield-curve-positioning`: positions for market-consistent, divergent, volatility and cross-currency curve views.
 - `meth:curve-strategy-evaluation`: active key-rate durations, scenario returns and expected return and tracking risk.
 
-All partly checked 2026-10-19, draft. Examples in `notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py` and `notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py`; human review is outstanding. Coverage records are editorial, not study. `meth:curve-based-empirical-duration` is linked, not repeated.
+All partly checked 2026-10-19, draft. Examples in `trading_notes.numerical.embedded_option_bonds.rate_tree_checks` and `trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks`; human review is outstanding. Coverage records are editorial, not study. `meth:curve-based-empirical-duration` is linked, not repeated.
 
 Written in library gap-filling Batch L2 (2026-10-21), in `arbitrage-free-valuation.tex` (topic `arbitrage-free-bond-valuation`):
 
@@ -111,7 +111,7 @@ Written in library gap-filling Batch L2 (2026-10-21), in `arbitrage-free-valuati
 - `mod:hjm-forward-rate-models`: the HJM drift condition, Ho-Lee and Hull-White as Markov special cases, the forward market model under forward and rolling spot measures, Black caplets and Hull's adjustment for backward-looking rates.
 - `mod:term-structure-models-simulation` extended: fitting simulated paths by a time-dependent drift, the lognormal (Black-Karasinski) alternative and Wilmott's caution on refitting.
 
-Partly checked 2026-10-21, draft. Checks in `notes/artefacts/short-rate-models/short-rate-model-checks.py` (GSW curve; volatilities illustrative, not calibrated). Sources: Hull, *OFOD* 11th Global ed., chaps. 29 and 31-33; Wilmott, *PWOQF* 2nd ed., chaps. 30, 31 and 37; the Handbook, chap. 37. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+Partly checked 2026-10-21, draft. Checks in `trading_notes.numerical.arbitrage_free_valuation.short_rate_model_checks` (GSW curve; volatilities illustrative, not calibrated). Sources: Hull, *OFOD* 11th Global ed., chaps. 29 and 31-33; Wilmott, *PWOQF* 2nd ed., chaps. 30, 31 and 37; the Handbook, chap. 37. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
 
 ## Source verification after macro markets and pricing review
 
@@ -119,7 +119,7 @@ macro markets and pricing review follow-up, 2026-10-16 (source verification, not
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `rule:otc-derivatives-reforms` narrowed (U.S. rules resolved (17 CFR 23.150-161, 43.3, 45.3) and merged into `mech:otc-clearing-collateral`; BCBS-IOSCO, prudential regulators and EMIR unread); `mod:multi-curve-fra-swap-valuation` resolved (new entry `mod:multi-curve-fra-swap-valuation` from Hull, with own checks); `ev:term-premia` resolved (Adrian, Crump and Moench and the New York Fed's file summarised and merged into `mod:forward-rates-fra`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): audit repairs: `mod:multi-curve-fra-swap-valuation` now separates the end-settled swaplet from the start-settled FRA, with the stochastic-valuation conditions and `fra-settlement-check.py`. The `conv:fra-rate-multicurve-measure`, `ev:term-premia` and `rule:otc-derivatives-reforms` questions: Bianchetti and Carlicchi's FRA table (end-settled form), Kim and Wright against ACM (correlation 0.86 over 441 months) and the BCBS-IOSCO margin framework merged; `rule:otc-derivatives-reforms` narrowed. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): audit repairs: `mod:multi-curve-fra-swap-valuation` now separates the end-settled swaplet from the start-settled FRA, with the stochastic-valuation conditions and `trading_notes.numerical.rate_swaps_clearing.fra_settlement_checks`. The `conv:fra-rate-multicurve-measure`, `ev:term-premia` and `rule:otc-derivatives-reforms` questions: Bianchetti and Carlicchi's FRA table (end-settled form), Kim and Wright against ACM (correlation 0.86 over 441 months) and the BCBS-IOSCO margin framework merged; `rule:otc-derivatives-reforms` narrowed. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

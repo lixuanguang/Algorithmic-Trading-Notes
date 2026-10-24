@@ -1535,7 +1535,7 @@
     "entry_evidence": [
      "def:return-sample-statistics"
     ],
-    "example": "notes/artefacts/descriptive-probability/statistics-probability-checks.py (mean, median, deviations, N and N-1 variances, two quantile rules)"
+    "example": "trading_notes.numerical.descriptive_statistics.statistics_probability_checks (mean, median, deviations, N and N-1 variances, two quantile rules)"
    },
    "supersedes": null
   },
@@ -1571,7 +1571,7 @@
     "entry_evidence": [
      "def:return-shape-statistics"
     ],
-    "example": "notes/artefacts/descriptive-probability/statistics-probability-checks.py (g1, G1, kurtosis, excess and bias-adjusted excess kurtosis)"
+    "example": "trading_notes.numerical.descriptive_statistics.statistics_probability_checks (g1, G1, kurtosis, excess and bias-adjusted excess kurtosis)"
    },
    "supersedes": null
   },
@@ -1609,7 +1609,7 @@
     "entry_evidence": [
      "def:return-dependence"
     ],
-    "example": "notes/artefacts/descriptive-probability/statistics-probability-checks.py (covariance with N and N-1, units, correlation, zero correlation under dependence)"
+    "example": "trading_notes.numerical.descriptive_statistics.statistics_probability_checks (covariance with N and N-1, units, correlation, zero correlation under dependence)"
    },
    "supersedes": null
   },
@@ -1650,7 +1650,7 @@
     "entry_evidence": [
      "def:downside-relative-dispersion"
     ],
-    "example": "notes/artefacts/descriptive-probability/statistics-probability-checks.py (semi-deviation with three denominators and two targets; CV and its failure for a shifted series)"
+    "example": "trading_notes.numerical.descriptive_statistics.statistics_probability_checks (semi-deviation with three denominators and two targets; CV and its failure for a shifted series)"
    },
    "supersedes": null
   },
@@ -1686,7 +1686,7 @@
     "entry_evidence": [
      "def:conditional-moments"
     ],
-    "example": "notes/artefacts/descriptive-probability/statistics-probability-checks.py (probability table: moments directly and by total expectation, variance and covariance)"
+    "example": "trading_notes.numerical.descriptive_statistics.statistics_probability_checks (probability table: moments directly and by total expectation, variance and covariance)"
    },
    "supersedes": null
   },
@@ -1727,7 +1727,7 @@
     "entry_evidence": [
      "def:financial-distributions"
     ],
-    "example": "notes/artefacts/descriptive-probability/statistics-probability-checks.py (normal, lognormal, t, binomial and uniform moments by integration or enumeration)"
+    "example": "trading_notes.numerical.descriptive_statistics.statistics_probability_checks (normal, lognormal, t, binomial and uniform moments by integration or enumeration)"
    },
    "supersedes": null
   },
@@ -1761,7 +1761,7 @@
     "entry_evidence": [
      "meth:bayesian-updating"
     ],
-    "example": "notes/artefacts/descriptive-probability/statistics-probability-checks.py (posterior by batch and sequential updating; predictive probability)"
+    "example": "trading_notes.numerical.descriptive_statistics.statistics_probability_checks (posterior by batch and sequential updating; predictive probability)"
    },
    "supersedes": null
   },
@@ -1805,7 +1805,7 @@
     "entry_evidence": [
      "meth:confidence-intervals"
     ],
-    "example": "notes/artefacts/inference-simulation/inference-simulation-checks.py (t, normal and chi-square intervals; simulated coverage, independent and AR(1)); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
+    "example": "trading_notes.numerical.statistical_inference.inference_simulation_checks (t, normal and chi-square intervals; simulated coverage, independent and AR(1)); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
    },
    "supersedes": null
   },
@@ -1853,7 +1853,7 @@
     "entry_evidence": [
      "meth:hypothesis-testing"
     ],
-    "example": "notes/artefacts/inference-simulation/inference-simulation-checks.py (t, chi-square and F tests; independent second sample for F; correlated-sample counterexample; noncentral-t power checked by simulation; simulated Type I rate); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1)"
+    "example": "trading_notes.numerical.statistical_inference.inference_simulation_checks (t, chi-square and F tests; independent second sample for F; correlated-sample counterexample; noncentral-t power checked by simulation; simulated Type I rate); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1)"
    },
    "supersedes": null
   },
@@ -1891,7 +1891,7 @@
     "entry_evidence": [
      "meth:nonparametric-tests"
     ],
-    "example": "notes/artefacts/inference-simulation/inference-simulation-checks.py (exact sign and signed-rank p-values by enumeration; normal approximation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
+    "example": "trading_notes.numerical.statistical_inference.inference_simulation_checks (exact sign and signed-rank p-values by enumeration; normal approximation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
    },
    "supersedes": null
   },
@@ -2078,7 +2078,7 @@
     "entry_evidence": [
      "meth:historical-simulation"
     ],
-    "example": "notes/artefacts/inference-simulation/inference-simulation-checks.py (canonical lower-quantile VaR and exact-tail-mass ES, equal and age weights on 20 scenarios; uniform-weight, tie and fractional-tail checks); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1)"
+    "example": "trading_notes.numerical.statistical_inference.inference_simulation_checks (canonical lower-quantile VaR and exact-tail-mass ES, equal and age weights on 20 scenarios; uniform-weight, tie and fractional-tail checks); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1)"
    },
    "supersedes": null
   },
@@ -2118,7 +2118,7 @@
     "entry_evidence": [
      "meth:bootstrap-resampling"
     ],
-    "example": "notes/artefacts/inference-simulation/inference-simulation-checks.py (i.i.d. bootstrap against its ideal value; exact AR(1) expectations for i.i.d. and moving-block bootstraps); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
+    "example": "trading_notes.numerical.statistical_inference.inference_simulation_checks (i.i.d. bootstrap against its ideal value; exact AR(1) expectations for i.i.d. and moving-block bootstraps); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
    },
    "supersedes": null
   },
@@ -2153,7 +2153,7 @@
     "entry_evidence": [
      "meth:monte-carlo-simulation"
     ],
-    "example": "notes/artefacts/inference-simulation/inference-simulation-checks.py (call value and a probability against closed forms within stated standard errors); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
+    "example": "trading_notes.numerical.statistical_inference.inference_simulation_checks (call value and a probability against closed forms within stated standard errors); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1 (first run under Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1; same results)"
    },
    "supersedes": null
   },
@@ -2194,7 +2194,7 @@
     "entry_evidence": [
      "meth:simple-regression-estimation"
     ],
-    "example": "notes/artefacts/linear-regression/regression-checks.py (least squares formulas against numpy lstsq and statsmodels; residual orthogonality; grid minimisation of the criterion); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.regression.linear_regression_checks (least squares formulas against numpy lstsq and statsmodels; residual orthogonality; grid minimisation of the criterion); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -2241,7 +2241,7 @@
     "entry_evidence": [
      "meth:regression-diagnostics-anova"
     ],
-    "example": "notes/artefacts/linear-regression/regression-checks.py (sums of squares, S, R^2, coefficient t tests, ANOVA table against statsmodels; F = t^2 for the zero-slope null, and t^2 = 0.044865 for beta1 = 5 equal to the F of that restriction (statsmodels f_test), not the ANOVA F; standardised residuals; curved counterexample); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.regression.linear_regression_checks (sums of squares, S, R^2, coefficient t tests, ANOVA table against statsmodels; F = t^2 for the zero-slope null, and t^2 = 0.044865 for beta1 = 5 equal to the F of that restriction (statsmodels f_test), not the ANOVA F; standardised residuals; curved counterexample); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -2292,7 +2292,7 @@
     "entry_evidence": [
      "meth:regression-prediction-functional-form"
     ],
-    "example": "notes/artefacts/linear-regression/regression-checks.py (mean and prediction intervals against statsmodels; simulated and exact coverage; extrapolation; log-level, level-log and log-log fits; geometric mean (against scipy gmean), median, normal-theory mean and smearing retransformation; mean-zero skewed log error separating geometric mean, median and mean; log-log change as fraction 0.00825153 and percentage 0.825153); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.regression.linear_regression_checks (mean and prediction intervals against statsmodels; simulated and exact coverage; extrapolation; log-level, level-log and log-log fits; geometric mean (against scipy gmean), median, normal-theory mean and smearing retransformation; mean-zero skewed log error separating geometric mean, median and mean; log-log change as fraction 0.00825153 and percentage 0.825153); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -6445,7 +6445,7 @@
     "entry_evidence": [
      "rule:bond-issuance-legal-tax"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 10 (municipal original-issue against market discount: constant-yield accrual by two routes, de minimis threshold, holders at issue and in the secondary market); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks part 10 (municipal original-issue against market discount: constant-yield accrual by two routes, de minimis threshold, holders at issue and in the secondary market); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6541,7 +6541,7 @@
     "entry_evidence": [
      "def:short-term-funding-repo"
     ],
-    "example": "notes/artefacts/short-term-funding/funding-repo-checks.py parts 1-3 (Handbook repo interest and haircut, an original 90-day funding comparison and a repo margin call); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.money_markets.funding_repo_checks parts 1-3 (Handbook repo interest and haircut, an original 90-day funding comparison and a repo margin call); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6691,7 +6691,7 @@
     "entry_evidence": [
      "meth:bond-price-from-yield"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 1-2 (31 CFR 356 Appendix B examples, Handbook Exhibit 4-4 and Illustration 4, the original 5% 2034 bond between coupon dates, street against simple-stub pricing, price-yield relationships); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks parts 1-2 (31 CFR 356 Appendix B examples, Handbook Exhibit 4-4 and Illustration 4, the original 5% 2034 bond between coupon dates, street against simple-stub pricing, price-yield relationships); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6732,7 +6732,7 @@
     "entry_evidence": [
      "meth:matrix-pricing"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 4 (interpolated yields and spreads from invented comparable quotes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks part 4 (interpolated yields and spreads from invented comparable quotes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6772,7 +6772,7 @@
     "entry_evidence": [
      "def:bond-yield-spread-measures"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 3 (compounding conversions, current yield, yields to call and worst, G-, I- and Z-spreads on one government zero curve, steep-curve contrast); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks part 3 (compounding conversions, current yield, yields to call and worst, G-, I- and Z-spreads on one government zero curve, steep-curve contrast); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6839,7 +6839,7 @@
     "entry_evidence": [
      "meth:floating-money-market-yields"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a dated SOFR+75 FRN with business-day SOFR compounding, the New York Fed's SOFR Index example, a coupon-accrual index check and a price round trip, bill and CD money-market conversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a dated SOFR+75 FRN with business-day SOFR compounding, the New York Fed's SOFR Index example, a coupon-accrual index check and a price round trip, bill and CD money-market conversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6883,7 +6883,7 @@
     "entry_evidence": [
      "meth:spot-par-forward-curves"
     ],
-    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.term_structure_returns.term_structure_checks part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6924,7 +6924,7 @@
     "entry_evidence": [
      "meth:spot-par-forward-curves"
     ],
-    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.term_structure_returns.term_structure_checks part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -6962,7 +6962,7 @@
     "entry_evidence": [
      "meth:bond-return-decomposition"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 8 (coupons, interest on interest, pull to par and rate effect over three years; horizon equal to Macaulay duration); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks part 8 (coupons, interest on interest, pull to par and rate effect over three years; horizon equal to Macaulay duration); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7009,7 +7009,7 @@
      "meth:yield-duration-pvbp",
      "meth:bond-return-decomposition"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 6 (Macaulay, modified, approximate and money duration, PVBP, Handbook 20-year bond); notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 8 (coupons, interest on interest, pull to par and rate effect over three years; horizon equal to Macaulay duration); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks part 6 (Macaulay, modified, approximate and money duration, PVBP, Handbook 20-year bond); trading_notes.numerical.bond_pricing_yields.bond_valuation_checks part 8 (coupons, interest on interest, pull to par and rate effect over three years; horizon equal to Macaulay duration); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7053,7 +7053,7 @@
     "entry_evidence": [
      "meth:convexity-portfolio-duration"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 6-7 (convexity and repricing at +/-100 and 200 bp; Handbook convexity measure; three-bond portfolio duration, convexity, parallel and steepening shocks, cash-flow yield); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks parts 6-7 (convexity and repricing at +/-100 and 200 bp; Handbook convexity measure; three-bond portfolio duration, convexity, parallel and steepening shocks, cash-flow yield); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7092,7 +7092,7 @@
     "entry_evidence": [
      "meth:curve-based-empirical-duration"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 9 (effective duration and convexity on a zero curve, key-rate durations and a steepener, a sloped-curve counterexample of parallel-zero-curve against yield duration and convexity with flat-curve and single-cash-flow controls, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.bond_pricing_yields.bond_valuation_checks part 9 (effective duration and convexity on a zero curve, key-rate durations and a steepener, a sloped-curve counterexample of parallel-zero-curve against yield duration and convexity with flat-curve and single-cash-flow controls, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7133,7 +7133,7 @@
     "entry_evidence": [
      "def:credit-risk-components"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 1 (Hull Example 17.2 and Tables 17.1, 17.4-17.5 reproduced; loan expected loss 0.096); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 1 (Hull Example 17.2 and Tables 17.1, 17.4-17.5 reproduced; loan expected loss 0.096); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -7172,7 +7172,7 @@
      "meth:sovereign-credit-analysis",
      "def:sovereign-credit-defaults"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 9 (Veloria: eq. 17-1 against a nominal roll-forward, +4.05 points; pb* 3.05%; GFN 13.55%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 9 (Veloria: eq. 17-1 against a nominal roll-forward, +4.05 points; pb* 3.05%; GFN 13.55%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -7215,7 +7215,7 @@
     "entry_evidence": [
      "meth:corporate-credit-analysis"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 2 (Hull Example 17.1 Z = 5.46; Kestrel ratios; recovery waterfall at 5x and 6x); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 2 (Hull Example 17.1 Z = 5.46; Kestrel ratios; recovery waterfall at 5x and 6x); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -7262,7 +7262,7 @@
     "entry_evidence": [
      "def:securitisation-process"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 10 (sizing and structure checks; retention arithmetic in the entry); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 10 (sizing and structure checks; retention arithmetic in the entry); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -7318,7 +7318,7 @@
     "entry_evidence": [
      "meth:abs-structures-credit-enhancement"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 10 (Fabozzi-Kothari sizing 8.40% AAA; excess spread 3%; card trust excess spread 6% and trigger; Hull Table 8.1 ABS CDO losses); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; corrected 2026-10-20 (PR #33 audit): covered bonds reconciled with the credit-portfolio entry: non-acceleration (Art. 5), defaulted assets excluded from coverage (Art. 15(4)), segregation on or off balance sheet (recital 17), single class against tranched securitisation (Reg. 2017/2402 Art. 2(1))"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 10 (Fabozzi-Kothari sizing 8.40% AAA; excess spread 3%; card trust excess spread 6% and trigger; Hull Table 8.1 ABS CDO losses); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; corrected 2026-10-20 (PR #33 audit): covered bonds reconciled with the credit-portfolio entry: non-acceleration (Art. 5), defaulted assets excluded from coverage (Art. 15(4)), segregation on or off balance sheet (recital 17), single class against tranched securitisation (Reg. 2017/2402 Art. 2(1))"
    },
    "supersedes": null
   },
@@ -7371,7 +7371,7 @@
     "entry_evidence": [
      "meth:mortgage-securities-prepayment"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 10 (Table 3.1 month 1; average life 8.54/11.2/3.7 years; sequential payoffs months 78 and 97; PAC 470,224,580); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 10 (Table 3.1 month 1; average life 8.54/11.2/3.7 years; sequential payoffs months 78 and 97; PAC 470,224,580); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10257,7 +10257,7 @@
     "entry_evidence": [
      "meth:multiple-regression-formulation"
     ],
-    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 1 (Baa excess return on Treasury and equity excess returns, 1928-2025; omitted-variable identity in a seeded simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.multiple_regression.multiple_regression_checks: part 1 (Baa excess return on Treasury and equity excess returns, 1928-2025; omitted-variable identity in a seeded simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10296,7 +10296,7 @@
     "entry_evidence": [
      "meth:multiple-regression-fit-tests"
     ],
-    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 2 (ANOVA R2 0.597, F 70.4; nested F 0.40; partial R2 29.2%; prediction interval -9.0% to +11.4%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.multiple_regression.multiple_regression_checks: part 2 (ANOVA R2 0.597, F 70.4; nested F 0.40; partial R2 29.2%; prediction interval -9.0% to +11.4%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10333,7 +10333,7 @@
     "entry_evidence": [
      "meth:regression-misspecification"
     ],
-    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3); Corrected 2026-10-20 (PR #32 audit): OLS covariance formula; AR(1) errors with trend and alternating regressors (variance ratios 2.75, 0.41, 0.43, 2.96) and a seeded simulation; units rescaling leaves t and R2 unchanged; unbiasedness conditioned on strict exogeneity; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.multiple_regression.multiple_regression_checks: part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3); Corrected 2026-10-20 (PR #32 audit): OLS covariance formula; AR(1) errors with trend and alternating regressors (variance ratios 2.75, 0.41, 0.43, 2.96) and a seeded simulation; units rescaling leaves t and R2 unchanged; unbiasedness conditioned on strict exogeneity; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10376,7 +10376,7 @@
     "entry_evidence": [
      "meth:regression-extensions"
     ],
-    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 4 (leverage, studentized deleted residuals, Cook's distance; post-1980 dummies; logistic regression by Newton-Raphson and statsmodels); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.multiple_regression.multiple_regression_checks: part 4 (leverage, studentized deleted residuals, Cook's distance; post-1980 dummies; logistic regression by Newton-Raphson and statsmodels); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10419,7 +10419,7 @@
     "entry_evidence": [
      "meth:trend-models"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 1 (linear and log-linear CPI trends; Durbin-Watson 0.013 and 0.051); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.time_series_models.time_series_checks: part 1 (linear and log-linear CPI trends; Durbin-Watson 0.013 and 0.051); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10463,7 +10463,7 @@
     "entry_evidence": [
      "def:stationarity-unit-roots"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 2 (simulated random-walk variance; ADF and KPSS on the price level and inflation; hand-run Dickey-Fuller t); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.time_series_models.time_series_checks: part 2 (simulated random-walk variance; ADF and KPSS on the price level and inflation; hand-run Dickey-Fuller t); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10512,7 +10512,7 @@
     "entry_evidence": [
      "meth:autoregressive-forecasting"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 3 (AR(1) inflation: mean 3.22%, half-life 1.40 years; residual autocorrelations; chain-rule forecasts; seasonal lag and seasonal-lag forecasts 5.16 and 4.38 in a seeded simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.time_series_models.time_series_checks: part 3 (AR(1) inflation: mean 3.22%, half-life 1.40 years; residual autocorrelations; chain-rule forecasts; seasonal lag and seasonal-lag forecasts 5.16 and 4.38 in a seeded simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10550,7 +10550,7 @@
     "entry_evidence": [
      "meth:forecast-accuracy-evaluation"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 4 (chronological split 1928-1989/1990-2025: RMSE 1.46% AR(1), 1.66% random walk, 1.60% mean; expanding window 1.45%; Chow F 1.03; half-lives 1.40 and 0.83); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.time_series_models.time_series_checks: part 4 (chronological split 1928-1989/1990-2025: RMSE 1.46% AR(1), 1.66% random walk, 1.60% mean; expanding window 1.45%; Chow F 1.03; half-lives 1.40 and 0.83); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10590,7 +10590,7 @@
      "mod:arch-conditional-variance",
      "mod:garch-volatility-forecast"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 5 (Engle LM 52.1 on simulated ARCH(1); OLS 0.29 against MLE 0.54; variance forecasts 0.000379 to the long-run 0.000469; annual S&P LM 2.22); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.time_series_models.time_series_checks: part 5 (Engle LM 52.1 on simulated ARCH(1); OLS 0.29 against MLE 0.54; variance forecasts 0.000379 to the long-run 0.000469; annual S&P LM 2.22); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10631,7 +10631,7 @@
     "entry_evidence": [
      "meth:cointegration-testing"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 6 (spurious regression t 4.74, DW 0.025; Engle-Granger t -16.0 against -3.36); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.time_series_models.time_series_checks: part 6 (spurious regression t 4.74, DW 0.025; Engle-Granger t -16.0 against -3.36); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10673,7 +10673,7 @@
     "entry_evidence": [
      "meth:time-series-model-selection"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)); Corrected 2026-10-20 (PR #32 audit): target five-year cumulative inflation; 31 common origins 1990-2020: RMSE AR(1) 5.94, mean 6.12, AR(4) 7.27, random walk 7.56, trend 19.36; overlap (lag-1 autocorrelation 0.76) and Diebold-Mariano t 2.61, -0.40, -1.45; 1990-2025 is selection validation, not a holdout; the pre-1953 dependence of AR(4) qualified; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.time_series_models.time_series_checks: part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)); Corrected 2026-10-20 (PR #32 audit): target five-year cumulative inflation; 31 common origins 1990-2020: RMSE AR(1) 5.94, mean 6.12, AR(4) 7.27, random walk 7.56, trend 19.36; overlap (lag-1 autocorrelation 0.76) and Diebold-Mariano t 2.61, -0.40, -1.45; 1990-2025 is selection validation, not a holdout; the pre-1953 dependence of AR(4) qualified; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13639,7 +13639,7 @@
      "meth:forward-rates-expected-returns",
      "meth:spot-par-forward-curves"
     ],
-    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 2 (forwards as break-evens, Ilmanen's example, rolling yield and break-even shift); notes/artefacts/term-structure-dynamics/term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.term_structure_returns.term_structure_checks part 2 (forwards as break-evens, Ilmanen's example, rolling yield and break-even shift); trading_notes.numerical.term_structure_returns.term_structure_checks part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13697,7 +13697,7 @@
     "entry_evidence": [
      "def:swap-curve-short-term-spreads"
     ],
-    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 4 (OIS par curve to forwards, swap spread against a Treasury yield); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.term_structure_returns.term_structure_checks part 4 (OIS par curve to forwards, swap spread against a Treasury yield); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13734,7 +13734,7 @@
     "entry_evidence": [
      "res:term-structure-theories"
     ],
-    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 3 (convexity bias under the local and unbiased expectations hypotheses, liquidity premium); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.term_structure_returns.term_structure_checks part 3 (convexity bias under the local and unbiased expectations hypotheses, liquidity premium); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13779,7 +13779,7 @@
     "entry_evidence": [
      "meth:yield-curve-factor-exposures"
     ],
-    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py parts 5-6 (Hull Table 22.9 loadings, exposures, standard deviation and a two-factor hedge; principal components and volatility term structure of GSW month-end zero yields, 489 months, from gsw-month-end-zero.csv); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.term_structure_returns.term_structure_checks parts 5-6 (Hull Table 22.9 loadings, exposures, standard deviation and a two-factor hedge; principal components and volatility term structure of GSW month-end zero yields, 489 months, from gsw-month-end-zero.csv); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13817,7 +13817,7 @@
     "entry_evidence": [
      "meth:arbitrage-free-bond-valuation"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 2 (the Handbook bond from bootstrapped spot rates, the same value on the lattice and pathwise, and the arbitrage at a different price); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks part 2 (the Handbook bond from bootstrapped spot rates, the same value on the lattice and pathwise, and the arbitrage at a different price); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13854,7 +13854,7 @@
     "entry_evidence": [
      "meth:binomial-rate-tree-calibration"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py parts 1-2 (calibration date by date to the par curve, the Handbook trial and calibrated rates, repricing of every par bond, backward induction and the eight-path pathwise value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks parts 1-2 (calibration date by date to the par curve, the Handbook trial and calibrated rates, repricing of every par bond, backward induction and the eight-path pathwise value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13895,7 +13895,7 @@
     "entry_evidence": [
      "mod:term-structure-models-simulation"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 7 (Monte Carlo paths against the lattice value, Vasicek closed-form bond prices and a Ho-Lee forward-induction fit to the curve); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks part 7 (Monte Carlo paths against the lattice value, Vasicek closed-form bond prices and a Ho-Lee forward-induction fit to the curve); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13933,7 +13933,7 @@
     "entry_evidence": [
      "meth:callable-putable-bond-valuation"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 3 (Handbook callable and putable values and option values, the volatility effect and original level and shape recalibrations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks part 3 (Handbook callable and putable values and option values, the volatility effect and original level and shape recalibrations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -13969,7 +13969,7 @@
     "entry_evidence": [
      "meth:option-adjusted-spread"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 4 (the 35 bp OAS at 102.218, the Z-spread, the option cost and the effect of volatility on OAS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks part 4 (the 35 bp OAS at 102.218, the Z-spread, the option cost and the effect of volatility on OAS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14011,7 +14011,7 @@
      "meth:embedded-option-effective-duration",
      "meth:curve-based-empirical-duration"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 5 (effective, one-sided and key-rate durations and effective convexities of callable, putable and straight bonds at constant OAS); corrected 2026-10-19 (PR #25 pass): convexity in the compendium convention with repricing checks; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks part 5 (effective, one-sided and key-rate durations and effective convexities of callable, putable and straight bonds at constant OAS); corrected 2026-10-19 (PR #25 pass): convexity in the compendium convention with repricing checks; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14052,7 +14052,7 @@
     "entry_evidence": [
      "meth:capped-floored-floater-valuation"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 6 (capped, floored and collared floaters on the calibrated tree, with cap and floor values); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks part 6 (capped, floored and collared floaters on the calibrated tree, with cap and floor values); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14106,7 +14106,7 @@
     "entry_evidence": [
      "meth:convertible-bond-valuation"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 8 (conversion measures, premiums and minimum value, Hull's 107.44 default tree and risk-return against the straight bond and stock); corrected 2026-10-19 (PR #25 pass): Tesla terms from the prospectus supplement; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.embedded_option_bonds.rate_tree_checks part 8 (conversion measures, premiums and minimum value, Hull's 107.44 default tree and risk-return against the straight bond and stock); corrected 2026-10-19 (PR #25 pass): Tesla terms from the prospectus supplement; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14143,7 +14143,7 @@
     "entry_evidence": [
      "meth:risky-bond-cva"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 3 (Hull Table 17.3, Q = 3.03%, by two routes; Arden bond CVA 2.80, value 102.86, spread 97 bp; sensitivities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 3 (Hull Table 17.3, Q = 3.03%, by two routes; Arden bond CVA 2.80, value 102.86, spread 97 bp; sensitivities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -14180,7 +14180,7 @@
     "entry_evidence": [
      "meth:rating-migration-returns"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 4 (Table 19.1 and its fifth power, Table 19.2; BBB expected excess return 1.08% against 1.60%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 4 (Table 19.1 and its fifth power, Table 19.2; BBB expected excess return 1.08% against 1.60%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -14216,7 +14216,7 @@
     "entry_evidence": [
      "mod:structural-reduced-form-credit"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 5 (Hull Example 17.4 solved; spread 1.24% two ways; matching hazard 2.06%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 5 (Hull Example 17.4 solved; spread 1.24% two ways; matching hazard 2.06%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -14259,7 +14259,7 @@
     "entry_evidence": [
      "meth:credit-spread-term-structure"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 6 (Hull Example 17.3 forward hazards; CDS curves for flat, rising and falling hazards); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 6 (Hull Example 17.3 forward hazards; CDS curves for flat, rising and falling hazards); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -14303,7 +14303,7 @@
      "def:cds-contract-features",
      "mech:cds-contract-credit-events"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: parts 7-8 (OFOD Example 25.1 upfront 0.27; index payment 1,660,000 and 13,280 per default); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: parts 7-8 (OFOD Example 25.1 upfront 0.27; index payment 1,660,000 and 13,280 per default); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -14344,7 +14344,7 @@
     "entry_evidence": [
      "meth:cds-pricing"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 7 (Appendix K: 4.1150s, 0.0506, 123 bp, MTM 0.0111; binary 205 bp; implied hazard 1.63%; recovery insensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 7 (Appendix K: 4.1150s, 0.0506, 123 bp, MTM 0.0111; binary 205 bp; implied hazard 1.63%; recovery insensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -14385,7 +14385,7 @@
     "entry_evidence": [
      "meth:cds-strategies"
     ],
-    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 8 (hedged bond; negative basis; equity-implied spread 124 bp against CDS 200 bp; Credit01-neutral and equal-notional steepeners; jump to default -4.23m); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: part 8 (hedged bond; negative basis; equity-implied spread 124 bp against CDS 200 bp; Credit01-neutral and equal-notional steepeners; jump to default -4.23m); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -15763,7 +15763,7 @@
     "entry_evidence": [
      "meth:backtest-design-evaluation"
     ],
-    "example": "notes/artefacts/backtest-inference/backtest-design-checks.py: parts 1-5, 19 checks (synthetic universe without predictability: survivorship, look-ahead, costs from a dollar ledger of traded notional with drift and hand-reconciled small cases, drawdown including initial wealth with decisive cases, best-of-24 against walk-forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.backtest_evaluation.backtest_design_checks: parts 1-5, 19 checks (synthetic universe without predictability: survivorship, look-ahead, costs from a dollar ledger of traded notional with drift and hand-reconciled small cases, drawdown including initial wealth with decisive cases, best-of-24 against walk-forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -15808,7 +15808,7 @@
     "entry_evidence": [
      "meth:scenario-simulation-analysis"
     ],
-    "example": "notes/artefacts/backtest-inference/scenario-simulation-checks.py: parts 1-3 (historical scenarios 1931, 1973-74, 2008, 2022; bootstrap against normal Monte Carlo; sensitivities with common random numbers); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.scenario_simulation.scenario_simulation_checks: parts 1-3 (historical scenarios 1931, 1973-74, 2008, 2022; bootstrap against normal Monte Carlo; sensitivities with common random numbers); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -16553,7 +16553,7 @@
     "entry_evidence": [
      "def:fixed-income-mandates-return-model"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 1 (the expected-return decomposition, portfolio duration and spread duration, and the stock-bond correlation's effect); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks part 1 (the expected-return decomposition, portfolio duration and spread duration, and the stock-bond correlation's effect); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16599,7 +16599,7 @@
     "entry_evidence": [
      "meth:bond-leverage-taxation"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 2 (leveraged return, repo and futures leverage, and taxable-equivalent yields with loss harvesting); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks part 2 (leveraged return, repo and futures leverage, and taxable-equivalent yields with loss harvesting); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16645,7 +16645,7 @@
     "entry_evidence": [
      "meth:liability-matching-ladders"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 3 (an original least-cost cash-flow-matched portfolio by linear programming, surplus risk and a ladder's reinvestment profile); corrected 2026-10-19 (PR #25 pass): ladder key-rate profile and twist risk under three allocations; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks part 3 (an original least-cost cash-flow-matched portfolio by linear programming, surplus risk and a ladder's reinvestment profile); corrected 2026-10-19 (PR #25 pass): ladder key-rate profile and twist risk under three allocations; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17093,7 +17093,7 @@
      "def:implementation-shortfall",
      "def:spread-measures"
     ],
-    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 1 (MIP's effective spreads, VWAP cost and the 87 bp implementation shortfall with components and a market adjustment); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.trade_strategy_governance.trade_execution_checks part 1 (MIP's effective spreads, VWAP cost and the 87 bp implementation shortfall with components and a market adjustment); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17149,7 +17149,7 @@
      "def:electronic-trading-environment",
      "mech:venue-competition-fragmentation"
     ],
-    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 2 (a stale-quote loss and the half-spread that covers adverse selection); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.trade_strategy_governance.trade_execution_checks part 2 (a stale-quote loss and the half-spread that covers adverse selection); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18633,7 +18633,7 @@
     "entry_evidence": [
      "meth:immunisation-liabilities"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 4 (MIP's single-liability immunisation, barbell and bullet under shifts and twists, dispersion, and multiple-liability conditions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks part 4 (MIP's single-liability immunisation, barbell and bullet under shifts and twists, dispersion, and multiple-liability conditions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18671,7 +18671,7 @@
     "entry_evidence": [
      "meth:bond-index-exposure-benchmarks"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 5 (index replication counts, stratified sampling tracking error and a liability-matched benchmark choice); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks part 5 (index replication counts, stratified sampling tracking error and a liability-matched benchmark choice); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18713,7 +18713,7 @@
     "entry_evidence": [
      "meth:yield-curve-positioning"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 6 (market-consistent, level, slope, curvature, volatility and hedged cross-currency positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks part 6 (market-consistent, level, slope, curvature, volatility and hedged cross-currency positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18750,7 +18750,7 @@
     "entry_evidence": [
      "meth:curve-strategy-evaluation"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 7 (active key-rate durations, scenario returns and the expected return and tracking risk of a curve strategy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.fixed_income_portfolio_management.fixed_income_portfolio_checks part 7 (active key-rate durations, scenario returns and the expected return and tracking risk of a curve strategy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18788,7 +18788,7 @@
     "entry_evidence": [
      "meth:credit-spread-portfolio-risk"
     ],
-    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 1 (DTS equivalence 12; 0.90% from absolute and relative changes; volatility ratio 3; G 120, I 90, OAS 140 bp); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_portfolio_management.credit_portfolios_checks: part 1 (DTS equivalence 12; 0.90% from absolute and relative changes; volatility ratio 3; G 120, I 90, OAS 140 bp); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -18829,7 +18829,7 @@
     "entry_evidence": [
      "meth:credit-selection-positioning"
     ],
-    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 2 (ESP 30 bp; steepener hedge 30 against 16.67; DTS overweight 12 bp); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.credit_portfolio_management.credit_portfolios_checks: part 2 (ESP 30 bp; steepener hedge 30 against 16.67; DTS overweight 12 bp); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -18871,7 +18871,7 @@
     "entry_evidence": [
      "meth:credit-liquidity-tail-risk"
     ],
-    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 3 (LCS 0.70%, portfolio 0.87%; DTS caps 2.50%/0.83%; WCDR 7.75%, loss 4.65%, simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; corrected 2026-10-20 (PR #33 audit): LCS kept as a round-trip cost; one-way sale of the liquid half costs 0.10% against mid marks (0 against bid, 0.20% against ask); proceeds 49.90 and remaining weights reconciled"
+    "example": "trading_notes.numerical.credit_portfolio_management.credit_portfolios_checks: part 3 (LCS 0.70%, portfolio 0.87%; DTS caps 2.50%/0.83%; WCDR 7.75%, loss 4.65%, simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; corrected 2026-10-20 (PR #33 audit): LCS kept as a round-trip cost; one-way sale of the liquid half costs 0.10% against mid marks (0 against bid, 0.20% against ask); proceeds 49.90 and remaining weights reconciled"
    },
    "supersedes": null
   },
@@ -18928,7 +18928,7 @@
     "entry_evidence": [
      "meth:credit-cds-international-structured"
     ],
-    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 4 (CDS overlay 11.1m; hedged yield 5.5%; CLO OC 120% to 114%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; corrected 2026-10-20 (PR #33 audit): covered bonds as issuer obligations with dual recourse separated from pool-only securitisation tranches; senior-tranche share and floating coupons scoped to Larreur's corporate-loan securitisation; Bank Corvel cases"
+    "example": "trading_notes.numerical.credit_portfolio_management.credit_portfolios_checks: part 4 (CDS overlay 11.1m; hedged yield 5.5%; CLO OC 120% to 114%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; corrected 2026-10-20 (PR #33 audit): covered bonds as issuer obligations with dual recourse separated from pool-only securitisation tranches; senior-tranche share and floating coupons scoped to Larreur's corporate-loan securitisation; Bank Corvel cases"
    },
    "supersedes": null
   },
@@ -18973,7 +18973,7 @@
      "meth:trade-strategy-selection",
      "def:execution-benchmark"
     ],
-    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 3 (Almgren-Chriss schedules at three risk aversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.trade_strategy_governance.trade_execution_checks part 3 (Almgren-Chriss schedules at three risk aversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -19009,7 +19009,7 @@
     "entry_evidence": [
      "def:trade-implementation-by-market"
     ],
-    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 4 (illustrative costs of a 50 million trade in five markets); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.trade_strategy_governance.trade_execution_checks part 4 (illustrative costs of a 50 million trade in five markets); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -19058,7 +19058,7 @@
     "entry_evidence": [
      "meth:trade-execution-evaluation-governance"
     ],
-    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 5 (a z-score against a pre-trade estimate, a broker comparison with a significance test and the sample size needed); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.trade_strategy_governance.trade_execution_checks part 5 (a z-score against a pre-trade estimate, a broker comparison with a significance test and the sample size needed); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20519,7 +20519,7 @@
     "entry_evidence": [
      "def:brownian-motion-quadratic-variation"
     ],
-    "example": "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py part 1 (quadratic variation, first variation and Ito integral identities on simulated paths, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.stochastic_calculus.stochastic_calculus_checks part 1 (quadratic variation, first variation and Ito integral identities on simulated paths, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20561,7 +20561,7 @@
     "entry_evidence": [
      "res:ito-lemma-geometric-brownian-motion"
     ],
-    "example": "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py part 2 (exact GBM mean and median, E[S_T^2] by Ito, Euler discretisation error, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.stochastic_calculus.stochastic_calculus_checks part 2 (exact GBM mean and median, E[S_T^2] by Ito, Euler discretisation error, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20606,7 +20606,7 @@
     "entry_evidence": [
      "res:risk-neutral-pricing-feynman-kac"
     ],
-    "example": "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py part 3 (Girsanov reweighting against the BSM call, the PDE satisfied by real-world and risk-neutral expectations, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.stochastic_calculus.stochastic_calculus_checks part 3 (Girsanov reweighting against the BSM call, the PDE satisfied by real-world and risk-neutral expectations, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20949,7 +20949,7 @@
     "entry_evidence": [
      "mod:affine-short-rate-models"
     ],
-    "example": "notes/artefacts/short-rate-models/short-rate-model-checks.py (GSW curve; Vasicek reuse, CIR closed form against exact non-central chi-square paths with a grid-halving rule, Euler against exact sampling when Feller fails, Hull-White theta fit to 1e-10 and exact joint sampling of the rate and its integral at 30 maturities; volatilities illustrative); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.arbitrage_free_valuation.short_rate_model_checks (GSW curve; Vasicek reuse, CIR closed form against exact non-central chi-square paths with a grid-halving rule, Euler against exact sampling when Feller fails, Hull-White theta fit to 1e-10 and exact joint sampling of the rate and its integral at 30 maturities; volatilities illustrative); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20996,7 +20996,7 @@
     "entry_evidence": [
      "mod:hjm-forward-rate-models"
     ],
-    "example": "notes/artefacts/short-rate-models/short-rate-model-checks.py (HJM drift integrated numerically against Ho-Lee and Hull-White drifts on the GSW curve; a forward-market-model caplet under the rolling spot measure against Black's formula; synthetic volatilities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.arbitrage_free_valuation.short_rate_model_checks (HJM drift integrated numerically against Ho-Lee and Hull-White drifts on the GSW curve; a forward-market-model caplet under the rolling spot measure against Black's formula; synthetic volatilities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21045,7 +21045,7 @@
     "entry_evidence": [
      "def:counterparty-exposure-measures"
     ],
-    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py part 3 (Gregory's normal EE and PFE; Hull-White swap profiles on the GSW curve, netting, two-way and one-way collateral with a 10-day MPR and mid-month dates, lag diagnostic; synthetic swaps); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.counterparty_xva.counterparty_xva_checks part 3 (Gregory's normal EE and PFE; Hull-White swap profiles on the GSW curve, netting, two-way and one-way collateral with a 10-day MPR and mid-month dates, lag diagnostic; synthetic swaps); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21092,7 +21092,7 @@
     "entry_evidence": [
      "meth:credit-valuation-adjustment"
     ],
-    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py parts 1 and 3 (Gregory's square-root CVA, RMFI and OFOD gold forward with the (1 - R) convention difference; swap CVA uncollateralised and collateralised with discounting inside the expectation, the discount factor checked deterministically after the L2 correction pass; Gregory's EPE x spread as a per-annum spread converted with the risky annuity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.counterparty_xva.counterparty_xva_checks parts 1 and 3 (Gregory's square-root CVA, RMFI and OFOD gold forward with the (1 - R) convention difference; swap CVA uncollateralised and collateralised with discounting inside the expectation, the discount factor checked deterministically after the L2 correction pass; Gregory's EPE x spread as a per-annum spread converted with the risky annuity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21136,7 +21136,7 @@
     "entry_evidence": [
      "def:wrong-way-risk"
     ],
-    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py part 2 (one-date latent-normal example, bivariate-normal quadrature against 200,000 draws, seed 20261071, five correlations, lower-tail default; part 1, a non-unit-discount PV CVA added in the L2 correction pass); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.counterparty_xva.counterparty_xva_checks part 2 (one-date latent-normal example, bivariate-normal quadrature against 200,000 draws, seed 20261071, five correlations, lower-tail default; part 1, a non-unit-discount PV CVA added in the L2 correction pass); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21224,7 +21224,7 @@
     "entry_evidence": [
      "rule:counterparty-credit-cva-capital"
     ],
-    "example": "notes/artefacts/counterparty-xva/counterparty-capital-check.py (SA-CCR for an unmargined four-year swap with and without excess collateral, default-risk capital at an illustrative risk weight, reduced BA-CVA for one and two counterparties, US commercial end-user alpha; deterministic, original inputs); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; Batch L3 audit corrections (2026-10-21): maturity-factor floor counterexample (5 business days: 0.2, not 0.141) and the BA-CVA exposure area (13.8225 currency-years against EEPE 3.8127) checked; four-year example unchanged"
+    "example": "trading_notes.numerical.counterparty_xva.counterparty_capital_checks (SA-CCR for an unmargined four-year swap with and without excess collateral, default-risk capital at an illustrative risk weight, reduced BA-CVA for one and two counterparties, US commercial end-user alpha; deterministic, original inputs); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; Batch L3 audit corrections (2026-10-21): maturity-factor floor counterexample (5 business days: 0.2, not 0.141) and the BA-CVA exposure area (13.8225 currency-years against EEPE 3.8127) checked; four-year example unchanged"
    },
    "supersedes": null
   },
@@ -21271,7 +21271,7 @@
     "entry_evidence": [
      "mod:gaussian-copula-default-correlation"
     ],
-    "example": "notes/artefacts/default-correlation/default-correlation-checks.py part 1 (Hull's basket probabilities, RMFI Table 9.5 and Example 9.2, CRE99 corporate risk weights from the CRE31.5 formula, the IRB conditional default rate against the WCDR); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.default_correlation.default_correlation_checks part 1 (Hull's basket probabilities, RMFI Table 9.5 and Example 9.2, CRE99 corporate risk weights from the CRE31.5 formula, the IRB conditional default rate against the WCDR); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21309,7 +21309,7 @@
     "entry_evidence": [
      "meth:tranche-loss-base-correlation"
     ],
-    "example": "notes/artefacts/default-correlation/default-correlation-checks.py parts 1-3 (Hull's Example 25.2; large-pool, exact finite-pool and 1,000-name Monte Carlo tranche losses, seed 20261081; granularity gaps reported; compound and base correlation on a synthetic mixture market); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.default_correlation.default_correlation_checks parts 1-3 (Hull's Example 25.2; large-pool, exact finite-pool and 1,000-name Monte Carlo tranche losses, seed 20261081; granularity gaps reported; compound and base correlation on a synthetic mixture market); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21357,7 +21357,7 @@
     "entry_evidence": [
      "meth:extreme-value-tail-estimation"
     ],
-    "example": "notes/artefacts/extreme-value/extreme-value-checks.py (RMFI sec. 12.6 reproduced; exact Pareto Hill benchmark, t4 finite-threshold functional at n = 1e6, GPD score and likelihood, exact POT formulas; diagnostics for ML bias, finite-threshold bias, bootstrap coverage, threshold sensitivity and the GARCH-GPD two-step; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.extreme_values.extreme_value_checks (RMFI sec. 12.6 reproduced; exact Pareto Hill benchmark, t4 finite-threshold functional at n = 1e6, GPD score and likelihood, exact POT formulas; diagnostics for ML bias, finite-threshold bias, bootstrap coverage, threshold sensitivity and the GARCH-GPD two-step; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21400,7 +21400,7 @@
     "entry_evidence": [
      "meth:correlation-independence-tests"
     ],
-    "example": "notes/artefacts/inference-simulation/correlation-independence-checks.py (OpenStax sec. 12.4 and Example 11.6 reproduced; SciPy agreement, ties and transforms; size of the 5% tests on 20,000 replications, seed 20261101; overlapping-horizon diagnostic, seed 20261103); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.statistical_inference.correlation_independence_checks (OpenStax sec. 12.4 and Example 11.6 reproduced; SciPy agreement, ties and transforms; size of the 5% tests on 20,000 replications, seed 20261101; overlapping-horizon diagnostic, seed 20261103); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21481,7 +21481,7 @@
     "entry_evidence": [
      "meth:margin-purchase-leverage"
     ],
-    "example": "notes/artefacts/short-term-funding/margin-purchase-check.py (static long and short call prices against roots; dated ledgers with interest, rebate, fee, commission and dividend; levered-return identity; deterministic, original inputs); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.securities_lending.margin_purchase_checks (static long and short call prices against roots; dated ledgers with interest, rebate, fee, commission and dividend; levered-return identity; deterministic, original inputs); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },

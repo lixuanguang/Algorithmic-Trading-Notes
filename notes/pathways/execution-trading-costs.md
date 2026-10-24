@@ -100,7 +100,7 @@ In `trade-strategy-governance.tex` (topic `trade-execution`):
 - `def:trade-implementation-by-market`: implementation in equities, fixed income, listed and OTC derivatives and spot FX.
 - `meth:trade-execution-evaluation-governance`: cost measurement, statistical evaluation and procedures under FINRA Rule 5310 and MiFID II article 27.
 
-All partly checked 2026-10-19, draft. Examples in `notes/artefacts/trade-execution/trade-execution-checks.py`; human review is outstanding. Coverage records are editorial, not study. `def:transaction-costs`, `def:implementation-shortfall`, `def:spread-measures`, `def:execution-benchmark` and `mech:venue-competition-fragmentation` are linked, not repeated.
+All partly checked 2026-10-19, draft. Examples in `trading_notes.numerical.trade_strategy_governance.trade_execution_checks`; human review is outstanding. Coverage records are editorial, not study. `def:transaction-costs`, `def:implementation-shortfall`, `def:spread-measures`, `def:execution-benchmark` and `mech:venue-competition-fragmentation` are linked, not repeated.
 
 ## Source verification after macro markets and pricing review
 

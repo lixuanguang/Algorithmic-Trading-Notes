@@ -18,7 +18,13 @@ from unittest import mock
 
 import numpy as np
 
-from trading_notes.numerical import sharpe_statistics as sh
+from trading_notes.numerical.backtest_evaluation import sharpe_statistics_checks as sh
+from trading_notes.numerical.backtest_evaluation.sharpe_inference import (
+    EULER_GAMMA,
+    SharpeEstimate,
+    ar1_annualisation_factor,
+    expected_maximum_sharpe,
+)
 from trading_notes.numerical.report import CheckReport
 
 
@@ -33,7 +39,7 @@ class StandardError(unittest.TestCase):
 
     def test_zero_sharpe_ratio(self) -> None:
         """At SR = 0 the standard error is 1 / sqrt(T)."""
-        self.assertEqual(sh.se(0.0, 64), 0.125)
+        self.assertEqual(SharpeEstimate(ratio=0.0, observations=64).normal_standard_error(), 0.125)
 
 
 class Annualisation(unittest.TestCase):
@@ -46,14 +52,14 @@ class Annualisation(unittest.TestCase):
             with self.subTest(q=q, rho=rho):
                 want = eta_from_covariance(q, rho)
                 self.assertAlmostEqual(sh.eta_sum(q, rho), want, delta=1e-9 * want)
-                self.assertAlmostEqual(sh.eta_22(q, rho), want, delta=1e-9 * want)
+                self.assertAlmostEqual(ar1_annualisation_factor(q, rho), want, delta=1e-9 * want)
 
     def test_zero_correlation(self) -> None:
         """At rho = 0 the closed form returns sqrt(q) itself, and its limit on either side."""
-        self.assertEqual(sh.eta_22(12, 0.0), math.sqrt(12))
+        self.assertEqual(ar1_annualisation_factor(12, 0.0), math.sqrt(12))
         self.assertAlmostEqual(sh.eta_sum(12, 0.0), math.sqrt(12), places=14)
         for rho in (1e-7, -1e-7):
-            self.assertAlmostEqual(sh.eta_22(12, rho), math.sqrt(12), places=5)
+            self.assertAlmostEqual(ar1_annualisation_factor(12, rho), math.sqrt(12), places=5)
 
 
 class DeflatedSharpe(unittest.TestCase):
@@ -65,17 +71,20 @@ class DeflatedSharpe(unittest.TestCase):
         for N, g3, g4 in ((100, -3, 10), (46, -3, 10), (88, 0, 3)):
             with self.subTest(N=N):
                 s0 = math.sqrt(sh.EXAMPLE_V) * (
-                    (1 - sh.EULER_GAMMA) * z.inv_cdf(1 - 1 / N)
-                    + sh.EULER_GAMMA * z.inv_cdf(1 - 1 / (N * math.e))
+                    (1 - EULER_GAMMA) * z.inv_cdf(1 - 1 / N)
+                    + EULER_GAMMA * z.inv_cdf(1 - 1 / (N * math.e))
                 )
-                self.assertAlmostEqual(sh.sr0(N, sh.EXAMPLE_V), s0, places=12)
+                self.assertAlmostEqual(expected_maximum_sharpe(N, sh.EXAMPLE_V), s0, places=12)
                 sr = sh.EXAMPLE_SR
                 x = (sr - s0) * math.sqrt(1250 - 1) / math.sqrt(1 - g3 * sr + (g4 - 1) / 4 * sr**2)
-                self.assertAlmostEqual(sh.dsr(sr, s0, 1250, g3, g4), z.cdf(x), places=12)
+                estimate = SharpeEstimate(ratio=sr, observations=1250, skewness=g3, kurtosis=g4)
+                self.assertAlmostEqual(estimate.deflated(N, sh.EXAMPLE_V), z.cdf(x), places=12)
 
     def test_observed_equal_to_expected_maximum(self) -> None:
         """When SR equals SR0, DSR is one half."""
-        self.assertEqual(sh.dsr(0.1, 0.1, 1250, -3, 10), 0.5)
+        sr0 = expected_maximum_sharpe(100, sh.EXAMPLE_V)
+        estimate = SharpeEstimate(ratio=sr0, observations=1250, skewness=-3, kurtosis=10)
+        self.assertEqual(estimate.deflated(100, sh.EXAMPLE_V), 0.5)
 
     def test_annual_inputs_become_per_observation(self) -> None:
         """V = 1/2 and SR = 2.5 a year become 1/500 and 2.5 / sqrt(250) per observation."""

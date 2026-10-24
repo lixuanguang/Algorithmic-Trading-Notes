@@ -12,6 +12,21 @@ DISPLAY_NAMES: Final = {
 }
 
 
+def section(title: str) -> None:
+    """Print a section heading, `== <title>`, after a blank line."""
+    print("\n== " + title)
+
+
+def require(failed: list[str], name: str, cond: bool) -> None:
+    """Append name to failed when cond is false; a passing condition prints nothing.
+
+    For checks that print only their failures: the caller prints the collected names once
+    the run ends and turns them into the exit status.
+    """
+    if not cond:
+        failed.append(name)
+
+
 class Versioned(Protocol):
     """A library module with a version, as NumPy, SciPy and statsmodels are."""
 

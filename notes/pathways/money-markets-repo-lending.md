@@ -42,13 +42,13 @@ Written in the derivatives, portfolio and execution batch (2026-10-19):
 
 - `def:short-term-funding-repo`: company and institution funding sources (bank lines, commercial paper with backup lines, letters of credit; deposits and wholesale funding) and repo mechanics, uses, benefits and risks (Handbook chaps. 13 and 60; RMFI 6th ed., chap. 21).
 
-Partly checked 2026-10-19, draft. Example in `notes/artefacts/short-term-funding/funding-repo-checks.py`; human review is outstanding. Coverage records are editorial, not study.
+Partly checked 2026-10-19, draft. Example in `trading_notes.numerical.money_markets.funding_repo_checks`; human review is outstanding. Coverage records are editorial, not study.
 
 Written in library gap-filling Batch L2 (2026-10-21), in `portfolio-risk-financing/securities-lending.tex`:
 
 - `meth:margin-purchase-leverage`: Regulation T initial margin (with the 220.12(c)(2) and (d) short-sale exceptions) and FINRA Rule 4210 maintenance (texts retrieved 2026-10-21), the leverage ratio, levered return after interest and commissions, and long and short margin-call prices from the loan or credit balance at the date, with dated ledgers.
 
-Partly checked 2026-10-21, draft. Checks in `notes/artefacts/short-term-funding/margin-purchase-check.py` (deterministic, original inputs). Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+Partly checked 2026-10-21, draft. Checks in `trading_notes.numerical.securities_lending.margin_purchase_checks` (deterministic, original inputs). Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
 
 ## Source verification after macro markets and pricing review
 

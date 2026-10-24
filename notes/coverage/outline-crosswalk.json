@@ -9627,7 +9627,7 @@
    "objectives": [
     "objective:analyse-corporate-credit"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:corporate-credit-analysis calculates and interprets leverage, coverage and FFO/debt for Kestrel Logistics against rating benchmarks; checked by credit-cds-securitisation-checks.py part 2.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:corporate-credit-analysis calculates and interprets leverage, coverage and FFO/debt for Kestrel Logistics against rating benchmarks; checked by trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks part 2.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12252,7 +12252,7 @@
    "objectives": [
     "objective:formulate-multiple-regression"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-formulation formulates the Baa excess-return regression on Treasury and equity factors (1928-2025) and interprets the partial slopes; checked by multiple-regression-checks.py part 1.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-formulation formulates the Baa excess-return regression on Treasury and equity factors (1928-2025) and interprets the partial slopes; checked by trading_notes.numerical.multiple_regression.multiple_regression_checks part 1.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12335,7 +12335,7 @@
    "objectives": [
     "objective:test-multiple-regression-fit"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-fit-tests calculates a predicted Baa excess return with its interval by hand and by statsmodels; checked by multiple-regression-checks.py part 2.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-fit-tests calculates a predicted Baa excess return with its interval by hand and by statsmodels; checked by trading_notes.numerical.multiple_regression.multiple_regression_checks part 2.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12456,7 +12456,7 @@
    "objectives": [
     "objective:extend-regression-models"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-extensions formulates intercept and slope dummies (post-1980) and interprets them; checked by multiple-regression-checks.py part 4.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-extensions formulates intercept and slope dummies (post-1980) and interprets them; checked by trading_notes.numerical.multiple_regression.multiple_regression_checks part 4.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12498,7 +12498,7 @@
    "objectives": [
     "objective:fit-trend-models"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:trend-models calculates and evaluates linear and log-linear trend values for the US price level; checked by time-series-checks.py part 1.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:trend-models calculates and evaluates linear and log-linear trend values for the US price level; checked by trading_notes.numerical.time_series_models.time_series_checks part 1.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19501,7 +19501,7 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the steps and contrasts walk-forward (expanding and rolling), cross-validated and simulation procedures (AFML pp. 161-166). Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by backtest-design-checks.py (19 checks).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the steps and contrasts walk-forward (expanding and rolling), cross-validated and simulation procedures (AFML pp. 161-166). Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by trading_notes.numerical.backtest_evaluation.backtest_design_checks (19 checks).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19521,7 +19521,7 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation interprets return, volatility, Sharpe and Sortino ratios, drawdown, hit rate, turnover, cost drag and trial counts, and the cumulative, underwater and rolling charts, linking meth:backtest-evaluation-diagnostics. Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by backtest-design-checks.py (19 checks).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation interprets return, volatility, Sharpe and Sortino ratios, drawdown, hit rate, turnover, cost drag and trial counts, and the cumulative, underwater and rolling charts, linking meth:backtest-evaluation-diagnostics. Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by trading_notes.numerical.backtest_evaluation.backtest_design_checks (19 checks).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19541,7 +19541,7 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation identifies survivorship, look-ahead, data snooping, cost, outlier, storytelling and shorting problems (AFML pp. 151-152), each shown on a synthetic universe. Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by backtest-design-checks.py (19 checks).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation identifies survivorship, look-ahead, data snooping, cost, outlier, storytelling and shorting problems (AFML pp. 151-152), each shown on a synthetic universe. Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by trading_notes.numerical.backtest_evaluation.backtest_design_checks (19 checks).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },

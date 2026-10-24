@@ -1,4 +1,3 @@
-# third party library imports
 from pandas import DataFrame
 from statsmodels.formula.api import FormulaResults
 

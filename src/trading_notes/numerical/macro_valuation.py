@@ -22,15 +22,12 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.macro_valua
 (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 
-# third party library imports
 import numpy as np
 import scipy
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 

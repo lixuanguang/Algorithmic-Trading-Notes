@@ -62,7 +62,6 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.private_wea
 (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import datetime
 import itertools
 import math
@@ -70,13 +69,11 @@ import sys
 from collections.abc import Sequence
 from typing import Final
 
-# third party library imports
 import numpy as np
 import scipy
 from numpy.typing import NDArray
 from scipy.optimize import brentq
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Floats = NDArray[np.float64]

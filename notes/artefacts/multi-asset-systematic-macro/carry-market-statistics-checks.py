@@ -21,7 +21,6 @@
    Lehalle and Laruelle's (A.4), with s*Delta = Delta_FKK/2, Gamma = L and r = gamma/beta.
 """
 
-# standard library imports
 import csv
 import math
 import os

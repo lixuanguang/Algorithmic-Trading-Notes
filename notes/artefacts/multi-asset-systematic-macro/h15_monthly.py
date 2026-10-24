@@ -15,7 +15,6 @@ Usage: uv run --frozen --no-editable python h15_monthly.py --extract H15_data.xm
        uv run --frozen --no-editable python h15_monthly.py                          (rebuild h15-spread-monthly.csv)
 """
 
-# standard library imports
 import csv
 import datetime as dt
 import os
@@ -28,7 +27,6 @@ RETRIEVED = dt.date(2026, 10, 16)
 
 
 def extract(xml_path):
-    # standard library imports
     import xml.etree.ElementTree as ET
 
     want = {"RIFSGFSM03_N.B": "tb3m_discount", "RIFLGFCY10_N.B": "cmt_10y"}

@@ -26,18 +26,15 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.macro_polic
 (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 import scipy
 from numpy.typing import NDArray
 from scipy.optimize import brentq
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Floats = NDArray[np.float64]

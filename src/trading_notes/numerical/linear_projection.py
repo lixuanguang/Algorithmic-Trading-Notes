@@ -15,17 +15,14 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.linear_proj
 (numpy; under 1 s). Exits non-zero on failure.
 """
 
-# standard library imports
 import itertools
 import sys
 from dataclasses import dataclass
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 SEED: Final = 17102026

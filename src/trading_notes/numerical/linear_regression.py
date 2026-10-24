@@ -29,14 +29,12 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.linear_regr
 (numpy, scipy, statsmodels). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 from dataclasses import dataclass
 from fractions import Fraction
 from typing import Final
 
-# third party library imports
 import numpy as np
 import pandas as pd
 import scipy
@@ -48,7 +46,6 @@ from scipy import integrate, stats
 from statsmodels.regression.linear_model import RegressionResults
 from statsmodels.stats.anova import anova_lm
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Floats = NDArray[np.float64]

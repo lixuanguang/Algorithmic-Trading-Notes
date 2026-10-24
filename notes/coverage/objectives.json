@@ -1936,7 +1936,7 @@
     "entry_evidence": [
      "meth:portfolio-return-moments"
     ],
-    "example": "notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py (three-state model: end-value aggregation, expanded and matrix variance, Cov(P, Q) = w'Sigma v against direct portfolio moments; six-month history: N-1 and N estimates against numpy, w'Sw against the rebalanced series, buy-and-hold drift); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.portfolio_moments.portfolio_moments_checks (three-state model: end-value aggregation, expanded and matrix variance, Cov(P, Q) = w'Sigma v against direct portfolio moments; six-month history: N-1 and N estimates against numpy, w'Sw against the rebalanced series, buy-and-hold drift); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -1980,7 +1980,7 @@
     "entry_evidence": [
      "meth:efficient-frontier"
     ],
-    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py part 3 and figure (closed-form frontier and GMV against SLSQP; long-only boundary solution with KKT; infeasible target; dominated portfolios; simplex grid; figure coordinates); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.portfolio_choice.portfolio_choice_checks part 3 and figure (closed-form frontier and GMV against SLSQP; long-only boundary solution with KKT; infeasible target; dominated portfolios; simplex grid; figure coordinates); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -2039,7 +2039,7 @@
      "def:risk-aversion-utility",
      "meth:efficient-frontier"
     ],
-    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py part 4 and figure (tangency against maximum-Sharpe SLSQP; y* grid checks; A = 4 point and indifference curve; borrowing at 3.5 and 5 percent); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.portfolio_choice.portfolio_choice_checks part 4 and figure (tangency against maximum-Sharpe SLSQP; y* grid checks; A = 4 point and indifference curve; borrowing at 3.5 and 5 percent); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -2412,7 +2412,7 @@
     "entry_evidence": [
      "meth:cost-output-shutdown"
     ],
-    "example": "notes/artefacts/firms-market-structure/market-structure-checks.py: parts 1-2 (shutdown 24, breakeven 40.42; MES 707, natural monopoly, tangency at 289); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.firms_market_structure.market_structure_checks: parts 1-2 (shutdown 24, breakeven 40.42; MES 707, natural monopoly, tangency at 289); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -2454,7 +2454,7 @@
     "entry_evidence": [
      "def:market-structures-pricing"
     ],
-    "example": "notes/artefacts/firms-market-structure/market-structure-checks.py: part 3 (Cournot closed form against iteration; Stackelberg, Bertrand, cartel deviation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.firms_market_structure.market_structure_checks: part 3 (Cournot closed form against iteration; Stackelberg, Bertrand, cartel deviation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -2501,7 +2501,7 @@
     "entry_evidence": [
      "meth:market-structure-identification"
     ],
-    "example": "notes/artefacts/firms-market-structure/market-structure-checks.py: part 4 (CR4 80, HHI 1,950, merger +300; HHI/elasticity markup); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.firms_market_structure.market_structure_checks: part 4 (CR4 80, HHI 1,950, merger +300; HHI/elasticity markup); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -3010,7 +3010,7 @@
     "entry_evidence": [
      "def:organisational-forms-issuers"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 1 (tax wedge by organisational form); corrected 2026-10-20 (PR #31 audit): LP, LLP and LLC liability separated from Delaware primary law (6 Del. C. secs. 15-306, 15-1001, 17-303, 17-403, 18-303)",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 1 (tax wedge by organisational form); corrected 2026-10-20 (PR #31 audit): LP, LLP and LLC liability separated from Delaware primary law (6 Del. C. secs. 15-306, 15-1001, 17-303, 17-403, 18-303)",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -3058,7 +3058,7 @@
     "entry_evidence": [
      "def:stakeholder-claims"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 2 (risk shifting under limited liability)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 2 (risk shifting under limited liability)"
    },
    "supersedes": null
   },
@@ -3105,7 +3105,7 @@
     "entry_evidence": [
      "meth:corporate-governance-evaluation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (control against cash-flow rights)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 3 (control against cash-flow rights)"
    },
    "supersedes": null
   },
@@ -3147,7 +3147,7 @@
     "entry_evidence": [
      "meth:cash-conversion-cycle"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 6 (Harbour CCC, peer, cash release, liquidity ratios)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 6 (Harbour CCC, peer, cash release, liquidity ratios)"
    },
    "supersedes": null
   },
@@ -3194,7 +3194,7 @@
     "entry_evidence": [
      "meth:working-capital-policy"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 7 (trade-credit cost; matching, conservative and aggressive financing)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 7 (trade-credit cost; matching, conservative and aggressive financing)"
    },
    "supersedes": null
   },
@@ -3232,7 +3232,7 @@
     "entry_evidence": [
      "meth:capital-project-evaluation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 8 (incremental cash flows two ways, NPV, IRR by root search, ROIC, NPV-IRR conflict, multiple IRRs)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 8 (incremental cash flows two ways, NPV, IRR by root search, ROIC, NPV-IRR conflict, multiple IRRs)"
    },
    "supersedes": null
   },
@@ -3268,7 +3268,7 @@
     "entry_evidence": [
      "meth:capital-allocation-principles"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 8 (rationing by PI against brute-force search, equivalent annual cost against replication, expansion option)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 8 (rationing by PI against brute-force search, equivalent annual cost against replication, expansion option)"
    },
    "supersedes": null
   },
@@ -3306,7 +3306,7 @@
     "entry_evidence": [
      "meth:wacc-calculation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 9 (market against book weights, rate sensitivity); corrected 2026-10-20 (PR #31 audit): options counted in market equity (17.94): ke 9.32%, WACC 8.02% unchanged; pension-as-debt effect quantified",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 9 (market against book weights, rate sensitivity); corrected 2026-10-20 (PR #31 audit): options counted in market equity (17.94): ke 9.32%, WACC 8.02% unchanged; pension-as-debt effect quantified",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -3352,7 +3352,7 @@
      "mod:capital-structure-theory",
      "meth:wacc-calculation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 10 (MM without and with taxes, homemade leverage, trade-off optimum by grid and first-order condition); part 9 (market against book weights, rate sensitivity); corrected 2026-10-20 (PR #31 audit): WACC example claim definitions corrected (options in equity); theory content unchanged",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 10 (MM without and with taxes, homemade leverage, trade-off optimum by grid and first-order condition); part 9 (market against book weights, rate sensitivity); corrected 2026-10-20 (PR #31 audit): WACC example claim definitions corrected (options in equity); theory content unchanged",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -3399,7 +3399,7 @@
     "entry_evidence": [
      "def:business-model-features-types"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 5 (platform take rate)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 5 (platform take rate)"
    },
    "supersedes": null
   },
@@ -3435,7 +3435,7 @@
     "entry_evidence": [
      "def:statement-analysis-framework"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3496,7 +3496,7 @@
     "entry_evidence": [
      "def:filings-disclosures-information-sources"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: descriptive; no numerical check; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: descriptive; no numerical check; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3572,7 +3572,7 @@
     "entry_evidence": [
      "def:ifrs-us-gaap-reporting-systems"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 19 (Harbour against Ridgeline on a common basis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 19 (Harbour against Ridgeline on a common basis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3623,7 +3623,7 @@
     "entry_evidence": [
      "meth:revenue-recognition-analysis"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 5 (allocation, timing, contract liability, constraint, principal/agent); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 5 (allocation, timing, contract liability, constraint, principal/agent); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3695,7 +3695,7 @@
     "entry_evidence": [
      "meth:expense-recognition-capitalisation"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 6 (constant and growing spend; cumulative difference = asset; capitalised interest and coverage); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 6 (constant and growing spend; cumulative difference = asset; capitalised interest and coverage); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3751,7 +3751,7 @@
     "entry_evidence": [
      "meth:non-recurring-items"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 2 and 20 (restructuring add-back and ROE; estimate and policy changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 2 and 20 (restructuring add-back and ROE; estimate and policy changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3799,7 +3799,7 @@
     "entry_evidence": [
      "meth:earnings-per-share"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 4 (weighted shares by formula and month by month; IAS 33 sequencing = subset minimum; antidilution; Harbour EPS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 4 (weighted shares by formula and month by month; IAS 33 sequencing = subset minimum; antidilution; Harbour EPS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3868,7 +3868,7 @@
      "meth:income-statement-ratios",
      "ex:harbour-tools-statements"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (common-size income statement reconciles to 100%; margins); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 2 (common-size income statement reconciles to 100%; margins); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3924,7 +3924,7 @@
     "entry_evidence": [
      "meth:intangibles-goodwill-reporting"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 8 (goodwill from a purchase-price allocation with deferred tax); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 8 (goodwill from a purchase-price allocation with deferred tax); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -3985,7 +3985,7 @@
     "entry_evidence": [
      "meth:financial-instruments-liabilities"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (covenant-breach reclassification: current ratio 1.84 to 0.94); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): conceptual equity-election example (eligible versus held-for-trading holding), no new numerical check"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 2 (covenant-breach reclassification: current ratio 1.84 to 0.94); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): conceptual equity-election example (eligible versus held-for-trading holding), no new numerical check"
    },
    "supersedes": null
   },
@@ -4040,7 +4040,7 @@
      "meth:balance-sheet-ratios",
      "ex:harbour-tools-statements"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (common-size assets sum to 100%; liquidity and solvency ratios; pension-adjusted debt to equity); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 2 (common-size assets sum to 100%; liquidity and solvency ratios; pension-adjusted debt to equity); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4084,7 +4084,7 @@
     "entry_evidence": [
      "meth:statement-linked-cash-flows"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py"
+    "example": "trading_notes.numerical.cash_flow_analysis.cash_flow_linkage_checks"
    },
    "supersedes": null
   },
@@ -4124,7 +4124,7 @@
     "entry_evidence": [
      "meth:statement-linked-cash-flows"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py (receivables, inventory, payables, prepaid insurance and wages payable converted line by line; direct and indirect totals 197)"
+    "example": "trading_notes.numerical.cash_flow_analysis.cash_flow_linkage_checks (receivables, inventory, payables, prepaid insurance and wages payable converted line by line; direct and indirect totals 197)"
    },
    "supersedes": null
   },
@@ -4178,7 +4178,7 @@
     "entry_evidence": [
      "meth:statement-linked-cash-flows"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py (US GAAP CFO 177 against IFRS 18 CFO 197; the difference is interest paid)",
+    "example": "trading_notes.numerical.cash_flow_analysis.cash_flow_linkage_checks (US GAAP CFO 177 against IFRS 18 CFO 197; the difference is interest paid)",
     "limitations": "The current Codification was not accessible (FASB and DART require login); 230-10-45-15 to 45-25 are read as reprinted in ASU 2016-15 and 45-28 to 45-30 as quoted by DART in 2026. FASB staff papers of 2025-2026 treat interest classification as research feedback, consistent with no later change."
    },
    "supersedes": null
@@ -4244,7 +4244,7 @@
      "meth:cash-flow-interpretation",
      "ex:harbour-tools-statements"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 3 (common-size cash flows; adequacy); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 3 (common-size cash flows; adequacy); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4302,7 +4302,7 @@
     "entry_evidence": [
      "meth:free-cash-flow-coverage"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 3 (FCFF two routes with explicit bridge; FCFE from CFO and from FCFF; FCFE = distributions + change in cash; coverage ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 3 adds lease-addition, FCFE-invariance, valuation-FCFF and FCFF-FCFE identity checks; part 17 adds forecast-year CFO and NOPAT routes and FCFE invariance"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 3 (FCFF two routes with explicit bridge; FCFE from CFO and from FCFF; FCFE = distributions + change in cash; coverage ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 3 adds lease-addition, FCFE-invariance, valuation-FCFF and FCFF-FCFE identity checks; part 17 adds forecast-year CFO and NOPAT routes and FCFE invariance"
    },
    "supersedes": null
   },
@@ -4348,7 +4348,7 @@
     "entry_evidence": [
      "meth:inventory-measurement-nrv"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 7 (NRV write-down and capped reversal); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 7 (NRV write-down and capped reversal); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4390,7 +4390,7 @@
     "entry_evidence": [
      "meth:inventory-cost-formulas"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 7 (layer simulation for FIFO, WAC, LIFO under rising and falling costs; holding gain; LIFO reserve restatement and inflation bridge; liquidation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 7 (layer simulation for FIFO, WAC, LIFO under rising and falling costs; holding gain; LIFO reserve restatement and inflation bridge; liquidation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4437,7 +4437,7 @@
     "entry_evidence": [
      "meth:inventory-disclosure-analysis"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 2 and 14 (days of inventory; variant); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 2 and 14 (days of inventory; variant); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4498,7 +4498,7 @@
     "entry_evidence": [
      "meth:intangible-acquisition-routes"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 8 (internal project IFRS vs US; purchase-price allocation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 8 (internal project IFRS vs US; purchase-price allocation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4547,7 +4547,7 @@
     "entry_evidence": [
      "meth:impairment-derecognition"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 9 (IAS 36 vs US test; capped reversal; ROA after write-down; disposal gain from the ledger; PP&E age identity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 9 (IAS 36 vs US test; capped reversal; ROA after write-down; disposal gain from the ledger; PP&E age identity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4588,7 +4588,7 @@
     "entry_evidence": [
      "meth:lease-reporting"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 10 (schedule vs annuity; expense profiles; ROU assets; lessor totals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 10 (schedule vs annuity; expense profiles; ROU assets; lessor totals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4645,7 +4645,7 @@
     "entry_evidence": [
      "meth:post-employment-benefit-reporting"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 11 (roll-forward; IFRS vs US P&L and OCI totals; economic cost); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 11 (roll-forward; IFRS vs US P&L and OCI totals; economic cost); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4720,7 +4720,7 @@
      "meth:share-based-compensation-reporting",
      "meth:post-employment-benefit-reporting"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 12 (BSM vs Monte Carlo; forfeiture true-up); part 11 (roll-forward; IFRS vs US P&L and OCI totals; economic cost); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 12 (BSM vs Monte Carlo; forfeiture true-up); part 11 (roll-forward; IFRS vs US P&L and OCI totals; economic cost); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4781,7 +4781,7 @@
     "entry_evidence": [
      "def:long-term-liability-compensation-disclosures"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 11 (duration sensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 11 (duration sensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4827,7 +4827,7 @@
     "entry_evidence": [
      "def:accounting-taxable-profit-differences"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 1 and 13 (taxable profit, current and deferred tax in the ledger); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 1 and 13 (taxable profit, current and deferred tax in the ledger); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4884,7 +4884,7 @@
     "entry_evidence": [
      "meth:deferred-tax-analysis"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 13 (DTL roll-forward; rate change; reversal simulation with and without growth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 13 (DTL roll-forward; rate change; reversal simulation with and without growth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4934,7 +4934,7 @@
     "entry_evidence": [
      "meth:tax-rate-measures"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 13 (rate reconciliation; ETR, current and cash rates); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 13 (rate reconciliation; ETR, current and cash rates); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4981,7 +4981,7 @@
     "entry_evidence": [
      "def:reporting-results-quality"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (variant); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 14 (variant); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5027,7 +5027,7 @@
     "entry_evidence": [
      "def:reporting-incentives-discipline"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: descriptive; no numerical check; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: descriptive; no numerical check; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5084,7 +5084,7 @@
     "entry_evidence": [
      "meth:earnings-management-presentation"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 14 and 20 (variant effects; MPM reconciliation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): SEC staff interpretation of the two-year condition applied to the restructuring example, conceptual"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 14 and 20 (variant effects; MPM reconciliation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): SEC staff interpretation of the two-year condition applied to the restructuring example, conceptual"
    },
    "supersedes": null
   },
@@ -5125,7 +5125,7 @@
     "entry_evidence": [
      "meth:reporting-warning-signs"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (indicators reported vs variant; supplier finance masks accruals; Sloan measure); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 14 (indicators reported vs variant; supplier finance masks accruals; Sloan measure); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5163,7 +5163,7 @@
     "entry_evidence": [
      "meth:financial-ratio-families"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (ratio families 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 2 (ratio families 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5205,7 +5205,7 @@
     "entry_evidence": [
      "meth:ratio-based-evaluation"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 2; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5243,7 +5243,7 @@
     "entry_evidence": [
      "meth:return-on-equity-decomposition"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (three- and five-factor identities; RNOA + FLEV x spread; exact log attribution); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 2 (three- and five-factor identities; RNOA + FLEV x spread; exact log attribution); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5279,7 +5279,7 @@
     "entry_evidence": [
      "meth:ratio-based-earnings-forecast"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 15 and 17 (forecast; RNOA reasonableness; one-point margin sensitivity in the full model); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 15 and 17 (forecast; RNOA reasonableness; one-point margin sensitivity in the full model); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5325,7 +5325,7 @@
     "entry_evidence": [
      "ex:harbour-pro-forma-model"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 15 (balance sheet balances without a plug; revolver rule; iteration; growth decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 15 asset-schedule checks (superseded rules detected; each schedule exhausts cost once; vintage-sum route)"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 15 (balance sheet balances without a plug; revolver rule; iteration; growth decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 15 asset-schedule checks (superseded rules detected; each schedule exhausts cost once; vintage-sum route)"
    },
    "supersedes": null
   },
@@ -5372,7 +5372,7 @@
     "entry_evidence": [
      "meth:forecast-biases-remedies"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 18 (interval coverage closed form vs simulation; reference-class intervals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 18 (interval coverage closed form vs simulation; reference-class intervals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5418,7 +5418,7 @@
     "entry_evidence": [
      "meth:competition-inflation-forecasting"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 16 (pass-through scenarios; contribution margin; nominal growth; deflation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 16 (pass-through scenarios; contribution margin; nominal growth; deflation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5459,7 +5459,7 @@
     "entry_evidence": [
      "meth:forecast-horizon-steady-state"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 17 (value-neutral growth; horizon extension invariance; naive terminal value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 17 separates NOPAT_2029-fixed and NOPAT_2028-fixed terminal checks, consistent valuation conventions and equity bridge"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 17 (value-neutral growth; horizon extension invariance; naive terminal value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 17 separates NOPAT_2029-fixed and NOPAT_2028-fixed terminal checks, consistent valuation conventions and equity bridge"
    },
    "supersedes": null
   },
@@ -5551,7 +5551,7 @@
     "entry_evidence": [
      "def:equity-rights-voting"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (cumulative voting, dual-class votes); corrected 2026-10-20 (PR #31 audit): cumulative-voting rule restated with N total shares voting and an integer floor, minimality checked",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 3 (cumulative voting, dual-class votes); corrected 2026-10-20 (PR #31 audit): cumulative-voting rule restated with N total shares voting and an integer floor, minimality checked",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -5595,7 +5595,7 @@
     "entry_evidence": [
      "def:equity-issuance-trading-liquidity"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 1 (free float, ADV, turnover, days to trade, spread)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 1 (free float, ADV, turnover, days to trade, spread)"
    },
    "supersedes": null
   },
@@ -5687,7 +5687,7 @@
      "def:corporate-distribution-mechanics",
      "meth:distribution-effects"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 13 (stock dividend, split, buyback EPS by financing, BVPS, value per share); notes/artefacts/systematic-equities/equity-valuation-checks.py: part 2 (ex-date price adjustment, reverse split)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 13 (stock dividend, split, buyback EPS by financing, BVPS, value per share); trading_notes.numerical.systematic_equities.equity_valuation_checks: part 2 (ex-date price adjustment, reverse split)"
    },
    "supersedes": null
   },
@@ -5763,7 +5763,7 @@
     "entry_evidence": [
      "def:price-value-indicators"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 3 (market cap, book, EV, estimate against price); corrected 2026-10-20 (PR #31 audit): market EV includes the option claim (1,479.77) and reconciles to the DCF bridge with the same claims",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 3 (market cap, book, EV, estimate against price); corrected 2026-10-20 (PR #31 audit): market EV includes the option claim (1,479.77) and reconciles to the DCF bridge with the same claims",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -5839,7 +5839,7 @@
     "entry_evidence": [
      "meth:present-value-model-inputs"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 17 (DDM, FCFE and residual income equal under clean surplus, closed form and year by year)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 17 (DDM, FCFE and residual income equal under clean surplus, closed form and year by year)"
    },
    "supersedes": null
   },
@@ -5880,7 +5880,7 @@
      "meth:gordon-growth-model",
      "meth:multistage-ddm"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 5 (Gordon against long sum, one-period, implied growth and return, sensitivity); part 8 (two-stage against long sum, dating errors, implied return, H-model against exact decline, three-stage)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 5 (Gordon against long sum, one-period, implied growth and return, sensitivity); part 8 (two-stage against long sum, dating errors, implied return, H-model against exact decline, three-stage)"
    },
    "supersedes": null
   },
@@ -5922,7 +5922,7 @@
     "entry_evidence": [
      "meth:preferred-stock-valuation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 6 and 18 (perpetual, callable to the call date, arrears); corrected 2026-10-20 (PR #31 audit): callable value 102.19 restated as conditional on redemption at an unchanged yield, not an option value",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: parts 6 and 18 (perpetual, callable to the call date, arrears); corrected 2026-10-20 (PR #31 audit): callable value 102.19 restated as conditional on redemption at an unchanged yield, not an option value",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -5963,7 +5963,7 @@
     "entry_evidence": [
      "meth:multiples-valuation-basics"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10-11 (Harbour P/E definitions, P/B, P/S, EV/EBITDA)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: parts 10-11 (Harbour P/E definitions, P/B, P/S, EV/EBITDA)"
    },
    "supersedes": null
   },
@@ -6004,7 +6004,7 @@
     "entry_evidence": [
      "meth:peer-group-selection"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10 and 18 (peer statistics with and without the outlier)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: parts 10 and 18 (peer statistics with and without the outlier)"
    },
    "supersedes": null
   },
@@ -6043,7 +6043,7 @@
     "entry_evidence": [
      "meth:forecast-model-valuation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 1 (Harbour value rebuilt from the forecast: 8.49 a share; scenarios 4.44-10.42; WACC/growth grid 6.14-13.35); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 1 (Harbour value rebuilt from the forecast: 8.49 a share; scenarios 4.44-10.42; WACC/growth grid 6.14-13.35); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -6097,7 +6097,7 @@
     "entry_evidence": [
      "meth:industry-analysis"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 14 (size, CAGR, share, HHI, merger change)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 14 (size, CAGR, share, HHI, merger change)"
    },
    "supersedes": null
   },
@@ -6134,7 +6134,7 @@
     "entry_evidence": [
      "meth:company-position-analysis"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: parts 6 and 16 (Harbour cash cycle, pro forma leverage)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: parts 6 and 16 (Harbour cash cycle, pro forma leverage)"
    },
    "supersedes": null
   },
@@ -6182,7 +6182,7 @@
     "entry_evidence": [
      "def:research-report-evaluation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 2 (three targets 13.11, 11.39, 8.49 bridged; implied WACC 6.95%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 2 (three targets 13.11, 11.39, 8.49 bridged; implied WACC 6.95%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -7496,7 +7496,7 @@
     "entry_evidence": [
      "meth:option-payoff-profit"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 1 (Hull's call and put examples, break-evens, financed premium); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 1 (Hull's call and put examples, break-evens, financed premium); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7579,7 +7579,7 @@
      "meth:arbitrage-replication-carry",
      "res:cost-of-carry-forward-price"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 2 (cash-and-carry and reverse arbitrage, expected spot against forward, Hull Examples 5.1-5.4 and others); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 2 (cash-and-carry and reverse arbitrage, expected spot against forward, Hull Examples 5.1-5.4 and others); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7633,7 +7633,7 @@
      "meth:forward-price-value-lifecycle",
      "meth:rate-bond-forward-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (value at inception, during the life and at expiry); notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward on a dated coupon calendar with a two-repo cash ledger and a carry decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 3 (value at inception, during the life and at expiry); trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward on a dated coupon calendar with a two-repo cash ledger and a carry decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7672,7 +7672,7 @@
     "entry_evidence": [
      "res:forward-futures-price-difference"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 4 (tailed futures replicate the forward with deterministic rates; two-period tree with positive and negative asset-rate correlation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 4 (tailed futures replicate the forward with deterministic rates; two-period tree with positive and negative asset-rate correlation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7715,7 +7715,7 @@
     "entry_evidence": [
      "def:swaps-as-forward-strips"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (par swap rate, off-market exchanges summing to zero); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 6 (par swap rate, off-market exchanges summing to zero); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7756,7 +7756,7 @@
      "def:option-value-drivers",
      "meth:option-payoff-profit"
     ],
-    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 1 (exercise and time value, negative time value of a deep in-the-money European put and the sign of each factor by bumping Hull's base case); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_valuation.option_valuation_checks part 1 (exercise and time value, negative time value of a deep in-the-money European put and the sign of each factor by bumping Hull's base case); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7792,7 +7792,7 @@
     "entry_evidence": [
      "res:put-call-forward-parity"
     ],
-    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 2 (Hull's parity arbitrages, Example 18.5 and put-call-forward parity against Black-Scholes prices); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_valuation.option_valuation_checks part 2 (Hull's parity arbitrages, Example 18.5 and put-call-forward parity against Black-Scholes prices); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -7829,7 +7829,7 @@
     "entry_evidence": [
      "meth:one-period-binomial-valuation"
     ],
-    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 3 (Hull's 0.545 call by hedge and by replication, an original arbitrage and independence from the real-world probability); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_valuation.option_valuation_checks part 3 (Hull's 0.545 call by hedge and by replication, an original arbitrage and independence from the real-world probability); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -8374,7 +8374,7 @@
     "entry_evidence": [
      "def:hedge-fund-features"
     ],
-    "example": "notes/artefacts/hedge-funds/hedge-fund-checks.py: parts 1-2 and 4 (Ang and Jaeger figures; fund of funds fee layers 1.20%/2.40%/0.18%; smoothing ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.hedge_fund_strategies.hedge_funds_checks: parts 1-2 and 4 (Ang and Jaeger figures; fund of funds fee layers 1.20%/2.40%/0.18%; smoothing ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -8527,7 +8527,7 @@
     "entry_evidence": [
      "def:asset-class-characteristics"
     ],
-    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py part 1 (1928-2025 US table reproduced from the workbook's summary rows; s.d., real means, worst years, premium standard error, subperiod means and correlations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.portfolio_choice.portfolio_choice_checks part 1 (1928-2025 US table reproduced from the workbook's summary rows; s.d., real means, worst years, premium standard error, subperiod means and correlations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -8586,7 +8586,7 @@
      "def:risk-aversion-utility",
      "meth:capital-allocation-line"
     ],
-    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py parts 2 and 4 (utility in decimal and percent units; CARA-normal certainty equivalent by integration; log-utility premia; y* for A = 2, 4, 8); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.portfolio_choice.portfolio_choice_checks parts 2 and 4 (utility in decimal and percent units; CARA-normal certainty equivalent by integration; log-utility premia; y* for A = 2, 4, 8); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -8627,7 +8627,7 @@
     "entry_evidence": [
      "mech:diversification-correlation"
     ],
-    "example": "notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py (s.d. at rho -1, 0, 0.3, +1; zero-variance weights; weighted-average bound; threshold rho < sigma2/sigma1; equal-weight floor; Longin and Solnik's 0.21 and 0.62 reproduced); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.portfolio_moments.portfolio_moments_checks (s.d. at rho -1, 0, 0.3, +1; zero-variance weights; weighted-average bound; threshold rho < sigma2/sigma1; equal-weight floor; Longin and Solnik's 0.21 and 0.62 reproduced); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9026,7 +9026,7 @@
     "entry_evidence": [
      "meth:risk-adjusted-performance-measures"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py parts 1-2 (Sharpe, Treynor, M-squared, Jensen and appraisal ratio; alpha against Treynor at positive, zero and negative beta; Bacon Table 5.6); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_attribution_appraisal.performance_evaluation_checks parts 1-2 (Sharpe, Treynor, M-squared, Jensen and appraisal ratio; alpha against Treynor at positive, zero and negative beta; Bacon Table 5.6); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9186,7 +9186,7 @@
      "meth:investment-policy-statement",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1-2 (Maginn's required returns; the case's 2.81 percent real after-tax requirement including the gains tax, after-tax scoring of candidate allocations and the resulting funding gap); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.investment_process_planning.investment_planning_checks parts 1-2 (Maginn's required returns; the case's 2.81 percent real after-tax requirement including the gains tax, after-tax scoring of candidate allocations and the resulting funding gap); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9225,7 +9225,7 @@
      "meth:investment-policy-statement",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (loss limit applied to candidate allocations before and after tax; the best mix within the limit); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.investment_process_planning.investment_planning_checks part 2 (loss limit applied to candidate allocations before and after tax; the best mix within the limit); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9264,7 +9264,7 @@
      "meth:investment-policy-statement",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1-3 (liquidity sleeve; tax basis of returns and requirement; gains tax on the staged sale of the concentrated holding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.investment_process_planning.investment_planning_checks parts 1-3 (liquidity sleeve; tax basis of returns and requirement; gains tax on the staged sale of the concentrated holding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9314,7 +9314,7 @@
      "meth:asset-class-portfolio-construction",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (allocation on a consistent after-tax basis, risk contributions, ranges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.investment_process_planning.investment_planning_checks part 2 (allocation on a consistent after-tax basis, risk contributions, ranges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9485,7 +9485,7 @@
     "entry_evidence": [
      "meth:risk-identification-modification"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 3 (index-futures hedge with the concentrated stock retained, tested against the loss limit during the staged sale); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.investment_process_planning.investment_planning_checks part 3 (index-futures hedge with the concentrated stock retained, tested against the loss limit during the staged sale); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -11039,7 +11039,7 @@
      "ev:cip-deviations",
      "meth:cross-currency-basis-swaps"
     ],
-    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 6 (the parity conditions tied together from Fisher, PPP and UIP); notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py (Batch L4, 2026-10-21: covered parity with a basis on one leg, the dollar-leg and foreign-leg conventions mapped exactly with annualisation at tau = 1 and 0.25, synthetic dollar funding, the inverted quote; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 6 (the parity conditions tied together from Fisher, PPP and UIP); trading_notes.numerical.forward_commitment_valuation.cross_currency_basis_checks (Batch L4, 2026-10-21: covered parity with a basis on one leg, the dollar-leg and foreign-leg conventions mapped exactly with annualisation at tau = 1 and 0.25, synthetic dollar funding, the inverted quote; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -11498,7 +11498,7 @@
     "entry_evidence": [
      "meth:share-based-compensation-modelling"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 4, 12 and 15 (treasury-stock dilution at forecast prices; forecast SBC); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 17 PV of add-backs (25.5276) and option claims by iterated BSM"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 4, 12 and 15 (treasury-stock dilution at forecast prices; forecast SBC); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 17 PV of add-backs (25.5276) and option claims by iterated BSM"
    },
    "supersedes": null
   },
@@ -11544,7 +11544,7 @@
     "entry_evidence": [
      "meth:post-employment-benefit-modelling"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 11, 15 and 21 (duration vs exact repricing; after-tax deficit; deficit in forecast and decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): valuation treatment of the deficit checked in parts 3 and 17"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 11, 15 and 21 (duration vs exact repricing; after-tax deficit; deficit in forecast and decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): valuation treatment of the deficit checked in parts 3 and 17"
    },
    "supersedes": null
   },
@@ -11912,7 +11912,7 @@
     "entry_evidence": [
      "meth:report-quality-evaluation"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (demonstration and restatement); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 14 (demonstration and restatement); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -11955,7 +11955,7 @@
     "entry_evidence": [
      "meth:earnings-quality-persistence"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (simulated persistence regression; Harbour accruals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 14 (simulated persistence regression; Harbour accruals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -12027,7 +12027,7 @@
     "entry_evidence": [
      "meth:cash-flow-balance-sheet-quality"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 3 and 14; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: parts 3 and 14; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -12071,7 +12071,7 @@
      "ex:integrated-credit-decision",
      "def:statement-analysis-framework"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 21 (three alternatives, base and downside, all balanced; only B passes); applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 21 recomputed with corrected schedules and 1 April completion: A, B, C fail the downside, D passes; sensitivities"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 21 (three alternatives, base and downside, all balanced; only B passes); applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 21 recomputed with corrected schedules and 1 April completion: A, B, C fail the downside, D passes; sensitivities"
    },
    "supersedes": null
   },
@@ -12153,7 +12153,7 @@
      "meth:accounting-analysis-adjustments",
      "def:ifrs-us-gaap-reporting-systems"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 19 (LIFO restatement balances; EBITDA bridge; common-basis margins and leverage); part 19 (Harbour against Ridgeline on a common basis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 19 (LIFO restatement balances; EBITDA bridge; common-basis margins and leverage); part 19 (Harbour against Ridgeline on a common basis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -12201,7 +12201,7 @@
     "entry_evidence": [
      "meth:accounting-change-effects"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 20 (IFRS 18 reclassification; MPM; IFRS 16 vs operating-lease model; estimate and policy changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.company_case.statement_analysis_checks: part 20 (IFRS 18 reclassification; MPM; IFRS 16 vs operating-lease model; estimate and policy changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -12244,7 +12244,7 @@
     "entry_evidence": [
      "meth:distribution-effects"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 13 (stock dividend, split, buyback EPS by financing, BVPS, value per share)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 13 (stock dividend, split, buyback EPS by financing, BVPS, value per share)"
    },
    "supersedes": null
   },
@@ -12289,7 +12289,7 @@
     "entry_evidence": [
      "meth:dividend-policy-evaluation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 14 (double taxation, split rate, imputation)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 14 (double taxation, split rate, imputation)"
    },
    "supersedes": null
   },
@@ -12337,7 +12337,7 @@
     "entry_evidence": [
      "meth:payout-policy-comparison"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 14 (Lintner recursion against closed form; smoothing)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 14 (Lintner recursion against closed form; smoothing)"
    },
    "supersedes": null
   },
@@ -12375,7 +12375,7 @@
     "entry_evidence": [
      "meth:dividend-sustainability"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 15 (Harbour earnings and FCFE cover; Ridgeway); corrected 2026-10-20 (PR #31 audit): Harbour FCFE reconciled with equity-issue proceeds; Ridgeway split into FCF before borrowing and actual borrowing, with a target-policy alternative",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 15 (Harbour earnings and FCFE cover; Ridgeway); corrected 2026-10-20 (PR #31 audit): Harbour FCFE reconciled with equity-issue proceeds; Ridgeway split into FCF before borrowing and actual borrowing, with a target-policy alternative",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -12422,7 +12422,7 @@
     "entry_evidence": [
      "def:global-ownership-structures"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (dual class, pyramid, tunnelling)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 3 (dual class, pyramid, tunnelling)"
    },
    "supersedes": null
   },
@@ -12529,7 +12529,7 @@
     "entry_evidence": [
      "meth:esg-exposure-evaluation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 4 (carbon cost in cash flows and value); disclosure standards and EU, UK and US adoption status verified in library gap-filling Batch L3 (2026-10-21), no numerical change; EU scope and timing, the FCA's final rules and the Eighth Circuit orders corrected or added in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change; first-wave scope completed with public-interest parents of large groups (CSRD Art. 5(2)(a)(ii)) in the L3 wording correction (2026-10-21), no numerical change"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 4 (carbon cost in cash flows and value); disclosure standards and EU, UK and US adoption status verified in library gap-filling Batch L3 (2026-10-21), no numerical change; EU scope and timing, the FCA's final rules and the Eighth Circuit orders corrected or added in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change; first-wave scope completed with public-interest parents of large groups (CSRD Art. 5(2)(a)(ii)) in the L3 wording correction (2026-10-21), no numerical change"
    },
    "supersedes": null
   },
@@ -12567,7 +12567,7 @@
     "entry_evidence": [
      "meth:cost-of-debt-equity-estimation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta); corrected 2026-10-20 (PR #31 audit): CAPM cost of equity 9.32% with options in market equity; notes/artefacts/corporate-finance/country-risk-premium-check.py (Batch L6, 2026-10-21: Damodaran Table 4.5, Illustration 4.2, Table 4.9 and the Vale R$ cost of equity reproduced; original country-risk example in float and exact arithmetic; zero limit; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l6-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta); corrected 2026-10-20 (PR #31 audit): CAPM cost of equity 9.32% with options in market equity; trading_notes.numerical.capital_structure_cost_of_capital.country_risk_premium_checks (Batch L6, 2026-10-21: Damodaran Table 4.5, Illustration 4.2, Table 4.9 and the Vale R$ cost of equity reproduced; original country-risk example in float and exact arithmetic; zero limit; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l6-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -12605,7 +12605,7 @@
     "entry_evidence": [
      "meth:capital-structure-benchmarking"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 12 (cost-of-capital curve with rating fixed point, covenant, peers); corrected 2026-10-20 (PR #31 audit): cost-of-capital curve recomputed at firm value 1,481.19 incl. options (10.90% at 40%, 12.73% at 50%; covenant near 35%)",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 12 (cost-of-capital curve with rating fixed point, covenant, peers); corrected 2026-10-20 (PR #31 audit): cost-of-capital curve recomputed at firm value 1,481.19 incl. options (10.90% at 40%, 12.73% at 50%; covenant near 35%)",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -12653,7 +12653,7 @@
     "entry_evidence": [
      "meth:restructuring-evaluation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 16 (cost programme NPV, spin-off and dis-synergies)"
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 16 (cost programme NPV, spin-off and dis-synergies)"
    },
    "supersedes": null
   },
@@ -12690,7 +12690,7 @@
     "entry_evidence": [
      "ex:restructuring-valuation-effects"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 16 (methods, value created and transferred, EPS, pro forma leverage, WACC with and without re-rating, walk-away price); corrected 2026-10-20 (PR #31 audit): acquisition return compared after tax (6.25%) with the WACC; EPS, accounting return and DCF value kept distinct; WACC effect recomputed",
+    "example": "trading_notes.numerical.corporate_finance.corporate_finance_checks: part 16 (methods, value created and transferred, EPS, pro forma leverage, WACC with and without re-rating, walk-away price); corrected 2026-10-20 (PR #31 audit): acquisition return compared after tax (6.25%) with the WACC; EPS, accounting return and DCF value kept distinct; WACC effect recomputed",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -12746,7 +12746,7 @@
     "entry_evidence": [
      "def:intrinsic-value-mispricing"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 16 (mispricing decomposition)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 16 (mispricing decomposition)"
    },
    "supersedes": null
   },
@@ -12789,7 +12789,7 @@
     "entry_evidence": [
      "meth:valuation-approach-choice"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 15 (sum of the parts and discount)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 15 (sum of the parts and discount)"
    },
    "supersedes": null
   },
@@ -12830,7 +12830,7 @@
     "entry_evidence": [
      "meth:gordon-growth-model"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 5 (Gordon against long sum, one-period, implied growth and return, sensitivity)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 5 (Gordon against long sum, one-period, implied growth and return, sensitivity)"
    },
    "supersedes": null
   },
@@ -12867,7 +12867,7 @@
     "entry_evidence": [
      "meth:pvgo-justified-pe"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 7 (PVGO split, ROE = r, leading and trailing P/E)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 7 (PVGO split, ROE = r, leading and trailing P/E)"
    },
    "supersedes": null
   },
@@ -12908,7 +12908,7 @@
     "entry_evidence": [
      "meth:multistage-ddm"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 8 (two-stage against long sum, dating errors, implied return, H-model against exact decline, three-stage)"
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 8 (two-stage against long sum, dating errors, implied return, H-model against exact decline, three-stage)"
    },
    "supersedes": null
   },
@@ -12946,7 +12946,7 @@
     "entry_evidence": [
      "meth:sustainable-growth"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 9 and 18 (DuPont, equity growth, Harbour); corrected 2026-10-20 (PR #31 audit): ROE on opening equity (9.15% for 2025): sustainable growth 3.86%",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: parts 9 and 18 (DuPont, equity growth, Harbour); corrected 2026-10-20 (PR #31 audit): ROE on opening equity (9.15% for 2025): sustainable growth 3.86%",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -12983,7 +12983,7 @@
     "entry_evidence": [
      "meth:valuation-price-judgement"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 4, 5, 10 and 18 (Harbour sensitivity and reverse engineering; Norland DDM judgement); corrected 2026-10-20 (PR #31 audit): justified value 7.81 by P/E, P/B and DDM; EV/EBITDA comparables 11.39 and 9.75 after options; implied ROE 14.18%",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: parts 4, 5, 10 and 18 (Harbour sensitivity and reverse engineering; Norland DDM judgement); corrected 2026-10-20 (PR #31 audit): justified value 7.81 by P/E, P/B and DDM; EV/EBITDA comparables 11.39 and 9.75 after options; implied ROE 14.18%",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -13031,7 +13031,7 @@
     "entry_evidence": [
      "meth:fcff-fcfe-derivation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50); Corrected 2026-10-20 (PR #32 audit): interest paid in financing with taxes in operating: CFO 92.50, FCFF = CFO - Int x t - FCInv = 44.50; omitting the shield gives 47.50; IAS 7 paras. 33, 34A, 35 distinguish the pre- and post-IFRS 18 rules; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50); Corrected 2026-10-20 (PR #32 audit): interest paid in financing with taxes in operating: CFO 92.50, FCFF = CFO - Int x t - FCInv = 44.50; omitting the shield gives 47.50; IAS 7 paras. 33, 34A, 35 distinguish the pre- and post-IFRS 18 rules; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13068,7 +13068,7 @@
     "entry_evidence": [
      "meth:fcf-forecasting"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 4 (Harbour FCFE forecasts; constant-leverage borrowing); Corrected 2026-10-20 (PR #32 audit): fixed against revolver financing; payout 40% -> 50% raises 2026 actual FCFE 31.82 -> 39.08 (dividends + change in cash), FCFE before the revolver 1.01 -> 0.80, FCFF 31.93 -> 31.88; Damodaran p. 355 restated (cash or share issues); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 4 (Harbour FCFE forecasts; constant-leverage borrowing); Corrected 2026-10-20 (PR #32 audit): fixed against revolver financing; payout 40% -> 50% raises 2026 actual FCFE 31.82 -> 39.08 (dividends + change in cash), FCFE before the revolver 1.01 -> 0.80, FCFF 31.93 -> 31.88; Damodaran p. 355 restated (cash or share issues); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13108,7 +13108,7 @@
     "entry_evidence": [
      "meth:fcf-valuation-models"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 5 (Brent Utilities firm 1,500 and equity 900 by FCFF and FCFE; two-stage value 48.13; three-stage value 51.05); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 5 (Brent Utilities firm 1,500 and equity 900 by FCFF and FCFE; two-stage value 48.13; three-stage value 51.05); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13145,7 +13145,7 @@
     "entry_evidence": [
      "meth:cash-flow-proxies"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour); Corrected 2026-10-20 (PR #32 audit): dividends equal actual FCFE by construction under the revolver; comparison needs target-policy FCFE; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour); Corrected 2026-10-20 (PR #32 audit): dividends equal actual FCFE by construction under the revolver; comparison needs target-policy FCFE; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13183,7 +13183,7 @@
     "entry_evidence": [
      "meth:justified-multiples"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares); corrected 2026-10-20 (PR #31 audit): ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown; Corrected 2026-10-20 (PR #32 audit): justified P/B x book 786.43 values all equity claims; 7.74 a common share after the vested options; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares); corrected 2026-10-20 (PR #31 audit): ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown; Corrected 2026-10-20 (PR #32 audit): justified P/B x book 786.43 values all equity claims; 7.74 a common share after the vested options; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -13223,7 +13223,7 @@
     "entry_evidence": [
      "meth:normalised-earnings"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (underlying EPS, average-ROE EPS, earnings yields); corrected 2026-10-20 (PR #31 audit): normalised ROE on opening equity (10.79%); 0.6935 dated as 2026 EPS and compared like-dated with underlying 2025 EPS",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 10 (underlying EPS, average-ROE EPS, earnings yields); corrected 2026-10-20 (PR #31 audit): normalised ROE on opening equity (10.79%); 0.6935 dated as 2026 EPS and compared like-dated with underlying 2025 EPS",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -13263,7 +13263,7 @@
     "entry_evidence": [
      "meth:alternative-multiples"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (PEG range, dividend yield, P/S); corrected 2026-10-20 (PR #31 audit): justified P/B 1.22 and P/S 0.58 recomputed",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: part 10 (PEG range, dividend yield, P/S); corrected 2026-10-20 (PR #31 audit): justified P/B 1.22 and P/S 0.58 recomputed",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -13304,7 +13304,7 @@
     "entry_evidence": [
      "meth:enterprise-value-multiples"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 11 and 18 (EV/EBITDA, mismatches, lease and development adjustments, peer-implied value); corrected 2026-10-20 (PR #31 audit): options in EV (7.59x) and deducted at the implied price in peer-multiple values (11.39; 9.75 development-adjusted)",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: parts 11 and 18 (EV/EBITDA, mismatches, lease and development adjustments, peer-implied value); corrected 2026-10-20 (PR #31 audit): options in EV (7.59x) and deducted at the implied price in peer-multiple values (11.39; 9.75 development-adjusted)",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -13349,7 +13349,7 @@
     "entry_evidence": [
      "meth:comparables-evaluation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10, 12, 13 and 18 (mean, median, harmonic mean, terminal multiple implied growth, SUE, relative strength); corrected 2026-10-20 (PR #31 audit): EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81",
+    "example": "trading_notes.numerical.systematic_equities.equity_valuation_checks: parts 10, 12, 13 and 18 (mean, median, harmonic mean, terminal multiple implied growth, SUE, relative strength); corrected 2026-10-20 (PR #31 audit): EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -13393,7 +13393,7 @@
     "entry_evidence": [
      "def:residual-income-eva"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 7 (RI 0.60; Harbour EVA -8.29 or 5.21; MVA 478.81; EVA = DCF 350.35); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 7 (RI 0.60; Harbour EVA -8.29 or 5.21; MVA 478.81; EVA = DCF 350.35); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13433,7 +13433,7 @@
     "entry_evidence": [
      "meth:residual-income-valuation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71); Corrected 2026-10-20 (PR #32 audit): RI 809.24 values all equity claims; 7.9557 a common share after the five million vested options (7.70); implied growth 7.34% and ROE 14.37% on all equity claims (P/B 1.74); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71); Corrected 2026-10-20 (PR #32 audit): RI 809.24 values all equity claims; 7.9557 a common share after the five million vested options (7.70); implied growth 7.34% and ROE 14.37% on all equity claims (P/B 1.74); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13477,7 +13477,7 @@
     "entry_evidence": [
      "meth:residual-income-comparison"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM); Corrected 2026-10-20 (PR #32 audit): 834.16 - 24.92 - 7.70 = 801.54 = 7.9557 x 100.75 by both routes; 8.28 and 8.03 superseded; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM); Corrected 2026-10-20 (PR #32 audit): 834.16 - 24.92 - 7.70 = 801.54 = 7.9557 x 100.75 by both routes; 8.28 and 8.03 superseded; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13514,7 +13514,7 @@
     "entry_evidence": [
      "meth:private-earnings-normalisation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 10 (Fenton normalised EBIT 5.75, FCFF 3.51); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 10 (Fenton normalised EBIT 5.75, FCFF 3.51); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13551,7 +13551,7 @@
     "entry_evidence": [
      "meth:private-discount-rate"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 11 (CAPM 9.20%, expanded 12.70%, build-up 12.50%, total beta 18.51%; WACC 8.34% and 15.93%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 11 (CAPM 9.20%, expanded 12.70%, build-up 12.50%, total beta 18.51%; WACC 8.34% and 15.93%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -13590,7 +13590,7 @@
     "entry_evidence": [
      "meth:private-company-valuation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%); Corrected 2026-10-20 (PR #32 audit): total beta and marketability are different effects (Table 24.2 applies both); undiversified buyer's stake 3.73; Fenton basis stated; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks: part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%); Corrected 2026-10-20 (PR #32 audit): total beta and marketability are different effects (Table 24.2 applies both); undiversified buyer's stake 3.73; Fenton basis stated; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -14423,7 +14423,7 @@
     "entry_evidence": [
      "meth:equity-forward-futures-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (discrete dividends, a dated cash-flow ledger of the self-financing replication, continuous yield, index futures); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 3 (discrete dividends, a dated cash-flow ledger of the self-financing replication, continuous yield, index futures); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14470,7 +14470,7 @@
     "entry_evidence": [
      "meth:rate-bond-forward-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward on a dated coupon calendar with a two-repo cash ledger and a carry decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward on a dated coupon calendar with a two-repo cash ledger and a carry decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14535,7 +14535,7 @@
      "meth:swap-valuation-replication",
      "meth:cross-currency-basis-swaps"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed and equity-for-SOFR swaps with the next equity payment, later payments and net value separated, reset-date limits and a stochastic-rate simulation); notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py (Batch L4, 2026-10-21: cross-currency basis swap cash flows by party, principal exchanges, the final exchange against the EUR/USD fixed-for-fixed example; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.forward_commitment_valuation.forward_swap_valuation_checks part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed and equity-for-SOFR swaps with the next equity payment, later payments and net value separated, reset-date limits and a stochastic-rate simulation); trading_notes.numerical.forward_commitment_valuation.cross_currency_basis_checks (Batch L4, 2026-10-21: cross-currency basis swap cash flows by party, principal exchanges, the final exchange against the EUR/USD fixed-for-fixed example; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14574,7 +14574,7 @@
     "entry_evidence": [
      "meth:multi-period-binomial-valuation"
     ],
-    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 4 (two-period European and American puts, an American put arbitrage and a two-period caplet on the calibrated rate tree); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_valuation.option_valuation_checks part 4 (two-period European and American puts, an American put arbitrage and a two-period caplet on the calibrated rate tree); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14615,7 +14615,7 @@
      "meth:black-model-rates-currencies",
      "mod:black-scholes-merton"
     ],
-    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 5 (the N(d1)-share replication, Garman-Kohlhagen, Black's model for futures options, caplets and swaptions with Hull's Examples 15.6, 17.2, 18.6-18.7 and 29.3-29.4, and cap-floor parity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_valuation.option_valuation_checks part 5 (the N(d1)-share replication, Garman-Kohlhagen, Black's model for futures options, caplets and swaptions with Hull's Examples 15.6, 17.2, 18.6-18.7 and 29.3-29.4, and cap-floor parity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14665,7 +14665,7 @@
      "mod:black-scholes-merton",
      "def:implied-volatility-surface"
     ],
-    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 6 (Greeks against finite differences, a delta-hedging simulation against Hull's Table 19.4, the gamma-theta identity against full revaluation, gamma neutrality and implied volatility by root finding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_valuation.option_valuation_checks part 6 (Greeks against finite differences, a delta-hedging simulation against Hull's Table 19.4, the gamma-theta identity against full revaluation, gamma neutrality and implied volatility by root finding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -15021,7 +15021,7 @@
     "entry_evidence": [
      "meth:hedge-fund-strategy-classification"
     ],
-    "example": "notes/artefacts/hedge-funds/hedge-fund-checks.py: part 3 (merger spread 4.17%, implied completion 80%, break -16.67%; long/short gross 200%, net 60%, beta-adjusted 80%; convertible hedge 1.2 shares); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.hedge_fund_strategies.hedge_funds_checks: part 3 (merger spread 4.17%, implied completion 80%, break -16.67%; long/short gross 200%, net 60%, beta-adjusted 80%; convertible hedge 1.2 shares); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -15068,7 +15068,7 @@
     "entry_evidence": [
      "meth:hedge-fund-factor-exposures"
     ],
-    "example": "notes/artefacts/hedge-funds/hedge-fund-checks.py: parts 4-6 (simulated factor regression with lags; Sharpe-ratio rule on reported and de-smoothed statistics, 0.384 against 0.366); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.hedge_fund_strategies.hedge_funds_checks: parts 4-6 (simulated factor regression with lags; Sharpe-ratio rule on reported and de-smoothed statistics, 0.384 against 0.366); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -15269,7 +15269,7 @@
     "entry_evidence": [
      "meth:active-return-information-ratio"
     ],
-    "example": "notes/artefacts/active-management-analysis/active-management-checks.py parts 1-2 (ex post TE and IR, Sharpe ratios, Table 5.3, optimal active risk); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.active_management.active_management_checks parts 1-2 (ex post TE and IR, Sharpe ratios, Table 5.3, optimal active risk); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -15314,7 +15314,7 @@
     "entry_evidence": [
      "res:fundamental-law-active-management"
     ],
-    "example": "notes/artefacts/active-management-analysis/active-management-checks.py part 3 (fundamental-law examples, binary example, additivity, transfer coefficient identity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.active_management.active_management_checks part 3 (fundamental-law examples, binary example, additivity, transfer coefficient identity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -15554,7 +15554,7 @@
      "meth:active-risk-decomposition",
      "meth:active-return-information-ratio"
     ],
-    "example": "notes/artefacts/active-management-analysis/active-management-checks.py parts 1 and 4 (tracking error and IR; factor and specific, beta and residual decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.active_management.active_management_checks parts 1 and 4 (tracking error and IR; factor and specific, beta and residual decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -15602,7 +15602,7 @@
      "meth:portfolio-var-methods-decomposition",
      "meth:var-es-estimation-methods"
     ],
-    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py parts 1-2 (RMFI's model-building VaR and ES, parametric, historical and Monte Carlo VaR on one synthetic portfolio, and marginal, component and incremental VaR); corrected 2026-10-19 (PR #25 pass): one zero-mean convention; components sum to the reported 1,729,124.91; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.market_risk_measurement.market_risk_measurement_checks parts 1-2 (RMFI's model-building VaR and ES, parametric, historical and Monte Carlo VaR on one synthetic portfolio, and marginal, component and incremental VaR); corrected 2026-10-19 (PR #25 pass): one zero-mean convention; components sum to the reported 1,729,124.91; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -15640,7 +15640,7 @@
     "entry_evidence": [
      "meth:sensitivity-scenario-risk-measures"
     ],
-    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 3 (beta, duration and convexity, delta-gamma-vega measures against full revaluation, and historical, hypothetical and reverse stress scenarios); corrected 2026-10-19 (PR #25 pass): scenario and VaR comparisons on the same named book; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.market_risk_measurement.market_risk_measurement_checks part 3 (beta, duration and convexity, delta-gamma-vega measures against full revaluation, and historical, hypothetical and reverse stress scenarios); corrected 2026-10-19 (PR #25 pass): scenario and VaR comparisons on the same named book; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -15722,7 +15722,7 @@
     "entry_evidence": [
      "meth:market-risk-limits-capital"
     ],
-    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 4 (limit utilisation, risk budgets, RAROC capital allocation and institution-specific measures); corrected 2026-10-19 (PR #25 pass): stop-loss comparison on the named book and convention; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; FRTB status by jurisdiction verified against issuer texts in library gap-filling Batch L3 (2026-10-21), no numerical change; EU 0.9 multiplier narrowed to CRR Art. 495s(1)-(2) in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change"
+    "example": "trading_notes.numerical.market_risk_measurement.market_risk_measurement_checks part 4 (limit utilisation, risk budgets, RAROC capital allocation and institution-specific measures); corrected 2026-10-19 (PR #25 pass): stop-loss comparison on the named book and convention; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; FRTB status by jurisdiction verified against issuer texts in library gap-filling Batch L3 (2026-10-21), no numerical change; EU 0.9 multiplier narrowed to CRR Art. 495s(1)-(2) in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change"
    },
    "supersedes": null
   },
@@ -16105,7 +16105,7 @@
     "entry_evidence": [
      "meth:economic-balance-sheet-allocation"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 1 (an economic balance sheet with human capital, a glide path and an equity-like job); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 1 (an economic balance sheet with human capital, a glide path and an equity-like job); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16142,7 +16142,7 @@
     "entry_evidence": [
      "def:allocation-approaches-risk"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 2 (asset, surplus and shortfall risk of one portfolio); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 2 (asset, surplus and shortfall risk of one portfolio); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16185,7 +16185,7 @@
     "entry_evidence": [
      "meth:asset-class-factor-specification"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 3 (PMiP Exhibit 12 reverse optimisation and a factor-based correlation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 3 (PMiP Exhibit 12 reverse optimisation and a factor-based correlation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16230,7 +16230,7 @@
      "mod:mean-variance-portfolio-optimisation",
      "mod:black-litterman"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread. Correction 2026-10-20: fifth percentile -8.13% (about -8.1%) checked in closed form and by simulation."
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread. Correction 2026-10-20: fifth percentile -8.13% (about -8.1%) checked in closed form and by simulation."
    },
    "supersedes": null
   },
@@ -16271,7 +16271,7 @@
     "entry_evidence": [
      "meth:allocation-implementation-rebalancing"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 5 (rebalancing as short volatility on a binomial tree and a corridor); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 5 (rebalancing as short volatility on a binomial tree and a corridor); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16308,7 +16308,7 @@
     "entry_evidence": [
      "meth:allocation-robustness-liquidity-risk-budget"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 6 (Monte Carlo success rates, the denominator effect and risk budgets at the Sharpe-maximising mix); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 6 (Monte Carlo success rates, the denominator effect and risk budgets at the Sharpe-maximising mix); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16348,7 +16348,7 @@
     "entry_evidence": [
      "meth:liability-relative-allocation"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 7 (surplus optimisation and a hedging/return-seeking split); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 7 (surplus optimisation and a hedging/return-seeking split); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16387,7 +16387,7 @@
     "entry_evidence": [
      "meth:goals-based-allocation-heuristics"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 8 (PMiP Exhibit 36 minimum expectations, module choice, the Smiths' capital and heuristics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Lins USD1m available wealth; dated education and home goals, success requirements, explicit module weights, capital budgets, aggregate assets and cash surplus reconciled. Same-client60/40 comparison and USD900k infeasibility resolution. Exact lognormal single-payment example distinguished from book approximation. PMiP pp.268-275,279-282 reread."
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 8 (PMiP Exhibit 36 minimum expectations, module choice, the Smiths' capital and heuristics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Lins USD1m available wealth; dated education and home goals, success requirements, explicit module weights, capital budgets, aggregate assets and cash surplus reconciled. Same-client60/40 comparison and USD900k infeasibility resolution. Exact lognormal single-payment example distinguished from book approximation. PMiP pp.268-275,279-282 reread."
    },
    "supersedes": null
   },
@@ -16425,7 +16425,7 @@
     "entry_evidence": [
      "meth:allocation-constraints-taxes-revision"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 9 (after-tax returns, a size constraint and a revision after a funding change); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 9 (after-tax returns, a size constraint and a revision after a funding change); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16463,7 +16463,7 @@
     "entry_evidence": [
      "meth:tactical-shifts-behavioural-biases"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 10 (a tactical tilt's information ratio and loss aversion); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.strategic_asset_allocation.strategic_asset_allocation_checks part 10 (a tactical tilt's information ratio and loss aversion); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16510,7 +16510,7 @@
     "entry_evidence": [
      "def:equity-portfolio-roles-mandate"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 1 (net return after income and costs and the passive, semiactive and active spectrum); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks part 1 (net return after income and costs and the passive, semiactive and active spectrum); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16687,7 +16687,7 @@
     "entry_evidence": [
      "def:alternatives-roles-opportunity-set"
     ],
-    "example": "notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py: parts 2-3 (crisis losses 16.0/18.8/15.0/20.7%; equity beta 0.645, equity share of variance 97%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.alternatives_allocation.alternatives_allocation_checks: parts 2-3 (crisis losses 16.0/18.8/15.0/20.7%; equity beta 0.645, equity share of variance 97%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -16733,7 +16733,7 @@
     "entry_evidence": [
      "meth:alternatives-allocation-approaches"
     ],
-    "example": "notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py: parts 1, 4-5 (pacing: steady-state NAV 4.348, commitment 23.0, exposure 152.6; denominator effect 11.98%; liquidity coverage 1.09); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.alternatives_allocation.alternatives_allocation_checks: parts 1, 4-5 (pacing: steady-state NAV 4.348, commitment 23.0, exposure 152.6; denominator effect 11.98%; liquidity coverage 1.09); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -17288,7 +17288,7 @@
     "entry_evidence": [
      "meth:return-attribution"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py parts 4-5 (BHB and Brinson-Fachler, Carino linking, fixed-income weighted-duration attribution); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_attribution_appraisal.performance_evaluation_checks parts 4-5 (BHB and Brinson-Fachler, Carino linking, fixed-income weighted-duration attribution); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17325,7 +17325,7 @@
     "entry_evidence": [
      "meth:macro-attribution-owner-manager"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 6 (macro attribution levels in return and value metrics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_attribution_appraisal.performance_evaluation_checks part 6 (macro attribution levels in return and value metrics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17367,7 +17367,7 @@
     "entry_evidence": [
      "meth:benchmark-selection-quality"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 7 (benchmark quality statistics, coverage and active positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_attribution_appraisal.performance_evaluation_checks part 7 (benchmark quality statistics, coverage and active positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17405,7 +17405,7 @@
     "entry_evidence": [
      "meth:downside-appraisal-measures"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 3 (downside deviation and its normal benchmark at two targets, Sortino, capture, maximum drawdown, duration and edge cases); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_attribution_appraisal.performance_evaluation_checks part 3 (downside deviation and its normal benchmark at two targets, Sortino, capture, maximum drawdown, duration and edge cases); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17449,7 +17449,7 @@
      "meth:manager-skill-evaluation",
      "meth:skill-luck-significance-tests"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 8 (Exhibits 12-19 and 12-20, power, a t-test); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_attribution_appraisal.performance_evaluation_checks part 8 (Exhibits 12-19 and 12-20, power, a t-test); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17496,7 +17496,7 @@
     "entry_evidence": [
      "meth:manager-due-diligence"
     ],
-    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 2-3 (continuation filter error rates; constrained returns-based style analysis minimising tracking variance, checked by a centred quadratic form, KKT conditions and shift invariance); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.manager_selection.manager_selection_checks parts 2-3 (continuation filter error rates; constrained returns-based style analysis minimising tracking variance, checked by a centred quadratic form, KKT conditions and shift invariance); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17626,7 +17626,7 @@
      "meth:vehicle-contract-fee-analysis",
      "ex:manager-selection-case"
     ],
-    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 1 and 4 (fee schedules, expected fees, high-water mark; IR shrinkage in the case and its sensitivity to the prior); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.manager_selection.manager_selection_checks parts 1 and 4 (fee schedules, expected fees, high-water mark; IR shrinkage in the case and its sensitivity to the prior); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17716,7 +17716,7 @@
     "entry_evidence": [
      "meth:gips-return-calculations"
     ],
-    "example": "notes/artefacts/performance-presentation-standards/gips-checks.py parts 1-4 and 6 (true TWR against Modified Dietz, composite weighting methods, dispersion, 36-month sd, model fee); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_standards.gips_checks parts 1-4 and 6 (true TWR against Modified Dietz, composite weighting methods, dispersion, 36-month sd, model fee); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17759,7 +17759,7 @@
     "entry_evidence": [
      "meth:gips-composite-membership"
     ],
-    "example": "notes/artefacts/performance-presentation-standards/gips-checks.py part 5 (membership calendar under an invented policy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_standards.gips_checks part 5 (membership calendar under an invented policy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17803,7 +17803,7 @@
      "meth:gips-composite-presentation",
      "ex:gips-composite-report"
     ],
-    "example": "notes/artefacts/performance-presentation-standards/gips-checks.py part 7 (synthetic five-year report statistics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.performance_standards.gips_checks part 7 (synthetic five-year report statistics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17845,7 +17845,7 @@
     "entry_evidence": [
      "meth:option-replication-deltas"
     ],
-    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 1 (replication of the asset return with a call, a put and a bond, and deltas of covered calls and protective puts against long asset and short forward positions); corrected 2026-10-19 (PR #25 pass): dividend-consistent replication and spot deltas; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_strategies.option_strategies_checks part 1 (replication of the asset return with a call, a put and a bond, and deltas of covered calls and protective puts against long asset and short forward positions); corrected 2026-10-19 (PR #25 pass): dividend-consistent replication and spot deltas; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17887,7 +17887,7 @@
     "entry_evidence": [
      "meth:covered-call-protective-put"
     ],
-    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 2 (payoffs, maximum profit and loss and break-evens of covered calls, protective puts and short-position hedges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; notes/artefacts/private-wealth/concentrated-position-check.py (Batch L6: zero-cost collar strike solved, deterministic)"
+    "example": "trading_notes.numerical.option_strategies.option_strategies_checks part 2 (payoffs, maximum profit and loss and break-evens of covered calls, protective puts and short-position hedges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; notes/artefacts/private-wealth/concentrated-position-check.py (Batch L6: zero-cost collar strike solved, deterministic)"
    },
    "supersedes": null
   },
@@ -17932,7 +17932,7 @@
      "meth:option-spreads-volatility-strategies",
      "def:implied-volatility-surface"
     ],
-    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 3 (bull and bear spreads, straddles, collars, calendar spreads and the effect of skew on a collar); corrected 2026-10-19 (PR #25 pass): calendar-spread value and profit separated; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_strategies.option_strategies_checks part 3 (bull and bear spreads, straddles, collars, calendar spreads and the effect of skew on a collar); corrected 2026-10-19 (PR #25 pass): calendar-spread value and profit separated; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -17970,7 +17970,7 @@
     "entry_evidence": [
      "ex:option-strategy-selection-case"
     ],
-    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 4 (candidate strategies for a 10 million single-stock holding and option positions targeting 60% and 125% exposure); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_strategies.option_strategies_checks part 4 (candidate strategies for a 10 million single-stock holding and option positions targeting 60% and 125% exposure); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18016,7 +18016,7 @@
     "entry_evidence": [
      "meth:forward-commitment-risk-overlays"
     ],
-    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 1 (futures and swap duration changes including Hull Example 6.5, currency forwards and swaps, hedged returns and equity beta changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.derivative_overlays.derivative_overlays_checks part 1 (futures and swap duration changes including Hull Example 6.5, currency forwards and swaps, hedged returns and equity beta changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18060,7 +18060,7 @@
      "meth:volatility-derivative-applications",
      "def:vix-variance-dividend-swaps"
     ],
-    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 2 (variance and volatility swap payoffs, Hull Examples 15.8 and 26.4-26.5 and a VIX futures hedge); notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py (Batch L4, 2026-10-21: seasoned value from observation weights as a labelled derivation, limits, units, vega notional, the exact discrete remaining strike under GBM against a 200,000-path simulation, continuous approximation reported separately; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.derivative_overlays.derivative_overlays_checks part 2 (variance and volatility swap payoffs, Hull Examples 15.8 and 26.4-26.5 and a VIX futures hedge); trading_notes.numerical.derivative_overlays.seasoned_variance_swap_checks (Batch L4, 2026-10-21: seasoned value from observation weights as a labelled derivation, limits, units, vega notional, the exact discrete remaining strike under GBM against a 200,000-path simulation, continuous approximation reported separately; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18101,7 +18101,7 @@
     "entry_evidence": [
      "meth:derivative-overlay-allocation"
     ],
-    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 3 (joint equity and rate targets, rebalancing with futures and expectations inferred from futures, OIS and options); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.derivative_overlays.derivative_overlays_checks part 3 (joint equity and rate targets, rebalancing with futures and expectations inferred from futures, OIS and options); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18376,7 +18376,7 @@
     "entry_evidence": [
      "def:cap-weighted-factor-indexing"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 2 (turnover, concentration and factor exposures of cap-weighted against factor-based indexes on a synthetic universe); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks part 2 (turnover, concentration and factor exposures of cap-weighted against factor-based indexes on a synthetic universe); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18419,7 +18419,7 @@
     "entry_evidence": [
      "meth:index-equity-portfolio-construction"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 3 (full replication, stratified sampling and optimisation tracking error and cash drag against futures equitisation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks part 3 (full replication, stratified sampling and optimisation tracking error and cash drag against futures equitisation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18477,7 +18477,7 @@
     "entry_evidence": [
      "def:active-equity-strategies"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 4 (fundamental against quantitative information ratios through skill and breadth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks part 4 (fundamental against quantitative information ratios through skill and breadth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18514,7 +18514,7 @@
     "entry_evidence": [
      "meth:active-equity-strategy-creation"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 5 (holdings-based style classification on a synthetic universe); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks part 5 (holdings-based style classification on a synthetic universe); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18557,7 +18557,7 @@
     "entry_evidence": [
      "meth:active-equity-portfolio-construction"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 6 (Active Share against active risk, a factor and specific risk budget and a binding risk limit); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks part 6 (Active Share against active risk, a factor and specific risk budget and a binding risk limit); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18594,7 +18594,7 @@
     "entry_evidence": [
      "meth:equity-portfolio-capacity-structure"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 7 (capacity, liquidation days, turnover cost and transfer coefficients of long-only and 130/30 portfolios by constrained optimisation); corrected 2026-10-19 (PR #25 pass): transfer coefficients against the analytical zero-net-weight optimum; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks part 7 (capacity, liquidation days, turnover cost and transfer coefficients of long-only and 130/30 portfolios by constrained optimisation); corrected 2026-10-19 (PR #25 pass): transfer coefficients against the analytical zero-net-weight optimum; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -19133,7 +19133,7 @@
     "entry_evidence": [
      "ex:endowment-derivative-overlay-case"
     ],
-    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 4 (cash against futures for rebalancing and a tactical tilt with scenario outcomes (illustrative)); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.derivative_overlays.derivative_overlays_checks part 4 (cash against futures for rebalancing and a tactical tilt with scenario outcomes (illustrative)); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20730,7 +20730,7 @@
     "entry_evidence": [
      "meth:digital-option-valuation"
     ],
-    "example": "notes/artefacts/exotic-options/exotic-option-checks.py part 1 (digital identities, call-spread convergence, delta near expiry and its sign on both sides of the strike, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.exotic_options.exotic_options_checks part 1 (digital identities, call-spread convergence, delta near expiry and its sign on both sides of the strike, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20773,7 +20773,7 @@
     "entry_evidence": [
      "meth:barrier-option-valuation"
     ],
-    "example": "notes/artefacts/exotic-options/exotic-option-checks.py part 2 (in-out parity, Brownian-bridge and daily-monitored Monte Carlo against closed forms, vega signs, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.exotic_options.exotic_options_checks part 2 (in-out parity, Brownian-bridge and daily-monitored Monte Carlo against closed forms, vega signs, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20815,7 +20815,7 @@
     "entry_evidence": [
      "meth:asian-option-valuation"
     ],
-    "example": "notes/artefacts/exotic-options/exotic-option-checks.py part 3 (discrete geometric closed form, geometric control variate, convergence to continuous averaging, a negative-carry case where the Asian call exceeds the vanilla, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.exotic_options.exotic_options_checks part 3 (discrete geometric closed form, geometric control variate, convergence to continuous averaging, a negative-carry case where the Asian call exceeds the vanilla, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20861,7 +20861,7 @@
     "entry_evidence": [
      "res:delta-hedging-volatility-mismatch"
     ],
-    "example": "notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py (actual- and implied-volatility delta hedges on 20,000 common paths at 252 and 2,520 rebalancings; a cash-digital counterexample to the gamma condition, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_hedging.volatility_mismatch_hedging_checks (actual- and implied-volatility delta hedges on 20,000 common paths at 252 and 2,520 rebalancings; a cash-digital counterexample to the gamma condition, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20901,7 +20901,7 @@
     "entry_evidence": [
      "res:kelly-growth-optimal-fraction"
     ],
-    "example": "notes/artefacts/portfolio-construction/kelly-check.py (continuous identities, exact continuous log-wealth sampling, unlevered daily-rebalanced log growth against convergence-checked quadrature, discrete bets, estimation error, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.portfolio_construction_models.kelly_growth_checks (continuous identities, exact continuous log-wealth sampling, unlevered daily-rebalanced log growth against convergence-checked quadrature, discrete bets, estimation error, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21439,7 +21439,7 @@
     "entry_evidence": [
      "meth:mean-cvar-optimisation"
     ],
-    "example": "notes/artefacts/portfolio-construction/mean-cvar-check.py (Rockafellar-Uryasev Tables 3-4 reproduced; LP against fractional-tail-mass CVaR at n = 10,000 and n = 250; 1% grid; normal equivalence over seeds 0-9 at 10,000 and 100,000 scenarios; negative-skew diagnostic; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.portfolio_construction_models.mean_cvar_checks (Rockafellar-Uryasev Tables 3-4 reproduced; LP against fractional-tail-mass CVaR at n = 10,000 and n = 250; 1% grid; normal equivalence over seeds 0-9 at 10,000 and 100,000 scenarios; negative-skew diagnostic; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21568,7 +21568,7 @@
     "entry_evidence": [
      "meth:lookback-option-valuation"
     ],
-    "example": "notes/artefacts/exotic-options/lookback-option-check.py (Hull Example 26.2 to its printed rounding; Hull and Wilmott formulas against each other for floating and fixed-strike lookbacks; pricing-equation residual and the boundary condition on S = M; deep-seasoned limits and monotonicity in the recorded extreme; seasoned contracts by exact one-step simulation with a Brownian-bridge extreme, seed 20261022, 400,000 paths; monitoring bias on coupled nested grids m = 7 to 1,008 against an exact continuous extreme on the same paths, seed 20261021, 100,000 paths; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.exotic_options.lookback_options_checks (Hull Example 26.2 to its printed rounding; Hull and Wilmott formulas against each other for floating and fixed-strike lookbacks; pricing-equation residual and the boundary condition on S = M; deep-seasoned limits and monotonicity in the recorded extreme; seasoned contracts by exact one-step simulation with a Brownian-bridge extreme, seed 20261022, 400,000 paths; monitoring bias on coupled nested grids m = 7 to 1,008 against an exact continuous extreme on the same paths, seed 20261021, 100,000 paths; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21607,7 +21607,7 @@
     "entry_evidence": [
      "meth:transaction-cost-hedging"
     ],
-    "example": "notes/artefacts/option-valuation/transaction-cost-hedging-check.py (eqs. (48.5)-(48.6) against the printed forms, signs, zero-cost limit and the admissible domain K < sqrt(pi/8); a per-path cash ledger; simulated present value of hedging costs against the Leland premium with the approximation residual converging on nested grids N = 13, 52, 208 for long and short positions at K = 0.1 and 0.4; netted against separately hedged call-spread legs on the same paths; risk-neutral, seed 20261023, 100,000 paths, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.option_hedging.transaction_cost_hedging_checks (eqs. (48.5)-(48.6) against the printed forms, signs, zero-cost limit and the admissible domain K < sqrt(pi/8); a per-path cash ledger; simulated present value of hedging costs against the Leland premium with the approximation residual converging on nested grids N = 13, 52, 208 for long and short positions at K = 0.1 and 0.4; netted against separately hedged call-spread legs on the same paths; risk-neutral, seed 20261023, 100,000 paths, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   }

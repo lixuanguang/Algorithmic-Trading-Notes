@@ -33,16 +33,13 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.lob_models
 (numpy and scipy). Exits non-zero on failure.
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 from scipy import integrate, optimize
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 SEED: Final = 20261017

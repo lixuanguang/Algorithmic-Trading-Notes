@@ -16,7 +16,6 @@ need a longer lag than any in the list. A month passing (1) only remains open to
 Run: uv run --frozen --no-editable python inversion-horizons.py   (standard library). Exits non-zero on failure.
 """
 
-# standard library imports
 import csv
 import os
 import sys

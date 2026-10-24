@@ -11,13 +11,11 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.cme_allocat
 Exits non-zero on failure.
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Sequence
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 # Resting quantities in time priority, the incoming sell, and the Pro Rata minimum.

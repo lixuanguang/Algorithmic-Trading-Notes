@@ -9,7 +9,6 @@ no other venue was read, so it says nothing about "fewer venues" and is not a ti
 Run: uv run --frozen --no-editable python deribit-options-snapshot.py <reading_materials/empirical-extensions/deribit>
 """
 
-# standard library imports
 import collections
 import json
 import os

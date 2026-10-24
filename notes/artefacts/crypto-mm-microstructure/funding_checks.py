@@ -8,10 +8,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.perpetual_f
 (standard library). Exits non-zero if a check fails.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.perpetual_funding import main
 
 if __name__ == "__main__":

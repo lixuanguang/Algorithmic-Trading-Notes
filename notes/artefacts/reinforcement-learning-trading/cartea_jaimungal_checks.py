@@ -8,10 +8,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.cartea_jaim
 (standard library). Prints its values and exits 0; it asserts nothing.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.cartea_jaimungal import main
 
 if __name__ == "__main__":

@@ -24,26 +24,25 @@ trading_notes.numerical.asset_pricing_factor_models from
 notes/artefacts/asset-pricing-factor-models/ (numpy, statsmodels). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import re
 import sys
+from collections.abc import Sequence
 from pathlib import Path
 from typing import Final
 
-# third party library imports
 import numpy as np
 import statsmodels
 import statsmodels.api as sm
 from numpy.typing import NDArray
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
+from trading_notes.numerical.repository import repository_root
 
 type Floats = NDArray[np.float64]
 
-# The compendium figure, relative to notes/artefacts/asset-pricing-factor-models/.
-FIGURE: Final = Path("../../../compendium/asset-pricing/figures/security-market-line.tikz")
+# The compendium figure, relative to the repository root.
+FIGURE: Final = Path("compendium/asset-pricing/figures/security-market-line.tikz")
 # Part 1's twelve months, percent a month: T-bill, market and stock total returns.
 RF_MONTHLY: Final = (0.30, 0.31, 0.32, 0.33, 0.35, 0.36, 0.38, 0.39, 0.40, 0.41, 0.42, 0.42)
 MARKET: Final = (2.1, -1.4, 3.0, 0.8, -2.6, 1.9, 4.2, -0.7, 1.1, -3.3, 2.5, 0.6)
@@ -414,16 +413,17 @@ def check_figure(report: CheckReport, figure: Path) -> None:
     )
 
 
-def main(figure: Path = FIGURE) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     """Print the versions, then run the five parts and the figure check with one report.
 
     Args:
-        figure: The compendium's security-market-line figure; by default relative to the
-            working directory, as from this entry's folder in notes/artefacts.
+        argv: Command-line arguments: `--root DIR`, the repository root that holds the
+            compendium figure (default: the working directory).
 
     Returns:
         The exit status, 0 or 1.
     """
+    root = repository_root(__doc__ or "", argv)
     print(
         f"Python {sys.version.split()[0]}, NumPy {np.__version__}, statsmodels"
         f" {statsmodels.__version__}"
@@ -434,7 +434,7 @@ def main(figure: Path = FIGURE) -> int:
     check_required_return(report)
     check_apt(report)
     check_factor_models(report)
-    check_figure(report, figure)
+    check_figure(report, root / FIGURE)
     if report.failures:
         print("FAILED:", ", ".join(report.failures))
         return 1

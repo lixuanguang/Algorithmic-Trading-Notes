@@ -9,7 +9,6 @@
 Run: uv run --frozen --no-editable python regime-checks.py   (standard library; reads files next to it). Exits non-zero on failure.
 """
 
-# standard library imports
 import csv
 import hashlib
 import os

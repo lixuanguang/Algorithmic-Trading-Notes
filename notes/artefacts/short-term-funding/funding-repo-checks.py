@@ -7,10 +7,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.funding_rep
 (standard library only). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.funding_repo import main
 
 if __name__ == "__main__":

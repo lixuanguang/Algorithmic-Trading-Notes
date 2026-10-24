@@ -8,10 +8,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.drawdown_re
 (numpy). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.drawdown_resampling import main
 
 if __name__ == "__main__":

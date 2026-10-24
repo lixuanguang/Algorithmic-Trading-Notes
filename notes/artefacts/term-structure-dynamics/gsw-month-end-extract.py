@@ -11,7 +11,6 @@ and 30 years. The partial October 2026 month is excluded.
 Run from this folder: uv run --frozen --no-editable python gsw-month-end-extract.py
 """
 
-# standard library imports
 import csv
 import hashlib
 import sys

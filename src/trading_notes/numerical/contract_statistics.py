@@ -21,13 +21,11 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.contract_st
 Exits non-zero on failure.
 """
 
-# standard library imports
 import datetime as dt
 import sys
 from collections.abc import Container, Mapping
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 TREASURY: Final[Mapping[str, tuple[int, float, float]]] = {

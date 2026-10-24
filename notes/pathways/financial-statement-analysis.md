@@ -24,13 +24,13 @@ Not attempted. No checkpoint has been set for this section.
 
 Written in the coverage pilot (2026-10-18):
 
-- `meth:statement-linked-cash-flows`: IAS 7 classification and the direct and indirect methods; account roll-forwards that turn the income statement and two balance sheets into a cash-flow statement; the IFRS 18 change of starting point to operating profit and the fixed classification of interest and dividends from 2027; an original worked example reconciled three ways (`notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py`).
+- `meth:statement-linked-cash-flows`: IAS 7 classification and the direct and indirect methods; account roll-forwards that turn the income statement and two balance sheets into a cash-flow statement; the IFRS 18 change of starting point to operating profit and the fixed classification of interest and dividends from 2027; an original worked example reconciled three ways (`trading_notes.numerical.cash_flow_analysis.cash_flow_linkage_checks`).
 
 Partly checked 2026-10-18, draft; human review outstanding.
 
-Cash-flow slice (2026-10-18): the example now includes a prepaid expense and an accrued expense, the Notation gives the line-by-line direct conversion, and the Conditions compare IFRS before and after IFRS 18 with US GAAP Topic 230 (ASU 2016-15's reprint of the Codification paragraphs, Deloitte's quotation of 230-10-45-28 to 45-30, FASB staff papers of 2025-2026). Rechecked by `cash-flow-linkage-check.py`. Partly checked, draft; human review outstanding.
+Cash-flow slice (2026-10-18): the example now includes a prepaid expense and an accrued expense, the Notation gives the line-by-line direct conversion, and the Conditions compare IFRS before and after IFRS 18 with US GAAP Topic 230 (ASU 2016-15's reprint of the Codification paragraphs, Deloitte's quotation of 230-10-45-28 to 45-30, FASB staff papers of 2025-2026). Rechecked by `trading_notes.numerical.cash_flow_analysis.cash_flow_linkage_checks`. Partly checked, draft; human review outstanding.
 
-Accounting and statement-analysis batch (2026-10-20), one shared case and 45 objective entries; numbers checked by `notes/artefacts/financial-statement-analysis/statement-analysis-checks.py`:
+Accounting and statement-analysis batch (2026-10-20), one shared case and 45 objective entries; numbers checked by `trading_notes.numerical.company_case.statement_analysis_checks`:
 
 - Framework and sources: `def:statement-analysis-framework`, `def:filings-disclosures-information-sources`, `def:ifrs-us-gaap-reporting-systems`.
 - Company case: `ex:harbour-tools-statements` (ledger-built statements; direct = indirect cash flow; equity roll-forward).

@@ -15,15 +15,12 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.forecast_sc
 (numpy, scipy). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 from scipy.stats import norm
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 # Table 10.1: name -> (residual volatility, score, printed alpha).

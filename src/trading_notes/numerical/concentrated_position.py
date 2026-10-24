@@ -21,16 +21,13 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.concentrate
 (scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# third party library imports
 import scipy
 from scipy import stats
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 NSH: Final = 100_000  # shares held

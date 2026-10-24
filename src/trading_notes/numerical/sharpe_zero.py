@@ -26,17 +26,14 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.sharpe_zero
 (numpy; about 1 s). Exits non-zero on failure.
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Callable
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Sampler = Callable[[tuple[int, int]], NDArray[np.float64]]

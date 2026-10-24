@@ -15,11 +15,9 @@ Count convention: one check is one executed ok() call (a call inside a loop coun
 Run: uv run --frozen --no-editable python scenario-simulation-checks.py   (numpy, pandas). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 from pathlib import Path
 
-# third party library imports
 import numpy as np
 import pandas as pd
 

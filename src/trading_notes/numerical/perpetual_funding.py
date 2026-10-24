@@ -7,7 +7,6 @@ of its prose rule, and every worked example on the Funding Specifications page (
 is recomputed. Exits non-zero if a check fails.
 """
 
-# standard library imports
 import sys
 from collections.abc import Mapping
 from typing import Final

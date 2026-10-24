@@ -43,7 +43,6 @@ Run: uv run --frozen --no-editable --group empirical python backwardation_test.p
 Writes backwardation_monthly.csv next to this script and prints the results.
 """
 
-# standard library imports
 import bisect
 import csv
 import datetime as dt
@@ -51,7 +50,6 @@ import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -63,7 +61,6 @@ LAG = {
 
 
 def series(src, name):
-    # third party library imports
     import xlrd
 
     b = xlrd.open_workbook(os.path.join(src, f"EIA_{name}.xls"))

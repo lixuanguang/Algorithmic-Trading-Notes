@@ -10,7 +10,6 @@
 Run: uv run --frozen --no-editable python fx-checks.py   (numpy; under 1 s). Exits non-zero on failure.
 """
 
-# standard library imports
 import csv
 import hashlib
 import importlib.util
@@ -18,7 +17,6 @@ import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))

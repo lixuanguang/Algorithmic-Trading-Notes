@@ -23,15 +23,12 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.commodity_r
 Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 from collections.abc import Sequence
 from typing import Final
 
-# third party library imports
 import numpy as np
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 RF: Final = 0.04  # annual T-bill yield on the collateral

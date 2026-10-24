@@ -21,16 +21,13 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.sharpe_cond
 (numpy; about 2 s). Exits non-zero on failure.
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 SEED: Final = 20261017

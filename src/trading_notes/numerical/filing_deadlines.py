@@ -7,11 +7,9 @@ Business days exclude weekends and U.S. federal holidays (5 U.S.C. 6103, observe
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.filing_deadlines (standard library).
 """
 
-# standard library imports
 import datetime as dt
 import sys
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 

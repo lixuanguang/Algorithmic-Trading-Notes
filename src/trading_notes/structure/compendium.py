@@ -11,7 +11,6 @@ compendium/, so files are identified by resolved paths: `a/topic` and `a/../a/to
 symbolic link, name one file.
 """
 
-# standard library imports
 import json
 import re
 from collections import Counter
@@ -21,7 +20,6 @@ from functools import cached_property
 from pathlib import Path
 from typing import Final
 
-# project library imports
 from trading_notes.structure.json_fields import JsonRecord, as_object
 
 MASTER: Final = Path("compendium") / "compendium.tex"

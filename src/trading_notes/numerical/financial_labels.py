@@ -7,11 +7,9 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.financial_l
 (numpy only).
 """
 
-# standard library imports
 import sys
 from collections.abc import Callable, Sequence
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 

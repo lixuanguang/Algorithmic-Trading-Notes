@@ -34,13 +34,11 @@ Run: uv run --frozen --no-editable python fx_ppp_oos_test.py <folder with the FR
 Writes fx_ppp_monthly.csv (derived panel) next to this script.
 """
 
-# standard library imports
 import csv
 import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))

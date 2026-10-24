@@ -11,13 +11,11 @@ Choices recorded before computing (committed with the output, so not a preregist
 Run: uv run --frozen --no-editable --group empirical python gsw-kw-acm.py <feds200628.csv> <feds200533.csv> <ACMTermPremium.xls>   (numpy, xlrd).
 """
 
-# standard library imports
 import csv
 import datetime as dt
 import math
 import sys
 
-# third party library imports
 import numpy as np
 import xlrd
 

@@ -5,7 +5,6 @@ Standard library only. Each check computes the quantity by a route independent o
 closed form it is compared with, and the script exits non-zero if a check fails.
 """
 
-# standard library imports
 import sys
 from math import erf, exp, log, pi, sqrt
 from typing import Final

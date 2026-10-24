@@ -49,18 +49,15 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.backtest_de
 (numpy). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Floats = NDArray[np.float64]

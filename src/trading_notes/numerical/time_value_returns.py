@@ -14,14 +14,12 @@ Inputs are invented; they illustrate the mechanics, not any security. Rates are 
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.time_value_returns (standard library).
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 

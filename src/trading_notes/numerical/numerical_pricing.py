@@ -12,20 +12,17 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.numerical_p
 (numpy, scipy). Exits 1 on failure. About 30 seconds.
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Callable, Container
 from typing import Final
 
-# third party library imports
 import numpy as np
 import scipy
 from numpy.typing import NDArray
 from scipy import stats
 from scipy.linalg import solve_banded
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Floats = NDArray[np.float64]

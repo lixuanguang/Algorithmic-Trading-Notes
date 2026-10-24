@@ -30,13 +30,11 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.liquidity_m
 (numpy). Exits 1 on failure.
 """
 
-# standard library imports
 import collections
 import sys
 from collections.abc import Callable
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 

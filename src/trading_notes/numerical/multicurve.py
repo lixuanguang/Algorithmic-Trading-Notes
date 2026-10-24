@@ -13,11 +13,9 @@ curve. Own illustration with invented curves; not market data.
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.multicurve (standard library).
 """
 
-# standard library imports
 import math
 import sys
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 

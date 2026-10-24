@@ -7,10 +7,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.negative_he
 (numpy). Prints its values and exits 0; it asserts nothing.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.negative_hedge_ratio import main
 
 if __name__ == "__main__":

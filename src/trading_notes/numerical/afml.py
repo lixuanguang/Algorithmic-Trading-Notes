@@ -13,13 +13,11 @@ order-flow, PCA, bootstrap and unit-root parts in order.
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.afml (numpy, statsmodels).
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Sequence
 from typing import Final, Literal
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 from statsmodels.tsa.stattools import adfuller

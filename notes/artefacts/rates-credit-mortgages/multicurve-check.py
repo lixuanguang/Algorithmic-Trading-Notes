@@ -7,10 +7,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.multicurve
 (standard library). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.multicurve import main
 
 if __name__ == "__main__":

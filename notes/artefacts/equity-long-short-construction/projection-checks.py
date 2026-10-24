@@ -8,10 +8,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.linear_proj
 (numpy). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.linear_projection import main
 
 if __name__ == "__main__":

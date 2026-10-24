@@ -23,18 +23,15 @@ Inference repair (derivatives and empirical validation (2026-10-17), after the r
 Run: uv run --frozen --no-editable python fx_carry_test.py <folder with the FRED csv files>  (numpy). Writes fx_carry_monthly.csv.
 """
 
-# standard library imports
 import csv
 import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-# third party library imports
 import fx_ppp_oos_test as v2  # noqa: E402
 
 START, FIRST_FC = (1985, 1), (1995, 1)

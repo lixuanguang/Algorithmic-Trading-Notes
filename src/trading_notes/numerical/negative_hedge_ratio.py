@@ -12,11 +12,9 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.negative_he
 (numpy).
 """
 
-# standard library imports
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 

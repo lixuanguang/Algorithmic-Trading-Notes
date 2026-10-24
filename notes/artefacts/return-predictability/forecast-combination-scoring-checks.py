@@ -21,12 +21,10 @@ Run: uv run --frozen --no-editable python forecast-combination-scoring-checks.py
 Recorded output: forecast-combination-scoring-results.txt.
 """
 
-# standard library imports
 import sys
 from fractions import Fraction
 from pathlib import Path
 
-# third party library imports
 import numpy as np
 import pandas as pd
 import scipy

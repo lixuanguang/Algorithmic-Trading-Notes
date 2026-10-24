@@ -17,7 +17,6 @@ This is a structural check. It does not judge whether an entry teaches an object
 well enough, and it says nothing about learner mastery.
 """
 
-# standard library imports
 import ast
 import hashlib
 import json
@@ -28,7 +27,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Final, Literal, Self, TypedDict
 
-# project library imports
 from trading_notes.structure.compendium import Compendium, Entry
 from trading_notes.structure.json_fields import JsonObject, JsonRecord, as_object
 
@@ -55,13 +53,13 @@ REVIEW_DATE: Final = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 PROHIBITED: Final = "cfa"  # provider token kept out of maintained names; allowed in provenance
 # Trees whose folder and file names are maintained here; the ignored source copies and the
 # vendored guide are not.
-MAINTAINED_TREES: Final = ("compendium", "notes", "tools", "src", "tests")
-# Python sources whose defined names are reviewed: the entrypoints, the package and tests.
-PYTHON_SOURCES: Final = (("tools", "*.py"), ("src", "**/*.py"), ("tests", "**/*.py"))
+MAINTAINED_TREES: Final = ("compendium", "notes", "src")
+# Python sources whose defined names are reviewed: everything maintained under src/.
+PYTHON_SOURCES: Final = (("src", "**/*.py"),)
 
 
 class CoverageReport(TypedDict):
-    """The JSON report printed by tools/check_coverage.py --json.
+    """The JSON report printed by trading_notes.cli.check_coverage --json.
 
     Objective counts are keyed by coverage value, "invalid" counting a missing or unknown
     one; next actions by value, "None" counting objectives without one.

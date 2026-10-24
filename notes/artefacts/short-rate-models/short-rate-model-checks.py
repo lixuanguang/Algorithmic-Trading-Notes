@@ -18,14 +18,12 @@ implemented correctly under its own assumptions; none is evidence about markets.
 Run: uv run --frozen --no-editable python short-rate-model-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import csv
 import itertools
 import math
 import sys
 from pathlib import Path
 
-# third party library imports
 import numpy as np
 import scipy
 from scipy import integrate, stats

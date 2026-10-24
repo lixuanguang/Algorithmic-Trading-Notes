@@ -22,7 +22,7 @@ Not attempted. No checkpoint has been set for this section.
 
 ## Entries created or changed
 
-Corporate-finance and equity-valuation batch (2026-10-20). Harbour Tools plc, the case of the statement-analysis section, is reused for the cost of capital, payout and the bolt-on acquisition; numbers are checked by `notes/artefacts/corporate-finance/corporate-finance-checks.py`:
+Corporate-finance and equity-valuation batch (2026-10-20). Harbour Tools plc, the case of the statement-analysis section, is reused for the cost of capital, payout and the bolt-on acquisition; numbers are checked by `trading_notes.numerical.corporate_finance.corporate_finance_checks`:
 
 - Issuers, ownership and governance: `def:organisational-forms-issuers`, `def:stakeholder-claims`, `meth:corporate-governance-evaluation`, `def:global-ownership-structures`, `meth:esg-exposure-evaluation`.
 - Business models: `def:business-model-features-types`.
@@ -49,7 +49,7 @@ Printed as numbered sections of the chapter, under the guide pinned at `8302467`
 ## What changed in my view or practice
 
 
-Written in library gap-filling Batch L6 (2026-10-21): `meth:cost-of-debt-equity-estimation` extended with country risk premiums (default-spread, relative-volatility and melded methods; beta-scaled against additive use; revenue weights with production caveats; local risk-free rates net of the default spread; currency translation by inflation differential) from Damodaran, *Applied Corporate Finance*, pp. 89-93, 98-107 and 133-135, with an original example and its zero limit. Checks in `notes/artefacts/corporate-finance/country-risk-premium-check.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
+Written in library gap-filling Batch L6 (2026-10-21): `meth:cost-of-debt-equity-estimation` extended with country risk premiums (default-spread, relative-volatility and melded methods; beta-scaled against additive use; revenue weights with production caveats; local risk-free rates net of the default spread; currency translation by inflation differential) from Damodaran, *Applied Corporate Finance*, pp. 89-93, 98-107 and 133-135, with an original example and its zero limit. Checks in `trading_notes.numerical.capital_structure_cost_of_capital.country_risk_premium_checks`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
 
 ## Questions carried forward
 

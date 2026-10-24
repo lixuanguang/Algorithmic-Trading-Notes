@@ -42,7 +42,7 @@ In `equity-portfolio-management.tex` (topic `equity-portfolio-management`):
 - `meth:active-equity-portfolio-construction`: construction methods, Active Share against active risk, risk budgets and limits.
 - `meth:equity-portfolio-capacity-structure`: capacity, liquidity and turnover; long-only, long-extension, long-short and market-neutral structures with transfer coefficients. Corrected 2026-10-19 (PR #25 pass): transfer coefficients measured against the analytical optimum under zero net active weight (0.609 and 0.781, not 0.616 and 0.786).
 
-All partly checked 2026-10-19, draft. Examples in `notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py`; human review is outstanding. Coverage records are editorial, not study.
+All partly checked 2026-10-19, draft. Examples in `trading_notes.numerical.equity_portfolio_management.equity_portfolio_management_checks`; human review is outstanding. Coverage records are editorial, not study.
 
 ## Source verification after macro markets and pricing review
 

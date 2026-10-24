@@ -10,11 +10,9 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.margin_spir
 Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 GAMMA: Final = 2.0  # illustrative

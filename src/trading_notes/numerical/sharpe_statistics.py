@@ -17,15 +17,12 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.sharpe_stat
 (scipy). Exits non-zero on failure.
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# third party library imports
 from scipy.stats import norm
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 # Lo's Table 2, (q, rho) -> eta(q): the three q = 12 cells quoted in the text and a sample.

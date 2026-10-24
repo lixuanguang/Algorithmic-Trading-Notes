@@ -7,10 +7,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.extreme_val
 diagnostics take most of it.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.extreme_value import main
 
 if __name__ == "__main__":

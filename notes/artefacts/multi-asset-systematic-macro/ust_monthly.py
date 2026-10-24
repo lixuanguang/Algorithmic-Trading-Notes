@@ -13,7 +13,6 @@ Checks: dates unique and strictly increasing; every month from the first to the 
 the month of the last observation flagged incomplete when it is the retrieval month (October 2026).
 """
 
-# standard library imports
 import csv
 import datetime as dt
 import glob

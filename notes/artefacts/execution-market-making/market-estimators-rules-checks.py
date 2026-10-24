@@ -6,10 +6,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.market_esti
 (numpy; fixed seeds; a few seconds). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.market_estimators_rules import main
 
 if __name__ == "__main__":

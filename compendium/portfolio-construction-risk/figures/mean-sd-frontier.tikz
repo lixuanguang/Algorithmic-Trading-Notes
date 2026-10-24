@@ -1,7 +1,7 @@
 % compendium/portfolio-construction-risk/figures/mean-sd-frontier.tikz
 % Invented three-fund example of meth:efficient-frontier and meth:capital-allocation-line: one year, US dollars,
 % percent. Coordinates (standard deviation, expected return) are computed and rechecked by
-% notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py.
+% trading\_notes.numerical.portfolio\_choice.portfolio\_choice\_checks.
 \begin{tikzpicture}[>=stealth, x=0.36cm, y=0.62cm, font=\scriptsize]
   % dominated region: interior of the unconstrained feasible set below the efficient branch (illustrative shading)
   \fill[gray!12] (5.82,3.87) -- (6.31,4.50) -- (8.59,5.50) -- (11.75,6.50) -- (15.25,7.50) -- (18.91,8.50) -- (22.64,9.50) -- (26.42,10.50) -- (26.42,1.50) -- (10.91,1.50) -- (9.33,2.00) -- (7.90,2.50) -- (6.74,3.00) -- (6.00,3.50) -- cycle;

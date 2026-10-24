@@ -15,12 +15,10 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.drawdown_re
 (numpy; about 5 s). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 from dataclasses import dataclass
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 

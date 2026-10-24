@@ -1,11 +1,39 @@
-"""Per-check reporting for the numerical evidence scripts."""
+"""Per-check reporting shared by the numerical checks."""
+
+import sys
+from typing import Final, Protocol
+
+# Display names of the libraries whose versions a check prints.
+DISPLAY_NAMES: Final = {
+    "numpy": "NumPy",
+    "pandas": "pandas",
+    "scipy": "SciPy",
+    "statsmodels": "statsmodels",
+}
+
+
+class Versioned(Protocol):
+    """A library module with a version, as NumPy, SciPy and statsmodels are."""
+
+    __name__: str
+    __version__: str
+
+
+def print_versions(*libraries: Versioned) -> None:
+    """Print the Python version, then each library's display name and version, on one line.
+
+    Args:
+        libraries: Library modules, each a key of DISPLAY_NAMES.
+    """
+    names = [f"{DISPLAY_NAMES[m.__name__]} {m.__version__}" for m in libraries]
+    print(", ".join([f"Python {sys.version.split()[0]}", *names]))
 
 
 class CheckReport:
     """One run's check results: each check is printed as it runs, and failures are kept.
 
     One check is one `ok` call, so a call inside a loop counts once per iteration. The
-    report never ends the process; the caller turns `failures` into an exit status. Use a
+    report never ends the process; `summarise` turns the failures into an exit status. Use a
     new report for each run.
     """
 
@@ -46,3 +74,15 @@ class CheckReport:
             want: The expected value, printed with `str`.
         """
         self.ok(name, got == want, f"{got} (want {want})")
+
+    def summarise(self) -> int:
+        """Print `FAILED: <names>` or `all checks passed` and return the exit status.
+
+        Returns:
+            0 when every check passed, otherwise 1.
+        """
+        if self._failures:
+            print("FAILED: " + ", ".join(self._failures))
+            return 1
+        print("all checks passed")
+        return 0

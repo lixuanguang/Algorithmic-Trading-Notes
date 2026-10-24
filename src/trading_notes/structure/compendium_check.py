@@ -27,7 +27,6 @@ lower headings (\subsection, \subsubsection) only.
 This is a structural check, not a claim or source-verification check.
 """
 
-# standard library imports
 import re
 from collections import Counter, defaultdict
 from collections.abc import Collection, Sequence
@@ -35,7 +34,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Final, TypedDict
 
-# project library imports
 from trading_notes.structure.compendium import (
     ENTRY,
     INPUT,
@@ -74,7 +72,7 @@ class PartSummary(TypedDict):
 
 
 class CompendiumReport(TypedDict):
-    """The JSON report printed by tools/check_compendium.py --json."""
+    """The JSON report printed by trading_notes.cli.check_compendium --json."""
 
     pathways: dict[str, PathwaySummary]
     parts: list[PartSummary]

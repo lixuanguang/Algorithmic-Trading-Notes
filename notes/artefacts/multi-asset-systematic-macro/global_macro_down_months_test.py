@@ -22,7 +22,6 @@ Run: uv run --frozen --no-editable python global_macro_down_months_test.py <Barc
 Writes global_macro_monthly.csv next to this script.
 """
 
-# standard library imports
 import csv
 import html
 import math
@@ -30,7 +29,6 @@ import os
 import re
 import sys
 
-# third party library imports
 import numpy as np
 from scipy import stats
 

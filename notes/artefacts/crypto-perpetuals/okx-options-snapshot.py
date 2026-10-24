@@ -7,7 +7,6 @@ contract type, expiries, open interest (oiUsd) by contract type, by expiry and i
 Run: uv run --frozen --no-editable python okx-options-snapshot.py <instruments.json> <open-interest.json>
 """
 
-# standard library imports
 import collections
 import datetime as dt
 import json

@@ -13,12 +13,10 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.commodity_l
 Exits non-zero on failure.
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 # Moallemi-Saglam calibration for GS on 4 January 2010: half-spread and daily volatility in

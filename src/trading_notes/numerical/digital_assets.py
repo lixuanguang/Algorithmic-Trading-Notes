@@ -21,7 +21,6 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.digital_ass
 Exits 1 on failure.
 """
 
-# standard library imports
 import hashlib
 import itertools
 import math
@@ -31,10 +30,8 @@ from dataclasses import dataclass, replace
 from datetime import date
 from typing import Final
 
-# third party library imports
 import numpy as np
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 SEED: Final = 20261020

@@ -37,7 +37,7 @@ Written in the portfolio moments and diversification slice (2026-10-18), owned h
 - `meth:portfolio-return-moments`: one-period arithmetic portfolio return from beginning-of-period value weights (units, horizon, base currency, no intra-period cash flows); expected return, variance, standard deviation, covariance and correlation of portfolios in expanded and matrix form (Markowitz 1952, pp. 80-81; covariance of weighted sums); model moments against historical estimates and their denominators; rebalanced against buy-and-hold weights.
 - `mech:diversification-correlation`: portfolio standard deviation against correlation for long-only weights; zero variance at a correlation of -1 only; reduction relative to the weighted average of volatilities, not a guarantee of beating the safer asset; Markowitz's "Diversification cannot eliminate all variance" with the equal-weight floor; Longin and Solnik on conditional and bear-market correlation.
 
-Both partly checked 2026-10-18, draft; examples in `notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py`; human review outstanding. Coverage records are editorial, not study.
+Both partly checked 2026-10-18, draft; examples in `trading_notes.numerical.portfolio_moments.portfolio_moments_checks`; human review outstanding. Coverage records are editorial, not study.
 
 Audit correction (2026-10-18): `mech:diversification-correlation` now qualifies the equal-correlation limit: a positive floor for a fixed positive correlation, sigma^2/N for zero correlation, and no fixed negative correlation as N grows, because an equicorrelation matrix needs -1/(N-1) <= rho <= 1. The boundary cases are checked in the same script.
 
@@ -60,7 +60,7 @@ In `asset-pricing-models.tex`, owned by `topic:asset-pricing-factor-models` and 
 
 Correction pass (2026-10-18, PR #22): `meth:efficient-frontier` no longer says constrained solutions must have zero weights, and `meth:required-return-on-equity` treats a historical premium with the current 10-year yield as a legitimate estimate with its own assumption and uncertainty (Damodaran's corporate finance project notes).
 
-All partly checked 2026-10-18, draft. The examples are in `notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py` and `notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py`; human review is outstanding.
+All partly checked 2026-10-18, draft. The examples are in `trading_notes.numerical.portfolio_choice.portfolio_choice_checks` and `notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py`; human review is outstanding.
 
 
 Written in the performance and planning batch (2026-10-18):
@@ -90,7 +90,7 @@ In `active-management.tex` (topic `active-management-analysis`):
 - `res:fundamental-law-active-management`: IR = IC sqrt(BR), assumptions, additivity and examples (chap. 6, pp. 147-162); the transfer coefficient (Grinold and Kahn 2020, pp. 23 and 27-29); a constrained five-stock check of IR_P = TC x IR_Q.
 - `meth:active-risk-decomposition`: factor and specific active variance (chap. 3, pp. 76-77), active beta and residual risk (chap. 4, p. 90), marginal contributions (p. 67).
 
-All partly checked 2026-10-18, draft. Examples in `notes/artefacts/investment-planning/investment-planning-checks.py` and `notes/artefacts/active-management-analysis/active-management-checks.py`; human review is outstanding. Coverage records are editorial, not study.
+All partly checked 2026-10-18, draft. Examples in `trading_notes.numerical.investment_process_planning.investment_planning_checks` and `trading_notes.numerical.active_management.active_management_checks`; human review is outstanding. Coverage records are editorial, not study.
 
 Written in the derivatives, portfolio and execution batch (2026-10-19):
 
@@ -103,11 +103,11 @@ In `market-risk-measurement.tex` (topic `market-risk-measurement`):
 In `derivative-overlays.tex` (topic `derivative-overlay-strategies`):
 
 - `meth:forward-commitment-risk-overlays`: futures and swaps for duration, currency forwards and swaps, and equity futures, forwards and swaps for beta.
-- `meth:volatility-derivative-applications`: variance and volatility swaps and VIX futures. Extended 2026-10-21 (Batch L4): a seasoned variance swap valued from observation-weighted realised and remaining variance (a labelled derivation), with the exact discrete remaining strike under GBM kept apart from the continuous approximation; checks in `notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py`.
+- `meth:volatility-derivative-applications`: variance and volatility swaps and VIX futures. Extended 2026-10-21 (Batch L4): a seasoned variance swap valued from observation-weighted realised and remaining variance (a labelled derivation), with the exact discrete remaining strike under GBM kept apart from the continuous approximation; checks in `trading_notes.numerical.derivative_overlays.seasoned_variance_swap_checks`.
 - `meth:derivative-overlay-allocation`: targeting equity and rate exposure together, rebalancing, and expectations inferred from derivative prices.
 - `ex:endowment-derivative-overlay-case`: cash against futures for rebalancing and a tactical tilt (illustrative).
 
-All partly checked 2026-10-19, draft. Examples in `notes/artefacts/market-risk-measurement/market-risk-checks.py` and `notes/artefacts/derivative-overlays/overlay-checks.py`; human review is outstanding. Coverage records are editorial, not study. `meth:var-es-estimation-methods` and `def:vix-variance-dividend-swaps` are linked, not repeated.
+All partly checked 2026-10-19, draft. Examples in `trading_notes.numerical.market_risk_measurement.market_risk_measurement_checks` and `trading_notes.numerical.derivative_overlays.derivative_overlays_checks`; human review is outstanding. Coverage records are editorial, not study. `meth:var-es-estimation-methods` and `def:vix-variance-dividend-swaps` are linked, not repeated.
 
 Written in the alternatives batch (2026-10-20):
 
@@ -122,7 +122,7 @@ In `alternatives-allocation.tex`:
 - `def:alternatives-roles-opportunity-set`: roles of alternatives, alternatives against bonds as equity risk mitigators, and label-based against factor-based opportunity sets.
 - `meth:alternatives-allocation-approaches`: considerations by type, suitability, allocation approaches, commitment pacing (Takahashi-Alexander and Luxenberg et al.), overcommitment, the denominator effect, liquidity reserves and monitoring.
 
-Sources: Ang (2014) chaps. 13, 14 and 17; Jaeger (2008); Getmansky, Lo and Makarov (NBER WP 9571); Demaria et al. (2021); Luxenberg et al. (arXiv 2207.07767). Examples in `notes/artefacts/hedge-funds/hedge-fund-checks.py` and `notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py`. Partly checked 2026-10-20, draft; human review outstanding. Coverage records are editorial, not study.
+Sources: Ang (2014) chaps. 13, 14 and 17; Jaeger (2008); Getmansky, Lo and Makarov (NBER WP 9571); Demaria et al. (2021); Luxenberg et al. (arXiv 2207.07767). Examples in `trading_notes.numerical.hedge_fund_strategies.hedge_funds_checks` and `trading_notes.numerical.alternatives_allocation.alternatives_allocation_checks`. Partly checked 2026-10-20, draft; human review outstanding. Coverage records are editorial, not study.
 
 ## Source verification after macro markets and pricing review
 

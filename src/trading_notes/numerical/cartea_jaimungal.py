@@ -19,7 +19,6 @@ nothing and exits 0. Each section draws from its own seeded generator, never the
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.cartea_jaimungal
 """
 
-# standard library imports
 import math
 import random
 import sys

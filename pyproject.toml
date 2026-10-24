@@ -9,6 +9,8 @@ classifiers = ["Private :: Do Not Upload"]
 # for the regression, asset-pricing and AFML checks).
 dependencies = [
     "numpy==2.4.6",
+    # Typed parameter and result records of the numerical package.
+    "pydantic==2.13.5",
     "scipy==1.18.1",
     "statsmodels==0.15.0",
 ]
@@ -19,6 +21,7 @@ dev = [
     "pre-commit-hooks==6.0.0",
     "mypy==2.4.0",
     "pytest==9.1.1",
+    "pytest-xdist==3.8.0",
     "ruff==0.16.5",
     # Type information for scipy, which ships none; its version tracks the scipy pin.
     "scipy-stubs==1.18.1.1",
@@ -45,7 +48,7 @@ required-version = "==0.12.7"
 # inside ~/Documents. uv 0.12.7 has no project setting for this, and any `uv sync` or
 # `uv run` without --no-editable reinstalls the project editable, so every such command in
 # the Makefile, the pre-commit hooks, CI and the README passes --no-editable (see
-# tests/test_installation.py). The cache keys reinstall the package whenever a source file
+# src/tests/test_installation.py). The cache keys reinstall the package whenever a source file
 # changes, so a non-editable copy never goes stale.
 package = true
 cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.py" }]
@@ -67,33 +70,23 @@ select = ["E", "F", "I", "W", "UP", "RUF", "D", "ANN"]
 # Evidence modules keep their provenance docstrings and each printed check name on one
 # source line, as printed. The legacy exemptions of unmigrated artefacts are scoped to that
 # folder by notes/artefacts/ruff.toml; all other code gets every rule.
-"src/trading_notes/numerical/{funding_repo,fra_settlement,multicurve,amm_pool,country_risk_premium,cash_flow_linkage,bsm_svi,time_value_returns,bitemporal,filing_deadlines,filing_timestamps,margin_spiral,cme_allocation,perpetual_funding,commodity_latency,contract_statistics,synthetic_short}.py" = [
+"src/trading_notes/numerical/{funding_repo,fra_settlement,multicurve,amm_pool,time_value_returns,bitemporal,filing_deadlines,filing_timestamps,margin_spiral,cme_allocation,perpetual_funding,commodity_latency,contract_statistics,synthetic_short}.py" = [
     "E501",
 ]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.lint.isort.import-heading]
-standard-library = "standard library imports"
-third-party = "third party library imports"
-first-party = "project library imports"
-local-folder = "project library imports"
-
 [tool.mypy]
-# Strict checking of the migrated scope: the package, its entrypoints and their tests.
-# Numerical artefacts join this list as they are migrated (see notes/artefacts/ruff.toml).
+# Strict checking of everything maintained under src/ (the package and its tests), plus the
+# forwarding scripts in notes/artefacts that remain until their modules move into packages.
 files = [
-    "src",
-    "tools",
-    "tests",
+    "src/trading_notes",
+    "src/tests",
     "notes/artefacts/short-term-funding/funding-repo-checks.py",
     "notes/artefacts/rates-credit-mortgages/fra-settlement-check.py",
     "notes/artefacts/rates-credit-mortgages/multicurve-check.py",
     "notes/artefacts/crypto-perpetuals/amm-checks.py",
-    "notes/artefacts/corporate-finance/country-risk-premium-check.py",
-    "notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py",
-    "notes/artefacts/volatility-options/bsm-svi-checks.py",
     "notes/artefacts/time-value-returns/time-value-return-checks.py",
     "notes/artefacts/point-in-time-data/bitemporal-check.py",
     "notes/artefacts/point-in-time-data/filing-checks.py",
@@ -105,19 +98,13 @@ files = [
     "notes/artefacts/execution-market-making/contract-specifications-statistics-checks.py",
     "notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py",
     "notes/artefacts/model-governance-controls/reconciliation-check.py",
-    "notes/artefacts/portfolio-construction/black-litterman-check.py",
-    "notes/artefacts/portfolio-construction/erc-check.py",
-    "notes/artefacts/portfolio-construction/erc-sharpe-check.py",
-    "notes/artefacts/risk-tail-systemic/es-discrete-check.py",
     "notes/artefacts/reinforcement-learning-trading/cartea_jaimungal_checks.py",
     "notes/artefacts/portfolio-construction/shrinkage-check.py",
-    "notes/artefacts/risk-parity-vol-targeting/risk-parity-checks.py",
     "notes/artefacts/volatility-options/negative-hedge-ratio-check.py",
     "notes/artefacts/risk-tail-systemic/garch-ewma-check.py",
     "notes/artefacts/backtest-inference/sharpe-zero-check.py",
     "notes/artefacts/backtest-inference/drawdown-resampling-checks.py",
     "notes/artefacts/equity-long-short-construction/projection-checks.py",
-    "notes/artefacts/risk-tail-systemic/var-backtest-check.py",
     "notes/artefacts/backtest-inference/multiple-testing-checks.py",
     "notes/artefacts/backtest-inference/sharpe-checks.py",
     "notes/artefacts/rates-credit-mortgages/yield-shift-check.py",
@@ -127,11 +114,8 @@ files = [
     "notes/artefacts/private-wealth/concentrated-position-check.py",
     "notes/artefacts/market-making-lob/model-derivations-checks.py",
     "notes/artefacts/backtest-inference/sharpe-conditions-checks.py",
-    "notes/artefacts/option-valuation/dividend-tree-swaption-checks.py",
     "notes/artefacts/market-making-lob/model-checks.py",
     "notes/artefacts/short-term-funding/margin-purchase-check.py",
-    "notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py",
-    "notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py",
     "notes/artefacts/high-dimensional-estimation/covariance-volatility-checks.py",
     "notes/artefacts/etf-mechanics/etf-checks.py",
     "notes/artefacts/trade-execution/trade-execution-checks.py",
@@ -139,25 +123,14 @@ files = [
     "notes/artefacts/commodity-investment/commodity-return-checks.py",
     "notes/artefacts/inference-simulation/correlation-independence-checks.py",
     "notes/artefacts/counterparty-xva/counterparty-capital-check.py",
-    "notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py",
-    "notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py",
-    "notes/artefacts/firms-market-structure/market-structure-checks.py",
-    "notes/artefacts/hedge-funds/hedge-fund-checks.py",
-    "notes/artefacts/performance-presentation-standards/gips-checks.py",
     "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py",
     "notes/artefacts/market-index-construction/index-construction-checks.py",
     "notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py",
     "notes/artefacts/currency-management/currency-management-checks.py",
-    "notes/artefacts/option-pricing-models/option-model-checks.py",
     "notes/artefacts/economic-growth/growth-checks.py",
-    "notes/artefacts/derivative-overlays/overlay-checks.py",
-    "notes/artefacts/active-management-analysis/active-management-checks.py",
     "notes/artefacts/credit-portfolios/credit-portfolio-checks.py",
     "notes/artefacts/fx-mechanics-determination/fx-checks.py",
-    "notes/artefacts/manager-selection/manager-selection-checks.py",
-    "notes/artefacts/option-valuation/transaction-cost-hedging-check.py",
     "notes/artefacts/capital-market-expectations/cme-checks.py",
-    "notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py",
     "notes/artefacts/digital-assets/digital-asset-checks.py",
     "notes/artefacts/numerical-pricing/numerical-pricing-checks.py",
     "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py",
@@ -167,45 +140,33 @@ files = [
     "notes/artefacts/counterparty-xva/counterparty-xva-checks.py",
     "notes/artefacts/default-correlation/default-correlation-checks.py",
     "notes/artefacts/descriptive-probability/statistics-probability-checks.py",
-    "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py",
     "notes/artefacts/execution-market-making/dealer-queue-information-checks.py",
     "notes/artefacts/execution-market-making/liquidity-market-design-checks.py",
     "notes/artefacts/execution-market-making/market-estimators-rules-checks.py",
-    "notes/artefacts/exotic-options/exotic-option-checks.py",
-    "notes/artefacts/exotic-options/lookback-option-check.py",
     "notes/artefacts/extreme-value/extreme-value-checks.py",
     "notes/artefacts/financial-ml-methods/ml-methods-checks.py",
     "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py",
-    "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py",
     "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py",
-    "notes/artefacts/forward-swap-valuation/forward-swap-checks.py",
     "notes/artefacts/fx-determination-forecasting/fx-panel-inference-check.py",
     "notes/artefacts/inference-simulation/inference-simulation-checks.py",
     "notes/artefacts/institutional-portfolios/institutional-checks.py",
-    "notes/artefacts/investment-planning/investment-planning-checks.py",
     "notes/artefacts/linear-regression/regression-checks.py",
     "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py",
-    "notes/artefacts/market-risk-measurement/market-risk-checks.py",
     "notes/artefacts/market-simulation/order-flow-checks.py",
     "notes/artefacts/market-structure-execution-quality/order-routing-fragmentation-checks.py",
     "notes/artefacts/multi-asset-systematic-macro/macro-pricing-risk-checks.py",
-    "notes/artefacts/option-strategies/option-strategy-checks.py",
-    "notes/artefacts/option-valuation/option-valuation-checks.py",
-    "notes/artefacts/performance-evaluation/performance-evaluation-checks.py",
-    "notes/artefacts/portfolio-construction/kelly-check.py",
-    "notes/artefacts/portfolio-construction/mean-cvar-check.py",
     "notes/artefacts/private-capital/private-capital-checks.py",
     "notes/artefacts/private-wealth/private-wealth-checks.py",
     "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py",
     "notes/artefacts/real-assets/real-asset-checks.py",
     "notes/artefacts/statistical-learning-foundations/afml-checks.py",
-    "notes/artefacts/strategic-asset-allocation/saa-checks.py",
 ]
-# statsmodels and pandas ship no type information. typings/ declares only the parts of their
+# statsmodels and pandas ship no type information. src/typings/ declares only the parts of their
 # APIs that the numerical checks call, typed as those calls return at the pinned versions; a call
 # outside them is a type error, so extend a stub, checked against the pinned library, when a
 # check needs a new call, and review the stubs when a pin moves.
-mypy_path = "src:typings"
+mypy_path = "src:src/typings"
+plugins = ["pydantic.mypy"]
 python_version = "3.14"
 strict = true
 disallow_any_explicit = true
@@ -220,8 +181,15 @@ enable_error_code = [
     "unused-awaitable",
 ]
 
+[tool.pydantic-mypy]
+# Record constructors are checked like typed __init__ methods, with no extra fields.
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["src/tests"]
 python_files = ["test_*.py"]
-addopts = "--strict-config --strict-markers"
+# importlib mode keeps src/ off sys.path, so tests import the installed, non-editable package.
+addopts = "--strict-config --strict-markers --import-mode=importlib --numprocesses=auto"
 filterwarnings = ["error"]

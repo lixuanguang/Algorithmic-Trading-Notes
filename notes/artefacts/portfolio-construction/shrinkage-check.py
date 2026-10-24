@@ -7,10 +7,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.covariance_
 (numpy). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.covariance_shrinkage import main
 
 if __name__ == "__main__":

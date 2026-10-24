@@ -30,16 +30,13 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.fx_mechanic
 (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 import scipy
 from scipy.stats import skew
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 SEED: Final = 20261019

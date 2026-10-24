@@ -5,10 +5,8 @@ The demonstration is in trading_notes.numerical.yield_shift.
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.yield_shift (numpy, scipy).
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.yield_shift import main
 
 if __name__ == "__main__":

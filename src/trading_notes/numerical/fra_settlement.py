@@ -21,13 +21,11 @@ Checks:
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.fra_settlement (standard library).
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Callable
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Discount = Callable[[float], float]

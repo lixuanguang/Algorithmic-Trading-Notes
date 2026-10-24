@@ -9,10 +9,8 @@ its extremes, and the 10-year yield split ACMY10 = ACMRNY10 + ACMTP10 (checked t
 Run: uv run --frozen --no-editable --group empirical python acm-term-premium-summary.py <ACMTermPremium.xls>   (xlrd). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 
-# third party library imports
 import xlrd
 
 sh = xlrd.open_workbook(sys.argv[1]).sheet_by_name("ACM Monthly")

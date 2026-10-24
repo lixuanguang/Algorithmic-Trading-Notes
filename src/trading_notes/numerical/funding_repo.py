@@ -12,10 +12,8 @@ Count convention: one check is one executed ok() call (a call inside a loop coun
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.funding_repo (standard library only).
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 

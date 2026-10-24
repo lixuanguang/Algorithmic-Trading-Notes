@@ -15,17 +15,14 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.counterpart
 (scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Sequence
 from typing import Final
 
-# third party library imports
 import scipy
 from scipy import integrate
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 ALPHA: Final = 1.4

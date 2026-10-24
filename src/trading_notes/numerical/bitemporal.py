@@ -10,14 +10,12 @@ carries an actual-time range and a record-time range, and record history is appe
 Synthetic data only. Run: uv run --frozen --no-editable python -m trading_notes.numerical.bitemporal (standard library).
 """
 
-# standard library imports
 import datetime as dt
 import sys
 from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 INF: Final = dt.date(9999, 12, 31)  # end of an open range: still current

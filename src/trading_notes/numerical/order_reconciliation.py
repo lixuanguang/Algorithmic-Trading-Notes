@@ -47,14 +47,12 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.order_recon
 (standard library). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 TERMINAL: Final = frozenset(

@@ -27,13 +27,11 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.filing_time
 All times are naive datetimes on Eastern time, as EDGAR states them.
 """
 
-# standard library imports
 import datetime as dt
 import sys
 from dataclasses import dataclass
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 LATE_FORMS: Final = frozenset({"3", "4", "5", "144", "SC 13D", "SC 13G", "SC 14N"})

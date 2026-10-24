@@ -6,10 +6,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.index_const
 (numpy). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.index_construction import main
 
 if __name__ == "__main__":

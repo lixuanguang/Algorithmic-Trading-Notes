@@ -14,18 +14,15 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.statistics_
 (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from typing import Final
 
-# third party library imports
 import numpy as np
 from scipy import integrate, stats
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 SEED: Final = 20261018

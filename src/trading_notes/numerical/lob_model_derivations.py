@@ -21,10 +21,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.lob_model_d
 (numpy and scipy). Exits non-zero on failure, with no summary line.
 """
 
-# standard library imports
 import sys
 
-# third party library imports
 import numpy as np
 from scipy import optimize
 

@@ -64,19 +64,19 @@ method validation (2026-10-17):
 
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
 
-- `meth:equal-risk-contribution`: ERC against inverse-volatility weights, with own checks (`erc-check.py`). Partly checked 2026-10-17, draft; human review outstanding.
+- `meth:equal-risk-contribution`: ERC against inverse-volatility weights, with own checks (`trading_notes.numerical.portfolio_construction_models.equal_risk_contribution_checks`). Partly checked 2026-10-17, draft; human review outstanding.
 - `mod:garch-volatility-forecast`: GARCH(1,1) against EWMA, with own synthetic checks (`garch-ewma-check.py`). Partly checked 2026-10-17, draft; human review outstanding.
 - `meth:resampled-efficiency`: Michaud resampling: what is drawn and averaged, and the proponents' simulation evidence. Partly checked 2026-10-17, draft; human review outstanding.
 
 Written in library gap-filling Batch L1 (2026-10-21):
 
-- `res:kelly-growth-optimal-fraction` in `compendium/portfolio-construction-risk/portfolio-construction-models.tex`: the discrete-bet fraction $p-q/b$, the continuous fraction $(\mu-r)/\sigma^2$ with exact half- and twice-Kelly identities, daily rebalancing at unlevered fractions against its quadrature expectation (levered fractions with discrete rebalancing can lose all wealth in a step, so they are left to the continuous model), and estimation error in $\mu$. Source: Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed., secs. 17.5 and 66.4; Kelly (1956) and Thorp (2008) not read. Checks in `notes/artefacts/portfolio-construction/kelly-check.py`, synthetic. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
+- `res:kelly-growth-optimal-fraction` in `compendium/portfolio-construction-risk/portfolio-construction-models.tex`: the discrete-bet fraction $p-q/b$, the continuous fraction $(\mu-r)/\sigma^2$ with exact half- and twice-Kelly identities, daily rebalancing at unlevered fractions against its quadrature expectation (levered fractions with discrete rebalancing can lose all wealth in a step, so they are left to the continuous model), and estimation error in $\mu$. Source: Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed., secs. 17.5 and 66.4; Kelly (1956) and Thorp (2008) not read. Checks in `trading_notes.numerical.portfolio_construction_models.kelly_growth_checks`, synthetic. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
 
 Written in library gap-filling Batch L2 (2026-10-21), in `portfolio-construction-models.tex`:
 
 - `meth:mean-cvar-optimisation`: Rockafellar and Uryasev's auxiliary function, the scenario LP, the normal-case equivalence with mean-variance (their Tables 1-4 reproduced), the fractional-tail-mass link, sampling error, and a negatively skewed asset.
 
-Partly checked 2026-10-21, draft. Checks in `notes/artefacts/portfolio-construction/mean-cvar-check.py` (synthetic; about two minutes, from the 100,000-scenario LPs). Source: Rockafellar and Uryasev, "Optimization of Conditional Value-at-Risk" (author preprint of 5 September 1999). Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+Partly checked 2026-10-21, draft. Checks in `trading_notes.numerical.portfolio_construction_models.mean_cvar_checks` (synthetic; about two minutes, from the 100,000-scenario LPs). Source: Rockafellar and Uryasev, "Optimization of Conditional Value-at-Risk" (author preprint of 5 September 1999). Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
 
 ## Source verification after macro markets and pricing review
 

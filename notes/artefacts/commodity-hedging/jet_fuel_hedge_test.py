@@ -8,17 +8,14 @@ previous 104 (sensitivity 52) weeks; out-of-sample variance reduction VR = 1 - V
 Run: uv run --frozen --no-editable --group empirical python jet_fuel_hedge_test.py <jet .xls> <folder with EIA_EER_EPD2F_PE1_Y35NY_DPGd.xls> <folder with EIA_RCLC1d.xls>
 """
 
-# standard library imports
 import itertools
 import os
 import sys
 
-# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "commodity-storage-curves"))
-# third party library imports
 import backwardation_test as bt  # noqa: E402
 
 jet = bt.series(os.path.dirname(sys.argv[1]), os.path.basename(sys.argv[1])[4:-4])

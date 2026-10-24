@@ -6,10 +6,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.linear_regr
 (numpy, scipy, statsmodels). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.linear_regression import main
 
 if __name__ == "__main__":

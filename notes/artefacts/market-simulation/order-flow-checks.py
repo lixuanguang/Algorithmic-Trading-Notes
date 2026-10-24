@@ -6,10 +6,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.order_flow
 (numpy, scipy; fixed seeds; about 20 s). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.order_flow import main
 
 if __name__ == "__main__":

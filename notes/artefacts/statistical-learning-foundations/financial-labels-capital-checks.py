@@ -6,10 +6,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.financial_l
 (numpy only).
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.financial_labels import main
 
 if __name__ == "__main__":

@@ -73,7 +73,7 @@ In `performance-standards.tex` (topic `performance-presentation-standards`), ext
 - `meth:gips-composite-membership`: provisions 3.A.1-3.A.13 with the Handbook's discussion of timing and significant cash flows (pp. 166-167 and 173-174); an invented membership calendar.
 - `ex:gips-composite-report`: an educational five-year report with no compliance claim.
 
-All partly checked 2026-10-18, draft. Examples in `notes/artefacts/performance-evaluation/performance-evaluation-checks.py`, `notes/artefacts/manager-selection/manager-selection-checks.py` and `notes/artefacts/performance-presentation-standards/gips-checks.py`; human review is outstanding. Coverage records are editorial, not study.
+All partly checked 2026-10-18, draft. Examples in `trading_notes.numerical.performance_attribution_appraisal.performance_evaluation_checks`, `trading_notes.numerical.manager_selection.manager_selection_checks` and `trading_notes.numerical.performance_standards.gips_checks`; human review is outstanding. Coverage records are editorial, not study.
 
 ## Source verification after macro markets and pricing review
 

@@ -8568,7 +8568,7 @@
    "objectives": [
     "objective:value-equity-from-forecast-model"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:forecast-model-valuation turns the Harbour forecast into 8.49 a share and interprets it through scenario values (4.44-10.42) and a WACC-growth grid; checked by equity-fcf-ri-private-checks.py part 1.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:forecast-model-valuation turns the Harbour forecast into 8.49 a share and interprets it through scenario values (4.44-10.42) and a WACC-growth grid; checked by trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks part 1.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15576,7 +15576,7 @@
    "objectives": [
     "objective:derive-fcff-fcfe"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation calculates FCFF 44.50 by four routes and FCFE 45.50 for Avon Fittings; checked by equity-fcf-ri-private-checks.py part 3. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation calculates FCFF 44.50 by four routes and FCFE 45.50 for Avon Fittings; checked by trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks part 3. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16155,7 +16155,7 @@
    "objectives": [
     "objective:calculate-residual-income"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:residual-income-eva calculates and interprets residual income, EVA and MVA for an original firm and Harbour; checked by equity-fcf-ri-private-checks.py part 7.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:residual-income-eva calculates and interprets residual income, EVA and MVA for an original firm and Harbour; checked by trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks part 7.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },

@@ -16,13 +16,11 @@ gsw-month-end-extract.py from the Board's feds200628.csv).
 Run from this folder: uv run --frozen --no-editable python term-structure-checks.py   (numpy). Exits 1 on failure.
 """
 
-# standard library imports
 import csv
 import math
 import sys
 from pathlib import Path
 
-# third party library imports
 import numpy as np
 
 print(f"Python {sys.version.split()[0]}, NumPy {np.__version__}")

@@ -22,17 +22,14 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.margin_purc
 (scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 from collections.abc import Callable
 from datetime import date
 from typing import Final
 
-# third party library imports
 import scipy
 from scipy import optimize
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 N: Final = 1_000  # shares

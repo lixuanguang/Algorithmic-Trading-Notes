@@ -7,10 +7,8 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.synthetic_s
 (standard library). Exits non-zero if a check fails.
 """
 
-# standard library imports
 import sys
 
-# project library imports
 from trading_notes.numerical.synthetic_short import main
 
 if __name__ == "__main__":

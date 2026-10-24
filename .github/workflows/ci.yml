@@ -48,7 +48,6 @@ jobs:
           uv run --frozen --no-editable python - <<'PY'
           """Verify the pinned interpreter and supported platform."""
 
-          # standard library imports
           import platform
           import sys
           import sysconfig

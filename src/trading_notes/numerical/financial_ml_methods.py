@@ -27,13 +27,11 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.financial_m
 (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import math
 import sys
 from collections import Counter
 from typing import Final, Literal
 
-# third party library imports
 import numpy as np
 import scipy
 from numpy.typing import NDArray
@@ -41,7 +39,6 @@ from scipy.cluster.hierarchy import fcluster, linkage
 from scipy.optimize import minimize
 from scipy.stats import rankdata
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Floats = NDArray[np.float64]

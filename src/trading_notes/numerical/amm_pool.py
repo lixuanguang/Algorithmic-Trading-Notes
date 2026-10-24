@@ -10,12 +10,10 @@ real reserves of a concentrated position.
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.amm_pool (standard library).
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 # The v2 pool before the trade: 1,000 ETH and 2,000,000 USDC.

@@ -7,13 +7,11 @@ Run: uv run --frozen --no-editable python asset-pricing-checks.py   (numpy, stat
 Exits 1 on failure.
 """
 
-# standard library imports
 import sys
 from pathlib import Path
 
-# project library imports
 from trading_notes.numerical.asset_pricing_factor_models import main
 
 if __name__ == "__main__":
     ROOT = Path(__file__).resolve().parents[3]
-    sys.exit(main(ROOT / "compendium" / "asset-pricing" / "figures" / "security-market-line.tikz"))
+    sys.exit(main(["--root", str(ROOT)]))

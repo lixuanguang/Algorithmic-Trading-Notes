@@ -5,10 +5,8 @@ demonstration: it prints the yield changes and durations and asserts nothing.
 Run: uv run --frozen --no-editable python -m trading_notes.numerical.yield_shift (numpy, scipy).
 """
 
-# standard library imports
 import sys
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 from scipy.optimize import brentq

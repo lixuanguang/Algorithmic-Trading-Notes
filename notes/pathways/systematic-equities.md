@@ -22,7 +22,7 @@ Not attempted. No checkpoint has been set for these entries.
 
 ## Entries created or changed
 
-Corporate-finance and equity-valuation batch (2026-10-20); numbers checked by `notes/artefacts/systematic-equities/equity-valuation-checks.py`, which reuses the Harbour valuation:
+Corporate-finance and equity-valuation batch (2026-10-20); numbers checked by `trading_notes.numerical.systematic_equities.equity_valuation_checks`, which reuses the Harbour valuation:
 
 - Equity securities and markets: `def:equity-instruments`, `def:equity-rights-voting`, `def:equity-issuance-trading-liquidity`, `def:corporate-distribution-mechanics`.
 - Valuation foundations: `def:price-value-indicators`, `def:valuation-model-families`, `meth:present-value-model-inputs`, `def:intrinsic-value-mispricing`, `meth:valuation-approach-choice`, `meth:valuation-price-judgement`.
@@ -32,7 +32,7 @@ Corporate-finance and equity-valuation batch (2026-10-20); numbers checked by `n
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026).
 
-Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py`, which rebuilds the Harbour value from its forecast:
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `trading_notes.numerical.systematic_equities.equity_fcf_ri_private_checks`, which rebuilds the Harbour value from its forecast:
 
 - Equity research and forecast models: `meth:forecast-model-valuation`, `def:research-report-evaluation`.
 - Free cash flow valuation: `meth:fcff-fcfe-derivation`, `meth:fcf-forecasting`, `meth:fcf-valuation-models`, `meth:cash-flow-proxies`.

@@ -15,7 +15,6 @@ Each check targets one audit finding, on a synthetic trading calendar or on the 
 Run: uv run --frozen --no-editable python energy-checks.py   (numpy; reads files next to it; under 1 s). Exits non-zero on failure.
 """
 
-# standard library imports
 import csv
 import datetime as dt
 import hashlib

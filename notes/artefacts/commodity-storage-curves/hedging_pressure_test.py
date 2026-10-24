@@ -11,7 +11,6 @@ hedging-pressure-protocol.md.
 Run: uv run --frozen --no-editable python hedging_pressure_test.py <folder with deacot*.zip>  (numpy). Writes hedging_pressure_monthly.csv.
 """
 
-# standard library imports
 import bisect
 import csv
 import datetime as dt
@@ -21,12 +20,10 @@ import os
 import sys
 import zipfile
 
-# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-# third party library imports
 import backwardation_test as bt  # noqa: E402
 
 rep, names = {}, {}

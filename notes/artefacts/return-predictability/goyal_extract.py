@@ -18,13 +18,11 @@ Run: uv run --frozen --no-editable --group empirical python goyal_extract.py <pa
 Writes goyal-annual-1871-2025.csv and goyal-monthly-1871-2025.csv next to this script.
 """
 
-# standard library imports
 import hashlib
 import sys
 import warnings
 from pathlib import Path
 
-# third party library imports
 import pandas as pd
 
 EXPECTED_SHA256 = "8d210b779442a5a9206702060aac67c1de4283186c0f167ebdb4488d149be872"

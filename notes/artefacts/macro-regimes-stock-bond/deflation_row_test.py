@@ -10,14 +10,12 @@ Run: uv run --frozen --no-editable --group empirical python deflation_row_test.p
   Writes deflation_quarters.csv.
 """
 
-# standard library imports
 import csv
 import datetime as dt
 import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 import openpyxl
 import xlrd

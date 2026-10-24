@@ -13,13 +13,11 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.multiple_te
 (numpy, scipy; about 1 s). Exits non-zero on failure.
 """
 
-# standard library imports
 import sys
 from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 from scipy.stats import norm

@@ -16,14 +16,12 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.order_flow
 (numpy, scipy; fixed seeds; about 20 s). Exits 1 on failure.
 """
 
-# standard library imports
 import itertools
 import sys
 from collections.abc import Sequence
 from decimal import Decimal
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 from scipy import integrate, stats

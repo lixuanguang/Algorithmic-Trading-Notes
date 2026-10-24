@@ -7,7 +7,6 @@ ust-10y3m-monthly.csv (in this folder), monthly averages of Treasury's daily par
 Gliner (2014) by PDF page of the ebook; Drobny (2006) by printed page.
 """
 
-# standard library imports
 import csv
 import math
 import os
@@ -53,7 +52,6 @@ assert res[0.0025][2] < res[0.01][2] / 10  # grows with (dy)^2
 # 2. Inversion: three different statements, tested separately --------------------------------------------
 # (second follow-up, 2026-10-16: replaces the first follow-up's chronology assertions)
 section("2. inversions, recession onsets and the twelve-month horizon")
-# standard library imports
 from math import erf, sqrt  # noqa: E402 (section-local import)
 
 

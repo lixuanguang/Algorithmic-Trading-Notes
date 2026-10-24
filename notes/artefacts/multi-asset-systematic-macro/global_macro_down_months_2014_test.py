@@ -24,14 +24,12 @@ Run: uv run --frozen --no-editable --group empirical python global_macro_down_mo
      (numpy, scipy, xlrd 2.0.1 for the .xls; under 1 s). Writes global_macro_monthly_2014.csv next to this script.
 """
 
-# standard library imports
 import csv
 import hashlib
 import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 import xlrd
 from scipy import stats

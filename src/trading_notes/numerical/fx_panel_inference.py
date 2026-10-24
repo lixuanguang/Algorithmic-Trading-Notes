@@ -21,16 +21,13 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.fx_panel_in
 (numpy only; exits 1 on failure).
 """
 
-# standard library imports
 import math
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 from numpy.typing import NDArray
 
-# project library imports
 from trading_notes.numerical.newey_west import Month, add, nw_t, panel_nw_t
 
 type Floats = NDArray[np.float64]

@@ -5,11 +5,9 @@ notes/artefacts/fx-determination-forecasting/fx_ppp_oos_test.py, which keeps its
 its empirical run migrates. Months are (year, month) pairs with month 1 to 12.
 """
 
-# standard library imports
 import math
 from collections.abc import Sequence
 
-# third party library imports
 import numpy as np
 from numpy.typing import ArrayLike
 

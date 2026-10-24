@@ -29,11 +29,9 @@ Run: uv run --frozen --no-editable python return-predictability-checks.py   (num
 Recorded output: return-predictability-results.txt.
 """
 
-# standard library imports
 import sys
 from pathlib import Path
 
-# third party library imports
 import numpy as np
 import pandas as pd
 

@@ -46,13 +46,11 @@ Run (v2, under 2 s): uv run --frozen --no-editable --group empirical python regi
   fred/*.csv, french/*.csv). Writes regime_quarters.csv (derived panel).
 """
 
-# standard library imports
 import csv
 import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 import openpyxl
 

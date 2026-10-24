@@ -5,7 +5,6 @@ building trusted records, so a malformed record becomes a reported problem and n
 traceback raised later.
 """
 
-# standard library imports
 from collections.abc import Callable
 
 type JsonObject = dict[str, object]

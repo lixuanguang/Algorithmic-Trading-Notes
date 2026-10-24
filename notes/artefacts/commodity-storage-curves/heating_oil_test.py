@@ -31,18 +31,15 @@ Run: uv run --frozen --no-editable --group empirical python heating_oil_test.py 
 Writes heating_oil_monthly.csv next to this script.
 """
 
-# standard library imports
 import csv
 import math
 import os
 import sys
 
-# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-# third party library imports
 import backwardation_test as bt  # noqa: E402
 
 _expiry = bt.expiry
@@ -51,7 +48,6 @@ _expiry = bt.expiry
 def expiry(market, cal, y, m, ng_days=3):
     if market != "HO":
         return _expiry(market, cal, y, m, ng_days)
-    # standard library imports
     import datetime as dt
 
     if dt.date(y, m, 1) > cal[-1]:

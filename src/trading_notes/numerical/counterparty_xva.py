@@ -38,19 +38,16 @@ Run: uv run --frozen --no-editable python -m trading_notes.numerical.counterpart
 (numpy, scipy). Exits 1 on failure.
 """
 
-# standard library imports
 import itertools
 import math
 import sys
 from typing import Final
 
-# third party library imports
 import numpy as np
 import scipy
 from numpy.typing import NDArray
 from scipy import integrate, optimize, stats
 
-# project library imports
 from trading_notes.numerical.report import CheckReport
 
 type Floats = NDArray[np.float64]

@@ -1,7 +1,6 @@
 """The relative-PPP forecast test's stale-data rule, outcome eligibility, timing and outputs."""
 
 import csv
-import hashlib
 import math
 import sys
 from collections.abc import Sequence
@@ -10,13 +9,14 @@ from typing import Final
 
 import numpy as np
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.macro_fx.ppp_forecasts import ExpandingForecast, StaleDataRule
 from trading_notes.numerical.newey_west import add
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.repository import repository_root
 
-# The test's outputs, below the repository root, and its first run kept beside them.
-FOLDER: Final = Path("notes/artefacts/fx-determination-forecasting")
+# The test's retained outputs, below the repository root.
+FOLDER: Final = DataFolder(subsection="macro_fx")
 RULE: Final = StaleDataRule(monthly_lag=2, min_age=4, max_age=6)
 
 
@@ -84,9 +84,9 @@ def check_eligibility_and_training(report: CheckReport) -> None:
 
 
 def check_outputs(report: CheckReport, root: Path) -> None:
-    """4. The rerun's panel and results, and the first run's panel preserved."""
+    """4. The rerun's panel and results."""
     print("== 4. rebuilt outputs")
-    with (root / FOLDER / "fx_ppp_monthly.csv").open() as fh:
+    with (root / FOLDER.results / "fx_ppp_monthly.csv").open() as fh:
         rows = list(csv.DictReader(fh))
     for c in ("AUD", "NZD"):
         z = [r["month"] for r in rows if r["ccy"] == c and r["z_dev"]]
@@ -100,12 +100,8 @@ def check_outputs(report: CheckReport, root: Path) -> None:
         ),
         True,
     )
-    res = (root / FOLDER / "fx_ppp_results.txt").read_text()
+    res = (root / FOLDER.results / "fx_ppp_results.txt").read_text()
     report.same("portfolio labelled not executable", "not an executable result" in res, True)
-    v1 = (root / FOLDER / "superseded-first-run" / "fx_ppp_monthly.csv").read_bytes()
-    report.same(
-        "v1 panel preserved (SHA-256 prefix)", hashlib.sha256(v1).hexdigest()[:8], "da1bb9d4"
-    )
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -118,8 +114,7 @@ def main(argv: Sequence[str] | None = None) -> int:
        for at most six; monthly CPI with a two-month lag and nothing older.
     3. Training cutoff: the expanding fit at origin t uses only pairs whose outcome month
        t' + h <= t.
-    4. The rebuilt panel and results, and the first run's panel kept unchanged in
-       superseded-first-run/.
+    4. The rebuilt panel and results.
 
     The stale-data rule and the forecasts are those
     trading_notes.numerical.macro_fx.ppp_forecasts gives the PPP research workflow,

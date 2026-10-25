@@ -4,9 +4,9 @@ import math
 import sys
 from collections.abc import Sequence
 from math import erf, sqrt
-from pathlib import Path
 from typing import Final
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.business_cycles_policy.recession_signals import (
     RecessionCalendar,
     add_months,
@@ -15,8 +15,8 @@ from trading_notes.numerical.business_cycles_policy.recession_signals import (
 from trading_notes.numerical.report import require, section
 from trading_notes.numerical.repository import repository_root
 
-# The monthly spread series, below the repository root.
-DATA: Final = Path("notes/artefacts/multi-asset-systematic-macro")
+# The retained monthly spread series, below the repository root.
+DATA: Final = DataFolder(subsection="business_cycles_policy").results
 # NBER peaks and troughs as of 2026-10-16; peak months belong to the expansion.
 NBER: Final = RecessionCalendar(
     peaks=("1969-12", "1973-11", "1980-01", "1981-07", "1990-07", "2001-03", "2007-12", "2020-02"),

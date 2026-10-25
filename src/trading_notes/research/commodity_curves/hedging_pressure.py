@@ -12,6 +12,7 @@ from typing import ClassVar, Final, Self
 
 import numpy as np
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.commodity_curves.backwardation import OutOfSample
 from trading_notes.research.regressions import NeweyWestOls
@@ -174,10 +175,13 @@ class Arguments(WorkflowArguments):
 
     Attributes:
         source: The folder with the CFTC deacot*.zip files.
+        backwardation: A generated backwardation_monthly.csv, or a run folder holding one, to
+            read instead of the retained file.
     """
 
-    folder: ClassVar[str] = "commodity-storage-curves"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="commodity_curves")
     source: Path
+    backwardation: Path | None = None
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -186,19 +190,21 @@ def main(argv: Sequence[str] | None = None) -> int:
     The test under hedging-pressure-protocol.md: HP_t from the CFTC legacy futures-only
     report for contract market 067651, the latest report with positions date R and
     R + 3 days <= t; hypothesis H, beta > 0 in r_{t+1} = a + beta HP_t + u, r the WTI
-    held-contract return of backwardation_monthly.csv (read from the artefact folder below
-    the root), supported if the Newey-West (12 lags) t > 2 and the expanding out-of-sample
-    R^2 from month 121 is positive with a Clark-West t > 1.65.
+    held-contract return of backwardation_monthly.csv (the retained results unless
+    --backwardation names a generated one), supported if the Newey-West (12 lags) t > 2 and
+    the expanding out-of-sample R^2 from month 121 is positive with a Clark-West t > 1.65.
 
     Returns:
         0.
     """
     parser = Arguments.parser(__doc__ or "")
     parser.add_argument("source", type=Path, help="folder with the deacot*.zip files")
-    args = Arguments.parse(parser, argv)
-    sample = HedgingSample.of(
-        HedgingPressure.read(args.source), args.artefacts / "backwardation_monthly.csv"
+    parser.add_argument(
+        "--backwardation", type=Path, default=None, help="a generated panel or run folder"
     )
+    args = Arguments.parse(parser, argv)
+    panel = args.upstream(args.backwardation, args.folder.results / "backwardation_monthly.csv")
+    sample = HedgingSample.of(HedgingPressure.read(args.source), panel)
     sample.report()
     sample.write(args.output_folder / "hedging_pressure_monthly.csv")
     return 0

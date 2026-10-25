@@ -1,7 +1,7 @@
 ---
 key: us-asset-returns-1928-2025
 pathways: [portfolio-construction-risk]
-version: Aswath Damodaran, "Historical Returns on Stocks, Bonds and Bills" (United States): page histretSP.html dated January 2026 and updated 5 January 2026, and workbook histretSP.xls (last saved 24 August 2026) with annual rows for 1928-2025, retrieved 2026-10-18 (workbook SHA-256 28b8110916a15a4dcc11c87c6422510704608ddedcdfa67a1298abdc22e49c69). The transcribed columns are retained in notes/artefacts/portfolio-risk-return/us-asset-class-returns-1928-2025.csv
+version: Aswath Damodaran, "Historical Returns on Stocks, Bonds and Bills" (United States): page histretSP.html dated January 2026 and updated 5 January 2026, and workbook histretSP.xls (last saved 24 August 2026) with annual rows for 1928-2025, retrieved 2026-10-18 (workbook SHA-256 28b8110916a15a4dcc11c87c6422510704608ddedcdfa67a1298abdc22e49c69). The transcribed columns are retained in src/data/portfolio_choice/inputs/us-asset-class-returns-1928-2025.csv
 sections: sheets "Returns by year" (annual returns and summary rows), "Explanations and FAQ" and "Small Cap" (2025 note); credit, time-series and valuation batch (2026-10-20): sheet 'Returns by year', 1928-2025 (used through the transcribed CSV)
 read:
 status: draft

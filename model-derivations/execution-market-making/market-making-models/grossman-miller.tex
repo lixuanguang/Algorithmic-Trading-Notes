@@ -1,0 +1,73 @@
+\subsection{Grossman--Miller market making}\label{drv:grossman-miller}
+
+\emph{Purpose.} Derive the prices, holdings and trades of the three-date Grossman--Miller market, the version with per-share fees, and the two liquidity measures it implies. Compendium entries: \qfentrylink{mod:grossman-miller}, \qfentrylink{res:grossman-miller-trading-fees}, \qfentrylink{res:grossman-miller-liquidity-measures}.
+
+\emph{Sources.} \citep[chap.~``A Primer on the Microstructure of Financial Markets'', pp.~21--27]{crypto-cartea}; the free-entry condition from \citep[eqs.~(16)--(19), printed pp.~18--19]{grossman-miller-1988-nber}.
+
+\emph{Implementation and checks.} \nolinkurl{trading_notes.numerical.market_making_models.microstructure_models.GrossmanMillerFees}; \nolinkurl{trading_notes.numerical.market_making_models.lob_model_derivations_checks} parts~1 and~2 (\hyperref[drv:model-index]{model index}).
+
+\subsubsection{Assumptions}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Dates $t\in\{1,2,3\}$: date~1 is the first liquidity trade, date~2 the arrival of the offsetting liquidity trader, date~3 terminal cash settlement.
+\item Cash earns nothing; the risky asset is worth $S_3=\mu+\epsilon_2+\epsilon_3$ at date~3, with $\epsilon_2,\epsilon_3$ independent $N(0,\sigma^2)$ and $\epsilon_t$ announced between dates $t-1$ and $t$.
+\item $n$ identical market makers (MM) start with no inventory; liquidity trader LT1 holds $i$ units and LT2, present only from date~2, holds $-i$. For $i>0$ LT1 is a natural seller and LT2 a later buyer.
+\item Every agent has CARA utility $U(X)=-\exp(-\gamma X)$, $\gamma>0$.
+\item No trading, funding or holding costs, except where per-share fees are introduced below; the only cost of supplying liquidity is carrying inventory between dates~1 and~2. LT2's arrival at date~2 is certain.
+\end{enumerate}
+\emph{Variables and timing.} Let $q_t^j$ be agent $j$'s holding on leaving date $t$ and $S_t$ the date-$t$ trade price. Prices are in currency per unit and holdings in units; $\sigma^2$ is the variance of one period's value shock, in squared price units and not annualised, and $\gamma$ is in inverse currency units. At date~$t$ every present agent knows the shocks announced before it. Wealth evolves as
+\[ X_2^j=X_1^j+q_1^j(S_2-S_1), \qquad X_3^j=X_2^j+q_2^j(S_3-S_2). \]
+
+\subsubsection{The CARA--normal demand}
+If terminal wealth is $X+q(Z-S)$ with $Z\sim N(m,s^2)$ given the agent's information, then
+\[ \mathbb{E}\big[U\big(X+q(Z-S)\big)\big]=-\exp\Big(-\gamma\big(X+q(m-S)\big)+\tfrac12\gamma^2q^2s^2\Big), \]
+by the normal moment-generating function. Maximising expected utility is therefore maximising the certainty equivalent $X+q(m-S)-\tfrac12\gamma q^2s^2$, which is strictly concave in $q$; the first-order condition $m-S-\gamma qs^2=0$ gives the demand
+\[ q^\star=\frac{m-S}{\gamma s^2}. \]
+
+\subsubsection{Date 2}
+Given $\epsilon_2$, the next value is $S_3$ with $m=\mathbb{E}[S_3\mid\epsilon_2]=\mu+\epsilon_2$ and $s^2=\sigma^2$, so every agent present demands
+\[ q_2^{j}=\frac{\mathbb{E}[S_3\mid\epsilon_2]-S_2}{\gamma\sigma^2}. \]
+All $n+2$ agents are present. Holdings entering date~2 sum to $nq_1^{MM}+q_1^{LT1}+q_1^{LT2}=i-i=0$, because trading at date~1 only redistributes LT1's $i$ units and LT2 enters with $-i$. Market clearing requires the date-2 holdings to sum to the same total:
+\[ 0=(n+2)\,\frac{\mathbb{E}[S_3\mid\epsilon_2]-S_2}{\gamma\sigma^2}
+\quad\Longrightarrow\quad S_2=\mathbb{E}[S_3\mid\epsilon_2]=\mu+\epsilon_2,\qquad q_2^j=0. \]
+Date~2 is the unwind: the matching liquidity has arrived and no agent wants risky inventory.
+
+\subsubsection{Date 1}
+At date~1, LT2 is absent. Each present agent anticipates the date-2 price $S_2=\mu+\epsilon_2$, so $m=\mathbb{E}[S_2]=\mu$, $s^2=\operatorname{Var}(S_2)=\sigma^2$, and
+\[ q_1^{j}=\frac{\mu-S_1}{\gamma\sigma^2},\qquad j\in\{MM,LT1\}. \]
+Clearing among the $n$ market makers and LT1, whose holdings entering date~1 are $0$ and $i$:
+\[ i=nq_1^{MM}+q_1^{LT1}=(n+1)\,\frac{\mu-S_1}{\gamma\sigma^2}, \]
+so
+\[ q_1^{MM}=q_1^{LT1}=\frac{i}{n+1},\qquad S_1=\mu-\gamma\sigma^2\,\frac{i}{n+1}. \]
+
+\emph{Result and interpretation.} LT1 sells $i-\frac{i}{n+1}=\frac{n}{n+1}\,i$ at date~1 and each market maker holds $\frac{i}{n+1}$ until LT2 arrives. The liquidity discount is $p=\abs{\mu-S_1}=\gamma\sigma^2\abs{i}/(n+1)$; for $i<0$ the same argument gives a premium. Interpretation: a bid at $\mu-p$ and an ask at $\mu+p$ imply an inside spread of $2p$.
+
+The concession is a price for risk, not information: no agent is informed and the imbalance nets to zero across dates. It rises with $\abs{i}$, $\gamma$ and $\sigma^2$ and falls with $n$; as $n\to\infty$, $S_1\to\mu$ and LT1's immediate trade tends to $i$.
+
+\emph{Free entry.} In the original, a market maker forgoes opportunities worth $c$, and entry occurs until $\mathbb{E}U\big(W_0-c+(\tilde P_2-P_1)x_1^m\big)=\mathbb{E}U(W_0)$ \citep[eq.~(16), printed p.~18]{grossman-miller-1988-nber}: an equality of expected utilities, not of expected spread capture and cost. Its consequences for the number of market makers are in \qfentrylink{mod:grossman-miller}.
+
+\subsubsection{Per-share fees}\label{drv:grossman-miller-trading-fees}
+Let a fee $\eta$, in currency per unit, be paid by each side per share traded. At date~2 a position is unwound either then or at date~3, so the fee enters both sides of each comparison and cancels:
+\[ q_2^{j}=\frac{\mathbb{E}[S_3-\eta\mid\epsilon_2]-(S_2-\eta)}{\gamma\sigma^2}\ (j\in\{MM,LT1\}),\qquad
+q_2^{LT2}=\frac{\mathbb{E}[S_3+\eta\mid\epsilon_2]-(S_2+\eta)}{\gamma\sigma^2}, \]
+and clearing again gives $S_2=\mu+\epsilon_2$. At date~1, for $i>0$, LT1 compares selling now at $S_1-\eta$ with selling at date~2 at $S_2-\eta$, so its fee cancels; a market maker buys now at $S_1+\eta$ and expects to sell at $S_2-\eta$, a round trip:
+\[ q_1^{LT1}=\frac{\mathbb{E}[S_2-\eta]-(S_1-\eta)}{\gamma\sigma^2}=\frac{\mu-S_1}{\gamma\sigma^2},\qquad
+q_1^{MM}=\frac{\mathbb{E}[S_2-\eta]-(S_1+\eta)}{\gamma\sigma^2}=\frac{\mu-S_1-2\eta}{\gamma\sigma^2}. \]
+Clearing, $i=nq_1^{MM}+q_1^{LT1}$, gives $(n+1)(\mu-S_1)-2n\eta=\gamma\sigma^2 i$, so
+\[ S_1=\mu-\gamma\sigma^2\,\frac{i}{n+1}-\frac{2n}{n+1}\,\eta,\qquad
+q_1^{LT1}=\frac{i}{n+1}+\frac{2n}{n+1}\,\frac{\eta}{\gamma\sigma^2}. \]
+The fee deepens the discount and LT1 keeps more inventory than without fees: it pays its own fee directly and most of the market makers' round-trip fee through a lower price. If $\abs{i}$ is small relative to $\eta$ the desired trade can fall into a no-trade region. With $\eta=0$ the date-1 results above return.
+
+\subsubsection{Liquidity measures}\label{drv:grossman-miller-liquidity-measures}
+\emph{Price-impact slope.} Without fees, LT1's date-1 sale is $Q_1^{LT1}=i-q_1^{LT1}=\frac{n}{n+1}\,i$, so $\frac{i}{n+1}=\frac{Q_1^{LT1}}{n}$ and
+\[ S_1=\mu-\frac{\gamma\sigma^2}{n}\,Q_1^{LT1}=\mu+\lambda Q_1^{LT1},\qquad \lambda=-\frac{\gamma\sigma^2}{n}, \]
+with $Q_1^{LT1}$ the quantity sold. A more liquid market has a smaller $\abs{\lambda}$: more market makers, lower risk aversion or lower interim volatility.
+
+\emph{Return reversal.} Add a date~0 and public news $\epsilon_1$ before LT1 trades, with efficient prices $\mu_0=\mathbb{E}[S_3]$, $\mu_1=\mathbb{E}[S_3\mid\epsilon_1]$, $\mu_2=\mathbb{E}[S_3\mid\epsilon_1,\epsilon_2]$. With $S_0=\mu_0$, $S_1=\mu_1+\lambda Q_1^{LT1}$ and $S_2=\mu_2$,
+\[ \Delta_1=S_1-S_0=\epsilon_1+\lambda Q_1^{LT1},\qquad \Delta_2=S_2-S_1=\epsilon_2-\lambda Q_1^{LT1}. \]
+If liquidity demand is independent of the news, all cross terms vanish except the order-pressure term:
+\[ \operatorname{Cov}(\Delta_1,\Delta_2)=\operatorname{Cov}\big(\epsilon_1+\lambda Q_1^{LT1},\,\epsilon_2-\lambda Q_1^{LT1}\big)=-\lambda^2\operatorname{Var}(Q_1^{LT1})<0. \]
+The first move contains order pressure and the second reverses it; as $\abs{\lambda}\to0$ the price process tends to the efficient-price martingale.
+
+\subsubsection{Limitations}
+The only friction is inventory carried between dates~1 and~2, and LT2's arrival is certain, so the derivation says nothing about uncertain arrival times; fees are per share and equal for every side. The free-entry condition of the original equates expected utilities and is not solved here. The reversal result needs liquidity demand independent of news. The entries' Pitfalls fields discuss the remaining limits.

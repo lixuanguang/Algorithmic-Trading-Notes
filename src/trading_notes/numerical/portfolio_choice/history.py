@@ -7,12 +7,15 @@ from typing import Final, Self
 import numpy as np
 from numpy.typing import NDArray
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
 # The transcribed history, relative to the repository root.
-DATA: Final = Path("notes/artefacts/portfolio-risk-return/us-asset-class-returns-1928-2025.csv")
+DATA: Final = (
+    DataFolder(subsection="portfolio_choice").inputs / "us-asset-class-returns-1928-2025.csv"
+)
 
 
 class AssetClassHistory(Record):

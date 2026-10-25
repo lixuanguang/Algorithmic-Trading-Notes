@@ -5,6 +5,7 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar, Final
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.research.global_macro.index_returns import (
     IndexMonths,
     IndexWorkbook,
@@ -35,11 +36,14 @@ class Arguments(WorkflowArguments):
     Attributes:
         workbook: The Barclay Global Macro Index workbook (.xls).
         factors: Ken French's factors CSV.
+        page_months: A generated global_macro_monthly.csv, or a run folder holding one, to read
+            instead of the retained file.
     """
 
-    folder: ClassVar[str] = "multi-asset-systematic-macro"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="global_macro")
     workbook: Path
     factors: Path
+    page_months: Path | None = None
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -50,9 +54,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     marked as estimated (cells with '*' notes) are excluded and none may fall in the window.
     Statistics and the pre-set verdict are those of `down_months`, the index-page workflow.
     Diagnostics, not part of the verdict: the same statistics on 2022-01..2026-07 from the
-    workbook, and a comparison with the index page's values (global_macro_monthly.csv in the
-    artefact folder) to detect revisions. Every figure is as of the retrieval time:
-    constituents and past values change.
+    workbook, and a comparison with the index page's values (the retained
+    global_macro_monthly.csv unless --page-months names a generated one) to detect revisions.
+    Every figure is as of the retrieval time: constituents and past values change.
 
     Returns:
         0.
@@ -63,7 +67,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = Arguments.parser(__doc__ or "")
     parser.add_argument("workbook", type=Path, help="the index workbook (.xls)")
     parser.add_argument("factors", type=Path, help="Ken French's factors CSV")
+    parser.add_argument(
+        "--page-months", type=Path, default=None, help="a generated page table or run folder"
+    )
     args = Arguments.parse(parser, argv)
+    page_months = args.upstream(args.page_months, args.folder.results / "global_macro_monthly.csv")
     book = IndexWorkbook.read(args.workbook)
     matches = "matches" if book.sha256 == WORKBOOK_SHA256 else "DIFFERS FROM"
     print(f"workbook SHA-256 {book.sha256} ({matches} the recorded snapshot)")
@@ -74,7 +82,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     data.write(args.output_folder / "global_macro_monthly_2014.csv")
     report("Protocol window (Barclay Global Macro Index workbook, net; French Mkt-RF)", data)
     report("Recent-period comparison from the workbook", data.since(RECENT))
-    page = IndexMonths.read(args.artefacts / "global_macro_monthly.csv").returns_by_month()
+    page = IndexMonths.read(page_months).returns_by_month()
     diffs = book.revisions(page)
     print(
         f"revision check against the index page's values of 2026-10-17 ({len(page)} months, 4"

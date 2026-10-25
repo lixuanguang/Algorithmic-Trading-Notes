@@ -7,6 +7,7 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar, Final, Self
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.workflow import WorkflowArguments
 
@@ -59,7 +60,7 @@ class Arguments(WorkflowArguments):
         raw: The Board's feds200628.csv, or None for ROOT/reading_materials/....
     """
 
-    folder: ClassVar[str] = "term-structure-dynamics"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="term_structure_returns")
     raw: Path | None = None
 
 
@@ -81,7 +82,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"unexpected input file hash {digest}", file=sys.stderr)
         return 1
     yields = MonthEndYields.read(raw)
-    out = args.output_folder / "gsw-month-end-zero.csv"
+    out = args.extract_folder / "gsw-month-end-zero.csv"
     yields.write(out)
     print(f"wrote {len(yields.rows)} months to {out.name}")
     return 0

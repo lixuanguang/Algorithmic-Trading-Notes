@@ -29,7 +29,7 @@ def check_fee_equilibrium(failures: list[str]) -> None:
 
     For i > 0 LT1's fee cancels, q1_LT1 = (mu - S1)/(gamma sigma^2), while a market maker pays
     a round trip, q1_MM = (mu - S1 - 2 eta)/(gamma sigma^2); clearing i = n q1_MM + q1_LT1
-    (model-derivations.tex, "Per-share fees").
+    (model reference, drv:grossman-miller, "Per-share fees").
     """
     gm = GROSSMAN_MILLER
     mu, g, s2 = gm.mu, gm.gamma, gm.variance
@@ -144,7 +144,7 @@ def check_roll(failures: list[str], rng: np.random.Generator) -> None:
 def main() -> int:
     """Run the five parts, each simulation with its own seeded generator.
 
-    The derivations are in notes/artefacts/market-making-lob/model-derivations.tex.
+    The derivations are in model-derivations/execution-market-making/market-making-models/.
 
     1. Grossman-Miller with per-share fees: the date-1 price and LT1's date-1 holding solved by
        root-finding (brentq, xtol 1e-14) against the closed forms (mu=10, gamma=2, sigma^2=0.04,

@@ -1,20 +1,24 @@
 """Inputs and statistics of the regime-row tests: rates, oil, real-time vintages, Welch and NW t."""
 
+import argparse
 import csv
 import math
 from collections.abc import Iterator, Sequence
 from pathlib import Path
-from typing import Final, Self
+from typing import ClassVar, Final, Self
 
 import numpy as np
 from numpy.typing import NDArray
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.newey_west import Month, add
 from trading_notes.records import Record
+from trading_notes.research.business_cycles_policy.h15_spread import DAILY
+from trading_notes.research.business_cycles_policy.monthly_spreads import SpreadArguments
 from trading_notes.research.fred import monthly_means
 from trading_notes.research.regressions import NeweyWestOls
 from trading_notes.research.spreadsheets import XlsxCell, eia_series, xlsx_rows
-from trading_notes.research.workflow import ARTEFACTS
+from trading_notes.research.workflow import WorkflowArguments
 
 type Floats = NDArray[np.float64]
 
@@ -23,8 +27,8 @@ GS10: Final = Path("source-verification") / "empirical" / "fred" / "GS10.csv"
 WTI_SPOT: Final = Path("empirical-extensions") / "empirical" / "EIA_RWTCm.xls"
 QUARTERLY_CPI: Final = Path("derivatives-validation") / "empirical" / "cpiQvMd.xlsx"
 MONTHLY_CPI: Final = Path("empirical-extensions") / "empirical" / "pcpiMvMd.xlsx"
-# Below the repository root: the committed daily H.15 extract.
-H15_DAILY: Final = ARTEFACTS / "multi-asset-systematic-macro" / "h15-daily-3m-10y.csv"
+# Below the repository root: the retained daily H.15 extract, owned by the spread workflow.
+H15_DAILY: Final = SpreadArguments.folder.inputs / DAILY
 MIDDLE_MONTHS: Final = (2, 5, 8, 11)
 
 
@@ -42,10 +46,10 @@ class MonthlyResponses(Record):
     oil: dict[Month, float]
 
     @classmethod
-    def read(cls, materials: Path, root: Path) -> Self:
-        """Read the series from the reading-materials folder and the repository's H.15 extract."""
+    def read(cls, materials: Path, h15_daily: Path) -> Self:
+        """Read the series from the reading-materials folder and a daily H.15 extract."""
         tb3: dict[Month, list[float]] = {}
-        with (root / H15_DAILY).open() as f:
+        with h15_daily.open() as f:
             for row in csv.DictReader(f):
                 if row["tb3m_discount"] not in ("", "ND"):
                     y, m, _ = map(int, row["date"].split("-"))
@@ -72,6 +76,34 @@ class MonthlyResponses(Record):
     def oil_change(self, m: Month, m3: Month) -> float:
         """Return 100 ln(RWTC(m3) / RWTC(m))."""
         return 100 * math.log(self.oil[m3] / self.oil[m])
+
+
+class RowArguments(WorkflowArguments):
+    """The arguments of the inflation and deflation rows.
+
+    Attributes:
+        materials: The reading-materials root that holds the vintage, GS10 and oil files.
+        h15_daily: A generated h15-daily-3m-10y.csv, or a run folder holding one, to read
+            instead of the retained extract.
+    """
+
+    folder: ClassVar[DataFolder] = DataFolder(subsection="macro_regimes_data")
+    materials: Path
+    h15_daily: Path | None = None
+
+    @classmethod
+    def parser(cls, description: str) -> argparse.ArgumentParser:
+        """Return a parser with the reading-materials root and the --h15-daily option."""
+        parser = super().parser(description)
+        parser.add_argument("materials", type=Path, help="the reading-materials root")
+        parser.add_argument(
+            "--h15-daily", type=Path, default=None, help="a generated daily extract or run folder"
+        )
+        return parser
+
+    def responses(self) -> MonthlyResponses:
+        """Return the monthly responses, reading the requested or the retained H.15 extract."""
+        return MonthlyResponses.read(self.materials, self.upstream(self.h15_daily, H15_DAILY))
 
 
 class RealTimeVintage(Record):

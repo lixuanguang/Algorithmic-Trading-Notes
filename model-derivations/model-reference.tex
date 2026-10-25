@@ -1,0 +1,41 @@
+% Build with latexmk -lualatex model-reference.tex from this directory (or make model-reference).
+% The compendium's preamble and house macros are shared, not copied.
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[8pt,a4paper,oneside,openany]{extbook}
+\newcommand{\qfcompendiumdir}{../compendium/}
+\input{../compendium/preamble}
+\input{../compendium/house}
+\pagestyle{plain}
+% Contents and bookmarks list each model and the stages of its derivation.
+\setcounter{tocdepth}{2}
+
+\title{Algorithmic Trading: model reference}
+\author{Arthur Li}
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\input{front/notation}
+\input{front/model-index}
+
+\mainmatter
+% The hierarchy mirrors the compendium: a chapter per compendium section, a section per
+% specialist pathway, one file per model below <section-key>/<topic>/.
+\chapter{Market microstructure and market making}\label{drv:execution-market-making}
+
+\section{Market making, queues and limit-order-book models}\label{drv:pathway:market-making-lob}
+
+\input{execution-market-making/market-making-models/grossman-miller}
+\input{execution-market-making/market-making-models/kyle-single-auction}
+\input{execution-market-making/market-making-models/static-limit-order-depth}
+\input{execution-market-making/market-making-models/roll-spread-estimator}
+
+\backmatter
+\bookmarksetup{startatroot}
+\chapter{Sources outside the catalogue}
+
+\qfsource[https://www.nber.org/papers/w2641]{grossman-miller-1988-nber}{Sanford J. Grossman and Merton H. Miller, ``Liquidity and Market Structure'', NBER Working Paper 2641, July 1988; the working-paper version of \nolinkurl{grossman-miller-1988}, whose pages and numbering may differ.}
+
+Every other cited key links to its entry in the pinned reading-list catalogue in the guide copy under \nolinkurl{guide/}.
+\end{document}

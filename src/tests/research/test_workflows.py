@@ -3,14 +3,17 @@
 # The H.15, Treasury and inversion workflows read only committed extracts, so they run here
 # against the committed outputs. The others read the gitignored reading materials; they are
 # replayed against the retained evidence when the materials are present and skipped otherwise.
+# Every run writes into a temporary repository root holding a copy of src/data.
 
 import contextlib
 import datetime as dt
 import filecmp
+import hashlib
 import importlib
 import io
 import math
 import pkgutil
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -23,6 +26,7 @@ import numpy as np
 import pydantic
 
 from trading_notes import research
+from trading_notes.data_folders import DATA, LOCAL_RUN, DataFolder
 from trading_notes.research import fred, spreadsheets
 from trading_notes.research.business_cycles_policy import (
     h15_spread,
@@ -36,7 +40,7 @@ from trading_notes.research.global_macro import index_returns
 from trading_notes.research.macro_fx.currencies import RandomWalkComparison, turnover
 from trading_notes.research.macro_regimes_data import regime_inputs
 from trading_notes.research.regressions import NeweyWestOls
-from trading_notes.research.workflow import ARTEFACTS, WorkflowArguments
+from trading_notes.research.workflow import WorkflowArguments
 
 from ..import_probe import HEAVY, dependency_reads, import_effects
 
@@ -45,12 +49,28 @@ MATERIALS: Final = ROOT / "reading_materials"
 MODULES: Final = sorted(
     m.name for m in pkgutil.walk_packages(research.__path__, research.__name__ + ".")
 )
+SPREADS: Final = monthly_spreads.SpreadArguments.folder
+
+
+def workspace(root: Path) -> Path:
+    """Copy the retained data below src/data, without local runs, into a new root; return it."""
+    shutil.copytree(ROOT / DATA, root / DATA, ignore=shutil.ignore_patterns(LOCAL_RUN.parts[0]))
+    return root
+
+
+def retained_hashes(root: Path) -> dict[str, str]:
+    """Return the SHA-256 of every file below root/src/data outside local runs, by path."""
+    return {
+        p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sorted((root / DATA).rglob("*"))
+        if p.is_file() and LOCAL_RUN.parts[0] not in p.relative_to(root / DATA).parts
+    }
 
 
 class Sample(WorkflowArguments):
     """A workflow's arguments with one input of its own."""
 
-    folder: ClassVar[str] = "sample-folder"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="sample_folder")
     data: Path
 
 
@@ -58,24 +78,55 @@ class Arguments(unittest.TestCase):
     """--root and --output are parsed, made absolute and validated with the inputs."""
 
     def test_defaults_and_absolute_paths(self) -> None:
-        """Relative paths resolve; output defaults to the artefact folder below the root."""
+        """Relative paths resolve; the retained folders are the subsection's below src/data."""
         parser = Sample.parser("sample")
         parser.add_argument("data", type=Path)
         args = Sample.parse(parser, ["--root", "some/root", "input.csv"])
         self.assertTrue(args.root.is_absolute() and args.data.is_absolute())
         self.assertEqual(args.root, Path("some/root").resolve())
         self.assertIsNone(args.output)
-        self.assertEqual(args.artefacts, args.root / ARTEFACTS / "sample-folder")
+        folder = args.root / "src" / "data" / "sample_folder"
+        self.assertEqual(args.retained_inputs, folder / "inputs")
+        self.assertEqual(args.retained_results, folder / "results")
+
+    def test_runs_write_to_the_local_run(self) -> None:
+        """By default results go to runs/local/results and rebuilt extracts to runs/local/inputs."""
+        with tempfile.TemporaryDirectory() as tmp:
+            args = Sample(root=Path(tmp), data=Path("x"))
+            run = Path(tmp) / "src" / "data" / "sample_folder" / "runs" / "local"
+            self.assertEqual(args.output_folder, run / "results")
+            self.assertEqual(args.extract_folder, run / "inputs")
+            self.assertEqual(sorted(p.name for p in run.iterdir()), ["inputs", "results"])
+            self.assertFalse(args.retained_inputs.exists() or args.retained_results.exists())
 
     def test_output_folder_is_created(self) -> None:
-        """An explicit output folder is used, and created with its parents."""
+        """An explicit output folder takes every file, and is created with its parents."""
         with tempfile.TemporaryDirectory() as tmp:
             parser = Sample.parser("sample")
             parser.add_argument("data", type=Path)
             out = Path(tmp) / "a" / "b"
             args = Sample.parse(parser, ["--output", str(out), "x"])
             self.assertEqual(args.output_folder, out.resolve())
+            self.assertEqual(args.extract_folder, out.resolve())
             self.assertTrue(out.is_dir())
+
+    def test_upstream_files(self) -> None:
+        """The retained file by default; a requested file or run folder; never a fallback."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args = Sample(root=root, data=Path("x"))
+            retained = Sample.folder.results / "panel.csv"
+            (root / retained).parent.mkdir(parents=True)
+            (root / retained).write_text("retained\n")
+            self.assertEqual(args.upstream(None, retained), root / retained)
+            run = args.output_folder
+            for missing in (run, run / "panel.csv", root / "absent" / "panel.csv"):
+                with self.subTest(missing=missing):
+                    with self.assertRaisesRegex(FileNotFoundError, "requested input not found"):
+                        args.upstream(missing, retained)
+            (run / "panel.csv").write_text("generated\n")
+            self.assertEqual(args.upstream(run, retained), run / "panel.csv")
+            self.assertEqual(args.upstream(run / "panel.csv", retained), run / "panel.csv")
 
     def test_records_are_frozen_and_strict(self) -> None:
         """Arguments cannot be changed after validation, and a missing input is an error."""
@@ -328,20 +379,65 @@ class CommittedInputs(unittest.TestCase):
         return out.getvalue()
 
     def test_spreads_and_inversions(self) -> None:
-        """Monthly spreads match the committed CSVs; the horizons match the committed text."""
-        folder = ROOT / ARTEFACTS / "multi-asset-systematic-macro"
+        """Spreads written to the local run match the retained ones; so do the horizons.
+
+        The runs change no retained file, and the inversion check reads the run's spreads when
+        --spreads names its folder.
+        """
+        retained = ROOT / SPREADS.results
         with tempfile.TemporaryDirectory() as tmp:
-            out = Path(tmp)
+            root = workspace(Path(tmp))
+            before = retained_hashes(root)
+            run = root / SPREADS.run_results
             for main, name in (
                 (h15_spread.main, "h15-spread-monthly.csv"),
                 (treasury_spread.main, "ust-10y3m-monthly.csv"),
             ):
                 with self.subTest(name):
-                    printed = self.run_main(main, ["--root", str(ROOT), "--output", str(out)])
+                    printed = self.run_main(main, ["--root", str(root)])
                     self.assertTrue(printed.startswith("months, first day, last day:"))
-                    self.assertTrue(filecmp.cmp(out / name, folder / name, shallow=False))
-            printed = self.run_main(inversion_horizons.main, ["--root", str(ROOT)])
-            self.assertEqual(printed, (folder / "inversion-horizons.txt").read_text())
+                    self.assertTrue(filecmp.cmp(run / name, retained / name, shallow=False))
+            expected = (retained / "inversion-horizons.txt").read_text()
+            for extra in (
+                [],
+                ["--spreads", str(run)],
+                ["--spreads", str(run / h15_spread.MONTHLY)],
+            ):
+                with self.subTest(extra=extra):
+                    printed = self.run_main(inversion_horizons.main, ["--root", str(root), *extra])
+                    self.assertEqual(printed, expected)
+            self.assertEqual(retained_hashes(root), before)
+            self.assertEqual(
+                sorted(p.name for p in run.iterdir()), [h15_spread.MONTHLY, treasury_spread.MONTHLY]
+            )
+            self.assertFalse((root / SPREADS.run_inputs).exists())
+
+    def test_rebuilt_extract_goes_to_the_run_inputs(self) -> None:
+        """--extract writes the daily extract to runs/local/inputs and reads it from there."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root, raw = Path(tmp) / "root", Path(tmp) / "raw"
+            raw.mkdir()
+            (raw / "y2006.csv").write_text('Date,"3 Mo","2 Yr","10 Yr"\n12/29/2006,5.0,4.8,4.7\n')
+            (raw / "y2007.csv").write_text('Date,"3 Mo","2 Yr","10 Yr"\n01/02/2007,5.1,4.8,4.6\n')
+            printed = self.run_main(
+                treasury_spread.main, ["--root", str(root), "--extract", str(raw)]
+            )
+            self.assertEqual(
+                printed,
+                "daily rows: 2\nmonths, first day, last day: (2, '2006-12-29', '2007-01-02')\n",
+            )
+            daily = root / SPREADS.run_inputs / treasury_spread.DAILY
+            self.assertEqual(
+                daily.read_bytes(),
+                b"date,cmt_3m,cmt_2y,cmt_10y\r\n2006-12-29,5.0,4.8,4.7\r\n2007-01-02,5.1,4.8,4.6\r\n",
+            )
+            monthly = (root / SPREADS.run_results / treasury_spread.MONTHLY).read_text()
+            self.assertEqual(
+                monthly.splitlines()[1:],
+                ["2006-12,-0.3000,-0.1000,1,yes", "2007-01,-0.5000,-0.2000,1,yes"],
+            )
+            self.assertEqual([p.name for p in (root / DATA).iterdir()], [SPREADS.subsection])
+            self.assertFalse((root / SPREADS.inputs).exists() or (root / SPREADS.results).exists())
 
     def test_command_line_exit_status(self) -> None:
         """Run as a module, a workflow exits 0 on success and 2 on a usage error."""
@@ -362,33 +458,60 @@ class CommittedInputs(unittest.TestCase):
             self.assertEqual(bad.returncode, 2)
             self.assertIn("unrecognized arguments", bad.stderr)
 
+    def test_missing_requested_input_fails(self) -> None:
+        """A requested generated file that does not exist stops the run before any output."""
+        with tempfile.TemporaryDirectory() as tmp:
+            missing = Path(tmp).resolve() / "runs" / h15_spread.MONTHLY
+            done = subprocess.run(
+                [
+                    sys.executable,
+                    "-I",
+                    "-m",
+                    inversion_horizons.__name__,
+                    "--root",
+                    str(ROOT),
+                    "--spreads",
+                    str(missing),
+                ],
+                cwd=tmp,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual((done.returncode, done.stdout), (1, ""))
+            self.assertIn(f"FileNotFoundError: requested input not found: {missing}", done.stderr)
+            self.assertEqual(list(Path(tmp).iterdir()), [])
 
-# Workflows replayed from the reading materials: module, inputs below the materials, and the
-# outputs compared with the retained evidence (stdout as "-").
-EVIDENCE: Final = "notes/artefacts"
+
+# Workflows replayed from the reading materials: module, inputs below the materials, and each
+# output (below the workflow's local run folder; stdout as "-") with its retained file below
+# src/data.
 REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
     (
         "commodity_curves.backwardation",
         ["source-verification/empirical"],
         {
-            "-": "commodity-storage-curves/backwardation_results.txt",
-            "backwardation_monthly.csv": "commodity-storage-curves/backwardation_monthly.csv",
+            "-": "commodity_curves/results/backwardation_results.txt",
+            "results/backwardation_monthly.csv": (
+                "commodity_curves/results/backwardation_monthly.csv"
+            ),
         },
     ),
     (
         "commodity_curves.heating_oil",
         ["empirical-extensions/empirical"],
         {
-            "-": "commodity-storage-curves/heating_oil_results.txt",
-            "heating_oil_monthly.csv": "commodity-storage-curves/heating_oil_monthly.csv",
+            "-": "commodity_curves/results/heating_oil_results.txt",
+            "results/heating_oil_monthly.csv": "commodity_curves/results/heating_oil_monthly.csv",
         },
     ),
     (
         "commodity_curves.hedging_pressure",
         ["derivatives-validation/empirical/cot"],
         {
-            "-": "commodity-storage-curves/hedging_pressure_results.txt",
-            "hedging_pressure_monthly.csv": "commodity-storage-curves/hedging_pressure_monthly.csv",
+            "-": "commodity_curves/results/hedging_pressure_results.txt",
+            "results/hedging_pressure_monthly.csv": (
+                "commodity_curves/results/hedging_pressure_monthly.csv"
+            ),
         },
     ),
     (
@@ -398,13 +521,13 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
             "empirical-extensions/empirical",
             "source-verification/empirical",
         ],
-        {"-": "commodity-hedging/jet_fuel_hedge_results.txt"},
+        {"-": "futures_hedging/results/jet_fuel_hedge_results.txt"},
     ),
     (
         "crypto_venues_perpetuals.deribit_options",
         ["empirical-extensions/deribit"],
         {
-            "-": "crypto-perpetuals/deribit-options-snapshot.txt",
+            "-": "crypto_venues_perpetuals/results/deribit-options-snapshot.txt",
         },
     ),
     (
@@ -413,7 +536,7 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
             "derivatives-validation/empirical/okx_option_instruments_BTC-USD.json",
             "derivatives-validation/empirical/okx_option_oi_BTC-USD.json",
         ],
-        {"-": "crypto-perpetuals/okx-options-snapshot.txt"},
+        {"-": "crypto_venues_perpetuals/results/okx-options-snapshot.txt"},
     ),
     (
         "gsw_treasury_curve.curve_checks",
@@ -422,46 +545,46 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
             "derivatives-validation/empirical/feds200533.csv",
             "empirical-extensions/data/ACMTermPremium.xls",
         ],
-        {"-": "curve-term-structure/gsw-kw-acm.txt"},
+        {"-": "gsw_treasury_curve/results/gsw-kw-acm.txt"},
     ),
     (
         "gsw_treasury_curve.acm_term_premium",
         ["empirical-extensions/data/ACMTermPremium.xls"],
         {
-            "-": "rates-credit-mortgages/acm-term-premium-summary.txt",
+            "-": "gsw_treasury_curve/results/acm-term-premium-summary.txt",
         },
     ),
     (
         "macro_fx.ppp_out_of_sample",
         ["source-verification/empirical/fred"],
         {
-            "-": "fx-determination-forecasting/fx_ppp_results.txt",
-            "fx_ppp_monthly.csv": "fx-determination-forecasting/fx_ppp_monthly.csv",
+            "-": "macro_fx/results/fx_ppp_results.txt",
+            "results/fx_ppp_monthly.csv": "macro_fx/results/fx_ppp_monthly.csv",
         },
     ),
     (
         "macro_fx.carry_out_of_sample",
         ["source-verification/empirical/fred"],
         {
-            "-": "fx-determination-forecasting/fx_carry_results.txt",
-            "fx_carry_monthly.csv": "fx-determination-forecasting/fx_carry_monthly.csv",
+            "-": "macro_fx/results/fx_carry_results.txt",
+            "results/fx_carry_monthly.csv": "macro_fx/results/fx_carry_monthly.csv",
         },
     ),
     (
         "macro_regimes_data.deflation_row",
         ["."],
         {
-            "-": "macro-regimes-stock-bond/deflation_results.txt",
-            "deflation_quarters.csv": "macro-regimes-stock-bond/deflation_quarters.csv",
+            "-": "macro_regimes_data/results/deflation_results.txt",
+            "results/deflation_quarters.csv": "macro_regimes_data/results/deflation_quarters.csv",
         },
     ),
     (
         "macro_regimes_data.inflation_quarterly",
         ["."],
         {
-            "-": "macro-regimes-stock-bond/inflation_quarterly_results.txt",
-            "inflation_quarterly_vintage_quarters.csv": (
-                "macro-regimes-stock-bond/inflation_quarterly_vintage_quarters.csv"
+            "-": "macro_regimes_data/results/inflation_quarterly_results.txt",
+            "results/inflation_quarterly_vintage_quarters.csv": (
+                "macro_regimes_data/results/inflation_quarterly_vintage_quarters.csv"
             ),
         },
     ),
@@ -469,9 +592,9 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
         "macro_regimes_data.inflation_regime",
         ["."],
         {
-            "-": "macro-regimes-stock-bond/inflation_results.txt",
-            "inflation_monthly_vintage_quarters.csv": (
-                "macro-regimes-stock-bond/inflation_monthly_vintage_quarters.csv"
+            "-": "macro_regimes_data/results/inflation_results.txt",
+            "results/inflation_monthly_vintage_quarters.csv": (
+                "macro_regimes_data/results/inflation_monthly_vintage_quarters.csv"
             ),
         },
     ),
@@ -480,7 +603,7 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
         "macro_regimes_data.regime_recession",
         ["source-verification/empirical"],
         {
-            "-": "macro-regimes-stock-bond/regime_recession_results.txt",
+            "-": "macro_regimes_data/results/regime_recession_results.txt",
         },
     ),
     (
@@ -490,8 +613,8 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
             "source-verification/empirical/french/F-F_Research_Data_Factors.csv",
         ],
         {
-            "-": "multi-asset-systematic-macro/global_macro_results.txt",
-            "global_macro_monthly.csv": "multi-asset-systematic-macro/global_macro_monthly.csv",
+            "-": "global_macro/results/global_macro_results.txt",
+            "results/global_macro_monthly.csv": "global_macro/results/global_macro_monthly.csv",
         },
     ),
     (
@@ -501,9 +624,9 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
             "source-verification/empirical/french/F-F_Research_Data_Factors.csv",
         ],
         {
-            "-": "multi-asset-systematic-macro/global_macro_results_2014.txt",
-            "global_macro_monthly_2014.csv": (
-                "multi-asset-systematic-macro/global_macro_monthly_2014.csv"
+            "-": "global_macro/results/global_macro_results_2014.txt",
+            "results/global_macro_monthly_2014.csv": (
+                "global_macro/results/global_macro_monthly_2014.csv"
             ),
         },
     ),
@@ -513,8 +636,12 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
             "return-predictability/goyal/PredictorData2005_original.xlsx",
         ],
         {
-            "goyal-annual-1871-2025.csv": "return-predictability/goyal-annual-1871-2025.csv",
-            "goyal-monthly-1871-2025.csv": "return-predictability/goyal-monthly-1871-2025.csv",
+            "inputs/goyal-annual-1871-2025.csv": (
+                "return_predictability/inputs/goyal-annual-1871-2025.csv"
+            ),
+            "inputs/goyal-monthly-1871-2025.csv": (
+                "return_predictability/inputs/goyal-monthly-1871-2025.csv"
+            ),
         },
     ),
     (
@@ -523,16 +650,16 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
             "return-predictability/goyal/PredictorData2005_original.xlsx",
         ],
         {
-            "goyal-annual-predictors-1871-2025.csv": (
-                "return-predictability/goyal-annual-predictors-1871-2025.csv"
+            "inputs/goyal-annual-predictors-1871-2025.csv": (
+                "return_predictability/inputs/goyal-annual-predictors-1871-2025.csv"
             ),
         },
     ),
     (
         "term_structure_returns.gsw_month_end",
-        [],
+        ["derivatives-validation/empirical/feds200628.csv"],
         {
-            "gsw-month-end-zero.csv": "term-structure-dynamics/gsw-month-end-zero.csv",
+            "inputs/gsw-month-end-zero.csv": "term_structure_returns/inputs/gsw-month-end-zero.csv",
         },
     ),
 ]
@@ -541,37 +668,37 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
 # Labels reworded since the evidence was retained, by retained file: the retained text, the
 # text a run prints now, and how often it occurs. Every other character must still match.
 RELABELLED: Final[dict[str, list[tuple[str, str, int]]]] = {
-    "commodity-hedging/jet_fuel_hedge_results.txt": [
+    "futures_hedging/results/jet_fuel_hedge_results.txt": [
         (" roll weeks dropped", " weeks excluded (roll or unknown contract)", 2),
     ],
-    "commodity-storage-curves/backwardation_results.txt": [
+    "commodity_curves/results/backwardation_results.txt": [
         (
             "exploratory (added after the v1 run, not pre-specified)",
             "exploratory (not pre-specified)",
             2,
         ),
     ],
-    "commodity-storage-curves/heating_oil_results.txt": [
+    "commodity_curves/results/heating_oil_results.txt": [
         ("superseded simple-return P          ", "simple-return P                     ", 1),
         ("the v2 executable rule", "the executable rule", 1),
     ],
-    "commodity-storage-curves/heating_oil_monthly.csv": [
+    "commodity_curves/results/heating_oil_monthly.csv": [
         (",r_simple_superseded,", ",r_simple,", 1),
     ],
-    "fx-determination-forecasting/fx_carry_results.txt": [
+    "macro_fx/results/fx_carry_results.txt": [
         ("; superseded row-stacked t:", "; row-stacked t:", 2),
     ],
-    "fx-determination-forecasting/fx_ppp_results.txt": [
+    "macro_fx/results/fx_ppp_results.txt": [
         ("; superseded row-stacked t:", "; row-stacked t:", 2),
     ],
-    "macro-regimes-stock-bond/inflation_quarterly_results.txt": [
+    "macro_regimes_data/results/inflation_quarterly_results.txt": [
         (
             " (empirical extensions (2026-10-17) used 111 monthly vintages)",
             " (the monthly-vintage test uses 111 vintages)",
             1,
         ),
     ],
-    "multi-asset-systematic-macro/global_macro_results_2014.txt": [
+    "global_macro/results/global_macro_results_2014.txt": [
         ("(matches the audited snapshot)", "(matches the recorded snapshot)", 1),
         (
             "revision check against method validation (2026-10-17)'s page values",
@@ -587,10 +714,15 @@ class RetainedEvidence(unittest.TestCase):
     """Each workflow, run on the reading materials, reproduces its retained outputs exactly."""
 
     def test_replays(self) -> None:
-        """Run each workflow into a temporary folder from an unrelated directory and compare."""
+        """Run each workflow on a copy of src/data from an unrelated directory and compare.
+
+        Each run writes its compared outputs to its subsection's local run folder and changes no
+        retained file; downstream workflows read the retained files their upstream ones wrote.
+        """
         for module, inputs, outputs in REPLAYS:
             with self.subTest(module), tempfile.TemporaryDirectory() as tmp:
-                out = Path(tmp) / "out"
+                root = workspace(Path(tmp) / "root")
+                before = retained_hashes(root)
                 done = subprocess.run(
                     [
                         sys.executable,
@@ -600,9 +732,7 @@ class RetainedEvidence(unittest.TestCase):
                         "-m",
                         f"{research.__name__}.{module}",
                         "--root",
-                        str(ROOT),
-                        "--output",
-                        str(out),
+                        str(root),
                         *(str(MATERIALS / p) for p in inputs),
                     ],
                     cwd=tmp,
@@ -610,14 +740,18 @@ class RetainedEvidence(unittest.TestCase):
                     text=True,
                 )
                 self.assertEqual((done.returncode, done.stderr), (0, ""))
+                run = root / DATA / module.partition(".")[0] / LOCAL_RUN
                 for produced, retained in outputs.items():
-                    expected = (ROOT / EVIDENCE / retained).read_text()
+                    expected = (ROOT / DATA / retained).read_text()
                     for old, new, count in RELABELLED.get(retained, []):
                         self.assertEqual(expected.count(old), count, (retained, old))
                         self.assertNotIn(new, expected, retained)
                         expected = expected.replace(old, new)
-                    actual = done.stdout if produced == "-" else (out / produced).read_text()
+                    actual = done.stdout if produced == "-" else (run / produced).read_text()
                     self.assertEqual(actual, expected, retained)
+                written = {p.relative_to(run).as_posix() for p in run.rglob("*") if p.is_file()}
+                self.assertLessEqual(set(outputs) - {"-"}, written)
+                self.assertEqual(retained_hashes(root), before)
 
     def test_relabelled_files_are_replayed(self) -> None:
         """Every reworded file is among the replayed outputs."""

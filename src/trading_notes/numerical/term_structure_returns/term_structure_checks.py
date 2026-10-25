@@ -3,12 +3,12 @@
 import math
 import sys
 from collections.abc import Sequence
-from pathlib import Path
 from typing import Final
 
 import numpy as np
 from numpy.typing import NDArray
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.term_structure_returns.curve_bootstrap import (
@@ -22,7 +22,7 @@ from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
-DATA: Final = Path("notes/artefacts/term-structure-dynamics/gsw-month-end-zero.csv")
+DATA: Final = DataFolder(subsection="term_structure_returns").inputs / "gsw-month-end-zero.csv"
 MATS: Final = (1, 2, 3, 5, 7, 10, 20, 30)
 N: Final = np.arange(1, 6)
 PAR: Final = np.array([0.0380, 0.0400, 0.0415, 0.0425, 0.0430])

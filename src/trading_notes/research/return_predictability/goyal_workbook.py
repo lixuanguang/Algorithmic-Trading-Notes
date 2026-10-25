@@ -10,6 +10,7 @@ from typing import ClassVar, Final, Self
 import numpy as np
 import pandas as pd
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.workflow import WorkflowArguments
 
@@ -74,7 +75,7 @@ class GoyalArguments(WorkflowArguments):
         workbook: PredictorData2005_original.xlsx.
     """
 
-    folder: ClassVar[str] = "return-predictability"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="return_predictability")
     workbook: Path
 
     def extract(self, sheets: Sequence[tuple[str, str, str]], columns: Sequence[str]) -> int:
@@ -90,5 +91,5 @@ class GoyalArguments(WorkflowArguments):
             print(exc, file=sys.stderr)
             return 1
         for name, sheet, key in sheets:
-            print(book.write_extract(self.output_folder / name, sheet, key, columns))
+            print(book.write_extract(self.extract_folder / name, sheet, key, columns))
         return 0

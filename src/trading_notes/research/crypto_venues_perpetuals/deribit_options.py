@@ -7,6 +7,7 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.workflow import WorkflowArguments
 
@@ -155,7 +156,7 @@ class Arguments(WorkflowArguments):
         source: The folder of saved Deribit API responses.
     """
 
-    folder: ClassVar[str] = "crypto-perpetuals"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="crypto_venues_perpetuals")
     source: Path
 
 

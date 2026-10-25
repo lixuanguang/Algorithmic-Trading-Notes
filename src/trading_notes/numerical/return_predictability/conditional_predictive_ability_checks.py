@@ -3,7 +3,6 @@
 import sys
 from collections.abc import Sequence
 from fractions import Fraction
-from pathlib import Path
 from typing import Final
 
 import numpy as np
@@ -12,6 +11,7 @@ import scipy
 from numpy.typing import NDArray
 from scipy import integrate, stats
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.return_predictability.conditional_ability import (
@@ -28,7 +28,9 @@ from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
-DATA: Final = Path("notes/artefacts/return-predictability/goyal-annual-predictors-1871-2025.csv")
+DATA: Final = (
+    DataFolder(subsection="return_predictability").inputs / "goyal-annual-predictors-1871-2025.csv"
+)
 ALPHA: Final = 0.05
 CRIT1, CRIT2 = float(stats.chi2.ppf(1 - ALPHA, 1)), float(stats.chi2.ppf(1 - ALPHA, 2))
 Z975: Final = float(stats.norm.ppf(1 - ALPHA / 2))

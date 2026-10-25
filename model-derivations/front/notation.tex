@@ -1,0 +1,25 @@
+\chapter*{Notation and conventions}\label{drv:notation}
+\addcontentsline{toc}{chapter}{Notation and conventions}
+
+Notation follows the compendium entries each derivation serves; the compendium's general notation list applies otherwise. Prices are in currency per unit, quantities in units (shares), and variances of one period's shock in squared price units, not annualised. The symbols below are local to a model, and some are reused with different meanings across models.
+
+\begingroup
+\small
+\newcommand{\notationentry}[3]{\(\displaystyle #1\) & #2 & #3\\[2pt]}
+\noindent\begin{tabularx}{\textwidth}{@{}p{0.22\textwidth}>{\raggedright\arraybackslash}Xp{0.24\textwidth}@{}}
+\textbf{Symbol} & \textbf{Meaning} & \textbf{Model}\\[2pt]
+\notationentry{t\in\{1,2,3\}}{dates: first liquidity trade, arrival of the offsetting trader, settlement (date~0 added for the reversal)}{\hyperref[drv:grossman-miller]{Grossman--Miller}}
+\notationentry{S_t,\ \mu,\ \epsilon_t}{date-$t$ trade price, expected terminal value, value shock announced before date~$t$}{Grossman--Miller}
+\notationentry{q_t^j,\ Q_1^{LT1}}{agent $j$'s holding on leaving date $t$; LT1's date-1 sale (a quantity traded, not a holding)}{Grossman--Miller}
+\notationentry{n,\ i,\ \gamma,\ \sigma^2}{market makers, LT1's initial holding, absolute risk aversion, one-period shock variance}{Grossman--Miller}
+\notationentry{\eta,\ p}{per-share fee paid by each side; liquidity discount $\abs{\mu-S_1}$}{Grossman--Miller}
+\notationentry{\lambda=-\gamma\sigma^2/n}{slope of $S_1$ on the quantity LT1 sells; negative}{Grossman--Miller}
+\notationentry{v,\ u,\ x,\ y}{asset value, noise order, insider's order, net order flow}{\hyperref[drv:kyle-single-auction]{Kyle}}
+\notationentry{\lambda,\ \beta}{price-impact slope on net order flow (positive, price per share); insider's trading intensity}{Kyle}
+\notationentry{\delta^\pm,\ \kappa^\pm,\ p^\pm}{depth of the sell (buy) order from $S_t$; fill-decay rate; probability of a buy (sell) market order, not a price}{\hyperref[drv:static-limit-order-depth]{static limit-order depth}}
+\notationentry{P_t,\ V_t,\ Q_t,\ \varepsilon_t}{trade price, efficient price, trade sign $\pm1$, efficient-price innovation of variance $\sigma^2$}{\hyperref[drv:roll-spread-estimator]{Roll}}
+\notationentry{S}{the full bid--ask spread, in price units, not a price}{Roll}
+\end{tabularx}
+\endgroup
+
+Each derivation states the assumptions under which its results hold and names its sources with locators. The working is own derivation following the cited textbook accounts; it records source checking, not study. The closed forms are checked numerically, with fixed parameters, seeds and tolerances, by \nolinkurl{trading_notes.numerical.market_making_models.lob_model_derivations_checks}.

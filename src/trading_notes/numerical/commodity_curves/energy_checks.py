@@ -2,12 +2,12 @@
 
 import csv
 import datetime as dt
-import hashlib
 import sys
 from collections.abc import Sequence
 from pathlib import Path
 from typing import Final
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.commodity_curves.nymex_contracts import (
     ContractCalendar,
     available_week,
@@ -15,8 +15,8 @@ from trading_notes.numerical.commodity_curves.nymex_contracts import (
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.repository import repository_root
 
-# The test's outputs, below the repository root, and its first run kept beside them.
-FOLDER: Final = Path("notes/artefacts/commodity-storage-curves")
+# The test's retained outputs, below the repository root.
+FOLDER: Final = DataFolder(subsection="commodity_curves")
 D = dt.date
 
 
@@ -100,9 +100,9 @@ def check_report_availability(report: CheckReport) -> None:
 
 
 def check_outputs(report: CheckReport, root: Path) -> None:
-    """4-6. The rerun's panel and results, and the first run's panel preserved."""
+    """4-6. The rerun's panel and results."""
     print("== 4-6. rebuilt outputs")
-    with (root / FOLDER / "backwardation_monthly.csv").open() as fh:
+    with (root / FOLDER.results / "backwardation_monthly.csv").open() as fh:
         rows = list(csv.DictReader(fh))
     ng_early = [r for r in rows if r["market"] == "NG" and r["month_end"] < "2015-01-01"]
     report.same("gas price-only months before 2015 present", len(ng_early) > 200, True)
@@ -112,7 +112,7 @@ def check_outputs(report: CheckReport, root: Path) -> None:
         max(r["next_month_end"] for r in rows) < "2024-04-01",
         True,
     )
-    res = (root / FOLDER / "backwardation_results.txt").read_text()
+    res = (root / FOLDER.results / "backwardation_results.txt").read_text()
     ng_part = res.split("== NG")[1]
     report.same(
         "gas out-of-sample test reported",
@@ -125,10 +125,6 @@ def check_outputs(report: CheckReport, root: Path) -> None:
         "executable return differs from settlement return somewhere",
         any(r["r_exec_next_day"] != r["r_next_settle"] for r in rows if r["r_exec_next_day"]),
         True,
-    )
-    v1 = (root / FOLDER / "superseded-first-run" / "backwardation_monthly.csv").read_bytes()
-    report.same(
-        "v1 panel preserved (SHA-256 prefix)", hashlib.sha256(v1).hexdigest()[:8], "6953ecd1"
     )
 
 
@@ -150,7 +146,7 @@ def main(argv: Sequence[str] | None = None) -> int:
        value, and the results report a gas out-of-sample test.
     5. Wording: the results say months are retained, not "dropped".
     6. Execution: the panel's executable return differs from the settlement-to-settlement
-       return, and the first run's outputs are kept unchanged in superseded-first-run/.
+       return.
 
     The contract rules are those trading_notes.numerical.commodity_curves.nymex_contracts
     gives the backwardation research workflow,

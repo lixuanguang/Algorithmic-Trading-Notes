@@ -10,6 +10,7 @@ from typing import ClassVar, Final, Self
 
 import numpy as np
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.commodity_curves.backwardation import (
     CurvePanel,
@@ -200,7 +201,7 @@ class Arguments(WorkflowArguments):
         source: The folder with the two heating-oil futures and the distillate-stocks series.
     """
 
-    folder: ClassVar[str] = "commodity-storage-curves"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="commodity_curves")
     source: Path
 
 

@@ -2,8 +2,7 @@
 
 import sys
 from collections.abc import Sequence
-from pathlib import Path
-from typing import ClassVar, Self
+from typing import Self
 
 from trading_notes.numerical.newey_west import Month
 from trading_notes.records import Record
@@ -16,11 +15,10 @@ from trading_notes.research.macro_regimes_data.inflation_regime import (
 from trading_notes.research.macro_regimes_data.regime_inputs import (
     MONTHLY_CPI,
     QUARTERLY_CPI,
-    MonthlyResponses,
     RealTimeVintage,
+    RowArguments,
 )
 from trading_notes.research.macro_regimes_data.vintage_signals import VintageQuarters
-from trading_notes.research.workflow import WorkflowArguments
 
 
 def month_text(vm: Month) -> str:
@@ -75,17 +73,6 @@ class VintageLabels(Record):
         )
 
 
-class Arguments(WorkflowArguments):
-    """The quarterly inflation row's arguments.
-
-    Attributes:
-        materials: The reading-materials root that holds the vintage, GS10 and oil files.
-    """
-
-    folder: ClassVar[str] = "macro-regimes-stock-bond"
-    materials: Path
-
-
 def main(argv: Sequence[str] | None = None) -> int:
     """Print the quarterly inflation row and write inflation_quarterly_vintage_quarters.csv.
 
@@ -98,10 +85,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     Returns:
         0.
     """
-    parser = Arguments.parser(__doc__ or "")
-    parser.add_argument("materials", type=Path, help="the reading-materials root")
-    args = Arguments.parse(parser, argv)
-    responses = MonthlyResponses.read(args.materials, args.root)
+    args = RowArguments.parse(RowArguments.parser(__doc__ or ""), argv)
+    responses = args.responses()
     quarterly = list(RealTimeVintage.read_all(args.materials / QUARTERLY_CPI, "cpi", "CPI", True))
     quarters = VintageQuarters.of(quarterly, responses, THRESHOLD, deflation=False)
     quarters.write(args.output_folder / "inflation_quarterly_vintage_quarters.csv")

@@ -6,6 +6,7 @@ from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import ClassVar, Final, Self
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.workflow import WorkflowArguments
 
@@ -98,22 +99,24 @@ class SpreadArguments(WorkflowArguments):
     """A monthly spread's arguments.
 
     Attributes:
-        extract: The raw source to rebuild the daily extract from, or None to use the committed
+        extract: The raw source to rebuild the daily extract from, or None to read the retained
             one.
     """
 
-    folder: ClassVar[str] = "multi-asset-systematic-macro"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="business_cycles_policy")
     extract: Path | None = None
 
     def daily(self, name: str, write: Callable[[Path, Path], int]) -> Path:
         """Return the daily extract to read, after rebuilding it from --extract if given.
+
+        A rebuilt extract is written to the run's inputs folder, never over the retained one.
 
         Args:
             name: The extract's file name.
             write: Writes the extract from the raw source to a path; returns its rows.
         """
         if self.extract is None:
-            return self.artefacts / name
-        daily = self.output_folder / name
+            return self.retained_inputs / name
+        daily = self.extract_folder / name
         print("daily rows:", write(self.extract, daily))
         return daily

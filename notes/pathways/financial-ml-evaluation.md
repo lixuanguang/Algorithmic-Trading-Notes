@@ -26,7 +26,7 @@ Written in financial data and labels / source review / optimal execution / execu
 
 - `pit:label-weight-leakage`: what López de Prado's labels, uniqueness and attribution weights know about the future, the conditions under which he says there is no leakage, the full-sample choice of the fractional-differencing order and the same-training-set meta-labels, and a train/test checklist (the checklist is the entry's own; purging and embargo unread).
 
-Partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/`.
+Partly checked 2026-10-16, draft; human review outstanding. Numerical checks: `trading_notes.numerical.ml_alternative_data.afml_checks`, `trading_notes.numerical.labelling_sample_weights.purged_cv_checks` and `.financial_labels_checks`.
 
 method validation (2026-10-17):
 

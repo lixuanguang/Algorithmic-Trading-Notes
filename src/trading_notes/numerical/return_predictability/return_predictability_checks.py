@@ -2,13 +2,13 @@
 
 import sys
 from collections.abc import Iterator, Sequence
-from pathlib import Path
 from typing import Final
 
 import numpy as np
 import pandas as pd
 from numpy.typing import NDArray
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.return_predictability.forecast_evaluation import (
@@ -28,7 +28,7 @@ from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
-DATA: Final = Path("notes/artefacts/return-predictability")
+DATA: Final = DataFolder(subsection="return_predictability").inputs
 GAMMA, W_MAX = 3.0, 1.5
 REPS, R0 = 5000, 120
 REPS_X, PS_X = 20000, (120, 240, 720)

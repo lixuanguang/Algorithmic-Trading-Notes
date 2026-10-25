@@ -9,6 +9,7 @@ from typing import ClassVar, Final, Self
 
 import numpy as np
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.newey_west import Month, add, mdiff
 from trading_notes.records import Record
 from trading_notes.research.fred import monthly_means
@@ -332,7 +333,7 @@ class Arguments(WorkflowArguments):
         source: The empirical folder with rucqvmd.xlsx, fred/*.csv and french/*.csv.
     """
 
-    folder: ClassVar[str] = "macro-regimes-stock-bond"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="macro_regimes_data")
     source: Path
 
 

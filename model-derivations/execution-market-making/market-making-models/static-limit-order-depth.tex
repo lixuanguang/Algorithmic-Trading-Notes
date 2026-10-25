@@ -1,0 +1,23 @@
+\subsection{Static limit-order depth}\label{drv:static-limit-order-depth}
+
+\emph{Purpose.} Derive the depth at which a risk-neutral market maker posts each limit order when fills decay exponentially with depth. Compendium entry: \qfentrylink{mod:static-limit-order-depth}.
+
+\emph{Source.} \citep[chap.~``A Primer on the Microstructure of Financial Markets'', pp.~28--30, eq.~(2.3)]{crypto-cartea}.
+
+\emph{Implementation and checks.} \nolinkurl{trading_notes.numerical.market_making_models.lob_model_derivations_checks} part~4, a grid search with no domain class (\hyperref[drv:model-index]{model index}).
+
+\subsubsection{Assumptions}
+A risk-neutral market maker posts a sell order at $S_t+\delta^+$ and a buy order at $S_t-\delta^-$. A buy (sell) market order arrives with probability $p^+$ ($p^-$) and reaches depth $\delta$ with probability $e^{-\kappa^\pm\delta}$; there is no adverse selection, inventory cost or reaction by other traders. Depths are in price units and $\kappa^\pm>0$ in inverse price units; $p^\pm$ are probabilities, not prices. The decision is made once, before the market order arrives.
+
+\subsubsection{Derivation}
+Expected profit per decision is
+\[ \mathbb{E}[\Pi(\delta^+,\delta^-)]=p^+e^{-\kappa^+\delta^+}\delta^+ + p^-e^{-\kappa^-\delta^-}\delta^-, \]
+which separates by side. On each side, $\frac{d}{d\delta}\big(p\,e^{-\kappa\delta}\delta\big)=p\,e^{-\kappa\delta}(1-\kappa\delta)$, which is positive for $\delta<1/\kappa$ and negative beyond (own check: the second derivative at $\delta=1/\kappa$ is $-p\kappa e^{-1}<0$), so
+\[ \delta^{\pm,\star}=\frac{1}{\kappa^\pm}, \]
+the mean depth reached by market orders on that side.
+
+\subsubsection{Result and interpretation}
+Each side's optimal depth depends only on its own fill-decay rate $\kappa^\pm$. The arrival probabilities scale profit but not the optimal depth.
+
+\subsubsection{Limitations}
+Without adverse selection, inventory cost or reaction by other traders, the depth cannot respond to position or to informed flow; the entry's Pitfalls field lists the source's own reservations.

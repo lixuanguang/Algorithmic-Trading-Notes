@@ -7,6 +7,7 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar, Self
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.crypto_venues_perpetuals.deribit_options import largest
 from trading_notes.research.workflow import WorkflowArguments
@@ -133,7 +134,7 @@ class Arguments(WorkflowArguments):
         open_interest: The saved open-interest response.
     """
 
-    folder: ClassVar[str] = "crypto-perpetuals"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="crypto_venues_perpetuals")
     instruments: Path
     open_interest: Path
 

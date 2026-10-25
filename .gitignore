@@ -38,9 +38,10 @@ htmlcov/
 # -----------------------------------------------------------------------------
 # Source copies and build outputs
 # -----------------------------------------------------------------------------
-# PDFs are build outputs or local copies; only the compiled compendium is kept.
+# PDFs are build outputs or local copies; only the compiled compendium and model reference are kept.
 *.pdf
 !compendium/compendium.pdf
+!model-derivations/model-reference.pdf
 # The learning guide is a vendored copy; its compiled PDFs and catalogue .aux are kept.
 !guide/*.pdf
 !guide/institutional_quantitative_finance_reading_list.aux
@@ -48,6 +49,9 @@ htmlcov/
 # Local copies of sources, never committed.
 reading materials/
 reading_materials/
+
+# Local research runs: each subsection's runs/ folder below src/data; its retained files are tracked.
+/src/data/*/runs/
 
 # -----------------------------------------------------------------------------
 # LaTeX intermediate files

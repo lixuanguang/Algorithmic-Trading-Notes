@@ -28,9 +28,11 @@
 \setstretch{1}  % Line spacing
 \setlength{\parskip}{2pt plus 0.3pt minus 0.3pt}
 \setlength{\parindent}{1em}
-% LuaTeX discourages short prose endings before choosing line breaks.
+% LuaTeX discourages short prose endings before choosing line breaks. A document built outside
+% compendium/ defines \qfcompendiumdir as the relative path to it, such as ../compendium/.
+\providecommand{\qfcompendiumdir}{}
 \ifLuaTeX
-  \directlua{dofile("typography.lua")}
+  \directlua{dofile("\qfcompendiumdir typography.lua")}
 \fi
 \setlength{\parfillskip}{0pt plus 1fil}
 \clubpenalty=10000
@@ -308,7 +310,9 @@
 % -----------------------------
 % Hyperlinks (loaded last: loaded before float and algorithm it duplicated figure anchors)
 % -----------------------------
-\usepackage{hyperref}
+% destlabel names each PDF destination after its label, so the compendium and the model
+% reference can link to each other's entries as file.pdf#label, without page numbers.
+\usepackage[destlabel]{hyperref}
 \usepackage{bookmark}       % \bookmarksetup{startatroot} keeps back matter out of the last Part
 \usepackage{xurl}
 \hypersetup{

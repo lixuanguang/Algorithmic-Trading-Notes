@@ -92,12 +92,12 @@ class UvCommands(unittest.TestCase):
     """
 
     def test_scan_reaches_maintained_instructions(self) -> None:
-        """The scan includes the coverage notes, CI, superseded runs' notes and all Python."""
+        """The scan includes the coverage notes, CI, research protocols and all Python."""
         scanned = set(maintained_files())
         python = set((ROOT / "src").rglob("*.py")) - set((ROOT / "src").rglob("__pycache__/*"))
-        superseded = set((ROOT / "notes" / "artefacts").glob("*/superseded-*/README.md"))
-        self.assertTrue(python and superseded)
-        self.assertEqual((python | superseded) - scanned, set())
+        protocols = set((ROOT / "src" / "data").glob("*/protocols/*.md"))
+        self.assertTrue(python and protocols)
+        self.assertEqual((python | protocols) - scanned, set())
         self.assertIn(ROOT / "Makefile", scanned)
         self.assertIn(ROOT / "notes" / "coverage" / "README.md", scanned)
         self.assertIn(ROOT / ".github" / "workflows" / "ci.yml", scanned)

@@ -7,7 +7,7 @@ UV_RUN := $(UV) run --frozen --no-editable
 PYTHON_PATHS := src
 
 .PHONY: sync lock-check format format-check lint typecheck test check-compendium check-coverage \
-	verify-outlines pdf pre-commit source-check check
+	verify-outlines pdf model-reference pre-commit source-check check
 
 sync:
 	$(UV_SYNC)
@@ -45,9 +45,13 @@ verify-outlines:
 pdf:
 	cd compendium && latexmk -lualatex -interaction=nonstopmode -halt-on-error compendium.tex
 
+# The standalone model reference; it shares the compendium's preamble and house macros.
+model-reference:
+	cd model-derivations && latexmk -lualatex -interaction=nonstopmode -halt-on-error model-reference.tex
+
 pre-commit:
 	$(UV_RUN) pre-commit run --all-files
 
 source-check: lock-check lint format-check typecheck check-compendium check-coverage test
 
-check: source-check verify-outlines pdf
+check: source-check verify-outlines pdf model-reference

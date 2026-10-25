@@ -2,19 +2,17 @@
 
 import sys
 from collections.abc import Sequence
-from pathlib import Path
-from typing import ClassVar, Final
+from typing import Final
 
 from trading_notes.research.macro_regimes_data.regime_inputs import (
     MONTHLY_CPI,
-    MonthlyResponses,
     RealTimeVintage,
+    RowArguments,
 )
 from trading_notes.research.macro_regimes_data.vintage_signals import (
     ResponseDifference,
     VintageQuarters,
 )
-from trading_notes.research.workflow import WorkflowArguments
 
 THRESHOLD: Final = 1.0  # a rise of the 12-month inflation rate over 12 months, in points
 HEADER: Final = (
@@ -32,17 +30,6 @@ def print_verdict(diffs: dict[str, ResponseDifference]) -> None:
     )
 
 
-class Arguments(WorkflowArguments):
-    """The inflation row's arguments.
-
-    Attributes:
-        materials: The reading-materials root that holds the vintage, GS10 and oil files.
-    """
-
-    folder: ClassVar[str] = "macro-regimes-stock-bond"
-    materials: Path
-
-
 def main(argv: Sequence[str] | None = None) -> int:
     """Print the inflation row's results and write inflation_monthly_vintage_quarters.csv.
 
@@ -56,10 +43,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     Returns:
         0.
     """
-    parser = Arguments.parser(__doc__ or "")
-    parser.add_argument("materials", type=Path, help="the reading-materials root")
-    args = Arguments.parse(parser, argv)
-    responses = MonthlyResponses.read(args.materials, args.root)
+    args = RowArguments.parse(RowArguments.parser(__doc__ or ""), argv)
+    responses = args.responses()
     vintages = list(RealTimeVintage.read_all(args.materials / MONTHLY_CPI, "pcpi", "PCPI", False))
     quarters = VintageQuarters.of(vintages, responses, THRESHOLD, deflation=False, incomplete="")
     quarters.write(args.output_folder / "inflation_monthly_vintage_quarters.csv")

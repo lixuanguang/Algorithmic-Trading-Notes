@@ -10,6 +10,7 @@ from typing import ClassVar, Final, Self
 import numpy as np
 from numpy.typing import ArrayLike
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.macro_fx.ppp_forecasts import ExpandingForecast, StaleDataRule
 from trading_notes.numerical.newey_west import Month, add, nw_t, panel_nw_t
 from trading_notes.records import Record
@@ -280,7 +281,7 @@ class Arguments(WorkflowArguments):
         source: The folder with the FRED CSV files.
     """
 
-    folder: ClassVar[str] = "fx-determination-forecasting"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="macro_fx")
     source: Path
 
 

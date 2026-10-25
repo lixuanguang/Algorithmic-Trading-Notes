@@ -25,7 +25,7 @@ Not attempted.
 Moved here from `market-making-lob.md` on 2026-10-15; written in spread and inventory models / volatility and liquidity reviews:
 
 - `def:spread-measures`: quoted, inside, relative, effective and realised spreads (Harris, Hasbrouck).
-- `res:roll-spread-estimator`: Roll's serial-covariance estimator and its biases (Harris, Hasbrouck); full derivation in `notes/artefacts/market-making-lob/model-derivations.tex`.
+- `res:roll-spread-estimator`: Roll's serial-covariance estimator and its biases (Harris, Hasbrouck); full derivation `drv:roll-spread-estimator` in the model reference, `model-derivations/execution-market-making/market-making-models/roll-spread-estimator.tex`.
 - `res:spread-component-identification`: transitory and permanent components; the generalized Roll model; inventory versus information (Harris, Hasbrouck).
 - `res:spread-determinants`: Harris's primary and secondary spread determinants and the order-driven equilibrium spread.
 - `def:outside-spread`: value traders' outside spread (Harris); changed in information and price discovery review (profit sources, the no-trade band, not trading as a decision).

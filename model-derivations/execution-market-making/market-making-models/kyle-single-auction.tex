@@ -1,0 +1,48 @@
+\subsection{Kyle single-auction model}\label{drv:kyle-single-auction}
+
+\emph{Purpose.} Derive the unique linear equilibrium of Kyle's one-period auction: the insider's trading intensity, the price-impact slope, the insider's profit and the information the price reveals. Compendium entry: \qfentrylink{mod:kyle-single-auction}.
+
+\emph{Sources.} \citep[chap.~``Strategic Trader Models I: Informed Traders'', pp.~91--98, eqs.~(4.3)--(4.5), (4.17), (4.20)]{catalogue-0496}; the setting as in \citep[chap.~``A Primer on the Microstructure of Financial Markets'', pp.~31--32]{crypto-cartea}, whose printed $\lambda$ on p.~33 is the reciprocal (corrected in its errata).
+
+\emph{Implementation and checks.} \nolinkurl{trading_notes.numerical.market_making_models.microstructure_models.KyleAuction}; \nolinkurl{trading_notes.numerical.market_making_models.lob_model_derivations_checks} part~3 (\hyperref[drv:model-index]{model index}).
+
+\subsubsection{Assumptions}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item The asset is worth $v\sim N(\mu,\sigma_v^2)$.
+\item One risk-neutral insider observes $v$ and submits $x(v)$.
+\item Price-insensitive noise traders submit $u\sim N(0,\sigma_u^2)$, independent of $v$; the insider does not see $u$.
+\item Competitive risk-neutral market makers see only $y=x(v)+u$ and set $S(y)=\mathbb{E}[v\mid y]$, earning zero expected profit given $y$.
+\item One auction, after which $v$ is realised. Equilibrium: the insider best-responds to the price rule, and the price rule is Bayes-consistent with the insider's strategy.
+\end{enumerate}
+\emph{Variables.} $v$ and $S$ are in price units, orders $x$, $u$ and $y$ in shares, so $\lambda$ is in price per share and $\beta$ in shares per unit of price. The insider's information set is $\{v\}$, the market makers' $\{y\}$. The insider's profit is $\Pi=x(v)\big(v-S(x(v)+u)\big)$. Conjecture a linear equilibrium
+\[ S(y)=\mu+\lambda y,\qquad x(v)=\beta(v-\mu). \]
+
+\subsubsection{The insider's best response}
+Given the price rule and $\mathbb{E}[u]=0$,
+\[ \mathbb{E}_u\big[x\big(v-\mu-\lambda(x+u)\big)\mid v\big]=x(v-\mu)-\lambda x^2, \]
+strictly concave in $x$ for $\lambda>0$. The first-order condition $v-\mu-2\lambda x=0$ gives
+\[ x^\star(v)=\frac{v-\mu}{2\lambda},\qquad \beta=\frac{1}{2\lambda}. \]
+
+\subsubsection{The market makers' pricing}
+Under $x(v)=\beta(v-\mu)$, $y=\beta(v-\mu)+u$, and $(v,y)$ is jointly normal, so the conditional expectation is the linear projection
+\[ \mathbb{E}[v\mid y]=\mu+\frac{\operatorname{Cov}(v,y)}{\operatorname{Var}(y)}\,y=\mu+\frac{\beta\sigma_v^2}{\beta^2\sigma_v^2+\sigma_u^2}\,y,
+\qquad\text{so}\qquad \lambda=\frac{\beta\sigma_v^2}{\beta^2\sigma_v^2+\sigma_u^2}. \]
+
+\subsubsection{The fixed point}
+Substitute $\beta=1/(2\lambda)$: $\lambda(\beta^2\sigma_v^2+\sigma_u^2)=\beta\sigma_v^2$ becomes $\frac{\sigma_v^2}{4\lambda}+\lambda\sigma_u^2=\frac{\sigma_v^2}{2\lambda}$, so $\lambda^2\sigma_u^2=\frac{\sigma_v^2}{4}$ and, taking the positive root,
+\[ \lambda^\star=\frac{\sigma_v}{2\sigma_u},\qquad \beta^\star=\frac{\sigma_u}{\sigma_v},\qquad
+x^\star(v)=\frac{\sigma_u}{\sigma_v}(v-\mu),\qquad S^\star(y)=\mu+\frac{\sigma_v}{2\sigma_u}\,y. \]
+There is no other linear equilibrium; nonlinear equilibria are not excluded \citep[p.~97]{catalogue-0496}.
+
+\subsubsection{Profit, efficiency and revealed information}
+Conditional on $v$, $\mathbb{E}_u[\Pi\mid v]=x^\star(v)(v-\mu)-\lambda^\star x^\star(v)^2=\frac{(v-\mu)^2}{2\lambda^\star}-\frac{(v-\mu)^2}{4\lambda^\star}=\frac{(v-\mu)^2}{4\lambda^\star}$, and ex ante
+\[ \mathbb{E}[\Pi]=\frac{\sigma_v^2}{4\lambda^\star}=\frac{\sigma_v\sigma_u}{2}. \]
+Market makers break even given $y$, $\mathbb{E}[v-S^\star(y)\mid y]=0$, so the price is semi-strong efficient for their information. In equilibrium $\beta^{\star2}\sigma_v^2=\sigma_u^2$, so $\operatorname{Var}(y)=2\sigma_u^2$ and $\operatorname{Cov}(v,y)=\sigma_u\sigma_v$:
+\[ \operatorname{Var}(v\mid y)=\sigma_v^2-\frac{\operatorname{Cov}(v,y)^2}{\operatorname{Var}(y)}=\sigma_v^2-\frac{\sigma_u^2\sigma_v^2}{2\sigma_u^2}=\tfrac12\sigma_v^2, \]
+whatever the order flow: one auction reveals half of the insider's information.
+
+\emph{Interpretation and limiting cases.} The insider trades only part of the mispricing because a larger order reveals more through $y$; higher $\sigma_u$ lowers $\lambda^\star$ and raises the insider's order and profit, higher $\sigma_v$ raises $\lambda^\star$. The impact is informational and permanent, unlike the \hyperref[drv:grossman-miller]{Grossman--Miller} inventory pressure, which reverses.
+
+\subsubsection{Limitations}
+The equilibrium is unique only among linear ones, and it relies on normality of $v$ and $u$, a single auction and an insider who does not see $u$. The entry's Pitfalls field discusses the linear price rule's limits.

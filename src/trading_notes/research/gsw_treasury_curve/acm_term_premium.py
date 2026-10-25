@@ -5,6 +5,7 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar, Final, Self
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
 from trading_notes.research.gsw_treasury_curve.fed_data import AcmEstimates
 from trading_notes.research.workflow import WorkflowArguments
@@ -76,7 +77,7 @@ class Arguments(WorkflowArguments):
         acm: The New York Fed's ACMTermPremium.xls.
     """
 
-    folder: ClassVar[str] = "rates-credit-mortgages"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="gsw_treasury_curve")
     acm: Path
 
 

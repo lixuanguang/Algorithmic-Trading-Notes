@@ -10,6 +10,8 @@ Explain the concept directly. Aim for one idea and roughly 80–140 words per pa
 
 Source-review provenance is stored by entry label in `notes/entry-evidence.json`, with detailed research records in `notes/source-review-records.md`. These records do not imply that a claim is independently verified. Keep important historical or jurisdictional limits in the entry's Conditions even when also recorded outside the PDF.
 
+The full working of a derivation belongs in the model reference (`../model-derivations/`); an entry's proof sketch links to it with `\qfderivation{drv:<name>}`, and the reference links back with `\qfentrylink{<label>}`. Both resolve through label-named PDF destinations, so neither document cites the other's page numbers.
+
 Use subject names for files and operations for functions. Update references when renaming an artefact. Preserve numerical inputs, results and historical evidence identities; a filename change is not a new research run.
 
 ## Typography

@@ -3,9 +3,9 @@
 import math
 import sys
 from collections.abc import Sequence
-from pathlib import Path
 from typing import Final
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.currency_carry.funded_carry import FundedCarry
 from trading_notes.numerical.multi_asset_systematic_macro.market_statistics import (
     AgePopulations,
@@ -14,8 +14,13 @@ from trading_notes.numerical.multi_asset_systematic_macro.market_statistics impo
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.repository import repository_root
 
-# The data extracts, below the repository root.
-DATA: Final = Path("notes/artefacts/multi-asset-systematic-macro")
+# The data extracts, below the repository root, each in its owning subsection's inputs.
+SWAP_NOTIONALS: Final = (
+    DataFolder(subsection="rate_swaps_clearing").inputs / "bis-otc-ird-instruments.csv"
+)
+POPULATIONS: Final = (
+    DataFolder(subsection="macro_indicators").inputs / "wpp2024-working-prime-age.csv"
+)
 # (35-69 peak, 15-64 peak) in Gliner's Table 12.2, as macro_pricing_risk_checks part 15 reads it.
 GLINER: Final = {
     "Germany": (2006, 1986),
@@ -241,8 +246,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         The exit status, 0 or 1.
     """
     root = repository_root(__doc__ or "", argv)
-    bis = OtcNotionals.read(root / DATA / "bis-otc-ird-instruments.csv")
-    pop = AgePopulations.read(root / DATA / "wpp2024-working-prime-age.csv")
+    bis = OtcNotionals.read(root / SWAP_NOTIONALS)
+    pop = AgePopulations.read(root / POPULATIONS)
     report = CheckReport()
     check_fx_carry(report)
     check_convexity_carry(report)

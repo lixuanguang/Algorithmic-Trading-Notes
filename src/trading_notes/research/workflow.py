@@ -5,37 +5,70 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar, Self
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.records import Record
-
-ARTEFACTS = Path("notes") / "artefacts"
 
 
 class WorkflowArguments(Record):
     """A workflow's command-line arguments, validated after argparse has read them.
 
-    Subclasses name their artefact folder and add their own inputs as fields; an argument
-    added to the parser is a field of the same name.
+    Subclasses name their subsection's data folder and add their own inputs as fields; an
+    argument added to the parser is a field of the same name.
 
     Attributes:
-        root: The repository root, which holds the retained inputs and outputs.
-        output: Where to write the outputs; None writes them to the artefact folder.
+        root: The repository root, which holds the data folders below src/data.
+        output: Where to write every file instead; None writes rebuilt extracts to the local
+            run's inputs folder and results to its results folder.
     """
 
-    folder: ClassVar[str]
+    folder: ClassVar[DataFolder]
     root: Path
     output: Path | None = None
 
     @property
-    def artefacts(self) -> Path:
-        """Return the workflow's artefact folder below the root."""
-        return self.root / ARTEFACTS / self.folder
+    def retained_inputs(self) -> Path:
+        """Return the subsection's retained inputs folder below the root."""
+        return self.root / self.folder.inputs
+
+    @property
+    def retained_results(self) -> Path:
+        """Return the subsection's retained results folder below the root."""
+        return self.root / self.folder.results
 
     @property
     def output_folder(self) -> Path:
-        """Return the folder the outputs are written to, creating it if needed."""
-        folder = self.output or self.artefacts
+        """Return the folder new results are written to, creating it if needed."""
+        return self.writable(self.folder.run_results)
+
+    @property
+    def extract_folder(self) -> Path:
+        """Return the folder rebuilt extracts are written to, creating it if needed."""
+        return self.writable(self.folder.run_inputs)
+
+    def writable(self, run_folder: Path) -> Path:
+        """Return --output, or the run folder below the root, after creating it."""
+        folder = self.output or self.root / run_folder
         folder.mkdir(parents=True, exist_ok=True)
         return folder
+
+    def upstream(self, requested: Path | None, retained: Path) -> Path:
+        """Return the file another workflow wrote that this one reads.
+
+        Args:
+            requested: A generated file, or a folder holding one under the retained file's
+                name, such as a run's results folder; None reads the retained file.
+            retained: The retained file, relative to the root.
+
+        Raises:
+            FileNotFoundError: If the requested file does not exist; the retained file is
+                never read in its place.
+        """
+        if requested is None:
+            return self.root / retained
+        path = requested / retained.name if requested.is_dir() else requested
+        if not path.is_file():
+            raise FileNotFoundError(f"requested input not found: {path}")
+        return path
 
     @classmethod
     def parser(cls, description: str) -> argparse.ArgumentParser:
@@ -45,13 +78,16 @@ class WorkflowArguments(Record):
             "--root",
             type=Path,
             default=Path.cwd(),
-            help="repository root (default: the working directory)",
+            help="repository root, which holds src/data (default: the working directory)",
         )
         parser.add_argument(
             "--output",
             type=Path,
             default=None,
-            help=f"folder for the outputs (default: ROOT/{ARTEFACTS / cls.folder})",
+            help=(
+                "folder for every file written (default: results to"
+                f" ROOT/{cls.folder.run_results}, rebuilt extracts to ROOT/{cls.folder.run_inputs})"
+            ),
         )
         return parser
 

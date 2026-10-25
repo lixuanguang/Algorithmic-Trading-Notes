@@ -2,32 +2,19 @@
 
 import sys
 from collections.abc import Sequence
-from pathlib import Path
-from typing import ClassVar, Final
+from typing import Final
 
 from trading_notes.research.macro_regimes_data.regime_inputs import (
     QUARTERLY_CPI,
-    MonthlyResponses,
     RealTimeVintage,
+    RowArguments,
 )
 from trading_notes.research.macro_regimes_data.vintage_signals import VintageQuarters
-from trading_notes.research.workflow import WorkflowArguments
 
 THRESHOLD: Final = -1.0  # a fall of the 12-month inflation rate over 12 months, in points
 HEADER: Final = (
     "\nresponse   role          signal mean   other mean   difference   Welch t   NW t (4 lags)"
 )
-
-
-class Arguments(WorkflowArguments):
-    """The deflation row's arguments.
-
-    Attributes:
-        materials: The reading-materials root that holds the vintage, GS10 and oil files.
-    """
-
-    folder: ClassVar[str] = "macro-regimes-stock-bond"
-    materials: Path
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -42,10 +29,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     Returns:
         0.
     """
-    parser = Arguments.parser(__doc__ or "")
-    parser.add_argument("materials", type=Path, help="the reading-materials root")
-    args = Arguments.parse(parser, argv)
-    responses = MonthlyResponses.read(args.materials, args.root)
+    args = RowArguments.parse(RowArguments.parser(__doc__ or ""), argv)
+    responses = args.responses()
     vintages = list(RealTimeVintage.read_all(args.materials / QUARTERLY_CPI, "cpi", "CPI", True))
     quarters = VintageQuarters.of(vintages, responses, THRESHOLD, deflation=True)
     quarters.write(args.output_folder / "deflation_quarters.csv")

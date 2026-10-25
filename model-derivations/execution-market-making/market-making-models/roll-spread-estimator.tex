@@ -1,0 +1,26 @@
+\subsection{Roll's serial-covariance spread estimator}\label{drv:roll-spread-estimator}
+
+\emph{Purpose.} Derive the variance and autocovariances of trade-price changes in Roll's model, and from them the spread estimator. Compendium entry: \qfentrylink{res:roll-spread-estimator}, in the chapter's \emph{Market organisation, informed trading and liquidity measurement} pathway.
+
+\emph{Sources.} \citep[chap.~``Volatility'', box, p.~415]{alpha-harris}; \citep[sec.~3.4, pp.~29--30]{s6-hasbrouck}.
+
+\emph{Implementation and checks.} \nolinkurl{trading_notes.numerical.market_making_models.microstructure_models.RollModel}; \nolinkurl{trading_notes.numerical.market_making_models.lob_model_derivations_checks} part~5 (\hyperref[drv:model-index]{model index}).
+
+\subsubsection{Assumptions}
+Let $P_t=V_t+\tfrac12SQ_t$ with $V_t=V_{t-1}+\varepsilon_t$, $\mathbb{E}\varepsilon_t=0$, $\operatorname{Var}\varepsilon_t=\sigma^2$, and $Q_t=\pm1$ with probability one-half each, independent of earlier signs and of the innovations. $S$ is the full spread, in price units, and $t$ counts trades, so price changes are between successive trades. Then
+\[ \Delta P_t=\varepsilon_t+\tfrac12S(Q_t-Q_{t-1}). \]
+
+\subsubsection{Derivation}
+\emph{Variance.} $\varepsilon_t$ is independent of the sign terms, and $\mathbb{E}[(Q_t-Q_{t-1})^2]=\mathbb{E}Q_t^2-2\mathbb{E}[Q_tQ_{t-1}]+\mathbb{E}Q_{t-1}^2=1-0+1=2$, so
+\[ \operatorname{Var}(\Delta P_t)=\sigma^2+\tfrac14S^2\cdot2=\sigma^2+\tfrac12S^2. \]
+\emph{First autocovariance.} The innovations are serially independent and independent of the signs, so only the sign terms contribute:
+\[ \operatorname{Cov}(\Delta P_t,\Delta P_{t-1})=\tfrac14S^2\,\mathbb{E}\big[(Q_t-Q_{t-1})(Q_{t-1}-Q_{t-2})\big]
+=\tfrac14S^2\big(\mathbb{E}[Q_tQ_{t-1}]-\mathbb{E}[Q_tQ_{t-2}]-\mathbb{E}Q_{t-1}^2+\mathbb{E}[Q_{t-1}Q_{t-2}]\big)=-\tfrac14S^2, \]
+since every cross-product has zero expectation and $\mathbb{E}Q_{t-1}^2=1$. Autocovariances of order two or more are zero, because $\Delta P_t$ and $\Delta P_{t-k}$ share no sign or innovation for $k\ge2$.
+
+\subsubsection{Result}
+Hence, when the first autocovariance is negative,
+\[ S=2\sqrt{-\operatorname{Cov}(\Delta P_t,\Delta P_{t-1})}. \]
+
+\subsubsection{Limitations}
+The estimator is defined only when the first autocovariance is negative. How correlated signs and informed trading bias the estimate is in the entry's Pitfalls.

@@ -10,6 +10,7 @@ from typing import ClassVar, Final, Self
 import numpy as np
 from numpy.typing import NDArray
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.commodity_curves.nymex_contracts import ContractCalendar, Market
 from trading_notes.records import Record
 from trading_notes.research.spreadsheets import eia_series
@@ -121,7 +122,7 @@ class Arguments(WorkflowArguments):
         crude: The folder with EIA_RCLC1d.xls.
     """
 
-    folder: ClassVar[str] = "commodity-hedging"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="futures_hedging")
     jet: Path
     heating_oil: Path
     crude: Path

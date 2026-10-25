@@ -8,6 +8,7 @@ from typing import ClassVar, Final, Self
 
 import numpy as np
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.newey_west import Month
 from trading_notes.records import Record
 from trading_notes.research.gsw_treasury_curve.fed_data import AcmEstimates, FedsTable, number
@@ -158,7 +159,7 @@ class Arguments(WorkflowArguments):
         acm: The New York Fed's ACMTermPremium.xls.
     """
 
-    folder: ClassVar[str] = "curve-term-structure"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="gsw_treasury_curve")
     gsw: Path
     kim_wright: Path
     acm: Path

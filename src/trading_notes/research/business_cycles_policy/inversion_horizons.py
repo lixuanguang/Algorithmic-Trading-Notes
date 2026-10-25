@@ -6,6 +6,7 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar, Final, Self
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.newey_west import Month, add, mdiff
 from trading_notes.records import Record
 from trading_notes.research.business_cycles_policy.h15_spread import MONTHLY
@@ -109,9 +110,15 @@ class Inversions(Record):
 
 
 class Arguments(WorkflowArguments):
-    """The inversion-horizons check's arguments; it reads h15-spread-monthly.csv below the root."""
+    """The inversion-horizons check's arguments.
 
-    folder: ClassVar[str] = "multi-asset-systematic-macro"
+    Attributes:
+        spreads: A generated h15-spread-monthly.csv, or a run folder holding one, to read
+            instead of the retained file.
+    """
+
+    folder: ClassVar[DataFolder] = DataFolder(subsection="business_cycles_policy")
+    spreads: Path | None = None
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -127,14 +134,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     Returns:
         0 when there are 27 negative months, all with complete windows; otherwise 1.
     """
-    args = Arguments.parse(Arguments.parser(__doc__ or ""), argv)
+    parser = Arguments.parser(__doc__ or "")
+    parser.add_argument(
+        "--spreads", type=Path, default=None, help="a generated monthly spread file or run folder"
+    )
+    args = Arguments.parse(parser, argv)
+    spreads = args.upstream(args.spreads, args.folder.results / MONTHLY)
     lags = {p: mdiff(a, p) for p, a in ANNOUNCED.items()}
     print(
         "NBER peak announcement lags (months): "
         + ", ".join(f"{p[0]}-{p[1]:02d}: {lag}" for p, lag in lags.items())
         + f"; max {max(lags.values())}"
     )
-    if not Inversions.read(args.artefacts / MONTHLY, max(lags.values())).report():
+    if not Inversions.read(spreads, max(lags.values())).report():
         print("FAILED: expected 27 negative months, all windows complete")
         return 1
     print("checks passed")

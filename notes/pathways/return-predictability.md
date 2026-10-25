@@ -43,7 +43,7 @@ Written in the conditional predictive ability pass, 22 October 2026 (same file):
 
 Navigation only (no claim changed): See also links to `meth:conditional-predictive-ability` from `meth:nested-forecast-tests` and `meth:proper-scoring-rules`.
 
-All six: stability draft; editorial review only, human review outstanding. Numerical evidence: `notes/artefacts/return-predictability/` (for each batch a protocol, extraction script, derived data, check script and recorded output; the second batch's files are prefixed `forecast-combination-scoring` and `goyal_extract_predictors`, the third's `conditional-predictive-ability`, which reuses the second batch's data file).
+All six: stability draft; editorial review only, human review outstanding. Numerical evidence: `src/data/return_predictability/` (for each batch a protocol in `protocols/`, the Goyal extracts in `inputs/` and the recorded output in `results/`; the second batch's files are prefixed `forecast-combination-scoring` and its extract is `goyal-annual-predictors-1871-2025.csv`, the third's `conditional-predictive-ability`, which reuses the second batch's data file). The extraction workflows are `trading_notes.research.return_predictability.goyal_extract` and `.goyal_extract_predictors`, the checks `trading_notes.numerical.return_predictability`.
 
 ## Related entries owned elsewhere
 

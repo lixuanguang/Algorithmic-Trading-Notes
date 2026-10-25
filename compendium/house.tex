@@ -25,6 +25,13 @@
   \ifcsname r@src:#3\endcsname\hyperref[src:#3]{\nolinkurl{#3}}%
   \else\href{\qfcatalogue\##3}{\nolinkurl{#3}}\fi
   \IfValueTF{#2}{, #2}{\IfValueT{#1}{, #1}}]}
+% The compendium and the model reference link to each other's labels. Both build one folder
+% below the repository root, so these paths hold from either.
+\newcommand{\qfcompendium}{../compendium/compendium.pdf}
+\newcommand{\qfmodelreference}{../model-derivations/model-reference.pdf}
+% \qfentrylink{label} links to a compendium entry; \qfderivation{label} to a model derivation.
+\newcommand{\qfentrylink}[1]{\href{\qfcompendium\##1}{\nolinkurl{#1}}}
+\newcommand{\qfderivation}[1]{\href{\qfmodelreference\##1}{\nolinkurl{#1}}}
 % \qfsource[url]{key}{reference} records one source outside the catalogue, in
 % front/sources.tex; the optional URL links the key.
 \NewDocumentCommand{\qfsource}{o m m}{\par\noindent\phantomsection\label{src:#2}%

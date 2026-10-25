@@ -1,6 +1,6 @@
 # All Things on Quantitative Trading
 
-A source-based reference on quantitative trading and the financial analysis behind it. Its eight Parts and their chapters follow the `\qfpart` declarations in `compendium/compendium.tex`, which match the Parts and sections of the institutional learning guide pinned in `guide/`; within each chapter, the numbered sections are the guide's specialist pathways that have entries. The guide also supplies the reading catalogue. The compiled document is [compendium/compendium.pdf](compendium/compendium.pdf).
+A source-based reference on quantitative trading and the financial analysis behind it. Its eight Parts and their chapters follow the `\qfpart` declarations in `compendium/compendium.tex`, which match the Parts and sections of the institutional learning guide pinned in `guide/`; within each chapter, the numbered sections are the guide's specialist pathways that have entries. The guide also supplies the reading catalogue. The compiled document is [compendium/compendium.pdf](compendium/compendium.pdf); the full derivations behind selected entries are in the separate model reference, [model-derivations/model-reference.pdf](model-derivations/model-reference.pdf).
 
 ## Layout
 
@@ -12,7 +12,7 @@ A source-based reference on quantitative trading and the financial analysis behi
 | `compendium/front/` | Notation and sources outside the guide catalogue |
 | `notes/readings/` | Reading notes by catalogue key |
 | `notes/pathways/` | Topic notes, entry links and research questions |
-| `notes/artefacts/` | Derivations, protocols, retained research outputs and the committed data extracts the research workflows read; no code |
+| `model-derivations/` | The model reference: detailed specifications and derivations behind compendium entries, built separately from `model-reference.tex` with the compendium's preamble and house macros; see [its README](model-derivations/README.md) |
 | `notes/entry-evidence.json` | Source-review provenance keyed by entry label |
 | `notes/source-review-index.md` | Index of source-review records |
 | `notes/source-review-records.md` | Detailed source findings, corrections and verification history |
@@ -22,7 +22,9 @@ A source-based reference on quantitative trading and the financial analysis behi
 | `src/trading_notes/cli/` | The two structural checkers: `check_compendium` (entry, citation, label and pathway-link checks; Part, section and specialist-pathway agreement with the guide; single inclusion of every topic file) and `check_coverage` (objective and crosswalk structure, coverage report and optional outline hash check) |
 | `src/trading_notes/structure/` | Rules and reports of the structural checkers; imports only the standard library |
 | `src/trading_notes/numerical/` | Numerical examples: checks, which report each result and exit 1 on a failure, and demonstrations, which print values to read and exit 0, with the shared per-check report in `report.py`. One package per compendium subsection, with domain modules beside `*_checks.py` entrypoints; each runs as `uv run --frozen --no-editable python -m trading_notes.numerical.<subsection>.<name>_checks` from any directory; `numerical` and `structure` do not import each other |
-| `src/trading_notes/research/` | Research workflows that rebuild retained evidence from data: one package per topic, each workflow run as `python -m trading_notes.research.<topic>.<workflow> --root <repo> [--output <folder>] <inputs>`, writing to its `notes/artefacts/` folder unless `--output` is given; shared readers for FRED, Excel and EIA files and the Newey-West regression |
+| `src/trading_notes/research/` | Research workflows that rebuild retained evidence from data: one package per subsection, each workflow run as `python -m trading_notes.research.<subsection>.<workflow> --root <repo> [--output <folder>] <inputs>`; shared readers for FRED, Excel and EIA files and the Newey-West regression |
+| `src/trading_notes/data_folders.py` | `DataFolder`, the paths of one subsection's data below `src/data/`, shared by the numerical checks and the research workflows |
+| `src/data/<subsection>/` | Research data, outside the installed package, one folder per owning compendium subsection: `inputs/` (retained source extracts and input datasets), `results/` (retained calculated tables and reports), `protocols/` (research protocols) and the git-ignored `runs/local/inputs/` and `runs/local/results/`, where workflows write rebuilt extracts and new results. Each dataset has one owner; workflows of other subsections read it there |
 | `src/trading_notes/guide/` | The learning guide's generator: `python -m trading_notes.guide.refresh_views --root <repo>` rewrites the guide's TeX source, HTML notes and recency export from the files in `guide/` |
 | `src/trading_notes/records.py` | The pydantic `Record` and `MutableRecord` bases of every record in the package |
 | `src/tests/`, `src/typings/` | Tests of the package, the checkers, the research workflows and the guide generator; local stubs for statsmodels, pandas, openpyxl and xlrd |
@@ -43,7 +45,7 @@ ln -s ~/.local/share/venvs/Algorithmic-Trading-Notes .venv
 make sync           # install the locked environment from uv.lock, the project non-editable
 uv run --frozen --no-editable pre-commit install
 make source-check   # lock, lint, format, types, compendium and coverage checks, tests
-make check          # source-check, the outline hash check and the PDF build
+make check          # source-check, the outline hash check and both PDF builds
 ```
 
 uv, the Makefile, the pre-commit hooks and the tests' subprocesses all reach the environment through `.venv`, so nothing else changes and no environment variable is needed. If the link's target is missing or is not a valid environment, uv stops with an error rather than creating one in the synced folder: recreate the empty directory and run `make sync` again.
@@ -53,9 +55,10 @@ uv, the Makefile, the pre-commit hooks and the tests' subprocesses all reach the
 | `make lint`, `make format-check`, `make format` | ruff on `src/` |
 | `make typecheck` | strict mypy on `src/trading_notes/` and `src/tests/` (`[tool.mypy]` in `pyproject.toml`) |
 | `make check-compendium`, `make check-coverage` | the two structural checkers with `--check` |
-| `make test` | pytest on `src/tests/`, spread over all CPUs by pytest-xdist: every numerical example's entrypoint once from an unrelated folder, the guide generator against the committed guide files, and the research workflows (those reading the git-ignored `reading_materials/` are replayed against their retained outputs when that folder is present, and skipped otherwise) |
+| `make test` | pytest on `src/tests/`, spread over all CPUs by pytest-xdist: every numerical example's entrypoint once from an unrelated folder, the guide generator against the committed guide files, and the research workflows, each run in a temporary root holding a copy of `src/data/` (those reading the git-ignored `reading_materials/` are replayed against their retained outputs when that folder is present, and skipped otherwise) |
 | `make verify-outlines` | the coverage check plus hashes of the local outline copies |
 | `make pdf` | `latexmk -lualatex` in `compendium/` |
+| `make model-reference` | `latexmk -lualatex` in `model-derivations/`, independently of the compendium |
 | `make pre-commit` | every pre-commit hook on all files |
 
 Dependencies are pinned exactly in `pyproject.toml` and resolved in `uv.lock`; after changing them, run `uv lock` and commit both files. SciPy ships no type information, so the development group pins `scipy-stubs` at the release for the pinned SciPy; move both together. statsmodels, pandas, openpyxl and xlrd ship none either and have no stubs to pin; `src/typings/`, on mypy's path, declares only the calls the package makes, typed as the pinned releases return them, and `src/tests/numerical/test_typing_stubs.py` checks those types at run time, so review both when either pin moves. The project itself is installed as the `trading_notes` package, so scripts and tests import it normally, from any working directory: `uv run --frozen --no-editable --project <repo> python -m trading_notes.cli.check_coverage --root <repo>`. It is installed non-editable, because CPython skips an editable install's `.pth` file once macOS file sync marks it hidden, and uv reinstalls it whenever a file under `src/trading_notes/` changes. uv has no project setting for this and reinstalls the project editable on any `uv sync` or `uv run` without `--no-editable`, so pass `--no-editable` to every such command, as the Makefile, the pre-commit hooks and CI do; `make test` fails if the installed package is editable or differs from `src/`. A numerical example in `trading_notes.numerical`, check or demonstration, runs as a module: `uv run --frozen --no-editable python -m trading_notes.numerical.<module>`; one that reads repository files takes `--root <repo>` (default: the working directory). All Python code lives under `src/` and gets every ruff rule, including annotation and docstring rules, and strict mypy, with no file or folder exempted; the guide's verbatim TeX and HTML templates are package data in `src/trading_notes/guide/templates/`. The structural checkers exit 0, or 1 with `--check` when they report a problem; a missing or malformed pinned guide file is reported on stderr with status 1, and command-line usage errors exit 2. The `empirical` group, which holds the spreadsheet readers of the research workflows, is installed by default. Remote CI runs `make source-check` only after a pull request into `main` is merged, on the merged commit; commits, pushes, opening or updating a pull request, labels and closing a pull request without merging run nothing, so run `make check` and the pre-commit hooks locally before merging. Before `make source-check`, CI runs `python -m trading_notes.cli.check_runtime`, which exits 1 unless the interpreter is CPython at the `.python-version` release, with the GIL, on the runner's x86_64 machine (`--machine` names another one). The outline check and the PDF build need git-ignored local copies, so they run locally only. The guide is committed in this repository, so the workflow needs no secrets; it must not switch to a privileged trigger that runs untrusted pull-request code.
@@ -68,7 +71,11 @@ Use `\begin{qf<type>}[Title]\label{<prefix>:<name>}` and the matching end comman
 
 Keep explanations, assumptions, evidence dates and substantive caveats in the entry. Keep verification diaries, study progress and edit history in `notes/`; do not print Status blocks or keyword dumps. See [the compendium conventions](compendium/README.md).
 
-Name files and functions for their subject or operation. Store figures beside their chapter and use paths relative to `compendium/`. `notes/artefacts/` holds derivations, protocols and research outputs; it is not compiled into the reference, and the code that produces its outputs lives in `src/trading_notes/`.
+Name files and functions for their subject or operation. Store figures beside their chapter and use paths relative to `compendium/`. Keep the full working of a derivation in the model reference and link the entry's proof sketch to it with `\qfderivation{drv:<name>}`; see [model-derivations/README.md](model-derivations/README.md). Research data lives in `src/data/<subsection>/`, the code that produces it in `src/trading_notes/`.
+
+## Research data
+
+A workflow reads the retained files below `ROOT/src/data/`, `ROOT` being `--root` (default: the working directory), so it runs from any folder. It writes rebuilt extracts to its subsection's `runs/local/inputs/` and new results to `runs/local/results/`, both ignored by Git, and never overwrites a retained input, result or protocol; `--output <folder>` sends every file it writes there instead, and stdout carries its report. A workflow that reads another workflow's output reads the retained copy unless told otherwise: `--spreads` (inversion horizons), `--backwardation` (hedging pressure), `--page-months` (2014 down months) and `--h15-daily` (the inflation and deflation rows) take a generated file or a run folder holding it, and stop with an error if it does not exist rather than fall back to the retained copy.
 
 ## Chapters and coverage
 

@@ -1,19 +1,26 @@
 """The recession-regime test's outputs: window definitions, dollar series and preserved results."""
 
-import hashlib
 import re
 import sys
 from collections.abc import Sequence
-from pathlib import Path
 from typing import Final
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.numerical.macro_regimes_data.regime_panel import RegimePanel, add_months
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.repository import repository_root
 
-# The test's outputs, below the repository root, and the first run kept beside them.
-FOLDER: Final = Path("notes/artefacts/macro-regimes-stock-bond")
-FIRST_RUN: Final = FOLDER / "superseded-first-run"
+# The test's retained outputs, below the repository root.
+FOLDER: Final = DataFolder(subsection="macro_regimes_data")
+# The first run's ex-post any-overlap results (regime mean, difference, t) as it printed them,
+# from regime_recession_results.txt of 17 October 2026 (commit 820517a).
+FIRST_RUN: Final = {
+    "dy10": ("-0.135", "-0.156", "-1.03"),
+    "dcred": ("+0.218", "+0.248", "+1.78"),
+    "eq": ("-0.919", "-3.091", "-1.41"),
+    "dfn": ("+1.018", "+1.114", "+1.21"),
+    "usd": ("+1.341", "+0.795", "+1.14"),
+}
 
 
 def result_triple(pattern: str, text: str) -> tuple[str, ...]:
@@ -47,30 +54,23 @@ def check_panel(report: CheckReport, panel: RegimePanel) -> None:
     )
 
 
-def check_results(report: CheckReport, first: str, current: str) -> None:
+def check_results(report: CheckReport, current: str) -> None:
     """Checks 2 and 4: the first run's any-overlap results preserved, real time tested first."""
-    v1_block = first.split("== ex-post NBER window")[1]
     v2_block = current.split("ANY OVERLAP (v1 definition)")[1].split(
         "== ex-post NBER window, ALL MONTHS"
     )[0]
     for k in ("dy10", "dcred", "eq", "dfn"):
-        a = result_triple(
-            rf"{k}\s*: regime ([+-][0-9.]+).*diff ([+-][0-9.]+), t ([+-][0-9.]+)", v1_block
-        )
         b = result_triple(
             rf"\n  {k}\s+[0-9-]+: regime ([+-][0-9.]+).*diff ([+-][0-9.]+), Welch t ([+-][0-9.]+)",
             v2_block,
         )
-        report.same(f"v1 any-overlap result preserved for {k}", b, a)
-    a = result_triple(
-        r"usd\s*: regime ([+-][0-9.]+).*diff ([+-][0-9.]+), t ([+-][0-9.]+)", v1_block
-    )
+        report.same(f"v1 any-overlap result preserved for {k}", b, FIRST_RUN[k])
     b = result_triple(
         r"usd \(v1 splice[^)]*\)\s+[0-9-]+: regime ([+-][0-9.]+).*diff ([+-][0-9.]+),"
         r" Welch t ([+-][0-9.]+)",
         v2_block,
     )
-    report.same("v1 any-overlap dollar (splice) preserved", b, a)
+    report.same("v1 any-overlap dollar (splice) preserved", b, FIRST_RUN["usd"])
     report.same(
         "real-time block precedes and is labelled the only test",
         current.index("REAL-TIME TEST") < current.index("EX-POST DESCRIPTION"),
@@ -91,7 +91,6 @@ def main(argv: Sequence[str] | None = None) -> int:
        the first run's splice is reported separately.
     4. Real-time and ex-post blocks are separate and labelled; the decision rule is applied to
        the real-time block.
-    5. The first run's derived panel is preserved byte for byte.
 
     Args:
         argv: Command-line arguments: `--root DIR`, the repository root that holds the outputs
@@ -102,16 +101,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     """
     root = repository_root(__doc__ or "", argv)
     report = CheckReport()
-    check_panel(report, RegimePanel.read(root / FOLDER / "regime_quarters.csv"))
-    check_results(
-        report,
-        (root / FIRST_RUN / "regime_recession_results.txt").read_text(),
-        (root / FOLDER / "regime_recession_results.txt").read_text(),
-    )
-    panel_v1 = (root / FIRST_RUN / "regime_quarters.csv").read_bytes()
-    report.same(
-        "v1 panel preserved (SHA-256 prefix)", hashlib.sha256(panel_v1).hexdigest()[:8], "82ce2b97"
-    )
+    check_panel(report, RegimePanel.read(root / FOLDER.results / "regime_quarters.csv"))
+    check_results(report, (root / FOLDER.results / "regime_recession_results.txt").read_text())
     if report.failures:
         print("\nFAILED:", report.failures)
         return 1

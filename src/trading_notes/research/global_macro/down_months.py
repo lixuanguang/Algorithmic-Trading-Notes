@@ -5,6 +5,7 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import ClassVar, Final
 
+from trading_notes.data_folders import DataFolder
 from trading_notes.research.global_macro.index_returns import (
     IndexMonths,
     barclay_page,
@@ -24,7 +25,7 @@ class Arguments(WorkflowArguments):
         factors: Ken French's factors CSV.
     """
 
-    folder: ClassVar[str] = "multi-asset-systematic-macro"
+    folder: ClassVar[DataFolder] = DataFolder(subsection="global_macro")
     page: Path
     factors: Path
 

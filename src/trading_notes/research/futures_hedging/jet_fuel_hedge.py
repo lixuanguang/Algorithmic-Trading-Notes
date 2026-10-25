@@ -36,7 +36,7 @@ class WeeklyChanges(Record):
         spot: dS, the exposure's change.
         futures: dF, the hedge's change, scaled to dollars per gallon.
         dates: The date ending each change.
-        dropped: Weeks dropped because contract 1 changed delivery month, or because its
+        dropped: Weeks excluded because contract 1 changed delivery month, or because its
             delivery month at either end is unknown.
     """
 
@@ -67,11 +67,14 @@ class WeeklyChanges(Record):
         return cls(spot=np.array(dS), futures=np.array(dF), dates=used, dropped=dropped)
 
     def report(self, name: Market) -> None:
-        """Print the hedge ratios and the out-of-sample variance reductions of one hedge."""
+        """Print the hedge ratios and the out-of-sample variance reductions of one hedge.
+
+        The header counts the excluded weeks, rolls and unknown contracts together.
+        """
         dS, dF, used = self.spot, self.futures, self.dates
         print(
             f"\n== hedge: {name} contract 1; {len(dS)} usable weekly changes {used[0]} to"
-            f" {used[-1]}; {self.dropped} roll weeks dropped"
+            f" {used[-1]}; {self.dropped} weeks excluded (roll or unknown contract)"
         )
         h_static = ols_h(dS[:STATIC_WEEKS], dF[:STATIC_WEEKS])
         out = slice(STATIC_WEEKS, None)

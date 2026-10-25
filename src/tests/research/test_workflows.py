@@ -541,6 +541,9 @@ REPLAYS: Final[list[tuple[str, list[str], dict[str, str]]]] = [
 # Labels reworded since the evidence was retained, by retained file: the retained text, the
 # text a run prints now, and how often it occurs. Every other character must still match.
 RELABELLED: Final[dict[str, list[tuple[str, str, int]]]] = {
+    "commodity-hedging/jet_fuel_hedge_results.txt": [
+        (" roll weeks dropped", " weeks excluded (roll or unknown contract)", 2),
+    ],
     "commodity-storage-curves/backwardation_results.txt": [
         (
             "exploratory (added after the v1 run, not pre-specified)",

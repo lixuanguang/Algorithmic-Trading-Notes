@@ -12,9 +12,7 @@ Its checkpoint, from the guide: For one bank, take a senior unsecured bond, its 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated before this note existed; the content migration of 22 October 2026 added this overview without changing the entries' verification, coverage or mastery state. Entry histories and source-review references are in [corporate-credit-cds.md](corporate-credit-cds.md).
-
-Moved out by the content migration of 22 October 2026, with labels and content unchanged: to `portfolio-risk-financing`: `def:counterparty-exposure-measures`, `meth:credit-valuation-adjustment`, `def:wrong-way-risk`, `rule:counterparty-credit-cva-capital`.
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [corporate-credit-cds.md](corporate-credit-cds.md).
 
 ## Outcome in my own words
 
@@ -35,9 +33,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `credit-models-default`, `corporate-credit-cds`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `credit-models-default`, `corporate-credit-cds`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `credit-models-default` (Credit models, default prediction and credit portfolios): no pathway note; related existing material in `corporate-credit-capital/credit-risk-analysis`, `corporate-credit-capital/credit-portfolio-management`, not reviewed as a complete treatment of the pathway.
 - `corporate-credit-cds` (Corporate bonds and credit derivatives): pathway note [corporate-credit-cds.md](corporate-credit-cds.md), 18 entries listed, in `corporate-credit-capital/credit-default-swaps`, `corporate-credit-capital/credit-portfolio-management`, `corporate-credit-capital/credit-risk-analysis`, `portfolio-risk-financing/counterparty-xva`.

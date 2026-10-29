@@ -6755,8 +6755,7 @@ still reproduces its output byte for byte. The protocol keeps its original text 
 - *Records updated.* The entries `res:campbell-shiller-identity` and `meth:nested-forecast-tests`, their evidence
   records and coverage evidence, the two reading notes, the pathway backlog, `content_development_plan.md` (status,
   sources, files, section 7 and 7.1, deferred) and this record. `meth:restricted-forecast-value` needed no change. No
-  entry, pathway or objective was added, the forecast-combination work was not started, and the guide, the historical
-  migration and alignment records, the other 697 entries and every mastery state are unchanged.
+  entry, pathway or objective was added, the forecast-combination work was not started, and the guide, the other 697 entries and every mastery state are unchanged.
 
 **Validation after the audit (22 October 2026).** `make check` (exit 0): lock check; ruff lint and format (160 files;
 `superseded-*` folders are excluded by configuration); `check_compendium.py --check` (700 entries, 0 problems);
@@ -6766,7 +6765,7 @@ references, the one pre-existing underfull box. Printed pp. 35-38 (PDF 41-44) re
 four-row identity table, the size discussion and the links display correctly. `make pre-commit` (exit 0, no file
 changed). Entry preservation: against `HEAD`, 697 entries keep labels, types and files, 693 byte-identical and four
 differing only by the batch's navigation links; against the pre-audit working tree, only the two corrected entries
-differ. `guide/`, `content_migration_plan.md`, `content_migration_ledger.md`, `subsection_alignment_plan.md` and
+differ. `guide/` and
 `notes/log.md` are unchanged against `HEAD`.
 
 ## Forecast-combination and proper-scoring batch (22 October 2026)
@@ -6857,8 +6856,7 @@ undefined references, the one pre-existing underfull box. Section 8.3 still star
 are on printed pp. 38-40 (PDF 44-46), rendered and read: headings, equations, the five tables and the links display
 correctly. `make pre-commit` (exit 0). Entry preservation against `HEAD`: 700 entries keep labels, types and files;
 698 are byte-identical and two differ only by the inserted See-also links. The earlier batch's check script still
-reproduces its recorded output byte for byte. `guide/`, `content_migration_plan.md`, `content_migration_ledger.md`,
-`subsection_alignment_plan.md` and `notes/log.md` are unchanged against `HEAD`.
+reproduces its recorded output byte for byte. `guide/` and `notes/log.md` are unchanged against `HEAD`.
 
 **Post-first-run audit corrections (22 October 2026).** The equal-variance equicorrelation expression is now scoped to
 unbiased errors; individual biases add the squared mean bias. Two exact deterministic checks use member biases 1, 2 and
@@ -6967,14 +6965,13 @@ references, the one pre-existing underfull box. The new entry is on printed pp. 
 read: headings, equations, both tables and the links display correctly. The sources page (PDF 457) was also read.
 `make pre-commit` (exit 0). Entry preservation against `HEAD`: all 702 earlier entries keep their labels, types and
 files; 700 are byte-identical, and two differ only by the inserted See-also links. The two earlier check scripts and
-the new one reproduce their recorded outputs byte for byte. `guide/`, `content_migration_plan.md`,
-`content_migration_ledger.md`, `subsection_alignment_plan.md`, `notes/log.md` and `superseded-first-run/` are
+the new one reproduce their recorded outputs byte for byte. `guide/`, `notes/log.md` and `superseded-first-run/` are
 unchanged against `HEAD`.
 
 ### Correction and final-validation pass (23 October 2026)
 
-Same branch, uncommitted, on top of the work above; earlier experiments, the first-run output, `guide/`, the
-migration and alignment records and `notes/log.md` are untouched. The *Validation (23 October 2026)* paragraph above
+Same branch, uncommitted, on top of the work above; earlier experiments, the first-run output, `guide/` and
+`notes/log.md` are untouched. The *Validation (23 October 2026)* paragraph above
 describes the state before this pass and is superseded by the validation below.
 
 **Corrections.**
@@ -7034,8 +7031,7 @@ describes the state before this pass and is superseded by the validation below.
 - Preservation against `HEAD`: 702 earlier entries keep labels, types and files; 700 byte-identical, two differ only
   by the inserted See-also link. `return-predictability-checks.py` and `forecast-combination-scoring-checks.py`
   reproduce their recorded outputs byte for byte under `-W error`. `git diff HEAD` is empty for `guide/`,
-  `content_migration_plan.md`, `content_migration_ledger.md`, `subsection_alignment_plan.md`, `notes/log.md`,
-  `superseded-first-run/` and the earlier batches' artefacts.
+  `notes/log.md`, `superseded-first-run/` and the earlier batches' artefacts.
 
 **Remaining limits.** ZT Table 2 unreproduced and unexplained; Table 1 and the J test not re-simulated; the
 Econometrica text of Giacomini–White not obtained; human review outstanding.

@@ -12,7 +12,7 @@ Its checkpoint, from the guide: Choose one storable commodity and download its f
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated before this note existed; the content migration of 22 October 2026 added this overview without changing the entries' verification, coverage or mastery state. Entry histories and source-review references are in [commodity-hedging.md](commodity-hedging.md), [commodity-storage-curves.md](commodity-storage-curves.md), [currency-markets.md](currency-markets.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [commodity-hedging.md](commodity-hedging.md), [commodity-storage-curves.md](commodity-storage-curves.md), [currency-markets.md](currency-markets.md).
 
 ## Outcome in my own words
 
@@ -31,9 +31,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `commodity-storage-curves`, `commodity-hedging`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `commodity-storage-curves`, `commodity-hedging`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `commodity-storage-curves` (Theory of storage, convenience yield and inventories): pathway note [commodity-storage-curves.md](commodity-storage-curves.md), 1 entries listed, in `energy-commodities/commodity-curves`.
 - `commodity-curve-models` (Commodity term-structure models: factor, seasonal and jump models): content gap; no entry written.

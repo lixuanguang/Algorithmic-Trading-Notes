@@ -58,9 +58,9 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `financial-reporting-statements`, `accounting-measurement`, `group-international-reporting`, `financial-ratio-quality`, `financial-statement-forecasting`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `financial-reporting-statements`, `accounting-measurement`, `group-international-reporting`, `financial-ratio-quality`, `financial-statement-forecasting`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `financial-reporting-statements` (Financial reporting frameworks and the three financial statements): no pathway note; related existing material in `financial-statement-analysis/financial-reporting-framework`, `financial-statement-analysis/income-statement-analysis`, `financial-statement-analysis/balance-sheet-analysis`, `financial-statement-analysis/cash-flow-analysis`, `financial-statement-analysis/company-case`, not reviewed as a complete treatment of the pathway.
 - `accounting-measurement` (Accounting measurement: revenue, inventories, long-lived assets, leases, employee benefits and income taxes): no pathway note; related existing material in `financial-statement-analysis/inventory-accounting`, `financial-statement-analysis/long-lived-asset-accounting`, `financial-statement-analysis/leases-employee-compensation`, `financial-statement-analysis/income-tax-accounting`, not reviewed as a complete treatment of the pathway.

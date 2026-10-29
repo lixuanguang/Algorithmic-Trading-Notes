@@ -12,7 +12,7 @@ Its checkpoint, from the guide: For one U.S. Treasury, one euro-area or UK gover
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated before this note existed; the content migration of 22 October 2026 added this overview without changing the entries' verification, coverage or mastery state. Entry histories and source-review references are in [sovereign-municipal.md](sovereign-municipal.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [sovereign-municipal.md](sovereign-municipal.md).
 
 ## Outcome in my own words
 
@@ -30,9 +30,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `sovereign-municipal`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `sovereign-municipal`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `treasury-market-functioning` (Treasury market structure, basis trades and dealer capacity): no pathway note; partial treatment in existing entries, not reviewed as complete: Treasury trading protocols, interdealer venues and dealer risk-bearing (`def:fixed-income-market-structure` in `execution-trading-costs/fixed-income-trading`); Treasury futures delivery, cheapest-to-deliver and futures below the bond (`conv:government-bond-futures` in `execution-trading-costs/futures-execution`). Not written: basis-trade financing and leverage; dealer balance-sheet capacity and stress episodes.
 - `treasury-issuance-demand` (Government debt issuance, auctions and investor demand): no pathway note; partial treatment in existing entries, not reviewed as complete: Treasury instruments and single-price auctions on a pre-announced calendar (`def:government-agency-supranational-funding` in `rates-credit-mortgages/bond-instruments-markets`); yield effects of central-bank purchases (`def:central-bank-policy-framework` in `rates-credit-mortgages/monetary-policy-curves`). Not written: auction outcomes and investor demand; supply effects of issuance on yields.

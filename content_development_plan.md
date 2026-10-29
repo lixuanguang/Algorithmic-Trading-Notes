@@ -6,10 +6,7 @@ one numerical artefact folder. Owner: repository maintainer.
 
 The proposal was recorded on 22 October 2026 (commit `87faaa0`) against guide pin
 `6c7734ed49f1c242908b86a57c4f5d1f0e349ec0` and deferred until the compendium's sections were aligned with the guide's
-specialist pathways. That alignment is complete (`f73859c`, merged in `2ebe829`; record in
-[subsection_alignment_plan.md](subsection_alignment_plan.md)). The completed content migration (`53e2b1c`; records in
-[content_migration_plan.md](content_migration_plan.md) and [content_migration_ledger.md](content_migration_ledger.md))
-and the alignment record are kept as historical evidence and are not edited by this batch.
+specialist pathways. That alignment is complete (`f73859c`, merged in `2ebe829`).
 
 Guide pin now: `8302467bc5acfedba55c7e79b311cfb2154f433c` (227 pathways). Before this batch: 697 entries, 111 printed
 pathways, 461 PDF pages. After it: 700 entries, 112 printed pathways, 464 PDF pages.

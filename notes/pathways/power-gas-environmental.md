@@ -12,7 +12,7 @@ Its checkpoint, from the guide: Choose one storage or dispatch asset and specify
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated before this note existed; the content migration of 22 October 2026 added this overview without changing the entries' verification, coverage or mastery state. Entry histories and source-review references are in [gas-hub-pricing.md](gas-hub-pricing.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [gas-hub-pricing.md](gas-hub-pricing.md).
 
 ## Outcome in my own words
 
@@ -30,9 +30,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `gas-hub-pricing`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `gas-hub-pricing`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `gas-hub-pricing` (Natural gas markets: hub pricing, oil indexation, market integration and supply shocks): pathway note [gas-hub-pricing.md](gas-hub-pricing.md), 1 entries listed, in `power-gas-environmental/natural-gas`.
 - `physical-lng` (Natural gas storage, transport and LNG optionality): content gap; no entry written.

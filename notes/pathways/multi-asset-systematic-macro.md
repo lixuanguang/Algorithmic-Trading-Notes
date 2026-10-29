@@ -12,8 +12,6 @@ Pathway outcome, from the guide: attribute a cross-asset portfolio's returns to 
 
 Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Drobny (`s7-drobny`, *Inside the House of Money*, Wiley 2006 printing, checked interview by interview). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
-Moved out by the content migration of 22 October 2026, with labels and content unchanged: to `portfolio-construction-risk`: `def:investment-governance-allocation`, `meth:economic-balance-sheet-allocation`, `def:allocation-approaches-risk`, `meth:asset-class-factor-specification`, `meth:asset-only-allocation-mvo`, `meth:allocation-implementation-rebalancing`, `meth:allocation-robustness-liquidity-risk-budget`, `meth:liability-relative-allocation`, `meth:goals-based-allocation-heuristics`, `meth:allocation-constraints-taxes-revision`, `meth:tactical-shifts-behavioural-biases`.
-
 ## Outcome in my own words
 
 ## How the readings fit together
@@ -74,9 +72,9 @@ Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-s
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `macro-economy-global-macro`, `cross-asset-style-premia`, `macro-announcements-policy`, `macro-regimes-stock-bond`, `macro-nowcasting-signals`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `macro-economy-global-macro`, `cross-asset-style-premia`, `macro-announcements-policy`, `macro-regimes-stock-bond`, `macro-nowcasting-signals`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `macro-economy-global-macro` (Business cycles, growth, capital-market expectations and global macro trading): added by the guide revision of 22 October 2026 (`8302467`); no pathway note; its entries are in `multi-asset-systematic-macro/business-cycles-policy`, `multi-asset-systematic-macro/economic-growth`, `multi-asset-systematic-macro/capital-market-expectations`, `multi-asset-systematic-macro/global-macro`.
 - `cross-asset-style-premia` (Cross-asset style premia: value, momentum, carry and defensive): pathway note [cross-asset-style-premia.md](cross-asset-style-premia.md), 1 entries listed, in `multi-asset-systematic-macro/equity-index-valuation`.

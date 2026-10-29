@@ -12,9 +12,7 @@ Its checkpoint, from the guide: Create a filing-text feature with a documented r
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated before this note existed; the content migration of 22 October 2026 added this overview without changing the entries' verification, coverage or mastery state. Entry histories and source-review references are in [alternative-data-sources.md](alternative-data-sources.md), [financial-ml-evaluation.md](financial-ml-evaluation.md), [statistical-learning-foundations.md](statistical-learning-foundations.md).
-
-Moved out by the content migration of 22 October 2026, with labels and content unchanged: to `execution-trading-costs`: `mod:cartea-jaimungal-execution`.
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [alternative-data-sources.md](alternative-data-sources.md), [financial-ml-evaluation.md](financial-ml-evaluation.md), [statistical-learning-foundations.md](statistical-learning-foundations.md).
 
 ## Outcome in my own words
 
@@ -40,9 +38,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `statistical-learning-foundations`, `financial-ml-evaluation`, `text-llm-agents`, `alternative-data-sources`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `statistical-learning-foundations`, `financial-ml-evaluation`, `text-llm-agents`, `alternative-data-sources`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `statistical-learning-foundations` (Statistical learning foundations and time-series validation): pathway note [statistical-learning-foundations.md](statistical-learning-foundations.md), 19 entries listed, in `ml-alternative-data/data-science-workflow`, `ml-alternative-data/financial-data-structures`, `ml-alternative-data/fractional-differentiation`, `ml-alternative-data/labelling-sample-weights`, `ml-alternative-data/machine-learning-methods`, `ml-alternative-data/text-features`.
 - `ml-asset-pricing` (ML return prediction and asset pricing): no pathway note; partial treatment in existing entries, not reviewed as complete: deep-learning short-horizon return forecasts from order-book data (`def:order-flow-imbalance` in `execution-market-making/order-flow-imbalance`). Not written: cross-sectional ML return prediction; ML asset-pricing and latent-factor models.

@@ -12,7 +12,7 @@ Its checkpoint, from the guide: Regress monthly excess returns of a portfolio on
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated on 22 October 2026 by the content migration, which moved existing draft entries here (14 from `common-toolkit`; 3 from `portfolio-construction-risk`). A move changes no source verification, coverage, study or mastery state. Entry histories and source-review references are in [common-toolkit.md](common-toolkit.md), [portfolio-construction.md](portfolio-construction.md), [time-series-volatility.md](time-series-volatility.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [common-toolkit.md](common-toolkit.md), [portfolio-construction.md](portfolio-construction.md), [time-series-volatility.md](time-series-volatility.md).
 
 ## Outcome in my own words
 
@@ -34,9 +34,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `regression-econometrics`, `stationarity-cointegration`, `time-series-volatility`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `regression-econometrics`, `stationarity-cointegration`, `time-series-volatility`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `regression-econometrics` (Linear regression, GMM and econometric inference): no pathway note; related existing material in `regression-time-series/regression`, `regression-time-series/multiple-regression`, not reviewed as a complete treatment of the pathway.
 - `stationarity-cointegration` (Stationarity, ARMA and VAR models, unit roots and cointegration): no pathway note; related existing material in `regression-time-series/time-series-models`, not reviewed as a complete treatment of the pathway.

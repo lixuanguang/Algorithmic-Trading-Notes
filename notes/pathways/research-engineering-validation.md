@@ -12,7 +12,7 @@ Its checkpoint, from the guide: Write a one-page research record for a simple pu
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated on 22 October 2026 by the content migration, which moved existing draft entries here (3 from `portfolio-construction-risk`). A move changes no source verification, coverage, study or mastery state. Entry histories and source-review references are in [backtest-inference.md](backtest-inference.md), [model-governance-controls.md](model-governance-controls.md), [point-in-time-data.md](point-in-time-data.md), [portfolio-construction-risk.md](portfolio-construction-risk.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [backtest-inference.md](backtest-inference.md), [model-governance-controls.md](model-governance-controls.md), [point-in-time-data.md](point-in-time-data.md), [portfolio-construction-risk.md](portfolio-construction-risk.md).
 
 ## Outcome in my own words
 
@@ -38,9 +38,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `backtest-inference`, `point-in-time-data`, `model-governance-controls`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `backtest-inference`, `point-in-time-data`, `model-governance-controls`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `backtest-inference` (Strategy specification, backtest inference, multiple testing and Sharpe-ratio statistics): pathway note [backtest-inference.md](backtest-inference.md), 9 entries listed, in `research-engineering-validation/backtest-evaluation`, `research-engineering-validation/scenario-simulation`. Broadened by the guide revision of 22 October 2026 (`8302467`) to cover strategy specification; its entries are in `research-engineering-validation/quant-strategy-structure`, `research-engineering-validation/backtest-evaluation`, `research-engineering-validation/scenario-simulation`.
 - `point-in-time-data` (Point-in-time data, vendor files and bias control): pathway note [point-in-time-data.md](point-in-time-data.md), 5 entries listed, in `research-engineering-validation/point-in-time-data`.

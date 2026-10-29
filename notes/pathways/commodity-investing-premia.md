@@ -12,7 +12,7 @@ Its checkpoint, from the guide: For about two dozen liquid commodity futures sin
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated before this note existed; the content migration of 22 October 2026 added this overview without changing the entries' verification, coverage or mastery state. Entry histories and source-review references are in [commodity-index-products.md](commodity-index-products.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [commodity-index-products.md](commodity-index-products.md).
 
 ## Outcome in my own words
 
@@ -32,9 +32,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `commodity-premia`, `commodity-allocation-inflation`, `commodity-index-products`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `commodity-premia`, `commodity-allocation-inflation`, `commodity-index-products`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `commodity-premia` (Commodity risk premia: hedging pressure, inventories and the basis): no pathway note; related existing material in `commodity-investing-premia/commodity-return-components`, not reviewed as a complete treatment of the pathway.
 - `commodity-factor-strategies` (Commodity factor strategies: carry, momentum, trend, curve and skewness): no pathway note; partial treatment in existing entries, not reviewed as complete: commodity carry and time-series momentum evidence (`def:alpha-model-taxonomy` in `research-engineering-validation/quant-strategy-structure`); roll return (`meth:commodity-futures-return-components` in `commodity-investing-premia/commodity-return-components`); backwardation as a return predictor (own bounded test) (`def:contango-backwardation-stocks` in `energy-commodities/commodity-curves`). Not written: cross-sectional momentum, curve and skewness strategies.

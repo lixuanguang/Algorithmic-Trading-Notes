@@ -12,7 +12,7 @@ Its checkpoint, from the guide: For monthly excess returns on a market index, co
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated on 22 October 2026 by the content migration, which moved existing draft entries here (1 from `common-toolkit`). A move changes no source verification, coverage, study or mastery state. Entry histories and source-review references are in [common-toolkit.md](common-toolkit.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [common-toolkit.md](common-toolkit.md).
 
 ## Outcome in my own words
 
@@ -30,9 +30,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `bayesian-parameter-uncertainty`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `bayesian-parameter-uncertainty`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `bayesian-parameter-uncertainty` (Bayesian inference, shrinkage and parameter uncertainty): no pathway note; related existing material in `bayesian-inference/bayesian-updating`, not reviewed as a complete treatment of the pathway.
 

@@ -114,9 +114,9 @@ Cross-referenced, not owned here: `mech:futures-margin-settlement` (`futures-exe
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `derivative-valuation-strategies`, `option-pricing-models`, `convertible-bonds`, `option-hedging-smile`, `exotics-structured-products`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `derivative-valuation-strategies`, `option-pricing-models`, `convertible-bonds`, `option-hedging-smile`, `exotics-structured-products`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `derivative-valuation-strategies` (Forwards, swaps and options: no-arbitrage valuation and option strategies): added by the guide revision of 22 October 2026 (`8302467`); no pathway note; its entries are in `volatility-options/derivative-contracts`, `volatility-options/derivative-markets-uses`, `volatility-options/forward-commitment-valuation`, `volatility-options/option-valuation`, `volatility-options/option-strategies`.
 - `option-pricing-models` (Stochastic, local and jump volatility models): pathway note [option-pricing-models.md](option-pricing-models.md), 2 entries listed, in `volatility-options/option-pricing`.

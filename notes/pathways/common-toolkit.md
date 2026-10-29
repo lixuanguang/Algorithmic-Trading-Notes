@@ -6,7 +6,7 @@ status: retired; history kept below
 
 # Common toolkit (retired guide overview: bridge to Part I)
 
-The guide retired this overview in its eight-Part edition (`guide/learning_routes.json`, `retired_overviews`). It is no longer a compendium section. The content migration of 22 October 2026 moved its nine topic files, with labels and content unchanged, into the seven sections of Part I, *Financial mathematics, statistics and numerical methods*:
+The guide retired this overview in its eight-Part edition (`guide/learning_routes.json`, `retired_overviews`). It is no longer a compendium section. Its nine former topic files are now in the seven sections of Part I, *Financial mathematics, statistics and numerical methods*:
 
 | Successor section | Former files and entries |
 | --- | --- |

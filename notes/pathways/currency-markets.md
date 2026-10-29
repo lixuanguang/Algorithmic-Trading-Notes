@@ -46,9 +46,9 @@ Cross-referenced, not owned here: `def:fx-market-structure` (`fx-dealer-market-m
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `fx-determination-forecasting`, `fx-funding-settlement`, `fx-premia`, `fx-cip-dollar-funding`, `currency-hedging`, `em-currencies-intervention`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `fx-determination-forecasting`, `fx-funding-settlement`, `fx-premia`, `fx-cip-dollar-funding`, `currency-hedging`, `em-currencies-intervention`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `fx-determination-forecasting` (Exchange-rate quotes, real exchange rates, determination and forecasting): pathway note [fx-determination-forecasting.md](fx-determination-forecasting.md), 1 entries listed, in `currency-markets/macro-fx`. Broadened by the guide revision of 22 October 2026 (`8302467`) to cover FX quotes and real exchange rates; its entries are in `currency-markets/fx-market`, `currency-markets/fx-mechanics-parity`, `currency-markets/macro-fx`.
 - `fx-funding-settlement` (FX forwards, options, fixes and settlement): no pathway note; related existing material in `currency-markets/fx-quotes-forwards`, not reviewed as a complete treatment of the pathway.

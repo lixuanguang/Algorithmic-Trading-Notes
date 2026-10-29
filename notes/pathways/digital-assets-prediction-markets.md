@@ -12,9 +12,7 @@ Its checkpoint, from the guide: For one perpetual future and one dated option on
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated before this note existed; the content migration of 22 October 2026 added this overview without changing the entries' verification, coverage or mastery state. Entry histories and source-review references are in [crypto-leverage-liquidations.md](crypto-leverage-liquidations.md), [crypto-perpetuals.md](crypto-perpetuals.md), [stablecoin-pegs-runs.md](stablecoin-pegs-runs.md).
-
-Moved out by the content migration of 22 October 2026, with labels and content unchanged: to `crypto-spot-markets`: `meth:digital-asset-investment-analysis`; to `crypto-trading-strategies`: `ev:crypto-dated-futures-carry`; to `onchain-protocols`: `def:amm-pool-mechanics`, `mech:defi-lending-liquidation`; to `portfolio-risk-financing`: `mod:liquidity-spirals`.
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [crypto-leverage-liquidations.md](crypto-leverage-liquidations.md), [crypto-perpetuals.md](crypto-perpetuals.md), [stablecoin-pegs-runs.md](stablecoin-pegs-runs.md).
 
 ## Outcome in my own words
 
@@ -35,9 +33,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `stablecoin-tokenisation`, `crypto-perpetuals`, `stablecoin-pegs-runs`, `crypto-leverage-liquidations`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `stablecoin-tokenisation`, `crypto-perpetuals`, `stablecoin-pegs-runs`, `crypto-leverage-liquidations`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `stablecoin-tokenisation` (Distributed ledgers, stablecoins and tokenised bonds): no pathway note; related existing material in `digital-assets-prediction-markets/stablecoins`, `digital-assets-prediction-markets/distributed-ledgers`, not reviewed as a complete treatment of the pathway. Broadened by the guide revision of 22 October 2026 (`8302467`) to cover distributed ledgers; its entries are in `digital-assets-prediction-markets/distributed-ledgers`.
 - `crypto-perpetuals` (Crypto perpetuals and cross-venue basis): pathway note [crypto-perpetuals.md](crypto-perpetuals.md), 7 entries listed, in `crypto-spot-markets/digital-asset-investing`, `crypto-trading-strategies/crypto-carry`, `digital-assets-prediction-markets/crypto-venues-perpetuals`, `digital-assets-prediction-markets/distributed-ledgers`, `onchain-protocols/amm-lending`.

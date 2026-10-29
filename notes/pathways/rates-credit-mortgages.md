@@ -127,9 +127,9 @@ Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `bond-pricing-rate-risk`, `curve-term-structure`, `rate-derivatives`, `monetary-policy-curve`, `bond-risk-premia`, `rates-inflation`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `bond-pricing-rate-risk`, `curve-term-structure`, `rate-derivatives`, `monetary-policy-curve`, `bond-risk-premia`, `rates-inflation`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `bond-pricing-rate-risk` (Bond instruments, pricing, yields and interest-rate risk): added by the guide revision of 22 October 2026 (`8302467`); no pathway note; its entries are in `rates-credit-mortgages/interest-rates`, `rates-credit-mortgages/bond-instruments-markets`, `rates-credit-mortgages/fixed-income-universe`, `rates-credit-mortgages/bond-pricing-yields`, `rates-credit-mortgages/interest-rate-risk`.
 - `curve-term-structure` (Yield-curve construction and term-structure models): pathway note [curve-term-structure.md](curve-term-structure.md), 2 entries listed, in `rates-credit-mortgages/curve-trades`, `rates-credit-mortgages/gsw-treasury-curve`.

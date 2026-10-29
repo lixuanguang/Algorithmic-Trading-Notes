@@ -10,7 +10,7 @@ Pathway outcome, from the guide: Build and evaluate volatility and regime models
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 17 October 2026 by derivatives and empirical validation (2026-10-17) that date (`notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*), which wrote this pathway's first entries from bounded source verification of some of its readings. That is not study of the pathway: its readings were read only for the passages cited in the entries, and no checkpoint was attempted. The entries are in `compendium/regression-time-series/volatility-forecasting.tex`, the guide section `regression-time-series`, with the GARCH and EWMA forecast entry they extend. Until the migration of 22 October 2026 they were in `compendium/portfolio-construction-risk/risk-models.tex`, because the earlier guide section `common-toolkit` had no chapter folder.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 17 October 2026 by derivatives and empirical validation (2026-10-17) that date (`notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*), which wrote this pathway's first entries from bounded source verification of some of its readings. That is not study of the pathway: its readings were read only for the passages cited in the entries, and no checkpoint was attempted. The entries are in `compendium/regression-time-series/volatility-forecasting.tex`, the guide section `regression-time-series`, with the GARCH and EWMA forecast entry they extend.
 
 ## Outcome in my own words
 

@@ -47,7 +47,7 @@ The guide is organised by learning order, not by catalogue chapter: 8 parts, 49 
 | VII. Digital assets | 6 | 33 | 18, with venue and execution material from 8 |
 | VIII. Event contracts and prediction markets | 3 | 12 | 19 |
 
-Readings cross chapter boundaries freely; a pathway's prerequisites, not its catalogue chapter, decide where it sits. The 22 October 2026 migration from 7 parts and 38 sections, including the divided `common-toolkit` and `empirical-causal-research` overviews, is recorded in [study_guide_migration_plan.md](study_guide_migration_plan.md).
+Readings cross chapter boundaries freely; a pathway's prerequisites, not its catalogue chapter, decide where it sits.
 
 ## Stable identifiers
 

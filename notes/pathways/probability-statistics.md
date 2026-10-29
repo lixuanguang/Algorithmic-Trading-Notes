@@ -12,7 +12,7 @@ Its checkpoint, from the guide: For ten years of daily and monthly returns on an
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Populated on 22 October 2026 by the content migration, which moved existing draft entries here (12 from `common-toolkit`; 1 from `portfolio-construction-risk`). A move changes no source verification, coverage, study or mastery state. Entry histories and source-review references are in [common-toolkit.md](common-toolkit.md), [risk-tail-systemic.md](risk-tail-systemic.md).
+Not mastered and not consolidated: no dates in `notes/log.md`. Entry histories and source-review references are in [common-toolkit.md](common-toolkit.md), [risk-tail-systemic.md](risk-tail-systemic.md).
 
 ## Outcome in my own words
 
@@ -35,9 +35,9 @@ By pathway, in compiled order: each printed pathway is a numbered section of the
 
 ## Specialist pathways
 
-The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+The guide's pathways for this section, in its order, with the existing material or the content gap. A pathway with related material but no note has not been opened.
 
-Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `probability-statistical-inference`, `heavy-tails-extremes`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467`: `probability-statistical-inference`, `heavy-tails-extremes`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `probability-statistical-inference` (Probability, statistical inference and resampling): no pathway note; related existing material in `probability-statistics/descriptive-statistics`, `probability-statistics/probability`, `probability-statistics/statistical-inference`, `probability-statistics/resampling`, not reviewed as a complete treatment of the pathway.
 - `heavy-tails-extremes` (Heavy tails, extreme values and dependence): no pathway note; related existing material in `probability-statistics/extreme-values`, not reviewed as a complete treatment of the pathway.
